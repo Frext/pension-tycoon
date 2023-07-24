@@ -12,23 +12,29 @@ namespace _Project.Scripts
         public static event Action OnShow1;
         public static event Action OnShow2;
 
+        public static event Action OnHideAll;
+
         void Awake()
         {
             instance = this;
         }
 
-        public void ShowSlots1()
+        public void ShowSlotsWidth1()
         {
-            // We trigger or fire the event here.
             if (OnShow1 != null) 
                 OnShow1.Invoke();
         }
         
-        public void ShowSlots2()
+        public void ShowSlotsWidth2()
         {
-            // We trigger or fire the event here.
             if (OnShow2 != null) 
                 OnShow2.Invoke();
+        }
+
+        public void HideAllSlots()
+        {
+            if (OnHideAll != null) 
+                OnHideAll.Invoke();
         }
     }
 }
