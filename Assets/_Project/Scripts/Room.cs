@@ -7,10 +7,10 @@ namespace _Project.Scripts
     {
         public enum RoomTypes
         {
-            None,
             Room,
             DiningRoom,
-            Wc
+            Wc,
+            Reception
         }
         
         [Serializable]
@@ -24,30 +24,38 @@ namespace _Project.Scripts
         public RoomSlot roomSlot;
         [Space]
         
-        [SerializeField] private GameObject width1Slot;
-        [SerializeField] private GameObject width2Slot;
+        [Header("UI Slots")]
+        [SerializeField] private GameObject roomSlotButton;
+        [SerializeField] private GameObject wcSlotButton;
+        [SerializeField] private GameObject diningRoomSlotButton;
 
         void Awake()
         {
-            SetSlotWidth1(false);
-            SetSlotWidth2(false);
+            SetRoomSlotButton(false);
+            SetWcSlotButton(false);
+            SetDiningRoomSlotButton(false);
         }
 
         #region RoomManager methods
 
-        public void SetSlotWidth1(bool activeState)
+        public void SetRoomSlotButton(bool activeState)
         {
-            width1Slot.SetActive(activeState);
+            roomSlotButton.SetActive(activeState);
         }
 
-        public void SetSlotWidth2(bool activeState)
+        public void SetWcSlotButton(bool activeState)
         {
-            width2Slot.SetActive(activeState);
+            wcSlotButton.SetActive(activeState);
+        }
+        
+        public void SetDiningRoomSlotButton(bool activeState)
+        {
+            diningRoomSlotButton.SetActive(activeState);
         }
 
-        public bool IsSlotWidth2Active()
+        public bool IsDiningRoomSlotButtonActive()
         {
-            return width2Slot.activeInHierarchy;
+            return diningRoomSlotButton.activeInHierarchy;
         }
 
         #endregion
