@@ -7,6 +7,7 @@ namespace _Project.Scripts
     {
         public enum RoomTypes
         {
+            None,
             Room,
             DiningRoom,
             Wc,
