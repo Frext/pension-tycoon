@@ -29,12 +29,16 @@ namespace _Project.Scripts
         [SerializeField] private GameObject roomSlotButton;
         [SerializeField] private GameObject wcSlotButton;
         [SerializeField] private GameObject diningRoomSlotButton;
+        [SerializeField] private GameObject removeRoomWidth1Button;
+        [SerializeField] private GameObject removeRoomWidth2Button;
 
         void Awake()
         {
             SetRoomSlotButton(false);
             SetWcSlotButton(false);
             SetDiningRoomSlotButton(false);
+            SetRemoveRoomWidth1Button(false);
+            SetRemoveRoomWidth2Button(false);
         }
 
         #region RoomManager methods
@@ -57,6 +61,16 @@ namespace _Project.Scripts
         public bool IsDiningRoomSlotButtonActive()
         {
             return diningRoomSlotButton.activeInHierarchy;
+        }
+        
+        public void SetRemoveRoomWidth1Button(bool activeState)
+        {
+            removeRoomWidth1Button.SetActive(activeState);
+        }
+        
+        public void SetRemoveRoomWidth2Button(bool activeState)
+        {
+            removeRoomWidth2Button.SetActive(activeState);
         }
 
         #endregion
