@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 4629076190231355559, guid: 4f4a0dd6c0a6c39449dcafd3d17cdd68,
     type: 3}
-  wcPrefab: {fileID: 4629076190231355559, guid: c90f88a573d8b694cbfbea02b52bdf3f,
+  wcPrefab: {fileID: 4629076190231355559, guid: bd4b7e48f898d36439c5342f590d9d6c,
     type: 3}
   diningRoomPrefab: {fileID: 1344843120653683310, guid: b1ef60ab599c42c43b6d52b0e9157c0d,
     type: 3}
