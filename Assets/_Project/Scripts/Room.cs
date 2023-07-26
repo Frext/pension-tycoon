@@ -15,14 +15,14 @@ namespace _Project.Scripts
         }
         
         [Serializable]
-        public class RoomSlot
+        public class Slot
         {
             public bool isOccupied;
             
             public RoomTypes roomType;
         }
 
-        public RoomSlot roomSlot;
+        public Slot slot;
         [Space]
         
         [Header("UI Slots")]

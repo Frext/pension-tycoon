@@ -454,7 +454,6 @@ GameObject:
   - component: {fileID: 5368820952992418489}
   - component: {fileID: 5368820952992418469}
   - component: {fileID: 5368820952992418490}
-  - component: {fileID: 5368820952992418491}
   - component: {fileID: 5368820952992418488}
   m_Layer: 5
   m_Name: WcButton
@@ -522,18 +521,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5368820952992418491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5368820952992418494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aff04e022d54fb4089de7d2273bc1f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5368820952992418488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,9 +565,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5368820952992418491}
-        m_TargetAssemblyTypeName: _Project.Scripts.ShowSlots, Assembly-CSharp
-        m_MethodName: HideAllSlots
+      - m_Target: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -590,9 +578,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5368820952992418491}
-        m_TargetAssemblyTypeName: _Project.Scripts.SlotEvents, Assembly-CSharp
-        m_MethodName: ShowWcSlots
+      - m_Target: {fileID: 11400000, guid: 6253cbbb012b32147acee09e0c9143c1, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -666,7 +655,6 @@ GameObject:
   - component: {fileID: 5368820953097515977}
   - component: {fileID: 5368820953097515978}
   - component: {fileID: 5368820953097515979}
-  - component: {fileID: 5368820953097516021}
   - component: {fileID: 5368820953097515976}
   m_Layer: 5
   m_Name: DiningRoomButton
@@ -734,18 +722,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5368820953097516021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5368820953097515982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aff04e022d54fb4089de7d2273bc1f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5368820953097515976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,9 +766,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5368820953097516021}
-        m_TargetAssemblyTypeName: _Project.Scripts.ShowSlots, Assembly-CSharp
-        m_MethodName: HideAllSlots
+      - m_Target: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -802,9 +779,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5368820953097516021}
-        m_TargetAssemblyTypeName: _Project.Scripts.SlotEvents, Assembly-CSharp
-        m_MethodName: ShowDiningRoomSlots
+      - m_Target: {fileID: 11400000, guid: 98d855b8ee506024bb5030d7ede61746, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -838,7 +816,6 @@ GameObject:
   - component: {fileID: 5368820953131826509}
   - component: {fileID: 5368820953131826505}
   - component: {fileID: 5368820953131826510}
-  - component: {fileID: 5368820953131826511}
   - component: {fileID: 5368820953131826508}
   m_Layer: 5
   m_Name: ToggleOff
@@ -906,18 +883,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.82
---- !u!114 &5368820953131826511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5368820953131826498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aff04e022d54fb4089de7d2273bc1f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5368820953131826508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,9 +963,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5368820953131826511}
-        m_TargetAssemblyTypeName: _Project.Scripts.ShowSlots, Assembly-CSharp
-        m_MethodName: HideAllSlots
+      - m_Target: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1328,7 +1294,6 @@ GameObject:
   - component: {fileID: 5368820953676942583}
   - component: {fileID: 5368820953676942576}
   - component: {fileID: 5368820953676942577}
-  - component: {fileID: 5368820953676942579}
   - component: {fileID: 5368820953676942582}
   m_Layer: 5
   m_Name: RoomButton
@@ -1396,18 +1361,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5368820953676942579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5368820953676942580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aff04e022d54fb4089de7d2273bc1f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5368820953676942582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,9 +1405,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5368820953676942579}
-        m_TargetAssemblyTypeName: _Project.Scripts.ShowSlots, Assembly-CSharp
-        m_MethodName: HideAllSlots
+      - m_Target: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1464,9 +1418,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5368820953676942579}
-        m_TargetAssemblyTypeName: _Project.Scripts.SlotEvents, Assembly-CSharp
-        m_MethodName: ShowRoomSlots
+      - m_Target: {fileID: 11400000, guid: 11572985d54e4d44a9f4465d3b9dd70d, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

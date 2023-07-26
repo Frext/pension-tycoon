@@ -64,6 +64,11 @@ MonoBehaviour:
   - {fileID: 4617827472176631492}
   - {fileID: 4617827472442297085}
   selectedRoomTypeSO: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
+  OnShowRoomSlots: {fileID: 11400000, guid: 11572985d54e4d44a9f4465d3b9dd70d, type: 2}
+  OnShowWcSlots: {fileID: 11400000, guid: 6253cbbb012b32147acee09e0c9143c1, type: 2}
+  OnShowDiningRoomSlots: {fileID: 11400000, guid: 98d855b8ee506024bb5030d7ede61746,
+    type: 2}
+  OnHideAllSlots: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782, type: 2}
 --- !u!1001 &647055762371526588
 PrefabInstance:
   m_ObjectHideFlags: 0

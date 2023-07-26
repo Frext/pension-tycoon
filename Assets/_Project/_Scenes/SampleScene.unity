@@ -1532,6 +1532,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4617827473269574161, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
+      propertyPath: slot.roomType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617827473269574161, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
+      propertyPath: slot.isOccupied
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617827473269574161, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
       propertyPath: roomSlot.roomType
       value: 3
       objectReference: {fileID: 0}

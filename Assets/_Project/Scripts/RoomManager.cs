@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.RoomType;
+using _Project.Scripts.ScriptableObjects.SOEvent;
 using UnityEngine;
 
 namespace _Project.Scripts
@@ -15,6 +16,12 @@ namespace _Project.Scripts
         [SerializeField] private List<Room> roomsList;
         
         [SerializeField] private RoomType selectedRoomTypeSO;
+
+        [Header("Events")] 
+        [SerializeField] private SOEvent OnShowRoomSlots;
+        [SerializeField] private SOEvent OnShowWcSlots;
+        [SerializeField] private SOEvent OnShowDiningRoomSlots;
+        [SerializeField] private SOEvent OnHideAllSlots;
         
         void Awake()
         {
@@ -23,10 +30,10 @@ namespace _Project.Scripts
         
         private void RegisterEvents()
         {
-            SlotEvents.OnShowRoomSlots += ShowRoomSlotButtons;
-            SlotEvents.OnShowWcSlots += ShowWcSlotButtons;
-            SlotEvents.OnShowDiningRoomSlots += ShowDiningRoomSlotButtons;
-            SlotEvents.OnHideAll += HideAll;
+            OnShowRoomSlots.RegisterToEvent(ShowRoomSlotButtons);
+            OnShowWcSlots.RegisterToEvent(ShowWcSlotButtons);
+            OnShowDiningRoomSlots.RegisterToEvent(ShowDiningRoomSlotButtons);
+            OnHideAllSlots.RegisterToEvent(HideAllSlots);
         }
         
         void OnDestroy()
@@ -36,17 +43,17 @@ namespace _Project.Scripts
         
         private void DeregisterEvents()
         {
-            SlotEvents.OnShowRoomSlots -= ShowRoomSlotButtons;
-            SlotEvents.OnShowWcSlots -= ShowWcSlotButtons;
-            SlotEvents.OnShowDiningRoomSlots -= ShowDiningRoomSlotButtons;
-            SlotEvents.OnHideAll -= HideAll;
+            OnShowRoomSlots.DeregisterFromEvent(ShowRoomSlotButtons);
+            OnShowWcSlots.DeregisterFromEvent(ShowWcSlotButtons);
+            OnShowDiningRoomSlots.DeregisterFromEvent(ShowDiningRoomSlotButtons);
+            OnHideAllSlots.DeregisterFromEvent(HideAllSlots);
         }
 
         private void ShowRoomSlotButtons()
         {
             foreach (Room room in roomsList)
             {
-                if (!room.roomSlot.isOccupied)
+                if (!room.slot.isOccupied)
                 {
                     room.SetRoomSlotButton(true);
                 }
@@ -57,7 +64,7 @@ namespace _Project.Scripts
         {
             foreach (Room room in roomsList)
             {
-                if (!room.roomSlot.isOccupied)
+                if (!room.slot.isOccupied)
                 {
                     room.SetWcSlotButton(true);
                 }
@@ -75,15 +82,15 @@ namespace _Project.Scripts
                 }
                 
                 // If the current room and the next one is not occupied, show a slot width of 2.
-                if (!roomsList[i].roomSlot.isOccupied && 
-                    !roomsList[i + 1].roomSlot.isOccupied)
+                if (!roomsList[i].slot.isOccupied && 
+                    !roomsList[i + 1].slot.isOccupied)
                 {
                     roomsList[i].SetDiningRoomSlotButton(true);
                 }
             }
         }
 
-        private void HideAll()
+        private void HideAllSlots()
         {
             foreach (Room room in roomsList)
             {
@@ -117,15 +124,15 @@ namespace _Project.Scripts
         {
             Room currentRoom = roomsList[index];
             
-            currentRoom.roomSlot.isOccupied = true;
-            currentRoom.roomSlot.roomType = roomType;
+            currentRoom.slot.isOccupied = true;
+            currentRoom.slot.roomType = roomType;
             
             if (roomType == Room.RoomTypes.DiningRoom)
             {
                 Room nextRoom = roomsList[Mathf.Clamp(index + 1, 0, roomsList.Count - 1)];
                 
-                nextRoom.roomSlot.isOccupied = true;
-                nextRoom.roomSlot.roomType = roomType;
+                nextRoom.slot.isOccupied = true;
+                nextRoom.slot.roomType = roomType;
             }
         }
 
