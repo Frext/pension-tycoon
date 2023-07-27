@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
 
 namespace _Project.Scripts.ScriptableObjects.RoomType

@@ -6,7 +6,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
-namespace _Project.Scripts
+namespace _Project.Scripts.Gameplay.Building
 {
     public class RoomManager : MonoBehaviour
     {
@@ -24,9 +24,9 @@ namespace _Project.Scripts
         [SerializeField] private SOEvent OnShowRoomSlots;
         [SerializeField] private SOEvent OnShowWcSlots;
         [SerializeField] private SOEvent OnShowDiningRoomSlots;
-        [SerializeField] private SOEvent OnHideAllSlots;
         [SerializeField] private SOEvent OnShowAllRemoveSigns;
-        
+        [SerializeField] private SOEvent OnHideAllSlots;
+
         void Awake()
         {
             RegisterEvents();
@@ -103,6 +103,8 @@ namespace _Project.Scripts
                 room.SetRoomSlotButton(false);
                 room.SetWcSlotButton(false);
                 room.SetDiningRoomSlotButton(false);
+                room.SetRemoveRoomWidth1Button(false);
+                room.SetRemoveRoomWidth2Button(false);
             }
         }
 
