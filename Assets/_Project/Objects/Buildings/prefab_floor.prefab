@@ -616,6 +616,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 647055763154742011, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
+      propertyPath: OnHideSlots
+      value: 
+      objectReference: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782,
+        type: 2}
+    - target: {fileID: 647055763154742011, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
+      propertyPath: OnShowRemoveSigns
+      value: 
+      objectReference: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf,
+        type: 2}
     - target: {fileID: 647055763154742013, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
       propertyPath: m_Name

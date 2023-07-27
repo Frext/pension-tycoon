@@ -344,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613314587}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710677, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.005, z: 0.505}
+  m_LocalPosition: {x: 0, y: 2.005, z: 0.505}
   m_LocalScale: {x: 0.01, y: 6.01002, z: 3.00014}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -788,6 +788,7 @@ MonoBehaviour:
   roofTransform: {fileID: 613314588}
   roofBasePosition: {x: 0, y: 0.005, z: 0.505}
   roofOffsetPerFloor: {x: 0, y: 1, z: 0}
+  OnAppendFloor: {fileID: 11400000, guid: db7a95aacdfc3754f97380785b23daf8, type: 2}
 --- !u!1 &1239397116
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +841,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6553f10d6f33d547a9a22ed9d02cc00, type: 2}
+  - {fileID: 2100000, guid: b3e5a83f194139b4ea7021ddd2802fda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1123,7 +1124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6553f10d6f33d547a9a22ed9d02cc00, type: 2}
+  - {fileID: 2100000, guid: b3e5a83f194139b4ea7021ddd2802fda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1624,7 +1625,7 @@ PrefabInstance:
     - target: {fileID: 647055763154742010, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 647055763154742010, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
@@ -1784,20 +1785,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomEditCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5368820953232596466, guid: bfa19132b5334a04d9d64543860d53f2,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 963194227}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
@@ -1827,12 +1823,12 @@ PrefabInstance:
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
@@ -1857,17 +1853,17 @@ PrefabInstance:
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5368820953232596477, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}

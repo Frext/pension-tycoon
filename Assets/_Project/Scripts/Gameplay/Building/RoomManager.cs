@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.RoomType;
 using _Project.Scripts.ScriptableObjects.SOEvent;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -24,8 +25,8 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private SOEvent OnShowRoomSlots;
         [SerializeField] private SOEvent OnShowWcSlots;
         [SerializeField] private SOEvent OnShowDiningRoomSlots;
-        [SerializeField] private SOEvent OnShowAllRemoveSigns;
-        [SerializeField] private SOEvent OnHideAllSlots;
+        [SerializeField] private SOEvent OnShowRemoveSigns;
+        [SerializeField] private SOEvent OnHideSlots;
 
         void Awake()
         {
@@ -37,8 +38,8 @@ namespace _Project.Scripts.Gameplay.Building
             OnShowRoomSlots.RegisterToEvent(ShowRoomSlotButtons);
             OnShowWcSlots.RegisterToEvent(ShowWcSlotButtons);
             OnShowDiningRoomSlots.RegisterToEvent(ShowDiningRoomSlotButtons);
-            OnHideAllSlots.RegisterToEvent(HideAllSlots);
-            OnShowAllRemoveSigns.RegisterToEvent(ShowAllRemoveSigns);
+            OnHideSlots.RegisterToEvent(HideAllSlots);
+            OnShowRemoveSigns.RegisterToEvent(ShowAllRemoveSigns);
         }
         
         void OnDestroy()
@@ -51,8 +52,8 @@ namespace _Project.Scripts.Gameplay.Building
             OnShowRoomSlots.DeregisterFromEvent(ShowRoomSlotButtons);
             OnShowWcSlots.DeregisterFromEvent(ShowWcSlotButtons);
             OnShowDiningRoomSlots.DeregisterFromEvent(ShowDiningRoomSlotButtons);
-            OnHideAllSlots.DeregisterFromEvent(HideAllSlots);
-            OnShowAllRemoveSigns.DeregisterFromEvent(ShowAllRemoveSigns);
+            OnHideSlots.DeregisterFromEvent(HideAllSlots);
+            OnShowRemoveSigns.DeregisterFromEvent(ShowAllRemoveSigns);
         }
 
         private void ShowRoomSlotButtons()

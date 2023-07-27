@@ -68,9 +68,8 @@ MonoBehaviour:
   OnShowWcSlots: {fileID: 11400000, guid: 6253cbbb012b32147acee09e0c9143c1, type: 2}
   OnShowDiningRoomSlots: {fileID: 11400000, guid: 98d855b8ee506024bb5030d7ede61746,
     type: 2}
-  OnHideAllSlots: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782, type: 2}
-  OnShowAllRemoveSigns: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf,
-    type: 2}
+  OnShowRemoveSigns: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf, type: 2}
+  OnHideSlots: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782, type: 2}
 --- !u!1001 &647055762371526588
 PrefabInstance:
   m_ObjectHideFlags: 0
