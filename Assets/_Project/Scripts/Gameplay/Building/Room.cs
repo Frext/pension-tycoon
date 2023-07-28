@@ -18,6 +18,8 @@ namespace _Project.Scripts.Gameplay.Building
         public class Slot
         {
             public bool isOccupied;
+
+            [HideInInspector] public GameObject roomObject;
             
             public RoomTypes roomType;
         }

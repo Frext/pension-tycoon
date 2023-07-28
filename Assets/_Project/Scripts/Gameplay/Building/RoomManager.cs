@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.RoomType;
 using _Project.Scripts.ScriptableObjects.SOEvent;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -146,19 +145,18 @@ namespace _Project.Scripts.Gameplay.Building
             }
 
             Room.RoomTypes selectedRoomType = selectedRoomTypeSO.SelectedRoomType;
-                    
+            
             SetRoomSlotProperties(index, true, selectedRoomType);
+            GameObject roomObject = InstantiateRoom(index, selectedRoomType);
 
             if (selectedRoomType == Room.RoomTypes.DiningRoom)
             {
-                // Set the next room if it's a 2 block wide room.
-                SetRoomSlotProperties(Mathf.Clamp(index + 1, 0, roomsList.Count - 1), true, selectedRoomType);
+                // Also create a new room in the next slot if it's a 2 block wide room.
+                SetRoomSlotProperties(index + 1, true, selectedRoomType);
+                InstantiateRoom(index + 1, selectedRoomType, roomObject);
             }
-                    
-            Instantiate(GetPrefabByRoomType(selectedRoomType), 
-                        GetPositionByRoomType(roomTransform.position, selectedRoomType), Quaternion.identity, roomTransform);
         }
-
+        
         private int SearchRoomByPosition(Vector3 pos)
         {
             for (int index = 0; index < roomsList.Count; index++)
@@ -180,6 +178,19 @@ namespace _Project.Scripts.Gameplay.Building
             
             currentRoom.slot.isOccupied = isOccupied;
             currentRoom.slot.roomType = roomType;
+        }
+        
+        private GameObject InstantiateRoom(int index, Room.RoomTypes selectedRoomType, GameObject roomObject = null)
+        {
+            Room room = roomsList[index];
+
+            room.slot.roomObject = roomObject != null
+                ? roomObject
+                : Instantiate(GetPrefabByRoomType(selectedRoomType),
+                    GetPositionByRoomType(room.transform.position, selectedRoomType), Quaternion.identity,
+                    room.transform);
+
+            return room.slot.roomObject;
         }
         
         private GameObject GetPrefabByRoomType(Room.RoomTypes roomType)
@@ -218,7 +229,6 @@ namespace _Project.Scripts.Gameplay.Building
             }
             
             // We need to check the room type of the current room before we change it so we can operate on the next room.
-            
             if (room.slot.roomType == Room.RoomTypes.DiningRoom)
             {
                 SetRoomSlotProperties(index + 1, false, Room.RoomTypes.None);
@@ -230,7 +240,7 @@ namespace _Project.Scripts.Gameplay.Building
 
         private void DestroyRoomObject(Room room)
         {
-            Destroy(room.transform.GetChild(1).gameObject);
+            Destroy(room.slot.roomObject);
         }
         
         #endregion

@@ -306,6 +306,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 647055763154742011}
+    - target: {fileID: 808609163626518727, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 870752514711935849, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
