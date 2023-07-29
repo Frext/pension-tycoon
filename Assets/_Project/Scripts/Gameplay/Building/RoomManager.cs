@@ -21,12 +21,9 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private RoomType selectedRoomTypeSO;
 
         [Header("Events")] 
-        [SerializeField] private SOEvent OnShowRoomSlots;
-        [SerializeField] private SOEvent OnShowWcSlots;
-        [SerializeField] private SOEvent OnShowDiningRoomSlots;
+        [SerializeField] private SOEvent OnHideAllSlots;
         [SerializeField] private SOEvent OnShowRemoveSigns;
-        [SerializeField] private SOEvent OnHideSlots;
-
+        
         void Awake()
         {
             RegisterEvents();
@@ -34,11 +31,8 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void RegisterEvents()
         {
-            OnShowRoomSlots.RegisterToEvent(ShowRoomSlotButtons);
-            OnShowWcSlots.RegisterToEvent(ShowWcSlotButtons);
-            OnShowDiningRoomSlots.RegisterToEvent(ShowDiningRoomSlotButtons);
-            OnHideSlots.RegisterToEvent(HideAllSlots);
             OnShowRemoveSigns.RegisterToEvent(ShowAllRemoveSigns);
+            OnHideAllSlots.RegisterToEvent(HideAllSlots);
         }
         
         void OnDestroy()
@@ -48,61 +42,14 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void DeregisterEvents()
         {
-            OnShowRoomSlots.DeregisterFromEvent(ShowRoomSlotButtons);
-            OnShowWcSlots.DeregisterFromEvent(ShowWcSlotButtons);
-            OnShowDiningRoomSlots.DeregisterFromEvent(ShowDiningRoomSlotButtons);
-            OnHideSlots.DeregisterFromEvent(HideAllSlots);
             OnShowRemoveSigns.DeregisterFromEvent(ShowAllRemoveSigns);
-        }
-
-        private void ShowRoomSlotButtons()
-        {
-            foreach (Room room in roomsList)
-            {
-                if (!room.slot.isOccupied)
-                {
-                    room.SetRoomSlotButton(true);
-                }
-            }
-        }
-        
-        private void ShowWcSlotButtons()
-        {
-            foreach (Room room in roomsList)
-            {
-                if (!room.slot.isOccupied)
-                {
-                    room.SetWcSlotButton(true);
-                }
-            }
-        }
-
-        private void ShowDiningRoomSlotButtons()
-        {
-            for (int i = 0; i < roomsList.Count - 1; i++)
-            {
-                // If the slot width of 2 is active for the previous room, don't enable it.
-                if (i > 0 && roomsList[i - 1].IsDiningRoomSlotButtonActive())
-                {
-                    continue;
-                }
-                
-                // If the current room and the next one is not occupied, show a slot width of 2.
-                if (!roomsList[i].slot.isOccupied && 
-                    !roomsList[i + 1].slot.isOccupied)
-                {
-                    roomsList[i].SetDiningRoomSlotButton(true);
-                }
-            }
+            OnHideAllSlots.DeregisterFromEvent(HideAllSlots);
         }
 
         private void HideAllSlots()
         {
             foreach (Room room in roomsList)
             {
-                room.SetRoomSlotButton(false);
-                room.SetWcSlotButton(false);
-                room.SetDiningRoomSlotButton(false);
                 room.SetRemoveRoomWidth1Button(false);
                 room.SetRemoveRoomWidth2Button(false);
             }
@@ -133,12 +80,10 @@ namespace _Project.Scripts.Gameplay.Building
             }
         }
 
-        #region Button Methods
+        #region Public Methods
 
-        public void CreateRoom(Transform roomTransform)
+        public void CreateRoom(int index)
         {
-            int index = SearchRoomByPosition(roomTransform.position);
-
             if (roomsList[index].slot.isOccupied)
             {
                 return;
@@ -163,7 +108,7 @@ namespace _Project.Scripts.Gameplay.Building
             {
                 Room room = roomsList[index];
                 
-                if (room.gameObject.transform.position == pos)
+                if (Mathf.Approximately(Vector3.Distance(room.gameObject.transform.position, pos), 0))
                 {
                     return index;
                 }
@@ -241,6 +186,16 @@ namespace _Project.Scripts.Gameplay.Building
         private void DestroyRoomObject(Room room)
         {
             Destroy(room.slot.roomObject);
+        }
+
+        public bool IsRoomOccupied(int index)
+        {
+            if (index > roomsList.Count - 1 || index < 0)
+            {
+                return true;
+            }
+            
+            return roomsList[index].slot.isOccupied;
         }
         
         #endregion

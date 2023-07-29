@@ -1,0 +1,137 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace _Project.Scripts.Gameplay.Building
+{
+    public class NewRoomPlaceholderController : MonoBehaviour
+    {
+        [Header("Materials")]
+        [SerializeField] private Material canPlaceMaterial;
+        [SerializeField] private Material cannotPlaceMaterial;
+
+        [Header("Position Constraints")]
+        [SerializeField] private float minX;
+        [SerializeField] private float maxX;
+        [SerializeField] private float minY;
+        [SerializeField] private float posZ;
+        [Range(1, 2)] [SerializeField] private int length = 1; 
+        [Space]
+        
+        [SerializeField] private List<MeshRenderer> childMeshRenderersList;
+        
+        public FloorManager floorManagerScript;
+        [Space]
+        
+        
+        private float passedTime;
+
+        private Vector2Int GridPosition
+        {
+            get
+            {
+                var position = transform.position;
+                float x = position.x - minX;
+                float y = position.y - minY;
+                return new Vector2Int((int)x, (int)y);
+            }
+        }
+
+        void OnEnable()
+        {
+            GoToFirstUnconstructedRoom();
+        }
+
+        private void GoToFirstUnconstructedRoom()
+        {
+            for (int floor = 0; floor < floorManagerScript.FloorCount; floor++)
+            {
+                for (int room = 0; room < 6; room++)
+                {
+                    if (CanPlaceRoomAt(new Vector2Int(room, floor)))
+                    {
+                        gameObject.transform.position = new Vector3(minX + room, minY + floor, posZ);
+                        return;
+                    }
+                }
+            }
+            
+            // If there is not enough place.
+            CancelPlacingRoom();
+        }
+
+        void Update()
+        {
+            if (!(Time.time > passedTime)) 
+                return;
+            
+            Move(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+            UpdateAccuracyColor();
+                
+            passedTime = Time.time + 0.1f;
+        }
+
+        private void Move(Vector3 rawInput)
+        {
+            Vector3 newPos = transform.position + new Vector3(rawInput.x, rawInput.y);
+            newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+            newPos.y = Mathf.Clamp(newPos.y, minY, minY + (floorManagerScript.FloorCount - 1));
+
+            transform.position = newPos;
+        }
+
+        private void UpdateAccuracyColor()
+        {
+            SetMaterial(CanPlaceRoomAt(GridPosition) ? canPlaceMaterial : cannotPlaceMaterial);
+        }
+
+        private bool CanPlaceRoomAt(Vector2Int gridPosition)
+        {
+            if (length == 1)
+            {
+                return !floorManagerScript.IsRoomOccupiedAt(gridPosition);
+            }
+
+            for (int i = 0; i < length; i++)
+            {
+                if (floorManagerScript.IsRoomOccupiedAt(gridPosition + new Vector2Int(i, 0)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void SetMaterial(Material material)
+        {
+            foreach (var meshRenderer in childMeshRenderersList)
+            { 
+                meshRenderer.sharedMaterial = material;
+            }
+        }
+
+        #region Button Methods
+
+        public void PlaceRoom()
+        {
+            if (!CanPlaceRoomAt(GridPosition))
+                return;
+
+            floorManagerScript.CreateRoomAt(GridPosition);
+            DestroyObject();
+        }
+        
+        private void DestroyObject()
+        {
+            Destroy(gameObject);
+        }
+
+        public void CancelPlacingRoom()
+        {
+            // TODO: Refund coins
+            
+            DestroyObject();            
+        }
+        
+        #endregion
+    }
+}

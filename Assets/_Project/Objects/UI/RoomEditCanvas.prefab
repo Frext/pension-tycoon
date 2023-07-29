@@ -191,7 +191,12 @@ PrefabInstance:
     - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_Name
-      value: ShowWcSlotsButton
+      value: BuyWcButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1865035250750826712, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -201,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -222,14 +227,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782,
+      objectReference: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899,
         type: 2}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 6253cbbb012b32147acee09e0c9143c1,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -254,12 +258,12 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Invoke
+      value: SetSelectedRoomTypeToWc
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Invoke
+      value: InitializeWidth1
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -269,12 +273,12 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent, Assembly-CSharp
+      value: _Project.Scripts.ScriptableObjects.RoomType.RoomType, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent, Assembly-CSharp
+      value: _Project.Scripts.Gameplay.Building.InitializeNewRoomPlaceholder, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -284,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -449,7 +453,12 @@ PrefabInstance:
     - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_Name
-      value: AddFloorButton
+      value: BuyFloorButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1865035250750826712, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -632,6 +641,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShowRemoveSignsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1865035250750826712, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_text
@@ -640,7 +654,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -666,7 +680,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782,
+      objectReference: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf,
         type: 2}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1179,7 +1193,12 @@ PrefabInstance:
     - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_Name
-      value: ShowRoomSlotsButton
+      value: BuyRoomButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1865035250750826712, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1189,7 +1208,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1210,14 +1229,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782,
+      objectReference: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899,
         type: 2}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 11572985d54e4d44a9f4465d3b9dd70d,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -1242,12 +1260,12 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Invoke
+      value: SetSelectedRoomTypeToRoom
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Invoke
+      value: InitializeWidth1
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1257,12 +1275,12 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent, Assembly-CSharp
+      value: _Project.Scripts.ScriptableObjects.RoomType.RoomType, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent, Assembly-CSharp
+      value: _Project.Scripts.Gameplay.Building.InitializeNewRoomPlaceholder, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1272,7 +1290,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1437,7 +1455,12 @@ PrefabInstance:
     - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_Name
-      value: ShowDiningRoomSlotsButton
+      value: BuyDiningRoomButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1865035250750826712, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1447,7 +1470,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1468,14 +1491,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782,
+      objectReference: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899,
         type: 2}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 98d855b8ee506024bb5030d7ede61746,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -1500,12 +1522,12 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Invoke
+      value: SetSelectedRoomTypeToDiningRoom
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Invoke
+      value: InitializeWidth2
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1515,12 +1537,12 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent, Assembly-CSharp
+      value: _Project.Scripts.ScriptableObjects.RoomType.RoomType, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.SOEvent.SOEvent, Assembly-CSharp
+      value: _Project.Scripts.Gameplay.Building.InitializeNewRoomPlaceholder, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1530,7 +1552,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -1731,7 +1753,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: ca5cefa92ba72db499b929df73575782,
+      objectReference: {fileID: 11400000, guid: 02b2da5af66abab4b8e413661e6816a7,
         type: 2}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}

@@ -561,6 +561,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3801595101684810121}
     m_Modifications:
+    - target: {fileID: 270792163880327627, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 270792164561184663, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 647055763154742010, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
       propertyPath: m_RootOrder
@@ -632,6 +642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoomManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270933768409134017, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf4a5ae09398c7439619cc9c203af19, type: 3}
