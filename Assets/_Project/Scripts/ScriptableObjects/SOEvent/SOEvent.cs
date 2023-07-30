@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace _Project.Scripts.ScriptableObjects.SOEvent
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/" + nameof(SOEvent))]
-    public class SOEvent : ScriptableObject
+    [CreateAssetMenu(menuName = "ScriptableObjects/" + nameof(SoEvent))]
+    public class SoEvent : ScriptableObject
     {
         public event Action OnFire;
         

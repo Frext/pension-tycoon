@@ -37,7 +37,7 @@ namespace _Project.Scripts.Gameplay.Building
             SetRemoveRoomWidth2Button(false);
         }
 
-        #region RoomManager methods
+        #region Button Methods
         
         public void SetRemoveRoomWidth1Button(bool activeState)
         {

@@ -947,13 +947,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 3801595101684810118, guid: 99877d716b6448a4f91654f0d35bd395,
     type: 3}
+  roomPrefab: {fileID: 4629076190231355559, guid: 4f4a0dd6c0a6c39449dcafd3d17cdd68,
+    type: 3}
+  wcPrefab: {fileID: 4629076190231355559, guid: bd4b7e48f898d36439c5342f590d9d6c,
+    type: 3}
+  diningRoomPrefab: {fileID: 1344843120653683310, guid: b1ef60ab599c42c43b6d52b0e9157c0d,
+    type: 3}
+  floorsParentTransform: {fileID: 1215698283}
   floorBasePosition: {x: 0, y: 0, z: 0}
   floorOffsetPerFloor: {x: 0, y: 1, z: 0}
-  floorsParentTransform: {fileID: 1215698283}
   roofTransform: {fileID: 613314588}
   roofBasePosition: {x: 0, y: 0.005, z: 0.505}
   roofOffsetPerFloor: {x: 0, y: 1, z: 0}
   OnAppendFloor: {fileID: 11400000, guid: db7a95aacdfc3754f97380785b23daf8, type: 2}
+  OnHideSlotUI: {fileID: 11400000, guid: 02b2da5af66abab4b8e413661e6816a7, type: 2}
+  OnShowRemoveSigns: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf, type: 2}
+  selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
 --- !u!1 &1239397116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,7 +1430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596681524}
   m_Layer: 0
-  m_Name: FirstFloor
+  m_Name: Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1964,7 +1973,7 @@ PrefabInstance:
     - target: {fileID: 647055763154742013, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
       propertyPath: m_Name
-      value: RoomManager
+      value: RoomSlotContainer
       objectReference: {fileID: 0}
     - target: {fileID: 4617827473269574161, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
@@ -1986,7 +1995,8 @@ PrefabInstance:
       propertyPath: roomSlot.isOccupied
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 647055763154742011, guid: baf4a5ae09398c7439619cc9c203af19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: baf4a5ae09398c7439619cc9c203af19, type: 3}
 --- !u!1001 &3801595100909958545
 PrefabInstance:
@@ -1998,7 +2008,7 @@ PrefabInstance:
     - target: {fileID: 3801595101684810118, guid: 99877d716b6448a4f91654f0d35bd395,
         type: 3}
       propertyPath: m_Name
-      value: Floor
+      value: Floor2
       objectReference: {fileID: 0}
     - target: {fileID: 3801595101684810121, guid: 99877d716b6448a4f91654f0d35bd395,
         type: 3}

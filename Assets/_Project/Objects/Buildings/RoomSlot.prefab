@@ -49,9 +49,6 @@ MonoBehaviour:
     isOccupied: 0
     roomObject: {fileID: 0}
     roomType: 0
-  roomSlotButton: {fileID: 4840255551671167081}
-  wcSlotButton: {fileID: 7206737742668546284}
-  diningRoomSlotButton: {fileID: 3469201313959318557}
   removeRoomWidth1Button: {fileID: 6700683739606483014}
   removeRoomWidth2Button: {fileID: 6403544917288933303}
 --- !u!1001 &3792165589491496043
@@ -344,18 +341,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3792165589491496043}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3469201313959318557 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 325788275745005686, guid: 3093f210ae6d1534c9914d479f6dce81,
-    type: 3}
-  m_PrefabInstance: {fileID: 3792165589491496043}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4840255551671167081 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8614383626766867458, guid: 3093f210ae6d1534c9914d479f6dce81,
-    type: 3}
-  m_PrefabInstance: {fileID: 3792165589491496043}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6403544917288933303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7817559214810358748, guid: 3093f210ae6d1534c9914d479f6dce81,
@@ -365,12 +350,6 @@ GameObject:
 --- !u!1 &6700683739606483014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7520420798371378221, guid: 3093f210ae6d1534c9914d479f6dce81,
-    type: 3}
-  m_PrefabInstance: {fileID: 3792165589491496043}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7206737742668546284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5810491553322464391, guid: 3093f210ae6d1534c9914d479f6dce81,
     type: 3}
   m_PrefabInstance: {fileID: 3792165589491496043}
   m_PrefabAsset: {fileID: 0}
