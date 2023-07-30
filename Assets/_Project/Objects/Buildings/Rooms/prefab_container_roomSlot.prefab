@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 647055763154742010}
   m_Layer: 0
-  m_Name: RoomSlotContainer
+  m_Name: prefab_container_roomSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ PrefabInstance:
     - target: {fileID: 1324427239650965419, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlot6
+      value: prefab_roomSlot6
       objectReference: {fileID: 0}
     - target: {fileID: 1324427239650965420, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 1324427239650965419, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlot2
+      value: prefab_roomSlot2
       objectReference: {fileID: 0}
     - target: {fileID: 1324427239650965420, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
@@ -197,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 1324427239650965419, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlot5
+      value: prefab_roomSlot5
       objectReference: {fileID: 0}
     - target: {fileID: 1324427239650965420, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
@@ -272,7 +272,7 @@ PrefabInstance:
     - target: {fileID: 1324427239650965419, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlot3
+      value: prefab_roomSlot3
       objectReference: {fileID: 0}
     - target: {fileID: 1324427239650965420, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 1324427239650965419, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlot4
+      value: prefab_roomSlot4
       objectReference: {fileID: 0}
     - target: {fileID: 1324427239650965420, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
@@ -422,7 +422,7 @@ PrefabInstance:
     - target: {fileID: 1324427239650965419, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlot1
+      value: prefab_roomSlot1
       objectReference: {fileID: 0}
     - target: {fileID: 1324427239650965420, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
         type: 3}

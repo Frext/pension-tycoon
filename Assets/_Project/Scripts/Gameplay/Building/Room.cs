@@ -8,8 +8,8 @@ namespace _Project.Scripts.Gameplay.Building
         public enum RoomTypes
         {
             None,
-            Room,
-            DiningRoom,
+            Customer,
+            Dining,
             Wc,
             Reception
         }

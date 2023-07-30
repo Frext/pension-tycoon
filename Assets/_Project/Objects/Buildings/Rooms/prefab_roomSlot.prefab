@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1324427239650965420}
   - component: {fileID: 5255450450470155585}
   m_Layer: 0
-  m_Name: RoomSlot
+  m_Name: prefab_roomSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ PrefabInstance:
     - target: {fileID: 5925861033589875522, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlotCanvas
+      value: canvas_roomSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3093f210ae6d1534c9914d479f6dce81, type: 3}

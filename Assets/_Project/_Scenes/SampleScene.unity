@@ -790,7 +790,7 @@ PrefabInstance:
     - target: {fileID: 1935015446804268588, guid: bc858fdf5de6bab4cb9cc3e93d1ce93c,
         type: 3}
       propertyPath: m_Name
-      value: NewRoomPlaceholderWidth1
+      value: prefab_newRoomPlaceholder_1
       objectReference: {fileID: 0}
     - target: {fileID: 1935015446804268590, guid: bc858fdf5de6bab4cb9cc3e93d1ce93c,
         type: 3}
@@ -1082,7 +1082,7 @@ PrefabInstance:
     - target: {fileID: 7655671223250723940, guid: 58b57b920fa97f347ac9fcde3e626a1d,
         type: 3}
       propertyPath: m_Name
-      value: NewRoomPlaceholderWidth2
+      value: prefab_newRoomPlaceholder_2
       objectReference: {fileID: 0}
     - target: {fileID: 7655671223250723943, guid: 58b57b920fa97f347ac9fcde3e626a1d,
         type: 3}
@@ -1431,7 +1431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1596681524}
   m_Layer: 0
-  m_Name: Floor1
+  m_Name: floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1974,7 +1974,7 @@ PrefabInstance:
     - target: {fileID: 647055763154742013, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
       propertyPath: m_Name
-      value: RoomSlotContainer
+      value: prefab_container_roomSlot
       objectReference: {fileID: 0}
     - target: {fileID: 4617827473269574161, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
@@ -2009,7 +2009,7 @@ PrefabInstance:
     - target: {fileID: 3801595101684810118, guid: 99877d716b6448a4f91654f0d35bd395,
         type: 3}
       propertyPath: m_Name
-      value: Floor2
+      value: prefab_floor2
       objectReference: {fileID: 0}
     - target: {fileID: 3801595101684810121, guid: 99877d716b6448a4f91654f0d35bd395,
         type: 3}

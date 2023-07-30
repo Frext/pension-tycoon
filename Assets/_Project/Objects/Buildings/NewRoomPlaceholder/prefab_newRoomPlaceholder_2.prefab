@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7655671223250723943}
   - component: {fileID: 7655671223250723936}
   m_Layer: 0
-  m_Name: NewRoomPlaceholderWidth2
+  m_Name: prefab_newRoomPlaceholder_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,64 +459,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7655671223250723936}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 7655671223250723936}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlaceRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlaceRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: _Project.Scripts.Gameplay.Building.MoveNewRoom, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273649313439064, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614273650650403845, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7655671223250723936}
     - target: {fileID: 6614273650650403845, guid: fe18bbd1f7483f44584ed3b8b14d304c,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CancelPlacingRoom
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7655671223250723936}
     - target: {fileID: 8282992841178576808, guid: fe18bbd1f7483f44584ed3b8b14d304c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -622,15 +572,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8282992841178576811, guid: fe18bbd1f7483f44584ed3b8b14d304c,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8282992841178576855, guid: fe18bbd1f7483f44584ed3b8b14d304c,
         type: 3}
       propertyPath: m_Name
-      value: PlaceRoomCanvas
+      value: canvas_room_place
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe18bbd1f7483f44584ed3b8b14d304c, type: 3}

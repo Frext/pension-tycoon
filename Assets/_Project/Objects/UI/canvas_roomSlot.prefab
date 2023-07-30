@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4582618517337812140}
   - component: {fileID: 2784314492346986140}
   m_Layer: 5
-  m_Name: RoomSlotCanvas
+  m_Name: canvas_roomSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 527945807813547260}
   - component: {fileID: 5542438871921776591}
   m_Layer: 5
-  m_Name: RemoveWidth1Button
+  m_Name: ButtonRemoveWidth1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 6369595624640942359}
   - component: {fileID: 3511511985662492882}
   m_Layer: 5
-  m_Name: RemoveWidth2Button
+  m_Name: ButtonRemoveWidth2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

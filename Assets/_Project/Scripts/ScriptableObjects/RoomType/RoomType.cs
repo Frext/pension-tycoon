@@ -8,9 +8,9 @@ namespace _Project.Scripts.ScriptableObjects.RoomType
     {
         public Room.RoomTypes SelectedRoomType { get; private set; }
 
-        public void SetSelectedRoomTypeToRoom() => SetSelectedRoomTypeTo(Room.RoomTypes.Room);
+        public void SetSelectedRoomTypeToRoom() => SetSelectedRoomTypeTo(Room.RoomTypes.Customer);
         public void SetSelectedRoomTypeToWc() => SetSelectedRoomTypeTo(Room.RoomTypes.Wc);
-        public void SetSelectedRoomTypeToDiningRoom() => SetSelectedRoomTypeTo(Room.RoomTypes.DiningRoom);
+        public void SetSelectedRoomTypeToDiningRoom() => SetSelectedRoomTypeTo(Room.RoomTypes.Dining);
 
         private void SetSelectedRoomTypeTo(Room.RoomTypes roomType)
         {

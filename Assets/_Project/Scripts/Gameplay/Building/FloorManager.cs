@@ -11,7 +11,7 @@ namespace _Project.Scripts.Gameplay.Building
     {
         [Header("Prefabs")]
         [SerializeField] private GameObject floorPrefab;
-        [SerializeField] private GameObject roomPrefab;
+        [SerializeField] private GameObject customerRoomPrefab;
         [SerializeField] private GameObject wcPrefab;
         [SerializeField] private GameObject diningRoomPrefab;
         
@@ -105,7 +105,7 @@ namespace _Project.Scripts.Gameplay.Building
                         continue;
                     }
 
-                    if (room.slot.roomType == Room.RoomTypes.DiningRoom)
+                    if (room.slot.roomType == Room.RoomTypes.Dining)
                     {
                         room.SetRemoveRoomWidth2Button(true);
                     
@@ -127,12 +127,10 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void HideAllSlots()
         {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            foreach (List<Room> floor in roomsList)
             {
-                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+                foreach (Room room in floor)
                 {
-                    Room room = roomsList[floorIndex][roomIndex];
-                    
                     room.SetRemoveRoomWidth1Button(false);
                     room.SetRemoveRoomWidth2Button(false);
                 }
@@ -150,7 +148,7 @@ namespace _Project.Scripts.Gameplay.Building
             }
             
             // We need to check the room type of the current room before we change it so we can operate on the next room.
-            if (room.slot.roomType == Room.RoomTypes.DiningRoom)
+            if (room.slot.roomType == Room.RoomTypes.Dining)
             {
                 SetRoomSlotProperties(roomsList[index.y][index.x + 1], false, Room.RoomTypes.None);
             }
@@ -238,7 +236,7 @@ namespace _Project.Scripts.Gameplay.Building
             SetRoomSlotProperties(room, true, selectedRoomType);
             GameObject instantiatedRoomObject = InstantiateRoomGameObject(room);
 
-            if (selectedRoomType == Room.RoomTypes.DiningRoom)
+            if (selectedRoomType == Room.RoomTypes.Dining)
             {
                 Room nextRoom = roomsList[index.y][index.x + 1]; 
                 
@@ -265,16 +263,16 @@ namespace _Project.Scripts.Gameplay.Building
         {
             return roomType switch
             {
-                Room.RoomTypes.Room => roomPrefab,
+                Room.RoomTypes.Customer => customerRoomPrefab,
                 Room.RoomTypes.Wc => wcPrefab,
-                Room.RoomTypes.DiningRoom => diningRoomPrefab,
+                Room.RoomTypes.Dining => diningRoomPrefab,
                 _ => null
             };
         }
 
         private Vector3 GetPositionByRoomType(Vector3 pos, Room.RoomTypes roomType)
         {
-            if(roomType == Room.RoomTypes.DiningRoom)
+            if(roomType == Room.RoomTypes.Dining)
             {
                 return pos + new Vector3(0.5f, 0f, 0f);
             }
