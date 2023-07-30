@@ -19,13 +19,11 @@ namespace _Project.Scripts.Gameplay.Building
         
         [SerializeField] private List<MeshRenderer> childMeshRenderersList;
         
-        public FloorManager floorManagerScript;
-        [Space]
-        
-        
+        [SerializeField] private FloorManager floorManagerScript;
+
         private float passedTime;
 
-        private Vector2Int GridPosition
+        private Vector2Int CurrentGridPosition
         {
             get
             {
@@ -36,6 +34,7 @@ namespace _Project.Scripts.Gameplay.Building
             }
         }
 
+        
         void OnEnable()
         {
             GoToFirstUnconstructedRoom();
@@ -45,7 +44,7 @@ namespace _Project.Scripts.Gameplay.Building
         {
             for (int floor = 0; floor < floorManagerScript.FloorCount; floor++)
             {
-                for (int room = 0; room < 6; room++)
+                for (int room = 0; room < floorManagerScript.RoomCountPerFloor; room++)
                 {
                     if (CanPlaceRoomAt(new Vector2Int(room, floor)))
                     {
@@ -54,9 +53,26 @@ namespace _Project.Scripts.Gameplay.Building
                     }
                 }
             }
-            
+
             // If there is not enough place.
             CancelPlacingRoom();
+        }
+        
+        private bool CanPlaceRoomAt(Vector2Int gridPosition)
+        {
+            if (length == 1)
+            {
+                return !floorManagerScript.IsRoomConstructedAt(gridPosition);
+            }
+
+            for (int i = 0; i < length; i++)
+            {
+                if (floorManagerScript.IsRoomConstructedAt(gridPosition + new Vector2Int(i, 0)))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         void Update()
@@ -66,7 +82,7 @@ namespace _Project.Scripts.Gameplay.Building
             
             Move(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
             UpdateAccuracyColor();
-                
+            
             passedTime = Time.time + 0.1f;
         }
 
@@ -81,26 +97,9 @@ namespace _Project.Scripts.Gameplay.Building
 
         private void UpdateAccuracyColor()
         {
-            SetMaterial(CanPlaceRoomAt(GridPosition) ? canPlaceMaterial : cannotPlaceMaterial);
+            SetMaterial(CanPlaceRoomAt(CurrentGridPosition) ? canPlaceMaterial : cannotPlaceMaterial);
         }
-
-        private bool CanPlaceRoomAt(Vector2Int gridPosition)
-        {
-            if (length == 1)
-            {
-                return !floorManagerScript.IsRoomOccupiedAt(gridPosition);
-            }
-
-            for (int i = 0; i < length; i++)
-            {
-                if (floorManagerScript.IsRoomOccupiedAt(gridPosition + new Vector2Int(i, 0)))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
+        
         private void SetMaterial(Material material)
         {
             foreach (var meshRenderer in childMeshRenderersList)
@@ -113,10 +112,10 @@ namespace _Project.Scripts.Gameplay.Building
 
         public void PlaceRoom()
         {
-            if (!CanPlaceRoomAt(GridPosition))
+            if (!CanPlaceRoomAt(CurrentGridPosition))
                 return;
 
-            floorManagerScript.CreateRoomAt(GridPosition);
+            floorManagerScript.CreateRoomAt(CurrentGridPosition);
             DestroyObject();
         }
         
@@ -124,14 +123,14 @@ namespace _Project.Scripts.Gameplay.Building
         {
             Destroy(gameObject);
         }
-
+        
         public void CancelPlacingRoom()
         {
             // TODO: Refund coins
             
             DestroyObject();            
         }
-        
+
         #endregion
     }
 }

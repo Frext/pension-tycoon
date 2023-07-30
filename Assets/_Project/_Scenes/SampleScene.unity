@@ -962,6 +962,7 @@ MonoBehaviour:
   OnAppendFloor: {fileID: 11400000, guid: db7a95aacdfc3754f97380785b23daf8, type: 2}
   OnHideSlotUI: {fileID: 11400000, guid: 02b2da5af66abab4b8e413661e6816a7, type: 2}
   OnShowRemoveSigns: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf, type: 2}
+  OnRemoveRoom: {fileID: 11400000, guid: 8899868c3619c654eaeb6aefb7ace7ce, type: 2}
   selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
 --- !u!1 &1239397116
 GameObject:

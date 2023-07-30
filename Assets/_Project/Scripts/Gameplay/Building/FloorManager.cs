@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.RoomType;
 using _Project.Scripts.ScriptableObjects.SOEvent;
+using _Project.Scripts.ScriptableObjects.SoEventTransform;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Building
@@ -24,19 +25,22 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private Vector3 roofBasePosition;
         [SerializeField] private Vector3 roofOffsetPerFloor;
 
-        [Header("Events")] 
+        [Header("So Events")] 
         [SerializeField] private SoEvent OnAppendFloor;
         [SerializeField] private SoEvent OnHideSlotUI;
         [SerializeField] private SoEvent OnShowRemoveSigns;
+        [SerializeField] private SoEventTransform OnRemoveRoom;
         [Space]
         
         [SerializeField] private RoomType selectedRoomTypeSo;
 
         public int FloorCount => floorsParentTransform.childCount;
-        private const int RoomsParentIndex = 2;
-        private const int RoomCountPerFloor = 6;
+        public readonly int RoomCountPerFloor = 6;
+        
+        private readonly int RoomsParentIndex = 2;
         
         private List<List<Room>> roomsList = new();
+        
         
         void Awake()
         {
@@ -68,11 +72,17 @@ namespace _Project.Scripts.Gameplay.Building
             OnAppendFloor.RegisterToEvent(AppendFloor);
             OnShowRemoveSigns.RegisterToEvent(ShowAllRemoveSigns);
             OnHideSlotUI.RegisterToEvent(HideAllSlots);
+            OnRemoveRoom.RegisterToEvent(RemoveRoom);
         }
-
-        void Start()
+        
+        private void AppendFloor()
         {
+            Vector3 newFloorPos = floorBasePosition + floorOffsetPerFloor * FloorCount;
+            Instantiate(floorPrefab, newFloorPos, Quaternion.identity, floorsParentTransform);
+            
             PlaceRoof();
+            
+            FetchRooms();
         }
         
         private void PlaceRoof()
@@ -81,45 +91,7 @@ namespace _Project.Scripts.Gameplay.Building
 
             roofTransform.position = roofPos;
         }
-
-        void OnDestroy()
-        {
-            DeregisterEvents();
-            
-        }
-
-        private void DeregisterEvents()
-        {
-            OnAppendFloor.DeregisterFromEvent(AppendFloor);
-            OnShowRemoveSigns.DeregisterFromEvent(ShowAllRemoveSigns);
-            OnHideSlotUI.DeregisterFromEvent(HideAllSlots);
-        }
-
-        private void AppendFloor()
-        {
-            Vector3 newFloorPos = floorBasePosition + floorOffsetPerFloor * FloorCount;
-
-            Instantiate(floorPrefab, newFloorPos, Quaternion.identity, floorsParentTransform);
-            
-            PlaceRoof();
-            
-            FetchRooms();
-        }
         
-        private void HideAllSlots()
-        {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
-            {
-                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
-                {
-                    Room room = roomsList[floorIndex][roomIndex];
-                    
-                    room.SetRemoveRoomWidth1Button(false);
-                    room.SetRemoveRoomWidth2Button(false);
-                }
-            }
-        }
-
         private void ShowAllRemoveSigns()
         {
             for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
@@ -128,7 +100,7 @@ namespace _Project.Scripts.Gameplay.Building
                 {
                     Room room = roomsList[floorIndex][roomIndex];
                     
-                    if (!room.slot.isOccupied || room.slot.roomType == Room.RoomTypes.Reception)
+                    if (!IsRoomConstructed(room) || room.slot.roomType == Room.RoomTypes.Reception)
                     {
                         continue;
                     }
@@ -147,34 +119,116 @@ namespace _Project.Scripts.Gameplay.Building
                 }
             }
         }
-
-        public bool IsRoomOccupiedAt(Vector2Int index)
+        
+        private bool IsRoomConstructed(Room room)
         {
-            if (!IsBetween(index.y, 0, FloorCount) || !IsBetween(index.x, 0, RoomCountPerFloor))
+            return room.slot.roomType != Room.RoomTypes.None;
+        }
+        
+        private void HideAllSlots()
+        {
+            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            {
+                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+                {
+                    Room room = roomsList[floorIndex][roomIndex];
+                    
+                    room.SetRemoveRoomWidth1Button(false);
+                    room.SetRemoveRoomWidth2Button(false);
+                }
+            }
+        }
+        
+        private void RemoveRoom(Transform roomTransform)
+        {
+            Vector2Int index = GetRoomByPosition(roomTransform.position);
+            Room room = roomsList[index.y][index.x];
+
+            if (!IsRoomConstructed(room))
+            {
+                return;
+            }
+            
+            // We need to check the room type of the current room before we change it so we can operate on the next room.
+            if (room.slot.roomType == Room.RoomTypes.DiningRoom)
+            {
+                SetRoomSlotProperties(roomsList[index.y][index.x + 1], false, Room.RoomTypes.None);
+            }
+            SetRoomSlotProperties(room, false, Room.RoomTypes.None);
+            
+            DestroyRoomGameObject(room);
+        }
+        
+        private Vector2Int GetRoomByPosition(Vector3 pos)
+        {
+            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            {
+                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+                {
+                    Room room = roomsList[floorIndex][roomIndex];
+                
+                    if (Mathf.Approximately(Vector3.Distance(room.gameObject.transform.position, pos), 0f))
+                    {
+                        return new Vector2Int(roomIndex, floorIndex);
+                    }
+                }
+            }
+            
+            throw new Exception("No room was found at '" + pos + "'.");
+        }
+        
+        private void SetRoomSlotProperties(Room room, bool isOccupied, Room.RoomTypes roomType)
+        {
+            room.slot.isOccupied = isOccupied;
+            room.slot.roomType = roomType;
+        }
+
+        private void DestroyRoomGameObject(Room room)
+        {
+            Destroy(room.slot.roomObject);
+        }
+
+        void Start()
+        {
+            PlaceRoof();
+        }
+        
+        void OnDestroy()
+        {
+            DeregisterEvents();
+        }
+
+        private void DeregisterEvents()
+        {
+            OnAppendFloor.DeregisterFromEvent(AppendFloor);
+            OnShowRemoveSigns.DeregisterFromEvent(ShowAllRemoveSigns);
+            OnHideSlotUI.DeregisterFromEvent(HideAllSlots);
+            OnRemoveRoom.DeregisterFromEvent(RemoveRoom);
+        }
+        
+        #region Methods used by other classes
+        
+        public bool IsRoomConstructedAt(Vector2Int index)
+        {
+            if (IsOutOfBoundaries(index.y, 0, FloorCount - 1) || 
+                IsOutOfBoundaries(index.x, 0, RoomCountPerFloor - 1))
             {
                 return true;
             }
             
-            return roomsList[index.y][index.x].slot.isOccupied;
+            return IsRoomConstructed(roomsList[index.y][index.x]);
         }
 
-        private bool IsBetween(int number, int min, int max)
+        private bool IsOutOfBoundaries(int number, int min, int max)
         {
-            if (number < min || number > max)
-            {
-                return false;
-            }
-
-            return true;
+            return number < min || number > max;
         }
-
-        #region Button Methods
 
         public void CreateRoomAt(Vector2Int index)
         {
             Room room = roomsList[index.y][index.x];
             
-            if (!IsRoomConstructed(room))
+            if (IsRoomConstructed(room))
             {
                 return;
             }
@@ -193,18 +247,7 @@ namespace _Project.Scripts.Gameplay.Building
                 InstantiateRoomGameObject(nextRoom, instantiatedRoomObject);
             }
         }
-        
-        private bool IsRoomConstructed(Room room)
-        {
-            return room.slot.isOccupied || room.slot.roomType != Room.RoomTypes.Reception;
-        }
-        
-        private void SetRoomSlotProperties(Room room, bool isOccupied, Room.RoomTypes roomType)
-        {
-            room.slot.isOccupied = isOccupied;
-            room.slot.roomType = roomType;
-        }
-        
+
         private GameObject InstantiateRoomGameObject(Room room, GameObject roomObject = null)
         {
             Room.RoomTypes selectedRoomType = selectedRoomTypeSo.SelectedRoomType;
@@ -238,50 +281,7 @@ namespace _Project.Scripts.Gameplay.Building
 
             return pos;
         }
-        
-        public void RemoveRoom(Transform roomTransform)
-        {
-            Vector2Int index = GetRoomByPosition(roomTransform.position);
-            Room room = roomsList[index.y][index.x];
 
-            if (IsRoomConstructed(room))
-            {
-                return;
-            }
-            
-            // We need to check the room type of the current room before we change it so we can operate on the next room.
-            if (room.slot.roomType == Room.RoomTypes.DiningRoom)
-            {
-                SetRoomSlotProperties(roomsList[index.y][index.x + 1], false, Room.RoomTypes.None);
-            }
-            SetRoomSlotProperties(room, false, Room.RoomTypes.None);
-            
-            DestroyRoomGameObject(room);
-        }
-        
-        private Vector2Int GetRoomByPosition(Vector3 pos)
-        {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
-            {
-                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
-                {
-                    Room room = roomsList[floorIndex][roomIndex];
-                
-                    if (Mathf.Approximately(Vector3.Distance(room.gameObject.transform.position, pos), 0f))
-                    {
-                        return new Vector2Int(roomIndex, floorIndex);
-                    }
-                }
-            }
-            
-            throw new Exception("No room was found at '" + pos + "'.");
-        }
-
-        private void DestroyRoomGameObject(Room room)
-        {
-            Destroy(room.slot.roomObject);
-        }
-        
         #endregion
     }
 }

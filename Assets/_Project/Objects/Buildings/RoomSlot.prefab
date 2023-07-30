@@ -58,11 +58,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1324427239650965420}
     m_Modifications:
-    - target: {fileID: 1469184598443390551, guid: 3093f210ae6d1534c9914d479f6dce81,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 165.41669
-      objectReference: {fileID: 0}
     - target: {fileID: 3298004583682896509, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_Pivot.x
@@ -173,11 +168,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1324427239650965420}
-    - target: {fileID: 4582618517337812140, guid: 3093f210ae6d1534c9914d479f6dce81,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5542438871921776591, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -187,16 +177,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoomSlotCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7520420798371378221, guid: 3093f210ae6d1534c9914d479f6dce81,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7817559214810358748, guid: 3093f210ae6d1534c9914d479f6dce81,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3093f210ae6d1534c9914d479f6dce81, type: 3}

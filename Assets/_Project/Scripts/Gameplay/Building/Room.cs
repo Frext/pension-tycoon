@@ -31,6 +31,7 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private GameObject removeRoomWidth1Button;
         [SerializeField] private GameObject removeRoomWidth2Button;
 
+        
         void Awake()
         {
             SetRemoveRoomWidth1Button(false);
