@@ -150,12 +150,22 @@ namespace _Project.Scripts.Gameplay.Building
 
         public bool IsRoomOccupiedAt(Vector2Int index)
         {
-            if (index.y < 0 || index.y > roomsList[index.y].Count - 1)
+            if (!IsBetween(index.y, 0, FloorCount) || !IsBetween(index.x, 0, RoomCountPerFloor))
             {
                 return true;
             }
             
             return roomsList[index.y][index.x].slot.isOccupied;
+        }
+
+        private bool IsBetween(int number, int min, int max)
+        {
+            if (number < min || number > max)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         #region Button Methods
