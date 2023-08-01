@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static _Project.Scripts.Gameplay.Building.Room.RoomTypeEnum;
 
 namespace _Project.Scripts.Gameplay.Building
 {
@@ -11,13 +12,13 @@ namespace _Project.Scripts.Gameplay.Building
             CustomerSingle,
             CustomerDouble,
             Dining,
-            Wc,
+            Bathroom,
             Reception
         }
         
         public static int GetRoomWidth(RoomTypeEnum roomType)
         {
-            return roomType is RoomTypeEnum.CustomerDouble or RoomTypeEnum.Dining ? 2 : 1;
+            return roomType is CustomerDouble or Dining ? 2 : 1;
         }
         
         [Serializable]

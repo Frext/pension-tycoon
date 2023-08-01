@@ -10,7 +10,7 @@ namespace _Project.Scripts.ScriptableObjects.RoomType
 
         public void SetSelectedRoomTypeToCustomerSingle() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.CustomerSingle);
         public void SetSelectedRoomTypeToCustomerDouble() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.CustomerDouble);
-        public void SetSelectedRoomTypeToWc() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Wc);
+        public void SetSelectedRoomTypeToBathroom() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Bathroom);
         public void SetSelectedRoomTypeToDiningRoom() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Dining);
 
         private void SetSelectedRoomTypeTo(Room.RoomTypeEnum roomType)

@@ -192,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_Name
-      value: ButtonBuyWc
+      value: ButtonBuyBathroom
       objectReference: {fileID: 0}
     - target: {fileID: 376068117965082320, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -259,7 +259,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetSelectedRoomTypeToWc
+      value: SetSelectedRoomTypeToBathroom
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -269,12 +269,12 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetSelectedRoomTypeToWc
+      value: SetSelectedRoomTypeToBathroom
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.RoomType.RoomType, Assembly-CSharp
+      value: _Project.Scripts.ScriptableObjects.RoomType.SoRoomType, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}

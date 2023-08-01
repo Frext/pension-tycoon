@@ -5,6 +5,7 @@ using _Project.Scripts.ScriptableObjects.SOEvent;
 using _Project.Scripts.ScriptableObjects.SoEventTransform;
 using UnityEngine;
 using static _Project.Scripts.Gameplay.Building.Room;
+using static _Project.Scripts.Gameplay.Building.Room.RoomTypeEnum;
 
 namespace _Project.Scripts.Gameplay.Building
 {
@@ -14,7 +15,7 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private GameObject floorPrefab;
         [SerializeField] private GameObject customerSingleRoomPrefab;
         [SerializeField] private GameObject customerDoubleRoomPrefab;
-        [SerializeField] private GameObject wcPrefab;
+        [SerializeField] private GameObject bathroomPrefab;
         [SerializeField] private GameObject diningRoomPrefab;
         
         [Header("Floor Positioning")] 
@@ -102,7 +103,7 @@ namespace _Project.Scripts.Gameplay.Building
                 {
                     Room room = roomsList[floorIndex][roomIndex];
                     
-                    if (!IsRoomConstructed(room) || room.slot.roomType == RoomTypeEnum.Reception)
+                    if (!IsRoomConstructed(room) || room.slot.roomType == Reception)
                     {
                         continue;
                     }
@@ -124,7 +125,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         private bool IsRoomConstructed(Room room)
         {
-            return room.slot.roomType != RoomTypeEnum.None;
+            return room.slot.roomType != None;
         }
         
         private void HideAllSlots()
@@ -152,9 +153,9 @@ namespace _Project.Scripts.Gameplay.Building
             // We need to check the room type of the current room before we change it so we can operate on the next room.
             if (GetRoomWidth(room.slot.roomType) == 2)
             {
-                SetRoomSlotProperties(roomsList[index.y][index.x + 1], false, RoomTypeEnum.None);
+                SetRoomSlotProperties(roomsList[index.y][index.x + 1], false, None);
             }
-            SetRoomSlotProperties(room, false, RoomTypeEnum.None);
+            SetRoomSlotProperties(room, false, None);
             
             DestroyRoomGameObject(room);
         }
@@ -265,10 +266,10 @@ namespace _Project.Scripts.Gameplay.Building
         {
             return roomType switch
             {
-                RoomTypeEnum.CustomerSingle => customerSingleRoomPrefab,
-                RoomTypeEnum.CustomerDouble => customerDoubleRoomPrefab,
-                RoomTypeEnum.Wc => wcPrefab,
-                RoomTypeEnum.Dining => diningRoomPrefab,
+                CustomerSingle => customerSingleRoomPrefab,
+                CustomerDouble => customerDoubleRoomPrefab,
+                Bathroom => bathroomPrefab,
+                Dining => diningRoomPrefab,
                 _ => null
             };
         }
