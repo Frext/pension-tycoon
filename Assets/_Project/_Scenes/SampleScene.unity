@@ -151,6 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1666848540}
   - {fileID: 64763806}
   - {fileID: 1615661680}
   m_Father: {fileID: 0}
@@ -186,7 +187,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9545081}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &64763807
 MonoBehaviour:
@@ -796,7 +797,7 @@ PrefabInstance:
         type: 3}
       propertyPath: floorManagerScript
       value: 
-      objectReference: {fileID: 1215698284}
+      objectReference: {fileID: 1666848541}
     - target: {fileID: 1935015446804268591, guid: bc858fdf5de6bab4cb9cc3e93d1ce93c,
         type: 3}
       propertyPath: m_RootOrder
@@ -908,7 +909,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1215698283}
-  - component: {fileID: 1215698284}
   m_Layer: 0
   m_Name: Floors
   m_TagString: Untagged
@@ -933,37 +933,6 @@ Transform:
   m_Father: {fileID: 653127844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1215698284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215698282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99c36f357ace4b249a1d890f16dc5695, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floorPrefab: {fileID: 3801595101684810118, guid: 99877d716b6448a4f91654f0d35bd395,
-    type: 3}
-  customerRoomPrefab: {fileID: 4629076190231355559, guid: 4f4a0dd6c0a6c39449dcafd3d17cdd68,
-    type: 3}
-  wcPrefab: {fileID: 4629076190231355559, guid: bd4b7e48f898d36439c5342f590d9d6c,
-    type: 3}
-  diningRoomPrefab: {fileID: 1344843120653683310, guid: b1ef60ab599c42c43b6d52b0e9157c0d,
-    type: 3}
-  floorsParentTransform: {fileID: 1215698283}
-  floorBasePosition: {x: 0, y: 0, z: 0}
-  floorOffsetPerFloor: {x: 0, y: 1, z: 0}
-  roofTransform: {fileID: 613314588}
-  roofBasePosition: {x: 0, y: 0.005, z: 0.505}
-  roofOffsetPerFloor: {x: 0, y: 1, z: 0}
-  OnAppendFloor: {fileID: 11400000, guid: db7a95aacdfc3754f97380785b23daf8, type: 2}
-  OnHideSlotUI: {fileID: 11400000, guid: 02b2da5af66abab4b8e413661e6816a7, type: 2}
-  OnShowRemoveSigns: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf, type: 2}
-  OnRemoveRoom: {fileID: 11400000, guid: 8899868c3619c654eaeb6aefb7ace7ce, type: 2}
-  selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
 --- !u!1 &1239397116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1047,7 @@ PrefabInstance:
         type: 3}
       propertyPath: floorManagerScript
       value: 
-      objectReference: {fileID: 1215698284}
+      objectReference: {fileID: 1666848541}
     - target: {fileID: 7655671223250723940, guid: 58b57b920fa97f347ac9fcde3e626a1d,
         type: 3}
       propertyPath: m_Name
@@ -1616,7 +1585,7 @@ Transform:
   - {fileID: 1120955048}
   - {fileID: 1337392209}
   m_Father: {fileID: 9545081}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1659059508
 GameObject:
@@ -1715,6 +1684,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659059508}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1666848539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1666848540}
+  - component: {fileID: 1666848541}
+  m_Layer: 0
+  m_Name: FloorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1666848540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666848539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9545081}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1666848541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666848539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c36f357ace4b249a1d890f16dc5695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorPrefab: {fileID: 3801595101684810118, guid: 99877d716b6448a4f91654f0d35bd395,
+    type: 3}
+  customerSingleRoomPrefab: {fileID: 4629076190231355559, guid: 4f4a0dd6c0a6c39449dcafd3d17cdd68,
+    type: 3}
+  customerDoubleRoomPrefab: {fileID: 1344843120653683310, guid: 8cae92db969e5e84786d74912d10cfde,
+    type: 3}
+  wcPrefab: {fileID: 4629076190231355559, guid: bd4b7e48f898d36439c5342f590d9d6c,
+    type: 3}
+  diningRoomPrefab: {fileID: 1344843120653683310, guid: b1ef60ab599c42c43b6d52b0e9157c0d,
+    type: 3}
+  floorsParentTransform: {fileID: 1215698283}
+  floorBasePosition: {x: 0, y: 0, z: 0}
+  floorOffsetPerFloor: {x: 0, y: 1, z: 0}
+  roofTransform: {fileID: 613314588}
+  roofBasePosition: {x: 0, y: 0.005, z: 0.505}
+  roofOffsetPerFloor: {x: 0, y: 1, z: 0}
+  OnAppendFloor: {fileID: 11400000, guid: db7a95aacdfc3754f97380785b23daf8, type: 2}
+  OnHideSlotUI: {fileID: 11400000, guid: 02b2da5af66abab4b8e413661e6816a7, type: 2}
+  OnShowRemoveSigns: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf, type: 2}
+  OnRemoveRoom: {fileID: 11400000, guid: 8899868c3619c654eaeb6aefb7ace7ce, type: 2}
+  selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
 --- !u!1 &1786003555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2115,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 64763807}
     - target: {fileID: 4772822471263001459, guid: bfa19132b5334a04d9d64543860d53f2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 64763807}
+    - target: {fileID: 5247251953164355851, guid: bfa19132b5334a04d9d64543860d53f2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

@@ -5,23 +5,28 @@ namespace _Project.Scripts.Gameplay.Building
 {
     public class Room : MonoBehaviour
     {
-        public enum RoomTypes
+        public enum RoomTypeEnum
         {
             None,
-            Customer,
+            CustomerSingle,
+            CustomerDouble,
             Dining,
             Wc,
             Reception
+        }
+        
+        public static int GetRoomWidth(RoomTypeEnum roomType)
+        {
+            return roomType is RoomTypeEnum.CustomerDouble or RoomTypeEnum.Dining ? 2 : 1;
         }
         
         [Serializable]
         public class Slot
         {
             public bool isOccupied;
-
-            [HideInInspector] public GameObject roomObject;
+            public RoomTypeEnum roomType;
             
-            public RoomTypes roomType;
+            [HideInInspector] public GameObject roomObject;
         }
 
         public Slot slot;
