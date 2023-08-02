@@ -236,7 +236,7 @@ namespace _Project.Scripts.Gameplay.Building
 
             RoomTypeEnum selectedRoomType = selectedRoomTypeSo.SelectedRoomType;
             
-            SetRoomSlotProperties(room, true, selectedRoomType);
+            SetRoomSlotProperties(room, false, selectedRoomType);
             GameObject instantiatedRoomObject = InstantiateRoomGameObject(room);
 
             if (GetRoomWidth(selectedRoomType) == 2)
@@ -283,7 +283,23 @@ namespace _Project.Scripts.Gameplay.Building
 
             return pos;
         }
+        
+        public Room GetTypeOfRoom(RoomTypeEnum roomType)
+        {
+            foreach (List<Room> floor in roomsList)
+            {
+                foreach (Room room in floor)
+                {
+                    if (room.slot.roomType == roomType && !room.slot.isOccupied)
+                    {
+                        return room;
+                    }
+                }
+            }
 
+            return null;
+        }
+        
         #endregion
     }
 }

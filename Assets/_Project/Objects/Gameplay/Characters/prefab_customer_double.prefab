@@ -114,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6891467377136110981
 Transform:
   m_ObjectHideFlags: 0
@@ -141,9 +141,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6891467377136110982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db15166b81a44f74f9bd1957dcdf59e8, type: 3}
+  m_Script: {fileID: 11500000, guid: fa78fc73abb128f46ad04666c9ef5a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wayPointsList: []
+  targetRoomType: 2
+  floorManagerScript: {fileID: 0}
 --- !u!1 &6891467377579024980
 GameObject:
   m_ObjectHideFlags: 0

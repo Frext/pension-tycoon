@@ -111,3 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa78fc73abb128f46ad04666c9ef5a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wayPointsList: []
+  targetRoomType: 1
+  floorManagerScript: {fileID: 0}
