@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4808535324815157468
 Transform:
   m_ObjectHideFlags: 0
@@ -111,6 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b240b98ec714f1b4e833eec8208256d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointsList: []
+  startPosition: {x: -0.5, y: 0.25, z: 1.5}
   targetRoomType: 3
+  stayRange:
+    min: 6
+    max: 8
   floorManagerScript: {fileID: 0}
+  onCookFood:
+    m_PersistentCalls:
+      m_Calls: []

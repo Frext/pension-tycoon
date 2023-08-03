@@ -2,8 +2,12 @@ using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Characters
 {
-    public class Customer : Character
+    public class Customer : NPC
     {
+        [Space]
+        [Header(nameof(Customer) + " Properties")]
+        [SerializeField] private Vector3 receptionPosition;
+        
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -15,17 +19,20 @@ namespace _Project.Scripts.Gameplay.Characters
         private void StartMoving()
         {
             AddWayPoints();
-
             Move();
         }
 
-        private void AddWayPoints()
+        protected override void AddWayPoints()
         {
             wayPointsList.Clear();
             
-            wayPointsList.Add(new WayPoint{position = new Vector3(.25f, .25f, -.75f), waitTime = 2f, 
-                OnReachDestination = AddCustomerRoomWayPoint});
-            wayPointsList.Add(GetCustomerDisappearWayPoint());
+            wayPointsList.Add(new WayPoint
+            {
+                position = receptionPosition,
+                waitTime = 2f,
+                OnReachDestination = AddRoomToWayPoint
+            });
+            wayPointsList.Add(GetCharacterDisappearWayPoint());
         }
     }
 }

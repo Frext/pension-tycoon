@@ -111,6 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa78fc73abb128f46ad04666c9ef5a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointsList: []
+  startPosition: {x: -1.75, y: 0.25, z: -1.75}
   targetRoomType: 1
+  stayRange:
+    min: 7
+    max: 11
   floorManagerScript: {fileID: 0}
+  receptionPosition: {x: 0.25, y: 0.25, z: -0.75}

@@ -2774,10 +2774,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_customer_double
       objectReference: {fileID: 0}
-    - target: {fileID: 6891467377136110982, guid: 63d53474b36caf342b2de2deca789c73,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d53474b36caf342b2de2deca789c73, type: 3}
