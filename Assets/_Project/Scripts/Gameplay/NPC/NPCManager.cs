@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace _Project.Scripts.Gameplay.Characters
+namespace _Project.Scripts.Gameplay.NPC
 {
-    public class CharacterManager : MonoBehaviour
+    public class NPCManager : MonoBehaviour
     {
         [SerializeField] private GameObject singleCustomerPrefab;
         [SerializeField] private GameObject doubleCustomerPrefab;

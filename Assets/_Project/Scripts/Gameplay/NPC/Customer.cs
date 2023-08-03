@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-namespace _Project.Scripts.Gameplay.Characters
+namespace _Project.Scripts.Gameplay.NPC
 {
     public class Customer : NPC
     {
@@ -30,9 +31,16 @@ namespace _Project.Scripts.Gameplay.Characters
             {
                 position = receptionPosition,
                 waitTime = 2f,
-                OnReachDestination = AddRoomToWayPoint
+                OnReachDestination = InsertTargetRoomToWayPoint
             });
             wayPointsList.Add(GetCharacterDisappearWayPoint());
+        }
+
+        protected override void LeaveTargetRoom()
+        {
+            base.LeaveTargetRoom();
+            
+            floorManagerScript.MakeRoomDirty(selectedRoom);
         }
     }
 }

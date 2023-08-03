@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace _Project.Scripts.Gameplay.Characters
+namespace _Project.Scripts.Gameplay.NPC
 {
     public class Cook : NPC
     {
@@ -26,17 +26,19 @@ namespace _Project.Scripts.Gameplay.Characters
         {
             wayPointsList.Clear();
 
-            WayPoint startWayPoint = new WayPoint
-            {
-                position = startPosition,
-                OnReachDestination = AddRoomToWayPoint
-            };
+            wayPointsList.Add(new WayPoint{ position = startPosition,
+                OnReachDestination = InsertTargetRoomToWayPoint});
+            wayPointsList.Add(new WayPoint{ position = startPosition });
+        }
+
+        protected override void LeaveTargetRoom()
+        {
+            base.LeaveTargetRoom();
             
-            wayPointsList.Add(startWayPoint);
-            wayPointsList.Add(startWayPoint);
+            CookFood();
         }
         
-        public void CookFood()
+        private void CookFood()
         {
             onCookFood.Invoke();
         }

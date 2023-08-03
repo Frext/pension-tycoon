@@ -153,9 +153,9 @@ namespace _Project.Scripts.Gameplay.Building
             // We need to check the room type of the current room before we change it so we can operate on the next room.
             if (GetRoomWidth(room.slot.roomType) == 2)
             {
-                SetRoomSlotProperties(roomsList[index.y][index.x + 1], false, None);
+                SetRoomSlotProperties(roomsList[index.y][index.x + 1], None);
             }
-            SetRoomSlotProperties(room, false, None);
+            SetRoomSlotProperties(room, None);
             
             DestroyRoomGameObject(room);
         }
@@ -178,9 +178,10 @@ namespace _Project.Scripts.Gameplay.Building
             throw new Exception("No room was found at '" + pos + "'.");
         }
         
-        private void SetRoomSlotProperties(Room room, bool isOccupied, RoomTypeEnum roomType)
+        private void SetRoomSlotProperties(Room room, RoomTypeEnum roomType, bool isOccupied = false, bool isDirty = false)
         {
             room.slot.isOccupied = isOccupied;
+            room.slot.isDirty = isDirty;
             room.slot.roomType = roomType;
         }
 
@@ -236,7 +237,7 @@ namespace _Project.Scripts.Gameplay.Building
 
             RoomTypeEnum selectedRoomType = selectedRoomTypeSo.SelectedRoomType;
             
-            SetRoomSlotProperties(room, false, selectedRoomType);
+            SetRoomSlotProperties(room, selectedRoomType);
             GameObject instantiatedRoomObject = InstantiateRoomGameObject(room);
 
             if (GetRoomWidth(selectedRoomType) == 2)
@@ -244,7 +245,7 @@ namespace _Project.Scripts.Gameplay.Building
                 Room nextRoom = roomsList[index.y][index.x + 1]; 
                 
                 // Also create a new room in the next slot if it's a 2 block wide room.
-                SetRoomSlotProperties(nextRoom, true, selectedRoomType);
+                SetRoomSlotProperties(nextRoom, selectedRoomType);
                 InstantiateRoomGameObject(nextRoom, instantiatedRoomObject);
             }
         }
@@ -290,14 +291,35 @@ namespace _Project.Scripts.Gameplay.Building
             {
                 foreach (Room room in floor)
                 {
-                    if (room.slot.roomType == roomType && !room.slot.isOccupied)
+                    if (room.slot.roomType == roomType && !room.slot.isOccupied && !room.slot.isDirty)
                     {
                         return room;
                     }
                 }
             }
-
+            
+            // Decrease the pension rating.
             return null;
+        }
+
+        public void EnterRoom(Room room)
+        {
+            room.slot.isOccupied = true;
+        }
+
+        public void MakeRoomDirty(Room room)
+        {
+            room.slot.isDirty = true;
+        }
+        
+        public void LeaveRoom(Room room)
+        {
+            room.slot.isOccupied = false;
+        }
+
+        public void CleanRoom(Room room)
+        {
+            room.slot.isDirty = false;
         }
         
         #endregion

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace _Project.Scripts.Gameplay.Characters
+namespace _Project.Scripts.Gameplay.NPC
 {
     public class Cleaner : NPC
     {
@@ -25,19 +25,20 @@ namespace _Project.Scripts.Gameplay.Characters
         protected override void AddWayPoints()
         {
             wayPointsList.Clear();
-
-            WayPoint startWayPoint = new WayPoint
-            {
-                position = startPosition,
-                OnReachDestination = AddRoomToWayPoint
-            };
             
-            wayPointsList.Add(startWayPoint);
-            wayPointsList.Add(startWayPoint);
+            wayPointsList.Add(new WayPoint{ position = startPosition,
+                OnReachDestination = InsertTargetRoomToWayPoint});
+            wayPointsList.Add(new WayPoint{ position = startPosition });
         }
-        
-        
-        public void CleanBathroom()
+
+        protected override void LeaveTargetRoom()
+        {
+            base.LeaveTargetRoom();
+            
+            CleanBathroom();
+        }
+
+        private void CleanBathroom()
         {
             onCleanRoom.Invoke();
         }
