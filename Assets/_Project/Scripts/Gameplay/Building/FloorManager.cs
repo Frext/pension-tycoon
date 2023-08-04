@@ -141,7 +141,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void RemoveRoom(Transform roomTransform)
         {
-            Vector2Int index = GetRoomByPosition(roomTransform.position);
+            Vector2Int index = GetIndexByPosition(roomTransform.position);
             Room room = roomsList[index.y][index.x];
 
             if (!IsRoomConstructed(room))
@@ -149,17 +149,12 @@ namespace _Project.Scripts.Gameplay.Building
                 return;
             }
             
-            // We need to check the room type of the current room before we change it so we can operate on the next room.
-            if (GetRoomWidth(room.slot.roomType) == 2)
-            {
-                SetRoomSlotProperties(roomsList[index.y][index.x + 1], None);
-            }
-            SetRoomSlotProperties(room, None);
+            SetRoomSlotProperties(index, None);
             
             DestroyRoomGameObject(room);
         }
         
-        private Vector2Int GetRoomByPosition(Vector3 pos)
+        private Vector2Int GetIndexByPosition(Vector3 pos)
         {
             for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
             {
@@ -177,13 +172,61 @@ namespace _Project.Scripts.Gameplay.Building
             throw new Exception("No room was found at '" + pos + "'.");
         }
         
-        private void SetRoomSlotProperties(Room room, RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
+        private void SetRoomSlotProperties(Vector2Int index, RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
+        {
+            Room room = roomsList[index.y][index.x];
+            
+            // If it's a 2-wide room is getting created or removed, set the next room slot too before changing the type.
+            if ((GetRoomWidth(room.slot.roomType) == 2 || GetRoomWidth(roomType) == 2)
+                && IsIndexValid(new Vector2Int(index.x + 1, index.y)))
+            {
+                SetSingleSlot(roomsList[index.y][index.x + 1], roomType, isOccupied, isUsable);
+            }
+            
+            SetSingleSlot(room, roomType, isOccupied, isUsable);
+        }
+        
+        private void SetRoomSlotProperties(Vector2Int index, bool isOccupied, bool isUsable)
+        {
+            Room room = roomsList[index.y][index.x];
+            
+            if (GetRoomWidth(room.slot.roomType) == 2 && IsIndexValid(new Vector2Int(index.x + 1, index.y)))
+            {
+                SetSingleSlot(roomsList[index.y][index.x + 1], isOccupied, isUsable);
+            }
+            
+            SetSingleSlot(room, isOccupied, isUsable);
+        }
+
+        private bool IsIndexValid(Vector2Int index)
+        {
+            if (IsOutOfBoundaries(index.y, 0, FloorCount - 1) || 
+                IsOutOfBoundaries(index.x, 0, RoomCountPerFloor - 1))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        
+        private bool IsOutOfBoundaries(int number, int min, int max)
+        {
+            return number < min || number > max;
+        }
+
+        private void SetSingleSlot(Room room, RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
         {
             room.slot.isOccupied = isOccupied;
             room.slot.isUsable = isUsable;
             room.slot.roomType = roomType;
         }
-
+        
+        private void SetSingleSlot(Room room, bool isOccupied, bool isUsable)
+        {
+            room.slot.isOccupied = isOccupied;
+            room.slot.isUsable = isUsable;
+        }
+        
         private void DestroyRoomGameObject(Room room)
         {
             Destroy(room.slot.roomObject);
@@ -211,8 +254,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         public bool IsRoomConstructedAt(Vector2Int index)
         {
-            if (IsOutOfBoundaries(index.y, 0, FloorCount - 1) || 
-                IsOutOfBoundaries(index.x, 0, RoomCountPerFloor - 1))
+            if (!IsIndexValid(index))
             {
                 return true;
             }
@@ -220,44 +262,34 @@ namespace _Project.Scripts.Gameplay.Building
             return IsRoomConstructed(roomsList[index.y][index.x]);
         }
 
-        private bool IsOutOfBoundaries(int number, int min, int max)
-        {
-            return number < min || number > max;
-        }
-
         public void CreateRoomAt(Vector2Int index)
         {
-            Room room = roomsList[index.y][index.x];
-            
-            if (IsRoomConstructed(room))
+            if (IsRoomConstructed(roomsList[index.y][index.x]) && !IsIndexValid(index))
             {
                 return;
             }
 
             RoomTypeEnum selectedRoomType = selectedRoomTypeSo.SelectedRoomType;
             
-            SetRoomSlotProperties(room, selectedRoomType);
-            GameObject instantiatedRoomObject = InstantiateRoomGameObject(room);
-
-            if (GetRoomWidth(selectedRoomType) == 2)
-            {
-                Room nextRoom = roomsList[index.y][index.x + 1]; 
-                
-                // Also create a new room in the next slot if it's a 2 block wide room.
-                SetRoomSlotProperties(nextRoom, selectedRoomType);
-                SetRoomGameObject(nextRoom, instantiatedRoomObject);
-            }
+            SetRoomSlotProperties(index, selectedRoomType);
+            InstantiateRoomGameObject(index);
         }
 
-        private GameObject InstantiateRoomGameObject(Room room)
+        private void InstantiateRoomGameObject(Vector2Int index)
         {
+            Room room = roomsList[index.y][index.x];
+            
+            
             RoomTypeEnum selectedRoomType = selectedRoomTypeSo.SelectedRoomType;
+            GameObject instantiatedRoomGameObject = Instantiate(GetPrefabByRoomType(selectedRoomType),
+                GetPositionByRoomType(room.transform.position, selectedRoomType), Quaternion.identity, room.transform);
+            
+            SetRoomGameObject(room, instantiatedRoomGameObject);
 
-            SetRoomGameObject(room, 
-                Instantiate(GetPrefabByRoomType(selectedRoomType), 
-                    GetPositionByRoomType(room.transform.position, selectedRoomType), Quaternion.identity, room.transform));
-
-            return room.slot.roomObject;
+            if (GetRoomWidth(room.slot.roomType) == 2)
+            {
+                SetRoomGameObject(roomsList[index.y][index.x + 1], instantiatedRoomGameObject);
+            }
         }
 
         private void SetRoomGameObject(Room room, GameObject roomObject)
@@ -300,30 +332,49 @@ namespace _Project.Scripts.Gameplay.Building
                     }
                 }
             }
+
+            if (isOccupied == false && isUsable)
+            {
+                // Decrease the pension rating.
+            }
             
-            // Decrease the pension rating.
             return null;
         }
-
-        // TODO: Use GetRoomWidth()
+        
         public void EnterRoom(Room room)
         {
-            room.slot.isOccupied = true;
+            SetRoomSlotProperties(GetIndexByRoom(room), true, room.slot.isUsable);
+        }
+
+        private Vector2Int GetIndexByRoom(Room room)
+        {
+            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            {
+                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+                {
+                    if (roomsList[floorIndex][roomIndex] == room)
+                    {
+                        return new Vector2Int(roomIndex, floorIndex);
+                    }
+                }
+            }
+
+            throw new Exception("No room was found with room '" + room.gameObject + "'.");
         }
         
         public void LeaveRoom(Room room)
         {
-            room.slot.isOccupied = false;
+            SetRoomSlotProperties(GetIndexByRoom(room), false, room.slot.isUsable);
         }
         
         public void MakeRoomUsable(Room room)
         {
-            room.slot.isUsable = true;
+            SetRoomSlotProperties(GetIndexByRoom(room), room.slot.isOccupied, true);
         }
 
         public void MakeRoomNotUsable(Room room)
         {
-            room.slot.isUsable = false;
+            SetRoomSlotProperties(GetIndexByRoom(room), room.slot.isOccupied, false);
         }
         
         #endregion

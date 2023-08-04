@@ -114,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6891467377136110981
 Transform:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
     min: 10
     max: 15
   floorManagerScript: {fileID: 0}
-  receptionPosition: {x: 0.25, y: 0.25, z: -0.75}
+  receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
 --- !u!1 &6891467377579024980
 GameObject:
   m_ObjectHideFlags: 0

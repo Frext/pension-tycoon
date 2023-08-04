@@ -96,6 +96,16 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
 
+        protected void SearchForRoom()
+        {
+            selectedRoom = floorManagerScript.GetRoom(targetRoomType);
+
+            if (selectedRoom != null)
+            {
+                EnterTargetRoom();
+            }
+        }
+        
         protected abstract void AddWayPoints();
 
         protected void Move()
@@ -129,7 +139,7 @@ namespace _Project.Scripts.Gameplay.NPC
             isNpcMoving = false;
         }
 
-        protected void InsertTargetRoomToWayPoint()
+        protected virtual void InsertTargetRoomToWayPoint()
         {
             WayPoint roomWayPoint = GetTargetRoomWayPoint(LeaveTargetRoom);
 
@@ -154,7 +164,7 @@ namespace _Project.Scripts.Gameplay.NPC
             };
         }
 
-        protected virtual void EnterTargetRoom()
+        private void EnterTargetRoom()
         {
             floorManagerScript.EnterRoom(selectedRoom);
         }

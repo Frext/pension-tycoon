@@ -29,6 +29,13 @@ namespace _Project.Scripts.Gameplay.NPC
             wayPointsList.Add(GetCharacterDisappearWayPoint());
         }
 
+        protected override void InsertTargetRoomToWayPoint()
+        {
+            SearchForRoom();
+            
+            base.InsertTargetRoomToWayPoint();
+        }
+
         protected override void LeaveTargetRoom()
         {
             base.LeaveTargetRoom();
