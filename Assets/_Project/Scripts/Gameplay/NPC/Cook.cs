@@ -24,7 +24,7 @@ namespace _Project.Scripts.Gameplay.NPC
             var initialPosition = transform.position;
             
             wayPointsList.Add(new WayPoint{ position = initialPosition,
-                OnReachDestination = InsertTargetRoomToWayPoint});
+                OnReachDestination = InsertSelectedRoomToWayPoint});
             wayPointsList.Add(new WayPoint{ position = initialPosition });
         }
         
@@ -33,9 +33,9 @@ namespace _Project.Scripts.Gameplay.NPC
             StopAllCoroutines();
         }
 
-        protected override void LeaveTargetRoom()
+        protected override void LeaveSelectedRoom()
         {
-            base.LeaveTargetRoom();
+            base.LeaveSelectedRoom();
             
             floorManagerScript.MakeRoomUsable(selectedRoom);
             CookFood();

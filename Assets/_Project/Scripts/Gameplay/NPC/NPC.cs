@@ -97,7 +97,7 @@ namespace _Project.Scripts.Gameplay.NPC
                     selectedRoom = foundRoom;
                     
                     // We occupy the room before we get here because 2 npc can go to the same room otherwise.
-                    EnterTargetRoom();
+                    EnterSelectedRoom();
                     
                     AddWayPoints();
                     Move();
@@ -113,7 +113,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
             if (selectedRoom != null)
             {
-                EnterTargetRoom();
+                EnterSelectedRoom();
             }
         }
         
@@ -150,9 +150,9 @@ namespace _Project.Scripts.Gameplay.NPC
             isNpcMoving = false;
         }
 
-        protected virtual void InsertTargetRoomToWayPoint()
+        protected virtual void InsertSelectedRoomToWayPoint()
         {
-            WayPoint roomWayPoint = GetTargetRoomWayPoint(LeaveTargetRoom);
+            WayPoint roomWayPoint = GetSelectedRoomWayPoint(LeaveSelectedRoom);
 
             // We make the null comparison for the customer scripts if they don't get a room.
             if (roomWayPoint != null)
@@ -161,7 +161,7 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
 
-        private WayPoint GetTargetRoomWayPoint(Action OnLeaveDestination)
+        private WayPoint GetSelectedRoomWayPoint(Action OnLeaveDestination)
         {
             if (selectedRoom == null)
             {
@@ -180,12 +180,12 @@ namespace _Project.Scripts.Gameplay.NPC
             };
         }
 
-        private void EnterTargetRoom()
+        private void EnterSelectedRoom()
         {
             floorManagerScript.EnterRoom(selectedRoom);
         }
 
-        protected virtual void LeaveTargetRoom()
+        protected virtual void LeaveSelectedRoom()
         {
             floorManagerScript.LeaveRoom(selectedRoom);
         }

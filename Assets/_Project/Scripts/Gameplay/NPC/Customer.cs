@@ -14,6 +14,9 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private Room.RoomTypeEnum diningRoomType;
         [SerializeField] private Room.RoomTypeEnum bathroomType;
 
+        Room extraRoom;
+        
+        
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -30,16 +33,16 @@ namespace _Project.Scripts.Gameplay.NPC
             {
                 position = receptionPosition,
                 waitTime = 2f,
-                OnReachDestination = InsertTargetRoomToWayPoint
+                OnReachDestination = InsertSelectedRoomToWayPoint
             });
             wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint() });
         }
 
-        protected override void InsertTargetRoomToWayPoint()
+        protected override void InsertSelectedRoomToWayPoint()
         {
             SearchForTargetRooms();
             
-            base.InsertTargetRoomToWayPoint();
+            base.InsertSelectedRoomToWayPoint();
 
             AddExtraWayPoints();
         }
@@ -69,20 +72,33 @@ namespace _Project.Scripts.Gameplay.NPC
 
         private void AddExtraSingleWayPoint(Room.RoomTypeEnum roomType)
         {
-            Room extraRoom = floorManagerScript.GetRoom(roomType);
+            extraRoom = floorManagerScript.GetRoom(roomType);
 
             if (extraRoom != null)
             {
                 wayPointsList.Insert(currentWayPointIndex + 2, 
-                    CreateWayPoint(extraRoom.slot.roomObject.transform.position));
+                    CreateWayPoint(extraRoom.slot.roomObject.transform.position, LeaveExtraRoom));
             }
         }
 
-        protected override void LeaveTargetRoom()
+        private void LeaveExtraRoom()
         {
-            base.LeaveTargetRoom();
+            floorManagerScript.LeaveRoom(extraRoom);
+
+            if (Random.value > .8)
+                floorManagerScript.MakeRoomNotUsable(extraRoom);
+        }
+
+        protected override void LeaveSelectedRoom()
+        {
+            base.LeaveSelectedRoom();
             
             floorManagerScript.MakeRoomNotUsable(selectedRoom);
+            
+            if (extraRoom != null)
+            {
+                floorManagerScript.EnterRoom(extraRoom);
+            }
         }
     }
 }
