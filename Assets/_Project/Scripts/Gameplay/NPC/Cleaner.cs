@@ -12,7 +12,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             base.OnEnable();
 
-            StartCoroutine(SearchForRoom(.4f, false, false));
+            StartCoroutine(SearchForTargetRoom(.4f, false, false));
         }
         
         protected override void AddWayPoints()

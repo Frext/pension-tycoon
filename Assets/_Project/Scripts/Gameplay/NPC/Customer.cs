@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.NPC
@@ -7,6 +8,10 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         [Header(nameof(Customer) + " Properties")]
         [SerializeField] private Vector3 receptionPosition;
+
+        [Space]
+        [SerializeField] private Room.RoomTypeEnum diningRoomType;
+        [SerializeField] private Room.RoomTypeEnum bathroomType;
 
         protected override void OnEnable()
         {
@@ -31,9 +36,37 @@ namespace _Project.Scripts.Gameplay.NPC
 
         protected override void InsertTargetRoomToWayPoint()
         {
-            SearchForRoom();
+            SearchForTargetRoom();
             
             base.InsertTargetRoomToWayPoint();
+
+            AddExtraWayPoints();
+        }
+
+        private void AddExtraWayPoints()
+        {
+            float randomVal = Random.value;
+            
+            if (randomVal > .6f)
+            {
+                AddExtraSingleWayPoint(diningRoomType);
+                
+            }
+            else if (randomVal > .3f)
+            {
+                AddExtraSingleWayPoint(bathroomType);
+            }
+        }
+
+        private void AddExtraSingleWayPoint(Room.RoomTypeEnum roomType)
+        {
+            Room extraRoom = floorManagerScript.GetRoom(roomType);
+
+            if (extraRoom != null)
+            {
+                wayPointsList.Insert(currentWayPointIndex + 2, 
+                    CreateWayPoint(extraRoom.slot.roomObject.transform.position));
+            }
         }
 
         protected override void LeaveTargetRoom()

@@ -57,12 +57,12 @@ namespace _Project.Scripts.Gameplay.NPC
 
         
         protected readonly List<WayPoint> wayPointsList = new();
-        private int currentWayPointIndex;
+        protected int currentWayPointIndex;
         private bool isNpcMoving;
 
         protected Room selectedRoom;
         
-        private readonly Vector3 characterOffset = new Vector3(0,-0.25f,0);
+        private readonly Vector3 characterOffset = new(0,-0.25f,0);
         
         
         protected virtual void OnEnable()
@@ -70,7 +70,7 @@ namespace _Project.Scripts.Gameplay.NPC
             transform.position = startPosition;
         }
         
-        protected IEnumerator SearchForRoom(float searchInterval = .4f, bool isOccupied = false, bool isUsable = true)
+        protected IEnumerator SearchForTargetRoom(float searchInterval = .4f, bool isOccupied = false, bool isUsable = true)
         {
             Room foundRoom;
             
@@ -96,7 +96,7 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
 
-        protected void SearchForRoom()
+        protected void SearchForTargetRoom()
         {
             selectedRoom = floorManagerScript.GetRoom(targetRoomType);
 
@@ -156,9 +156,14 @@ namespace _Project.Scripts.Gameplay.NPC
             {
                 return null;
             }
-            
+
+            return CreateWayPoint(selectedRoom.slot.roomObject.transform.position, OnLeaveDestination);
+        }
+
+        protected WayPoint CreateWayPoint(Vector3 roomPosition, Action OnLeaveDestination = null)
+        {
             return new WayPoint {
-                position = selectedRoom.slot.roomObject.transform.position + characterOffset,
+                position = roomPosition + characterOffset,
                 waitTime = stayRange.Randomize(),
                 OnLeaveDestination = OnLeaveDestination
             };

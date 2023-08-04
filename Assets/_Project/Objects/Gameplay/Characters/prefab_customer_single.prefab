@@ -118,3 +118,5 @@ MonoBehaviour:
     max: 11
   floorManagerScript: {fileID: 0}
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
+  diningRoomType: 3
+  bathroomType: 4
