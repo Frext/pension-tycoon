@@ -47,8 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot:
     isOccupied: 0
-    roomObject: {fileID: 0}
+    isUsable: 1
     roomType: 0
+    roomObject: {fileID: 0}
   removeRoomWidth1Button: {fileID: 6700683739606483014}
   removeRoomWidth2Button: {fileID: 6403544917288933303}
 --- !u!1001 &3792165589491496043
@@ -167,12 +168,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1324427239650965420}
+      objectReference: {fileID: 5255450450470155585}
     - target: {fileID: 5542438871921776591, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1324427239650965420}
+      objectReference: {fileID: 5255450450470155585}
     - target: {fileID: 5925861033589875522, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_Name

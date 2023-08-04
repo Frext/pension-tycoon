@@ -32,7 +32,7 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private SoEvent OnAppendFloor;
         [SerializeField] private SoEvent OnHideSlotUI;
         [SerializeField] private SoEvent OnShowRemoveSigns;
-        [SerializeField] private SoEventTransform OnRemoveRoom;
+        [SerializeField] private SoEventRoom OnRemoveRoom;
         [Space]
         
         [SerializeField] private SoRoomType selectedRoomTypeSo;
@@ -139,10 +139,9 @@ namespace _Project.Scripts.Gameplay.Building
             }
         }
         
-        private void RemoveRoom(Transform roomTransform)
+        private void RemoveRoom(Room room)
         {
-            Vector2Int index = GetIndexByPosition(roomTransform.position);
-            Room room = roomsList[index.y][index.x];
+            Vector2Int index = GetIndexByRoom(room);
 
             if (!IsRoomConstructed(room))
             {
@@ -154,22 +153,20 @@ namespace _Project.Scripts.Gameplay.Building
             DestroyRoomGameObject(room);
         }
         
-        private Vector2Int GetIndexByPosition(Vector3 pos)
+        private Vector2Int GetIndexByRoom(Room room)
         {
             for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
-                    Room room = roomsList[floorIndex][roomIndex];
-                
-                    if (Vector3.Distance(room.gameObject.transform.position, pos) < 0.01f)
+                    if (roomsList[floorIndex][roomIndex] == room)
                     {
                         return new Vector2Int(roomIndex, floorIndex);
                     }
                 }
             }
-            
-            throw new Exception("No room was found at '" + pos + "'.");
+
+            throw new Exception("No room was found with room '" + room.gameObject + "'.");
         }
         
         private void SetRoomSlotProperties(Vector2Int index, RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
@@ -344,22 +341,6 @@ namespace _Project.Scripts.Gameplay.Building
         public void EnterRoom(Room room)
         {
             SetRoomSlotProperties(GetIndexByRoom(room), true, room.slot.isUsable);
-        }
-
-        private Vector2Int GetIndexByRoom(Room room)
-        {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
-            {
-                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
-                {
-                    if (roomsList[floorIndex][roomIndex] == room)
-                    {
-                        return new Vector2Int(roomIndex, floorIndex);
-                    }
-                }
-            }
-
-            throw new Exception("No room was found with room '" + room.gameObject + "'.");
         }
         
         public void LeaveRoom(Room room)
