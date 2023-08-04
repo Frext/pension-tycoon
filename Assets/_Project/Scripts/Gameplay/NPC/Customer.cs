@@ -37,7 +37,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
         protected override void InsertTargetRoomToWayPoint()
         {
-            SearchForTargetRoom();
+            SearchForTargetRooms();
             
             base.InsertTargetRoomToWayPoint();
 

@@ -56,7 +56,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected FloorManager floorManagerScript;
 
         
-        [SerializeField] protected List<WayPoint> wayPointsList = new();
+        protected List<WayPoint> wayPointsList = new();
         protected int currentWayPointIndex;
         private bool isNpcMoving;
 
@@ -75,16 +75,22 @@ namespace _Project.Scripts.Gameplay.NPC
             return startPositionsList[Random.Range(0, startPositionsList.Count)];
         }
 
-        protected IEnumerator SearchForTargetRoom(float searchInterval = .4f, bool isOccupied = false, bool isUsable = false)
+        protected IEnumerator SearchForTargetRooms(List<Room.RoomTypeEnum> targetRoomTypes, float searchInterval = .4f, bool isOccupied = false, bool isUsable = false)
         {
-            Room foundRoom;
+            Room foundRoom = null;
             
             while (true)
             {
                 if (isNpcMoving)
                     yield return new WaitForSeconds(searchInterval);
-                
-                foundRoom = floorManagerScript.GetRoom(targetRoomType, isOccupied, isUsable);
+
+                for (int index = 0; index < targetRoomTypes.Count; index++)
+                {
+                    foundRoom = floorManagerScript.GetRoom(targetRoomTypes[index], isOccupied, isUsable);
+
+                    if (foundRoom != null)
+                        break;
+                }
 
                 if (foundRoom != null)
                 {
@@ -101,7 +107,7 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
 
-        protected void SearchForTargetRoom()
+        protected void SearchForTargetRooms()
         {
             selectedRoom = floorManagerScript.GetRoom(targetRoomType);
 

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +14,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             base.OnEnable();
 
-            StartCoroutine(SearchForTargetRoom(.4f, false, false));
+            StartCoroutine(SearchForTargetRooms(new List<Room.RoomTypeEnum>{ targetRoomType }));
         }
         
         protected override void AddWayPoints()
