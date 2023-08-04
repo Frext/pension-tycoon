@@ -17,7 +17,12 @@ namespace _Project.Scripts.Gameplay.NPC
             Cleaner
         }
 
-        public void SpawnCharacter(CharactersTypeEnum characterType)
+        public void SpawnSingleCustomer() => SpawnCharacter(CharactersTypeEnum.SingleCustomer);
+        public void SpawnDoubleCustomer() => SpawnCharacter(CharactersTypeEnum.DoubleCustomer);
+        public void SpawnCook() => SpawnCharacter(CharactersTypeEnum.Cook);
+        public void SpawnCleaner() => SpawnCharacter(CharactersTypeEnum.Cleaner);
+
+        private void SpawnCharacter(CharactersTypeEnum characterType)
         {
             Instantiate(GetPrefabByCharacterType(characterType), Vector3.zero, Quaternion.identity, transform);
         }

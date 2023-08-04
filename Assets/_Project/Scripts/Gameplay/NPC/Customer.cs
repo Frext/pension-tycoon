@@ -35,7 +35,8 @@ namespace _Project.Scripts.Gameplay.NPC
                 waitTime = 2f,
                 OnReachDestination = InsertSelectedRoomToWayPoint
             });
-            wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint() });
+            wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint(),
+                OnReachDestination = () => { Destroy(gameObject); }});
         }
 
         protected override void InsertSelectedRoomToWayPoint()

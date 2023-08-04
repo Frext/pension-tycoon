@@ -119,7 +119,6 @@ MonoBehaviour:
     min: 5
     max: 8
   floorManagerScript: {fileID: 0}
-  wayPointsList: []
   extraTargets: 0100000002000000
   onCleanRoom:
     m_PersistentCalls:
