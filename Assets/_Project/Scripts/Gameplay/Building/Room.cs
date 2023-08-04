@@ -56,7 +56,7 @@ namespace _Project.Scripts.Gameplay.Building
         {
             removeRoomWidth2Button.SetActive(activeState);
         }
-
+        
         #endregion
     }
 }

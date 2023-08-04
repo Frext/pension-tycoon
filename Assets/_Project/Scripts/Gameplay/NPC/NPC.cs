@@ -122,7 +122,9 @@ namespace _Project.Scripts.Gameplay.NPC
         protected void Move()
         {
             currentWayPointIndex = 0;
-            StartCoroutine(IMove());
+            
+            StopCoroutine(nameof(IMove));
+            StartCoroutine(nameof(IMove));
         }
         
         private IEnumerator IMove()
