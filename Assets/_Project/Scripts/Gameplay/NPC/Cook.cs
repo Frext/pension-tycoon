@@ -7,21 +7,14 @@ namespace _Project.Scripts.Gameplay.NPC
     {
         [Space] 
         [SerializeField] private UnityEvent onCookFood;
-        
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                StartMoving();
-            }
-        }
-        
-        private void StartMoving()
-        {
-            AddWayPoints();
-            Move();
-        }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            StartCoroutine(SearchForRoom(.4f, false, false));
+        }
+        
         protected override void AddWayPoints()
         {
             wayPointsList.Clear();
@@ -30,11 +23,17 @@ namespace _Project.Scripts.Gameplay.NPC
                 OnReachDestination = InsertTargetRoomToWayPoint});
             wayPointsList.Add(new WayPoint{ position = startPosition });
         }
+        
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
 
         protected override void LeaveTargetRoom()
         {
             base.LeaveTargetRoom();
             
+            floorManagerScript.MakeRoomUsable(selectedRoom);
             CookFood();
         }
         

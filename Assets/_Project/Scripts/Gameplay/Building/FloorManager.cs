@@ -39,10 +39,9 @@ namespace _Project.Scripts.Gameplay.Building
 
         public int FloorCount => floorsParentTransform.childCount;
         public readonly int RoomCountPerFloor = 6;
-        
         private readonly int RoomsParentIndex = 2;
         
-        private List<List<Room>> roomsList = new();
+        private readonly List<List<Room>> roomsList = new();
         
         
         void Awake()
@@ -168,7 +167,7 @@ namespace _Project.Scripts.Gameplay.Building
                 {
                     Room room = roomsList[floorIndex][roomIndex];
                 
-                    if (Mathf.Approximately(Vector3.Distance(room.gameObject.transform.position, pos), 0f))
+                    if (Vector3.Distance(room.gameObject.transform.position, pos) < 0.01f)
                     {
                         return new Vector2Int(roomIndex, floorIndex);
                     }
@@ -178,10 +177,10 @@ namespace _Project.Scripts.Gameplay.Building
             throw new Exception("No room was found at '" + pos + "'.");
         }
         
-        private void SetRoomSlotProperties(Room room, RoomTypeEnum roomType, bool isOccupied = false, bool isDirty = false)
+        private void SetRoomSlotProperties(Room room, RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
         {
             room.slot.isOccupied = isOccupied;
-            room.slot.isDirty = isDirty;
+            room.slot.isUsable = isUsable;
             room.slot.roomType = roomType;
         }
 
@@ -246,21 +245,24 @@ namespace _Project.Scripts.Gameplay.Building
                 
                 // Also create a new room in the next slot if it's a 2 block wide room.
                 SetRoomSlotProperties(nextRoom, selectedRoomType);
-                InstantiateRoomGameObject(nextRoom, instantiatedRoomObject);
+                SetRoomGameObject(nextRoom, instantiatedRoomObject);
             }
         }
 
-        private GameObject InstantiateRoomGameObject(Room room, GameObject roomObject = null)
+        private GameObject InstantiateRoomGameObject(Room room)
         {
             RoomTypeEnum selectedRoomType = selectedRoomTypeSo.SelectedRoomType;
 
-            room.slot.roomObject = roomObject != null
-                ? roomObject
-                : Instantiate(GetPrefabByRoomType(selectedRoomType),
-                    GetPositionByRoomType(room.transform.position, selectedRoomType), Quaternion.identity,
-                    room.transform);
+            SetRoomGameObject(room, 
+                Instantiate(GetPrefabByRoomType(selectedRoomType), 
+                    GetPositionByRoomType(room.transform.position, selectedRoomType), Quaternion.identity, room.transform));
 
             return room.slot.roomObject;
+        }
+
+        private void SetRoomGameObject(Room room, GameObject roomObject)
+        {
+            room.slot.roomObject = roomObject;
         }
         
         private GameObject GetPrefabByRoomType(RoomTypeEnum roomType)
@@ -285,13 +287,14 @@ namespace _Project.Scripts.Gameplay.Building
             return pos;
         }
         
-        public Room GetTypeOfRoom(RoomTypeEnum roomType)
+        public Room GetRoom(RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
         {
             foreach (List<Room> floor in roomsList)
             {
                 foreach (Room room in floor)
                 {
-                    if (room.slot.roomType == roomType && !room.slot.isOccupied && !room.slot.isDirty)
+                    if (room.slot.roomType == roomType && 
+                        room.slot.isOccupied == isOccupied && room.slot.isUsable == isUsable)
                     {
                         return room;
                     }
@@ -302,24 +305,25 @@ namespace _Project.Scripts.Gameplay.Building
             return null;
         }
 
+        // TODO: Use GetRoomWidth()
         public void EnterRoom(Room room)
         {
             room.slot.isOccupied = true;
-        }
-
-        public void MakeRoomDirty(Room room)
-        {
-            room.slot.isDirty = true;
         }
         
         public void LeaveRoom(Room room)
         {
             room.slot.isOccupied = false;
         }
-
-        public void CleanRoom(Room room)
+        
+        public void MakeRoomUsable(Room room)
         {
-            room.slot.isDirty = false;
+            room.slot.isUsable = true;
+        }
+
+        public void MakeRoomNotUsable(Room room)
+        {
+            room.slot.isUsable = false;
         }
         
         #endregion

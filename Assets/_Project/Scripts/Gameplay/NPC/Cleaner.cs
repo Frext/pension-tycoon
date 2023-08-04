@@ -8,20 +8,13 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space] 
         [SerializeField] private UnityEvent onCleanRoom;
         
-        void Update()
+        protected override void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                StartMoving();
-            }
+            base.OnEnable();
+
+            StartCoroutine(SearchForRoom(.4f, false, false));
         }
         
-        private void StartMoving()
-        {
-            AddWayPoints();
-            Move();
-        }
-
         protected override void AddWayPoints()
         {
             wayPointsList.Clear();
@@ -30,11 +23,17 @@ namespace _Project.Scripts.Gameplay.NPC
                 OnReachDestination = InsertTargetRoomToWayPoint});
             wayPointsList.Add(new WayPoint{ position = startPosition });
         }
+        
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
 
         protected override void LeaveTargetRoom()
         {
             base.LeaveTargetRoom();
             
+            floorManagerScript.MakeRoomUsable(selectedRoom);
             CleanBathroom();
         }
 

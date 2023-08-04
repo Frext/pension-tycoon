@@ -2359,6 +2359,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_customer_single
       objectReference: {fileID: 0}
+    - target: {fileID: 4170874207938076804, guid: 5e3a9de98f103bf4380074a789653c3e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4170874207938076807, guid: 5e3a9de98f103bf4380074a789653c3e,
         type: 3}
       propertyPath: m_RootOrder
@@ -2427,6 +2432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_cook
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808535324815157459, guid: 5c76a17d8425eba408942daf477c9a62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4808535324815157468, guid: 5c76a17d8425eba408942daf477c9a62,
         type: 3}
@@ -2646,6 +2656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_cleaner
       objectReference: {fileID: 0}
+    - target: {fileID: 6789912717443802918, guid: 78dc728ed9506074a966f0a3d9272cff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6789912717443802919, guid: 78dc728ed9506074a966f0a3d9272cff,
         type: 3}
       propertyPath: m_RootOrder
@@ -2773,6 +2788,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_customer_double
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891467377136110982, guid: 63d53474b36caf342b2de2deca789c73,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d53474b36caf342b2de2deca789c73, type: 3}

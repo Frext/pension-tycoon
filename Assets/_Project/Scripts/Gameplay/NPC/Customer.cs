@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.NPC
@@ -8,17 +7,11 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         [Header(nameof(Customer) + " Properties")]
         [SerializeField] private Vector3 receptionPosition;
-        
-        void Update()
+
+        protected override void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                StartMoving();
-            }
-        }
-        
-        private void StartMoving()
-        {
+            base.OnEnable();
+            
             AddWayPoints();
             Move();
         }
@@ -40,7 +33,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             base.LeaveTargetRoom();
             
-            floorManagerScript.MakeRoomDirty(selectedRoom);
+            floorManagerScript.MakeRoomNotUsable(selectedRoom);
         }
     }
 }

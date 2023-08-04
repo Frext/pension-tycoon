@@ -25,7 +25,7 @@ namespace _Project.Scripts.Gameplay.Building
         public class Slot
         {
             public bool isOccupied;
-            public bool isDirty;
+            public bool isUsable = true;
             public RoomTypeEnum roomType;
             
             [HideInInspector] public GameObject roomObject;

@@ -56,17 +56,44 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected FloorManager floorManagerScript;
 
         
-        protected List<WayPoint> wayPointsList = new();
+        protected readonly List<WayPoint> wayPointsList = new();
         private int currentWayPointIndex;
+        private bool isNpcMoving;
 
         protected Room selectedRoom;
         
         private readonly Vector3 characterOffset = new Vector3(0,-0.25f,0);
         
         
-        protected void OnEnable()
+        protected virtual void OnEnable()
         {
             transform.position = startPosition;
+        }
+        
+        protected IEnumerator SearchForRoom(float searchInterval = .4f, bool isOccupied = false, bool isUsable = true)
+        {
+            Room foundRoom;
+            
+            while (true)
+            {
+                if (isNpcMoving)
+                    yield return new WaitForSeconds(searchInterval);
+                
+                foundRoom = floorManagerScript.GetRoom(targetRoomType, false, false);
+
+                if (foundRoom != null)
+                {
+                    selectedRoom = foundRoom;
+                    
+                    // We occupy the room before we get here because 2 npc can go to the same room otherwise.
+                    EnterTargetRoom();
+                    
+                    AddWayPoints();
+                    Move();
+                }
+
+                yield return new WaitForSeconds(searchInterval);
+            }
         }
 
         protected abstract void AddWayPoints();
@@ -75,53 +102,54 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             currentWayPointIndex = 0;
             StartCoroutine(IMove());
-
-            IEnumerator IMove()
-            {
-                while (currentWayPointIndex < wayPointsList.Count)
-                {
-                    WayPoint currentWayPoint = wayPointsList[currentWayPointIndex];
-                    while (Vector3.Distance(transform.position, currentWayPoint.position) > 0.001f)
-                    {
-                        transform.position = Vector3.Lerp(transform.position, 
-                            wayPointsList[currentWayPointIndex].position, Time.deltaTime * 2);
-                        yield return null;
-                    }
+        }
+        
+        private IEnumerator IMove()
+        {
+            isNpcMoving = true;
                 
-                    currentWayPoint.InvokeOnReachDestination();
-                    yield return new WaitForSeconds(currentWayPoint.waitTime);
-                    currentWayPoint.InvokeOnLeaveDestination();
-
-                    currentWayPointIndex++;
+            while (currentWayPointIndex < wayPointsList.Count)
+            {
+                WayPoint currentWayPoint = wayPointsList[currentWayPointIndex];
+                while (Vector3.Distance(transform.position, currentWayPoint.position) > 0.001f)
+                {
+                    transform.position = Vector3.Lerp(transform.position, 
+                        wayPointsList[currentWayPointIndex].position, Time.deltaTime * 2);
+                        
+                    yield return null;
                 }
+                
+                currentWayPoint.InvokeOnReachDestination();
+                yield return new WaitForSeconds(currentWayPoint.waitTime);
+                currentWayPoint.InvokeOnLeaveDestination();
+
+                currentWayPointIndex++;
             }
+
+            isNpcMoving = false;
         }
 
         protected void InsertTargetRoomToWayPoint()
         {
-            WayPoint roomWayPoint = GetTargetRoomWayPoint(EnterTargetRoom, LeaveTargetRoom);
+            WayPoint roomWayPoint = GetTargetRoomWayPoint(LeaveTargetRoom);
 
+            // We make the null comparison for the customer scripts if they don't get a room.
             if (roomWayPoint != null)
             {
                 wayPointsList.Insert(currentWayPointIndex + 1, roomWayPoint);
             }
         }
 
-        private WayPoint GetTargetRoomWayPoint(Action OnReachDestination, Action OnLeaveDestination)
+        private WayPoint GetTargetRoomWayPoint(Action OnLeaveDestination)
         {
-            selectedRoom = floorManagerScript.GetTypeOfRoom(targetRoomType);
-
             if (selectedRoom == null)
             {
                 return null;
             }
-
-            selectedRoom.slot.isOccupied = true;
             
             return new WayPoint {
                 position = selectedRoom.slot.roomObject.transform.position + characterOffset,
                 waitTime = stayRange.Randomize(),
-                OnReachDestination = OnReachDestination,
                 OnLeaveDestination = OnLeaveDestination
             };
         }
