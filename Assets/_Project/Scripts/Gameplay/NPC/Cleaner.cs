@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
@@ -11,24 +12,26 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private List<Room.RoomTypeEnum> extraTargets;
         
         [SerializeField] private UnityEvent onCleanRoom;
-        
+
+        void Awake()
+        {
+            extraTargets.Add(targetRoomType);
+        }
+
         protected override void OnEnable()
         {
             base.OnEnable();
-
-            extraTargets.Add(targetRoomType);
+            
             StartCoroutine(SearchForTargetRooms(extraTargets, .6f));
         }
         
         protected override void AddWayPoints()
         {
             wayPointsList.Clear();
-
-            var initialPosition = transform.position;
             
-            wayPointsList.Add(new WayPoint{ position = initialPosition,
+            wayPointsList.Add(new WayPoint{ position = transform.position,
                 OnReachDestination = InsertSelectedRoomToWayPoint});
-            wayPointsList.Add(new WayPoint{ position = initialPosition });
+            wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint() });
         }
         
         private void OnDisable()
@@ -42,6 +45,8 @@ namespace _Project.Scripts.Gameplay.NPC
             
             floorManagerScript.MakeRoomUsable(selectedRoom);
             CleanRoom();
+
+            isNpcMoving = false;
         }
 
         private void CleanRoom()

@@ -56,9 +56,9 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected FloorManager floorManagerScript;
 
         
-        protected List<WayPoint> wayPointsList = new();
+        [SerializeField] protected List<WayPoint> wayPointsList = new();
         protected int currentWayPointIndex;
-        private bool isNpcMoving;
+        protected bool isNpcMoving;
 
         protected Room selectedRoom;
         
@@ -81,28 +81,28 @@ namespace _Project.Scripts.Gameplay.NPC
             
             while (true)
             {
-                if (isNpcMoving)
-                    yield return new WaitForSeconds(searchInterval);
-
-                for (int index = 0; index < targetRoomTypes.Count; index++)
+                if (!isNpcMoving)
                 {
-                    foundRoom = floorManagerScript.GetRoom(targetRoomTypes[index], isOccupied, isUsable);
+                    for (int index = 0; index < targetRoomTypes.Count; index++)
+                    {
+                        foundRoom = floorManagerScript.GetRoom(targetRoomTypes[index], isOccupied, isUsable);
+
+                        if (foundRoom != null)
+                            index = targetRoomTypes.Count;
+                    }
 
                     if (foundRoom != null)
-                        break;
-                }
+                    {
+                        selectedRoom = foundRoom;
 
-                if (foundRoom != null)
-                {
-                    selectedRoom = foundRoom;
-                    
-                    // We occupy the room before we get here because 2 npc can go to the same room otherwise.
-                    EnterSelectedRoom();
-                    
-                    AddWayPoints();
-                    Move();
-                }
+                        // We occupy the room before we get here because 2 npc can go to the same room otherwise.
+                        EnterSelectedRoom();
 
+                        AddWayPoints();
+                        Move();
+                    }
+                }
+                
                 yield return new WaitForSeconds(searchInterval);
             }
         }

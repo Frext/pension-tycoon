@@ -116,8 +116,8 @@ MonoBehaviour:
   - {x: 2, y: 0.25, z: 1.5}
   targetRoomType: 4
   stayRange:
-    min: 5
-    max: 8
+    min: 3
+    max: 3
   floorManagerScript: {fileID: 0}
   extraTargets: 0100000002000000
   onCleanRoom:

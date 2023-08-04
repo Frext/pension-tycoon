@@ -117,7 +117,7 @@ MonoBehaviour:
   targetRoomType: 3
   stayRange:
     min: 6
-    max: 8
+    max: 6
   floorManagerScript: {fileID: 0}
   onCookFood:
     m_PersistentCalls:

@@ -149,12 +149,14 @@ MonoBehaviour:
   - {x: 3.6, y: 0.25, z: -1.75}
   targetRoomType: 2
   stayRange:
-    min: 10
-    max: 15
+    min: 5
+    max: 5
   floorManagerScript: {fileID: 0}
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
   diningRoomType: 3
   bathroomType: 4
+  extraRoomChance: 0.66
+  makeRoomNotUsableChance: 0.22
 --- !u!1 &6891467377579024980
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,12 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         [SerializeField] private Room.RoomTypeEnum diningRoomType;
         [SerializeField] private Room.RoomTypeEnum bathroomType;
+        [Range(0, 1)] 
+        [SerializeField] private float extraRoomChance;
+
+        [Space]
+        [Range(0, 1)] 
+        [SerializeField] private float makeRoomNotUsableChance;
 
         Room extraRoom;
         
@@ -60,12 +66,11 @@ namespace _Project.Scripts.Gameplay.NPC
             
             float randomVal = Random.value;
             
-            if (randomVal > .6f)
+            if (randomVal > 1 - extraRoomChance / 2)
             {
                 AddExtraSingleWayPoint(diningRoomType);
-                
             }
-            else if (randomVal > .3f)
+            else if (randomVal > 1 - extraRoomChance)
             {
                 AddExtraSingleWayPoint(bathroomType);
             }
@@ -86,7 +91,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             floorManagerScript.LeaveRoom(extraRoom);
 
-            if (Random.value > .8)
+            if (Random.value > 1 - makeRoomNotUsableChance)
                 floorManagerScript.MakeRoomNotUsable(extraRoom);
         }
 
