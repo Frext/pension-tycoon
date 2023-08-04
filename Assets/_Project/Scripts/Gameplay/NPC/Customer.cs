@@ -8,6 +8,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         [Header(nameof(Customer) + " Properties")]
         [SerializeField] private Vector3 receptionPosition;
+        [Space]
 
         [Space]
         [SerializeField] private Room.RoomTypeEnum diningRoomType;
@@ -31,7 +32,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 waitTime = 2f,
                 OnReachDestination = InsertTargetRoomToWayPoint
             });
-            wayPointsList.Add(GetCharacterDisappearWayPoint());
+            wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint() });
         }
 
         protected override void InsertTargetRoomToWayPoint()
@@ -45,6 +46,14 @@ namespace _Project.Scripts.Gameplay.NPC
 
         private void AddExtraWayPoints()
         {
+            var noOfRoomsIncludingCustomerRoom = 3;
+            
+            // If the customer didn't get a room.
+            if (wayPointsList.Count < noOfRoomsIncludingCustomerRoom)
+            {
+                return;
+            }
+            
             float randomVal = Random.value;
             
             if (randomVal > .6f)

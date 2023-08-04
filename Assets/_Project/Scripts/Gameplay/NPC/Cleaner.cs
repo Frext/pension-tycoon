@@ -12,16 +12,18 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             base.OnEnable();
 
-            StartCoroutine(SearchForTargetRoom(.4f, false, false));
+            StartCoroutine(SearchForTargetRoom(.4f));
         }
         
         protected override void AddWayPoints()
         {
             wayPointsList.Clear();
+
+            var initialPosition = transform.position;
             
-            wayPointsList.Add(new WayPoint{ position = startPosition,
+            wayPointsList.Add(new WayPoint{ position = initialPosition,
                 OnReachDestination = InsertTargetRoomToWayPoint});
-            wayPointsList.Add(new WayPoint{ position = startPosition });
+            wayPointsList.Add(new WayPoint{ position = initialPosition });
         }
         
         private void OnDisable()
@@ -34,10 +36,10 @@ namespace _Project.Scripts.Gameplay.NPC
             base.LeaveTargetRoom();
             
             floorManagerScript.MakeRoomUsable(selectedRoom);
-            CleanBathroom();
+            CleanRoom();
         }
 
-        private void CleanBathroom()
+        private void CleanRoom()
         {
             onCleanRoom.Invoke();
         }

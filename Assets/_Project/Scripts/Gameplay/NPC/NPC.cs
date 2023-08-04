@@ -46,7 +46,7 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
         
-        [SerializeField] protected Vector3 startPosition;
+        [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
         
         [SerializeField] protected Room.RoomTypeEnum targetRoomType;
@@ -56,7 +56,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected FloorManager floorManagerScript;
 
         
-        protected readonly List<WayPoint> wayPointsList = new();
+        [SerializeField] protected List<WayPoint> wayPointsList = new();
         protected int currentWayPointIndex;
         private bool isNpcMoving;
 
@@ -67,10 +67,15 @@ namespace _Project.Scripts.Gameplay.NPC
         
         protected virtual void OnEnable()
         {
-            transform.position = startPosition;
+            transform.position = GetRandomStartPoint();
         }
-        
-        protected IEnumerator SearchForTargetRoom(float searchInterval = .4f, bool isOccupied = false, bool isUsable = true)
+
+        protected Vector3 GetRandomStartPoint()
+        {
+            return startPositionsList[Random.Range(0, startPositionsList.Count)];
+        }
+
+        protected IEnumerator SearchForTargetRoom(float searchInterval = .4f, bool isOccupied = false, bool isUsable = false)
         {
             Room foundRoom;
             
@@ -79,7 +84,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 if (isNpcMoving)
                     yield return new WaitForSeconds(searchInterval);
                 
-                foundRoom = floorManagerScript.GetRoom(targetRoomType, false, false);
+                foundRoom = floorManagerScript.GetRoom(targetRoomType, isOccupied, isUsable);
 
                 if (foundRoom != null)
                 {
@@ -177,14 +182,6 @@ namespace _Project.Scripts.Gameplay.NPC
         protected virtual void LeaveTargetRoom()
         {
             floorManagerScript.LeaveRoom(selectedRoom);
-        }
-        
-        protected WayPoint GetCharacterDisappearWayPoint()
-        {
-            int randomVal = Random.Range(0, 2);
-
-            return randomVal == 0 ? new WayPoint { position = new Vector3(-4.5f, .25f, -1.75f), waitTime = 0f }
-                : new WayPoint { position = new Vector3(4.5f, .25f, -1.75f), waitTime = 0f };
         }
     }
 }

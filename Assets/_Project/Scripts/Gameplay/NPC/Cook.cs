@@ -19,9 +19,11 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             wayPointsList.Clear();
 
-            wayPointsList.Add(new WayPoint{ position = startPosition,
+            var initialPosition = transform.position;
+            
+            wayPointsList.Add(new WayPoint{ position = initialPosition,
                 OnReachDestination = InsertTargetRoomToWayPoint});
-            wayPointsList.Add(new WayPoint{ position = startPosition });
+            wayPointsList.Add(new WayPoint{ position = initialPosition });
         }
         
         private void OnDisable()
