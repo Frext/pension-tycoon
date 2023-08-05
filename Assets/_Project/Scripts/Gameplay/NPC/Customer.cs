@@ -51,25 +51,27 @@ namespace _Project.Scripts.Gameplay.NPC
             AssignSelectedRoomToBaseTargetRoom();
             
             base.InsertSelectedRoomToWayPoints();
-
+        }
+        
+        protected override void LeaveSelectedRoom()
+        {
+            base.LeaveSelectedRoom();
+            floorManagerScript.MakeRoomNotUsable(selectedRoom);
+            
             AddExtraWayPointsRandomly();
         }
 
         private void AddExtraWayPointsRandomly()
         {
-            const int noOfRoomsIncludingCustomerRoom = 3;
-            
-            // If the customer didn't get a room, don't add an extra room.
-            if (wayPointsList.Count < noOfRoomsIncludingCustomerRoom)
-                return;
-            
-            
             float randomVal = Random.value;
 
             for (int divider = extraRoomTypes.Length; divider > 0; divider--)
             {
-                if (randomVal > 1 - extraRoomChance / divider)
+                if (randomVal >= 1 - extraRoomChance / divider)
+                {
                     AddExtraSingleWayPoint(extraRoomTypes[divider - 1]);
+                    break;
+                }
             }
         }
 
@@ -79,7 +81,9 @@ namespace _Project.Scripts.Gameplay.NPC
 
             if (extraRoom != null)
             {
-                wayPointsList.Insert(currentWayPointIndex + 2, 
+                floorManagerScript.EnterRoom(extraRoom);
+                
+                wayPointsList.Insert(currentWayPointIndex + 1, 
                     CreateWayPoint(extraRoom.slot.roomObject.transform.position, LeaveExtraRoom));
             }
         }
@@ -92,14 +96,6 @@ namespace _Project.Scripts.Gameplay.NPC
                 floorManagerScript.MakeRoomNotUsable(extraRoom);
         }
 
-        protected override void LeaveSelectedRoom()
-        {
-            base.LeaveSelectedRoom();
-            
-            floorManagerScript.MakeRoomNotUsable(selectedRoom);
-            
-            if (extraRoom != null)
-                floorManagerScript.EnterRoom(extraRoom);
-        }
+
     }
 }

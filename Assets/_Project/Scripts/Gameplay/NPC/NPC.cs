@@ -104,6 +104,11 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
         
+        protected virtual void EnterSelectedRoom()
+        {
+            floorManagerScript.EnterRoom(selectedRoom);
+        }
+        
         protected abstract void AddWayPoints();
 
         protected void Move()
@@ -144,7 +149,9 @@ namespace _Project.Scripts.Gameplay.NPC
             selectedRoom = floorManagerScript.GetRoom(baseTargetRoomType);
 
             if (selectedRoom != null)
+            {
                 EnterSelectedRoom();
+            }
         }
 
         protected virtual void InsertSelectedRoomToWayPoints()
@@ -153,12 +160,14 @@ namespace _Project.Scripts.Gameplay.NPC
 
             // We make the null comparison for the customer scripts if they don't get a room.
             if (roomWayPoint != null)
+            {
                 wayPointsList.Insert(currentWayPointIndex + 1, roomWayPoint);
+            }
         }
 
         private WayPoint GetSelectedRoomWayPoint(Action OnLeaveDestination)
         {
-            return selectedRoom == null ? null : CreateWayPoint(selectedRoom.slot.roomObject.transform.position, OnLeaveDestination);
+            return selectedRoom == null ? null : CreateWayPoint(selectedRoom.slot.roomObject.transform.position, OnLeaveDestination: OnLeaveDestination);
         }
 
         protected WayPoint CreateWayPoint(Vector3 roomPosition, Action OnLeaveDestination = null)
@@ -169,12 +178,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 OnLeaveDestination = OnLeaveDestination
             };
         }
-
-        protected virtual void EnterSelectedRoom()
-        {
-            floorManagerScript.EnterRoom(selectedRoom);
-        }
-
+        
         protected virtual void LeaveSelectedRoom()
         {
             floorManagerScript.LeaveRoom(selectedRoom);
