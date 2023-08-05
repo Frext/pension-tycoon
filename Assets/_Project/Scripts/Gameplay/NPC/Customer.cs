@@ -7,18 +7,16 @@ namespace _Project.Scripts.Gameplay.NPC
     {
         [Space]
         [Header(nameof(Customer) + " Properties")]
+        [Space]
         [SerializeField] private Vector3 receptionPosition;
+        
+        [Header("Extra Rooms")]
         [Space]
-
-        [Space]
-        [SerializeField] private Room.RoomTypeEnum diningRoomType;
-        [SerializeField] private Room.RoomTypeEnum bathroomType;
+        [SerializeField] private Room.RoomTypeEnum[] extraRoomTypes;
         [Range(0, 1)] 
         [SerializeField] private float extraRoomChance;
-
-        [Space]
         [Range(0, 1)] 
-        [SerializeField] private float makeRoomNotUsableChance;
+        [SerializeField] private float makeExtraRoomNotUsableChance;
 
         Room extraRoom;
         
@@ -39,40 +37,39 @@ namespace _Project.Scripts.Gameplay.NPC
             {
                 position = receptionPosition,
                 waitTime = 2f,
-                OnReachDestination = InsertSelectedRoomToWayPoint
+                OnReachDestination = InsertSelectedRoomToWayPoints
             });
-            wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint(),
-                OnReachDestination = () => { Destroy(gameObject); }});
-        }
-
-        protected override void InsertSelectedRoomToWayPoint()
-        {
-            SearchForTargetRooms();
-            
-            base.InsertSelectedRoomToWayPoint();
-
-            AddExtraWayPoints();
-        }
-
-        private void AddExtraWayPoints()
-        {
-            var noOfRoomsIncludingCustomerRoom = 3;
-            
-            // If the customer didn't get a room.
-            if (wayPointsList.Count < noOfRoomsIncludingCustomerRoom)
+            wayPointsList.Add(new WayPoint
             {
+                position = GetRandomStartPoint(),
+                OnReachDestination = () => { Destroy(gameObject);}
+            });
+        }
+
+        protected override void InsertSelectedRoomToWayPoints()
+        {
+            AssignSelectedRoomToBaseTargetRoom();
+            
+            base.InsertSelectedRoomToWayPoints();
+
+            AddExtraWayPointsRandomly();
+        }
+
+        private void AddExtraWayPointsRandomly()
+        {
+            const int noOfRoomsIncludingCustomerRoom = 3;
+            
+            // If the customer didn't get a room, don't add an extra room.
+            if (wayPointsList.Count < noOfRoomsIncludingCustomerRoom)
                 return;
-            }
+            
             
             float randomVal = Random.value;
-            
-            if (randomVal > 1 - extraRoomChance / 2)
+
+            for (int divider = extraRoomTypes.Length; divider > 0; divider--)
             {
-                AddExtraSingleWayPoint(diningRoomType);
-            }
-            else if (randomVal > 1 - extraRoomChance)
-            {
-                AddExtraSingleWayPoint(bathroomType);
+                if (randomVal > 1 - extraRoomChance / divider)
+                    AddExtraSingleWayPoint(extraRoomTypes[divider - 1]);
             }
         }
 
@@ -91,7 +88,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             floorManagerScript.LeaveRoom(extraRoom);
 
-            if (Random.value > 1 - makeRoomNotUsableChance)
+            if (Random.value > 1 - makeExtraRoomNotUsableChance)
                 floorManagerScript.MakeRoomNotUsable(extraRoom);
         }
 
@@ -102,9 +99,7 @@ namespace _Project.Scripts.Gameplay.NPC
             floorManagerScript.MakeRoomNotUsable(selectedRoom);
             
             if (extraRoom != null)
-            {
                 floorManagerScript.EnterRoom(extraRoom);
-            }
         }
     }
 }

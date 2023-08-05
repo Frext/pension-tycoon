@@ -29,34 +29,26 @@ namespace _Project.Scripts.Gameplay.NPC
             public Action OnReachDestination;
             public Action OnLeaveDestination;
 
-            public void InvokeOnReachDestination()
+            public void InvokeAction(Action action)
             {
-                if (OnReachDestination != null)
+                if (action != null)
                 {
-                    OnReachDestination.Invoke();
-                }
-            }
-
-            public void InvokeOnLeaveDestination()
-            {
-                if (OnLeaveDestination != null)
-                {
-                    OnLeaveDestination.Invoke();
+                    action.Invoke();
                 }
             }
         }
         
+        [SerializeField] protected Room.RoomTypeEnum baseTargetRoomType;
+        
         [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
         
-        [SerializeField] protected Room.RoomTypeEnum targetRoomType;
         [SerializeField] protected FloatRange stayRange;
         [Space]
         
         [SerializeField] protected FloorManager floorManagerScript;
-
         
-        [SerializeField] protected List<WayPoint> wayPointsList = new();
+        protected readonly List<WayPoint> wayPointsList = new();
         protected int currentWayPointIndex;
         protected bool isNpcMoving;
 
@@ -74,46 +66,41 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             return startPositionsList[Random.Range(0, startPositionsList.Count)];
         }
-
-        protected IEnumerator SearchForTargetRooms(List<Room.RoomTypeEnum> targetRoomTypes, float searchInterval = .4f, bool isOccupied = false, bool isUsable = false)
+        
+        protected virtual void OnDisable()
         {
-            Room foundRoom = null;
+            StopAllCoroutines();
+        }
+
+        protected IEnumerator SearchForTargetRoomsForever(List<Room.RoomTypeEnum> extraTargetRoomTypes = null, float searchInterval = .4f, bool isOccupied = false, bool isUsable = false)
+        {
+            extraTargetRoomTypes ??= new List<Room.RoomTypeEnum>();
+            extraTargetRoomTypes.Add(baseTargetRoomType);
             
             while (true)
             {
                 if (!isNpcMoving)
                 {
-                    for (int index = 0; index < targetRoomTypes.Count; index++)
+                    foreach (var roomType in extraTargetRoomTypes)
                     {
-                        foundRoom = floorManagerScript.GetRoom(targetRoomTypes[index], isOccupied, isUsable);
+                        Room foundRoom = floorManagerScript.GetRoom(roomType, isOccupied, isUsable);
 
                         if (foundRoom != null)
-                            index = targetRoomTypes.Count;
-                    }
+                        {
+                            selectedRoom = foundRoom;
 
-                    if (foundRoom != null)
-                    {
-                        selectedRoom = foundRoom;
+                            // We occupy the room before we get here because 2 npc could go to the same room otherwise.
+                            EnterSelectedRoom();
 
-                        // We occupy the room before we get here because 2 npc can go to the same room otherwise.
-                        EnterSelectedRoom();
-
-                        AddWayPoints();
-                        Move();
+                            AddWayPoints();
+                            Move();
+                            
+                            break;
+                        }
                     }
                 }
                 
                 yield return new WaitForSeconds(searchInterval);
-            }
-        }
-
-        protected void SearchForTargetRooms()
-        {
-            selectedRoom = floorManagerScript.GetRoom(targetRoomType);
-
-            if (selectedRoom != null)
-            {
-                EnterSelectedRoom();
             }
         }
         
@@ -142,35 +129,36 @@ namespace _Project.Scripts.Gameplay.NPC
                     yield return null;
                 }
                 
-                currentWayPoint.InvokeOnReachDestination();
+                currentWayPoint.InvokeAction(currentWayPoint.OnReachDestination);
                 yield return new WaitForSeconds(currentWayPoint.waitTime);
-                currentWayPoint.InvokeOnLeaveDestination();
+                currentWayPoint.InvokeAction(currentWayPoint.OnLeaveDestination);
 
                 currentWayPointIndex++;
             }
 
             isNpcMoving = false;
         }
+        
+        protected void AssignSelectedRoomToBaseTargetRoom()
+        {
+            selectedRoom = floorManagerScript.GetRoom(baseTargetRoomType);
 
-        protected virtual void InsertSelectedRoomToWayPoint()
+            if (selectedRoom != null)
+                EnterSelectedRoom();
+        }
+
+        protected virtual void InsertSelectedRoomToWayPoints()
         {
             WayPoint roomWayPoint = GetSelectedRoomWayPoint(LeaveSelectedRoom);
 
             // We make the null comparison for the customer scripts if they don't get a room.
             if (roomWayPoint != null)
-            {
                 wayPointsList.Insert(currentWayPointIndex + 1, roomWayPoint);
-            }
         }
 
         private WayPoint GetSelectedRoomWayPoint(Action OnLeaveDestination)
         {
-            if (selectedRoom == null)
-            {
-                return null;
-            }
-
-            return CreateWayPoint(selectedRoom.slot.roomObject.transform.position, OnLeaveDestination);
+            return selectedRoom == null ? null : CreateWayPoint(selectedRoom.slot.roomObject.transform.position, OnLeaveDestination);
         }
 
         protected WayPoint CreateWayPoint(Vector3 roomPosition, Action OnLeaveDestination = null)
@@ -182,7 +170,7 @@ namespace _Project.Scripts.Gameplay.NPC
             };
         }
 
-        private void EnterSelectedRoom()
+        protected virtual void EnterSelectedRoom()
         {
             floorManagerScript.EnterRoom(selectedRoom);
         }

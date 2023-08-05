@@ -111,15 +111,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e74d5db995ec54dab9886483bd7a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseTargetRoomType: 4
   startPositionsList:
   - {x: -1, y: 0.25, z: 1.5}
   - {x: 2, y: 0.25, z: 1.5}
-  targetRoomType: 4
   stayRange:
     min: 3
     max: 3
   floorManagerScript: {fileID: 0}
-  extraTargets: 0100000002000000
+  extraTargetRoomTypes: 0200000001000000
   onCleanRoom:
     m_PersistentCalls:
       m_Calls: []

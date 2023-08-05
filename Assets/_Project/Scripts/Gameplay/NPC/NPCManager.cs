@@ -8,8 +8,8 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private GameObject doubleCustomerPrefab;
         [SerializeField] private GameObject cookPrefab;
         [SerializeField] private GameObject cleanerPrefab;
-        
-        public enum CharactersTypeEnum
+
+        private enum CharactersTypeEnum
         {
             SingleCustomer,
             DoubleCustomer,

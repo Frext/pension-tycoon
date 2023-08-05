@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,14 +5,16 @@ namespace _Project.Scripts.Gameplay.NPC
 {
     public class Cook : NPC
     {
-        [Space] 
+        [Space]
+        [Header(nameof(Cook) + " Properties")]
+        [Space]
         [SerializeField] private UnityEvent onCookFood;
 
         protected override void OnEnable()
         {
             base.OnEnable();
 
-            StartCoroutine(SearchForTargetRooms(new List<Room.RoomTypeEnum>{ targetRoomType }));
+            StartCoroutine(SearchForTargetRoomsForever(null, .6f));
         }
         
         protected override void AddWayPoints()
@@ -24,13 +24,8 @@ namespace _Project.Scripts.Gameplay.NPC
             var initialPosition = transform.position;
             
             wayPointsList.Add(new WayPoint{ position = initialPosition,
-                OnReachDestination = InsertSelectedRoomToWayPoint});
+                OnReachDestination = InsertSelectedRoomToWayPoints});
             wayPointsList.Add(new WayPoint{ position = initialPosition });
-        }
-        
-        private void OnDisable()
-        {
-            StopAllCoroutines();
         }
 
         protected override void LeaveSelectedRoom()
@@ -39,6 +34,8 @@ namespace _Project.Scripts.Gameplay.NPC
             
             floorManagerScript.MakeRoomUsable(selectedRoom);
             CookFood();
+            
+            isNpcMoving = false;
         }
         
         private void CookFood()

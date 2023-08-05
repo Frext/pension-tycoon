@@ -144,19 +144,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa78fc73abb128f46ad04666c9ef5a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseTargetRoomType: 2
   startPositionsList:
   - {x: -3.6, y: 0.25, z: -1.75}
   - {x: 3.6, y: 0.25, z: -1.75}
-  targetRoomType: 2
   stayRange:
     min: 5
     max: 5
   floorManagerScript: {fileID: 0}
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
-  diningRoomType: 3
-  bathroomType: 4
+  extraRoomTypes: 03000000
   extraRoomChance: 0.66
-  makeRoomNotUsableChance: 0.22
+  makeExtraRoomNotUsableChance: 0.25
 --- !u!1 &6891467377579024980
 GameObject:
   m_ObjectHideFlags: 0
