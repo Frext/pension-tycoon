@@ -11,7 +11,7 @@ namespace _Project.Scripts.UI
         [Space]
         
         [SerializeField] private string precedingText;
-        [SerializeField] private IntObject intObjectSo;
+        [SerializeField] private IntObject dayIntObjectSo;
 
         [SerializeField] private SoEvent OnChangeDay;
 
@@ -32,7 +32,7 @@ namespace _Project.Scripts.UI
 
         private void UpdateText()
         {
-            textMeshPro.text = precedingText + " " + intObjectSo.Value;
+            textMeshPro.text = precedingText + " " + dayIntObjectSo.Value;
         }
     }
 }
