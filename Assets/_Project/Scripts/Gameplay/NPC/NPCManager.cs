@@ -5,6 +5,7 @@ using _Project.Scripts.ScriptableObjects.IntObject;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -46,7 +47,8 @@ namespace _Project.Scripts.Gameplay.NPC
 
         [Header("Events")] 
         [SerializeField] private SoEventGameObject OnCustomerLeave;
-        [SerializeField] private UnityEvent OnWaveFinished;
+        [SerializeField] private UnityEvent OnEnemyWaveDecreased;
+        [SerializeField] private UnityEvent OnEnemyWaveFinished;
         
         private enum FriendSpawnableObjectTypesEnum
         {
@@ -54,7 +56,9 @@ namespace _Project.Scripts.Gameplay.NPC
             Cleaner
         }
 
-        private List<GameObject> enemyWaveList = new();
+        private readonly List<GameObject> enemyWaveList = new();
+
+        private int lastSpawnedEnemyWaveSize;
 
         
         void Awake()
@@ -67,13 +71,15 @@ namespace _Project.Scripts.Gameplay.NPC
             OnCustomerLeave.DeregisterFromEvent(UpdateEnemyWaveList);
         }
         
-        private void UpdateEnemyWaveList(GameObject gameObject)
+        private void UpdateEnemyWaveList(GameObject enemyGameObject)
         {
-            enemyWaveList.Remove(gameObject);
+            enemyWaveList.Remove(enemyGameObject);
+            
+            OnEnemyWaveDecreased.Invoke();
             
             if (enemyWaveList.Count == 0)
             {
-                OnWaveFinished.Invoke();
+                OnEnemyWaveFinished.Invoke();
             }
         }
 
@@ -89,7 +95,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             enemyWaveList.Clear();
 
-            int waveCount = waveCountSo.Value;
+            int waveCount = waveCountSo.Value - 1;
 
             foreach (var spawnableObject in enemySpawnableObjects)
             {
@@ -102,6 +108,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 }
             }
 
+            lastSpawnedEnemyWaveSize = enemyWaveList.Count;
             StartCoroutine(IEnableEachEnemyWaveObject());
         }
         
@@ -113,11 +120,14 @@ namespace _Project.Scripts.Gameplay.NPC
         private IEnumerator IEnableEachEnemyWaveObject()
         {
             enemyWaveList.Shuffle();
-
-            foreach (var randomGameObject in enemyWaveList)
+            
+            int i = 0;
+            
+            while (GetCurrentEnemyWaveSize() > 0)
             {
-                randomGameObject.SetActive(true);
-
+                enemyWaveList[Mathf.Clamp(i, 0, GetCurrentEnemyWaveSize() - 1)].SetActive(true);
+                i++;
+                
                 yield return new WaitForSeconds(timeBetweenEachSpawn.Randomize());
             }
         }
@@ -138,6 +148,16 @@ namespace _Project.Scripts.Gameplay.NPC
                 FriendSpawnableObjectTypesEnum.Cook => cookPrefab,
                 _ => null
             };
+        }
+
+        public int GetTotalEnemyWaveSize()
+        {
+            return lastSpawnedEnemyWaveSize;
+        }
+
+        public int GetCurrentEnemyWaveSize()
+        {
+            return enemyWaveList.Count;
         }
     }
 }

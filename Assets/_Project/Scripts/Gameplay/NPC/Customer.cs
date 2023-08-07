@@ -45,11 +45,8 @@ namespace _Project.Scripts.Gameplay.NPC
             wayPointsList.Add(new WayPoint
             {
                 position = GetRandomStartPoint(),
-                OnReachDestination = () =>
-                {
-                    OnCustomerLeave.Invoke();
-                    Destroy(gameObject);
-                }
+                OnStartMoving = () => { OnCustomerLeave.Invoke(); },
+                OnReachDestination = () => { Destroy(gameObject); }
             });
         }
 
@@ -64,7 +61,6 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             base.LeaveSelectedRoom();
             floorManagerScript.MakeRoomNotUsable(selectedRoom);
-            
             AddExtraWayPointsRandomly();
         }
 
@@ -77,7 +73,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 if (randomVal >= 1 - extraRoomChance / divider)
                 {
                     AddExtraSingleWayPoint(extraRoomTypes[divider - 1]);
-                    break;
+                    return;
                 }
             }
         }

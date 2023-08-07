@@ -26,6 +26,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             public Vector3 position;
             public float waitTime;
+            public Action OnStartMoving;
             public Action OnReachDestination;
             public Action OnLeaveDestination;
 
@@ -126,6 +127,8 @@ namespace _Project.Scripts.Gameplay.NPC
             while (currentWayPointIndex < wayPointsList.Count)
             {
                 WayPoint currentWayPoint = wayPointsList[currentWayPointIndex];
+                
+                currentWayPoint.InvokeAction(currentWayPoint.OnStartMoving);
                 while (Vector3.Distance(transform.position, currentWayPoint.position) > 0.001f)
                 {
                     transform.position = Vector3.Lerp(transform.position, 
