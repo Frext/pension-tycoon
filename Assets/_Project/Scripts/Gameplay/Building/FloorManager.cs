@@ -4,6 +4,7 @@ using _Project.Scripts.ScriptableObjects.RoomType;
 using _Project.Scripts.ScriptableObjects.SOEvent;
 using _Project.Scripts.ScriptableObjects.SoEventTransform;
 using UnityEngine;
+using UnityEngine.Events;
 using static _Project.Scripts.Gameplay.Building.Room;
 using static _Project.Scripts.Gameplay.Building.Room.RoomTypeEnum;
 
@@ -28,11 +29,13 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private Vector3 roofBasePosition;
         [SerializeField] private Vector3 roofOffsetPerFloor;
 
-        [Header("So Events")] 
+        [Header("Events")] 
         [SerializeField] private SoEvent OnAppendFloor;
         [SerializeField] private SoEvent OnHideSlotUI;
         [SerializeField] private SoEvent OnShowRemoveSigns;
         [SerializeField] private SoEventRoom OnRemoveRoom;
+        [Space] 
+        [SerializeField] private UnityEvent OnDecrementPensionRating;
         [Space]
         
         [SerializeField] private SoRoomType selectedRoomTypeSo;
@@ -332,7 +335,7 @@ namespace _Project.Scripts.Gameplay.Building
 
             if (isOccupied == false && isUsable)
             {
-                // Decrease the pension rating.
+                OnDecrementPensionRating.Invoke();
             }
             
             return null;

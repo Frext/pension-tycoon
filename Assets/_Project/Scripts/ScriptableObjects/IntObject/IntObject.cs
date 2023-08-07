@@ -33,7 +33,7 @@ namespace _Project.Scripts.ScriptableObjects.IntObject
         
         public int Value { get; private set; }
 
-        void Awake()
+        void OnEnable()
         {
             SetValueTo(initialValue);
         }

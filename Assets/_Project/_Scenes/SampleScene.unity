@@ -2356,6 +2356,22 @@ MonoBehaviour:
   OnHideSlotUI: {fileID: 11400000, guid: 02b2da5af66abab4b8e413661e6816a7, type: 2}
   OnShowRemoveSigns: {fileID: 11400000, guid: 35197fa51f37f374894e9d93945bb8cf, type: 2}
   OnRemoveRoom: {fileID: 11400000, guid: 8899868c3619c654eaeb6aefb7ace7ce, type: 2}
+  OnDecrementPensionRating:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: eba5ef16767bf1847918495239fcffb5, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
+          Assembly-CSharp
+        m_MethodName: DecrementValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
 --- !u!1 &1775003775
 GameObject:
