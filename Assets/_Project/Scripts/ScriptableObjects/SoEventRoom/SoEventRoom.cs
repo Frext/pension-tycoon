@@ -2,7 +2,7 @@ using System;
 using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
 
-namespace _Project.Scripts.ScriptableObjects.SoEventTransform
+namespace _Project.Scripts.ScriptableObjects.SoEventRoom
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/" + nameof(SoEventRoom))]
     public class SoEventRoom : ScriptableObject

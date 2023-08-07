@@ -7,20 +7,20 @@ using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
+    [Serializable]
+    public class FloatRange
+    {
+        public float min;
+        public float max;
+
+        public float Randomize()
+        {
+            return Random.Range(min, max);
+        }
+    }
+    
     public abstract class NPC : MonoBehaviour
     {
-        [Serializable]
-        public class FloatRange
-        {
-            public float min;
-            public float max;
-
-            public float Randomize()
-            {
-                return Random.Range(min, max);
-            }
-        }
-        
         [Serializable]
         public class WayPoint
         {

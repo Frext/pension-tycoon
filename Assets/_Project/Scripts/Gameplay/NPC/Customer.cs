@@ -1,5 +1,6 @@
 using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -9,6 +10,8 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header(nameof(Customer) + " Properties")]
         [Space]
         [SerializeField] private Vector3 receptionPosition;
+        [Space] 
+        [SerializeField] private UnityEvent OnCustomerLeave;
         
         [Header("Extra Rooms")]
         [Space]
@@ -42,7 +45,11 @@ namespace _Project.Scripts.Gameplay.NPC
             wayPointsList.Add(new WayPoint
             {
                 position = GetRandomStartPoint(),
-                OnReachDestination = () => { Destroy(gameObject);}
+                OnReachDestination = () =>
+                {
+                    OnCustomerLeave.Invoke();
+                    Destroy(gameObject);
+                }
             });
         }
 
@@ -95,7 +102,5 @@ namespace _Project.Scripts.Gameplay.NPC
             if (Random.value > 1 - makeExtraRoomNotUsableChance)
                 floorManagerScript.MakeRoomNotUsable(extraRoom);
         }
-
-
     }
 }
