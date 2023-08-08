@@ -82,14 +82,6 @@ namespace _Project.Scripts.Gameplay.NPC
                 OnEnemyWaveFinished.Invoke();
             }
         }
-
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                SpawnEnemyWave();
-            }
-        }
         
         public void SpawnEnemyWave()
         {

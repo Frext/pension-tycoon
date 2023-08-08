@@ -10,11 +10,6 @@ namespace _Project.Scripts.UI
 
         [SerializeField] private NPCManager npcManagerScript;
 
-        void Awake()
-        {
-            ResetProgressBar();
-        }
-
         public void UpdateProgressBar()
         {
             int totalEnemyWaveSize = npcManagerScript.GetTotalEnemyWaveSize();
