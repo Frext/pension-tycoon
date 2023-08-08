@@ -5,7 +5,7 @@ using _Project.Scripts.ScriptableObjects.IntObject;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
 using UnityEngine;
 using UnityEngine.Events;
-using Random = UnityEngine.Random;
+using UnityEngine.Serialization;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -37,7 +37,7 @@ namespace _Project.Scripts.Gameplay.NPC
         
         [SerializeField] private List<SpawnableObject> enemySpawnableObjects;
         [Space]
-        [SerializeField] private IntObject waveCountSo;
+        [SerializeField] private IntObject dayCountSo;
         [SerializeField] private FloatRange timeBetweenEachSpawn;
         [Space]
         
@@ -47,6 +47,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
         [Header("Events")] 
         [SerializeField] private SoEventGameObject OnCustomerLeave;
+        [SerializeField] private UnityEvent OnEnemyWaveRestart;
         [SerializeField] private UnityEvent OnEnemyWaveDecreased;
         [SerializeField] private UnityEvent OnEnemyWaveFinished;
         
@@ -73,7 +74,10 @@ namespace _Project.Scripts.Gameplay.NPC
         
         private void UpdateEnemyWaveList(GameObject enemyGameObject)
         {
-            enemyWaveList.Remove(enemyGameObject);
+            if (!enemyWaveList.Remove(enemyGameObject))
+            {
+                return;
+            }
             
             OnEnemyWaveDecreased.Invoke();
             
@@ -87,7 +91,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             enemyWaveList.Clear();
 
-            int waveCount = waveCountSo.Value - 1;
+            int waveCount = dayCountSo.Value - 1;
 
             foreach (var spawnableObject in enemySpawnableObjects)
             {
@@ -150,6 +154,18 @@ namespace _Project.Scripts.Gameplay.NPC
         public int GetCurrentEnemyWaveSize()
         {
             return enemyWaveList.Count;
+        }
+
+        public void RestartEnemyWave()
+        {
+            OnEnemyWaveRestart.Invoke();
+            
+            StopAllCoroutines();
+
+            foreach (var enemyGameObject in enemyWaveList)
+            {
+                Destroy(enemyGameObject);
+            }
         }
     }
 }

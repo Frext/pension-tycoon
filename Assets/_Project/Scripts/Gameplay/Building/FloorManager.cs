@@ -360,6 +360,18 @@ namespace _Project.Scripts.Gameplay.Building
         {
             SetRoomSlotProperties(GetIndexByRoom(room), room.slot.isOccupied, false);
         }
+
+        public void ResetEveryRoom()
+        {
+            foreach (List<Room> floor in roomsList)
+            {
+                foreach (Room room in floor)
+                {
+                    room.slot.isOccupied = false;
+                    room.slot.isUsable = true;
+                }
+            }
+        }
         
         #endregion
     }
