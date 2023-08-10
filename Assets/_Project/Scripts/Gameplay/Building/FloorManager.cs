@@ -12,6 +12,12 @@ namespace _Project.Scripts.Gameplay.Building
 {
     public class FloorManager : MonoBehaviour
     {
+        [Serializable]
+        public class Floor
+        {
+            public List<Room> roomsList = new();
+        }
+        
         [Header("Building Parts Prefabs")]
         [SerializeField] private GameObject floorPrefab;
         [SerializeField] private GameObject customerSingleRoomPrefab;
@@ -44,7 +50,7 @@ namespace _Project.Scripts.Gameplay.Building
         public readonly int RoomCountPerFloor = 6;
         private readonly int RoomsParentIndex = 2;
         
-        private readonly List<List<Room>> roomsList = new();
+        private readonly List<Floor> floorsList = new();
         
         
         void Awake()
@@ -56,18 +62,18 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void FetchRooms()
         {
-            roomsList.Clear();
+            floorsList.Clear();
 
             for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
             {
-                roomsList.Add(new List<Room>());
+                floorsList.Add(new Floor());
                 
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
                     Room room = floorsParentTransform.GetChild(floorIndex).
                         GetChild(RoomsParentIndex).GetChild(roomIndex).GetComponent<Room>();
                     
-                    roomsList[floorIndex].Add(room);
+                    floorsList[floorIndex].roomsList.Add(room);
                 }
             }
         }
@@ -103,7 +109,7 @@ namespace _Project.Scripts.Gameplay.Building
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
-                    Room room = roomsList[floorIndex][roomIndex];
+                    Room room = floorsList[floorIndex].roomsList[roomIndex];
                     
                     if (!IsRoomConstructed(room) || room.slot.roomType == Reception)
                     {
@@ -132,9 +138,9 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void HideAllSlots()
         {
-            foreach (List<Room> floor in roomsList)
+            foreach (Floor floor in floorsList)
             {
-                foreach (Room room in floor)
+                foreach (Room room in floor.roomsList)
                 {
                     room.SetRemoveRoomWidth1Button(false);
                     room.SetRemoveRoomWidth2Button(false);
@@ -162,7 +168,7 @@ namespace _Project.Scripts.Gameplay.Building
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
-                    if (roomsList[floorIndex][roomIndex] == room)
+                    if (floorsList[floorIndex].roomsList[roomIndex] == room)
                     {
                         return new Vector2Int(roomIndex, floorIndex);
                     }
@@ -174,13 +180,13 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void SetRoomSlotProperties(Vector2Int index, RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
         {
-            Room room = roomsList[index.y][index.x];
+            Room room = floorsList[index.y].roomsList[index.x];
             
             // If it's a 2-wide room is getting created or removed, set the next room slot too before changing the type.
             if ((GetRoomWidth(room.slot.roomType) == 2 || GetRoomWidth(roomType) == 2)
                 && IsIndexValid(new Vector2Int(index.x + 1, index.y)))
             {
-                SetSingleSlot(roomsList[index.y][index.x + 1], roomType, isOccupied, isUsable);
+                SetSingleSlot(floorsList[index.y].roomsList[index.x + 1], roomType, isOccupied, isUsable);
             }
             
             SetSingleSlot(room, roomType, isOccupied, isUsable);
@@ -188,11 +194,11 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void SetRoomSlotProperties(Vector2Int index, bool isOccupied, bool isUsable)
         {
-            Room room = roomsList[index.y][index.x];
+            Room room = floorsList[index.y].roomsList[index.x];
             
             if (GetRoomWidth(room.slot.roomType) == 2 && IsIndexValid(new Vector2Int(index.x + 1, index.y)))
             {
-                SetSingleSlot(roomsList[index.y][index.x + 1], isOccupied, isUsable);
+                SetSingleSlot(floorsList[index.y].roomsList[index.x + 1], isOccupied, isUsable);
             }
             
             SetSingleSlot(room, isOccupied, isUsable);
@@ -259,12 +265,12 @@ namespace _Project.Scripts.Gameplay.Building
                 return true;
             }
             
-            return IsRoomConstructed(roomsList[index.y][index.x]);
+            return IsRoomConstructed(floorsList[index.y].roomsList[index.x]);
         }
 
         public void CreateRoomAt(Vector2Int index)
         {
-            if (IsRoomConstructed(roomsList[index.y][index.x]) && !IsIndexValid(index))
+            if (IsRoomConstructed(floorsList[index.y].roomsList[index.x]) && !IsIndexValid(index))
             {
                 return;
             }
@@ -277,7 +283,7 @@ namespace _Project.Scripts.Gameplay.Building
 
         private void InstantiateRoomGameObject(Vector2Int index)
         {
-            Room room = roomsList[index.y][index.x];
+            Room room = floorsList[index.y].roomsList[index.x];
             
             
             RoomTypeEnum selectedRoomType = selectedRoomTypeSo.SelectedRoomType;
@@ -288,7 +294,7 @@ namespace _Project.Scripts.Gameplay.Building
 
             if (GetRoomWidth(room.slot.roomType) == 2)
             {
-                SetRoomGameObject(roomsList[index.y][index.x + 1], instantiatedRoomGameObject);
+                SetRoomGameObject(floorsList[index.y].roomsList[index.x + 1], instantiatedRoomGameObject);
             }
         }
 
@@ -321,9 +327,9 @@ namespace _Project.Scripts.Gameplay.Building
         
         public Room GetRoom(RoomTypeEnum roomType, bool isOccupied = false, bool isUsable = true)
         {
-            foreach (List<Room> floor in roomsList)
+            foreach (Floor floor in floorsList)
             {
-                foreach (Room room in floor)
+                foreach (Room room in floor.roomsList)
                 {
                     if (room.slot.roomType == roomType && 
                         room.slot.isOccupied == isOccupied && room.slot.isUsable == isUsable)
@@ -363,9 +369,9 @@ namespace _Project.Scripts.Gameplay.Building
 
         public void ResetEveryRoom()
         {
-            foreach (List<Room> floor in roomsList)
+            foreach (Floor floor in floorsList)
             {
-                foreach (Room room in floor)
+                foreach (Room room in floor.roomsList)
                 {
                     room.slot.isOccupied = false;
                     room.slot.isUsable = true;
