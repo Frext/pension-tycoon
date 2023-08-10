@@ -50,7 +50,7 @@ namespace _Project.Scripts.Gameplay.Building
         public readonly int RoomCountPerFloor = 6;
         private readonly int RoomsParentIndex = 2;
         
-        private readonly List<Floor> floorsList = new();
+        private List<Floor> floorsList = new();
         
         
         void Awake()
