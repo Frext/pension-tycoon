@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Project.Scripts.Gameplay.Data;
 using _Project.Scripts.ScriptableObjects.RoomType;
 using _Project.Scripts.ScriptableObjects.SOEvent;
 using _Project.Scripts.ScriptableObjects.SoEventRoom;
@@ -16,6 +17,12 @@ namespace _Project.Scripts.Gameplay.Building
         public class Floor
         {
             public List<Room> roomsList = new();
+        }
+        
+        [Serializable]
+        public class FloorSlot
+        {
+            public List<Slot> slotsList = new();
         }
         
         [Header("Building Parts Prefabs")]
@@ -45,35 +52,133 @@ namespace _Project.Scripts.Gameplay.Building
         [Space]
         
         [SerializeField] private SoRoomType selectedRoomTypeSo;
-
-        public int FloorCount => floorsParentTransform.childCount;
-        public readonly int RoomCountPerFloor = 6;
-        private readonly int RoomsParentIndex = 2;
+        [Space]
         
-        private List<Floor> floorsList = new();
+        [Header("Data Saving")] 
+        [SerializeField] private string dataKey = "floorSlotsList";
+
+        public int FloorCount => floorsList.Count;
+        public const int RoomCountPerFloor = 6;
+        private const int RoomsParentIndex = 2;
+
+        private readonly List<Floor> floorsList = new();
         
         
         void Awake()
         {
-            FetchRooms();
+            LoadRooms();
             
             RegisterEvents();
         }
-        
-        private void FetchRooms()
+
+        private void LoadRooms()
         {
             floorsList.Clear();
 
+            // Load the state of the slots
+            var floorSlotsList = DataManager.Load<List<FloorSlot>>(dataKey) ?? GetDefaultFloorSlotsList();
+            
+            // Build the floors and add them to floors list
+            BuildFloors(floorSlotsList.Count - 1);
+            
+            // Then assign the loaded slots to the floors list
+            AssignSlots(floorSlotsList);
+
+            // Finally create the game objects because they weren't stored inside the data
+            CreateSlotGameObjects();
+        }
+
+        private List<FloorSlot> GetDefaultFloorSlotsList()
+        {
+            Transform firstFloorRoomContainerTransform = floorsParentTransform.GetChild(0).GetChild(RoomsParentIndex);
+            List<FloorSlot> defaultFloorSlotsList = new()
+            {
+                new FloorSlot()
+            };
+            
+            for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+            {
+                defaultFloorSlotsList[0].slotsList.Add(firstFloorRoomContainerTransform.GetChild(roomIndex).GetComponent<Room>().slot);
+            }
+
+            return defaultFloorSlotsList;
+        }
+        
+        private void BuildFloors(int floorCount)
+        {
+            // Get the first floor
+            AddRoomsInFloorToFloorsList(floorsParentTransform.GetChild(0).GetChild(RoomsParentIndex));
+            
+            // Then build the other floors
+            for (int floorSlotIndex = 0; floorSlotIndex < floorCount; floorSlotIndex++)
+            {
+                AppendFloor();
+            }
+        }
+
+        private void AddRoomsInFloorToFloorsList(Transform roomsTransform)
+        {
+            floorsList.Add(new Floor());
+            
+            for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+            {
+                Room room = roomsTransform.GetChild(roomIndex).GetComponent<Room>();
+                
+                floorsList[^1].roomsList.Add(room);
+            }
+        }
+        
+        private void AppendFloor()
+        {
+            GameObject instantiatedFloor = Instantiate(floorPrefab,
+                floorBasePosition + floorOffsetPerFloor * FloorCount,
+                Quaternion.identity, floorsParentTransform);
+            
+            AddRoomsInFloorToFloorsList(instantiatedFloor.transform.GetChild(RoomsParentIndex));
+            
+            PlaceRoof();
+        }
+        
+        private void PlaceRoof()
+        {
+            Vector3 roofPos = roofBasePosition + roofOffsetPerFloor * (FloorCount - 1);
+
+            roofTransform.position = roofPos;
+        }
+        
+        private void AssignSlots(List<FloorSlot> floorSlotsList)
+        {
             for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
             {
-                floorsList.Add(new Floor());
-                
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
-                    Room room = floorsParentTransform.GetChild(floorIndex).
-                        GetChild(RoomsParentIndex).GetChild(roomIndex).GetComponent<Room>();
+                    // Assign the slot properties
+                    floorsList[floorIndex].roomsList[roomIndex].slot = floorSlotsList[floorIndex].slotsList[roomIndex];
+                }
+            }
+        }
+        
+        private void CreateSlotGameObjects()
+        {
+            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            {
+                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+                {
+                    RoomTypeEnum roomType = floorsList[floorIndex].roomsList[roomIndex].slot.roomType;
                     
-                    floorsList[floorIndex].roomsList.Add(room);
+                    if (GetPrefabByRoomType(roomType) == null)
+                    {
+                        continue;
+                    }
+                    
+                    selectedRoomTypeSo.SetSelectedRoomTypeTo(roomType);
+                    InstantiateRoomGameObject(new Vector2Int(roomIndex, floorIndex));
+
+                    // If it's a 2 slot wide room, don't instantiate it in the next slot.
+                    if (GetRoomWidth(roomType) == 2)
+                    {
+                        roomIndex++;
+                    }
                 }
             }
         }
@@ -84,23 +189,6 @@ namespace _Project.Scripts.Gameplay.Building
             OnShowRemoveSigns.RegisterToEvent(ShowAllRemoveSigns);
             OnHideSlotUI.RegisterToEvent(HideAllSlots);
             OnRemoveRoom.RegisterToEvent(RemoveRoom);
-        }
-        
-        private void AppendFloor()
-        {
-            Vector3 newFloorPos = floorBasePosition + floorOffsetPerFloor * FloorCount;
-            Instantiate(floorPrefab, newFloorPos, Quaternion.identity, floorsParentTransform);
-            
-            PlaceRoof();
-            
-            FetchRooms();
-        }
-        
-        private void PlaceRoof()
-        {
-            Vector3 roofPos = roofBasePosition + roofOffsetPerFloor * FloorCount;
-
-            roofTransform.position = roofPos;
         }
         
         private void ShowAllRemoveSigns()
@@ -380,5 +468,29 @@ namespace _Project.Scripts.Gameplay.Building
         }
         
         #endregion
+        
+        void OnApplicationQuit()
+        {
+            SaveRooms();
+        }
+
+        private void SaveRooms()
+        {
+            List<FloorSlot> floorSlots = new();
+            
+            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            {
+                floorSlots.Add(new FloorSlot());
+
+                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
+                {
+                    floorsList[floorIndex].roomsList[roomIndex].slot.ResetForSave();
+                    
+                    floorSlots[floorIndex].slotsList.Add(floorsList[floorIndex].roomsList[roomIndex].slot);
+                }
+            }
+            
+            DataManager.Save(dataKey, floorSlots);
+        }
     }
 }

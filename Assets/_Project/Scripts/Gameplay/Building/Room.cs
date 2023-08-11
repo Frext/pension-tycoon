@@ -1,4 +1,5 @@
 using System;
+using Leguar.TotalJSON;
 using UnityEngine;
 using static _Project.Scripts.Gameplay.Building.Room.RoomTypeEnum;
 
@@ -6,6 +7,7 @@ namespace _Project.Scripts.Gameplay.Building
 {
     public class Room : MonoBehaviour
     {
+        [Serializable]
         public enum RoomTypeEnum
         {
             None,
@@ -28,7 +30,15 @@ namespace _Project.Scripts.Gameplay.Building
             public bool isUsable = true;
             public RoomTypeEnum roomType;
             
-            [HideInInspector] public GameObject roomObject;
+            [HideInInspector]
+            [ExcludeFromJSONSerialize]
+            public GameObject roomObject;
+
+            public void ResetForSave()
+            {
+                isOccupied = false;
+                isUsable = true;
+            }
         }
 
         public Slot slot;

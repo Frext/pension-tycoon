@@ -44,7 +44,7 @@ namespace _Project.Scripts.Gameplay.Building
         {
             for (int floor = 0; floor < floorManagerScript.FloorCount; floor++)
             {
-                for (int room = 0; room < floorManagerScript.RoomCountPerFloor; room++)
+                for (int room = 0; room < FloorManager.RoomCountPerFloor; room++)
                 {
                     if (CanPlaceRoomAt(new Vector2Int(room, floor)))
                     {

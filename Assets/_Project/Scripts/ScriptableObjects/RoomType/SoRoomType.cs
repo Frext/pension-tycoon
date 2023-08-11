@@ -12,8 +12,8 @@ namespace _Project.Scripts.ScriptableObjects.RoomType
         public void SetSelectedRoomTypeToCustomerDouble() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.CustomerDouble);
         public void SetSelectedRoomTypeToBathroom() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Bathroom);
         public void SetSelectedRoomTypeToDiningRoom() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Dining);
-
-        private void SetSelectedRoomTypeTo(Room.RoomTypeEnum roomType)
+        
+        public void SetSelectedRoomTypeTo(Room.RoomTypeEnum roomType)
         {
             SelectedRoomType = roomType;
         }
