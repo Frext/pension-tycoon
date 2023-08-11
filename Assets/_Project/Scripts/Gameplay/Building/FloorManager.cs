@@ -74,10 +74,20 @@ namespace _Project.Scripts.Gameplay.Building
         private void LoadRooms()
         {
             floorsList.Clear();
-
-            // Load the state of the slots
-            var floorSlotsList = DataManager.Load<List<FloorSlot>>(dataKey) ?? GetDefaultFloorSlotsList();
             
+            // Add the room scripts of the rooms in the first floor to the floors list because they already exist in the scene.
+            AddRoomsInFloorToFloorsList(floorsParentTransform.GetChild(0).GetChild(RoomsParentIndex));
+
+            
+            // Load the state of the slots
+            var floorSlotsList = DataManager.Load<List<FloorSlot>>(dataKey);
+
+            // If it's default, that means there are no extra floors and any room to build.
+            if (floorSlotsList == default)
+            {
+                return;
+            }
+
             // Build the floors and add them to floors list
             BuildFloors(floorSlotsList.Count - 1);
             
@@ -87,35 +97,7 @@ namespace _Project.Scripts.Gameplay.Building
             // Finally create the game objects because they weren't stored inside the data
             CreateSlotGameObjects();
         }
-
-        private List<FloorSlot> GetDefaultFloorSlotsList()
-        {
-            Transform firstFloorRoomContainerTransform = floorsParentTransform.GetChild(0).GetChild(RoomsParentIndex);
-            List<FloorSlot> defaultFloorSlotsList = new()
-            {
-                new FloorSlot()
-            };
-            
-            for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
-            {
-                defaultFloorSlotsList[0].slotsList.Add(firstFloorRoomContainerTransform.GetChild(roomIndex).GetComponent<Room>().slot);
-            }
-
-            return defaultFloorSlotsList;
-        }
         
-        private void BuildFloors(int floorCount)
-        {
-            // Get the first floor
-            AddRoomsInFloorToFloorsList(floorsParentTransform.GetChild(0).GetChild(RoomsParentIndex));
-            
-            // Then build the other floors
-            for (int floorSlotIndex = 0; floorSlotIndex < floorCount; floorSlotIndex++)
-            {
-                AppendFloor();
-            }
-        }
-
         private void AddRoomsInFloorToFloorsList(Transform roomsTransform)
         {
             floorsList.Add(new Floor());
@@ -125,6 +107,15 @@ namespace _Project.Scripts.Gameplay.Building
                 Room room = roomsTransform.GetChild(roomIndex).GetComponent<Room>();
                 
                 floorsList[^1].roomsList.Add(room);
+            }
+        }
+        
+        private void BuildFloors(int floorCount)
+        {
+            // Then build the other floors
+            for (int floorSlotIndex = 0; floorSlotIndex < floorCount; floorSlotIndex++)
+            {
+                AppendFloor();
             }
         }
         
