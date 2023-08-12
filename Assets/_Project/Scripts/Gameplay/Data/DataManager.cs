@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Leguar.TotalJSON;
 using UnityEngine;
@@ -23,17 +24,21 @@ namespace _Project.Scripts.Gameplay.Data
 
         static object SerializeByType(object value)
         {
-            Type type = value.GetType();
+            Type tType = value.GetType();
 
-            if (type.IsPrimitive)
+            if (tType.IsPrimitive)
             {
                 return value;
             }
-            if (value is IList || value is Array || value is IDictionary)
+            if (value is IList || value is Array)
             {
                 return JArray.Serialize(value);
             }
-            if (type.IsSerializable)
+            if (value is IDictionary)
+            {
+                return JSON.Serialize(value);
+            }
+            if (tType.IsSerializable)
             {
                 return JSON.Serialize(value);
             }
@@ -49,6 +54,8 @@ namespace _Project.Scripts.Gameplay.Data
             }
             
             JSON jsonObject = JSON.ParseString(File.ReadAllText(filePath + key));
+            
+            jsonObject.DebugInEditor(key);
 
             return !jsonObject.ContainsKey(key) ? default : DeserializeByType<T>(jsonObject, key);
         }
@@ -73,9 +80,13 @@ namespace _Project.Scripts.Gameplay.Data
             {
                 return (T)(object)jsonObject.GetString(key);
             }
-            if (tType == typeof(IList) || tType == typeof(Array) || tType == typeof(IDictionary))
+            if (tType == typeof(IList) || tType == typeof(Array))
             {
                 return (T)(object)jsonObject.GetJArray(key).AsList();
+            }
+            if (tType.IsGenericType && tType.GetGenericTypeDefinition() == typeof(Dictionary<,>))
+            {
+                return (T)jsonObject.Get(key).zDeserialize(tType, null, new DeserializeSettings());
             }
             if (tType.IsSerializable)
             {

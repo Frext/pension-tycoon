@@ -19,7 +19,7 @@ namespace _Project.Scripts.Gameplay.NPC
         }
     }
     
-    public abstract class NPC : MonoBehaviour
+    public abstract class Npc : MonoBehaviour
     {
         [Serializable]
         public class WayPoint

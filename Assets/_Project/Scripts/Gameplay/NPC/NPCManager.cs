@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Project.Scripts.Gameplay.Data;
 using _Project.Scripts.ScriptableObjects.IntObject;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -24,7 +24,7 @@ namespace _Project.Scripts.Gameplay.NPC
         }
     }
     
-    public class NPCManager : MonoBehaviour
+    public class NpcManager : MonoBehaviour
     {
         [Serializable]
         public class SpawnableObject
@@ -51,27 +51,74 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private UnityEvent OnEnemyWaveDecreased;
         [SerializeField] private UnityEvent OnEnemyWaveFinished;
         
-        private enum FriendSpawnableObjectTypesEnum
+        [Header("Data Saving")]
+        [SerializeField] private string dataKey = "friendNpcCountDict";
+        
+        private enum FriendNpcTypesEnum
         {
             Cook,
             Cleaner
         }
-
+        private readonly Dictionary<FriendNpcTypesEnum, int> friendNpcCountDict = new();
+        
         private readonly List<GameObject> enemyWaveList = new();
-
         private int lastSpawnedEnemyWaveSize;
 
         
         void Awake()
         {
             OnCustomerLeave.RegisterToEvent(UpdateEnemyWaveList);
-        }
-
-        void OnDestroy()
-        {
-            OnCustomerLeave.DeregisterFromEvent(UpdateEnemyWaveList);
+            
+            LoadFriendNpcCountDict();
         }
         
+        private void LoadFriendNpcCountDict()
+        {
+            GetDefaultFriendNpcCountDict();
+            
+            LoadValuesFromDeserializedDict(DataManager.Load<Dictionary<string, int>>(dataKey));
+
+            SpawnByFriendNpcCountDict();
+        }
+
+        private void GetDefaultFriendNpcCountDict()
+        {
+            friendNpcCountDict.Clear();
+            
+            // Add each type in enum to the dictionary before changing values.
+            for (int index = 0; index < Enum.GetNames(typeof(FriendNpcTypesEnum)).Length; index++)
+            {
+                friendNpcCountDict.Add((FriendNpcTypesEnum)index, 0);
+            }
+        }
+        
+        private void LoadValuesFromDeserializedDict(Dictionary<string, int> deserializedDict)
+        {
+            // Change the values if the deserialized dictionary is not default.
+            if (deserializedDict != default)
+            {
+                foreach (var keyValuePair in deserializedDict)
+                {
+                    if (Enum.TryParse(keyValuePair.Key, out FriendNpcTypesEnum keyEnum))
+                    {
+                        friendNpcCountDict[keyEnum] = keyValuePair.Value;
+                    }
+                }
+            }
+        }
+        
+        private void SpawnByFriendNpcCountDict()
+        {
+            foreach (var keyValuePair in friendNpcCountDict)
+            {
+                // Convert the enum key to string
+                for (int count = 0; count < keyValuePair.Value; count++)
+                {
+                    SpawnFriendCharacter(keyValuePair.Key, false);
+                }
+            }
+        }
+
         private void UpdateEnemyWaveList(GameObject enemyGameObject)
         {
             if (!enemyWaveList.Remove(enemyGameObject))
@@ -105,7 +152,7 @@ namespace _Project.Scripts.Gameplay.NPC
             }
 
             lastSpawnedEnemyWaveSize = enemyWaveList.Count;
-            StartCoroutine(IEnableEachEnemyWaveObject());
+            StartCoroutine(IEnableEveryEnemyWaveObject());
         }
         
         private GameObject InstantiateObject(GameObject prefab)
@@ -113,7 +160,7 @@ namespace _Project.Scripts.Gameplay.NPC
             return Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
         }
 
-        private IEnumerator IEnableEachEnemyWaveObject()
+        private IEnumerator IEnableEveryEnemyWaveObject()
         {
             enemyWaveList.Shuffle();
             
@@ -127,21 +174,31 @@ namespace _Project.Scripts.Gameplay.NPC
                 yield return new WaitForSeconds(timeBetweenEachSpawn.Randomize());
             }
         }
-
-        public void SpawnCook() => SpawnCharacter(FriendSpawnableObjectTypesEnum.Cook);
-        public void SpawnCleaner() => SpawnCharacter(FriendSpawnableObjectTypesEnum.Cleaner);
-
-        private void SpawnCharacter(FriendSpawnableObjectTypesEnum characterType)
+        
+        void OnDestroy()
         {
+            OnCustomerLeave.DeregisterFromEvent(UpdateEnemyWaveList);
+        }
+
+        public void SpawnCook() => SpawnFriendCharacter(FriendNpcTypesEnum.Cook);
+        public void SpawnCleaner() => SpawnFriendCharacter(FriendNpcTypesEnum.Cleaner);
+
+        private void SpawnFriendCharacter(FriendNpcTypesEnum characterType, bool incrementInDictionary = true)
+        {
+            if (incrementInDictionary)
+            {
+                friendNpcCountDict[characterType]++;
+            }
+            
             InstantiateObject(GetPrefabByCharacterType(characterType));
         }
 
-        private GameObject GetPrefabByCharacterType(FriendSpawnableObjectTypesEnum roomType)
+        private GameObject GetPrefabByCharacterType(FriendNpcTypesEnum roomType)
         {
             return roomType switch
             {
-                FriendSpawnableObjectTypesEnum.Cleaner => cleanerPrefab,
-                FriendSpawnableObjectTypesEnum.Cook => cookPrefab,
+                FriendNpcTypesEnum.Cleaner => cleanerPrefab,
+                FriendNpcTypesEnum.Cook => cookPrefab,
                 _ => null
             };
         }
@@ -166,6 +223,24 @@ namespace _Project.Scripts.Gameplay.NPC
             {
                 Destroy(enemyGameObject);
             }
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveFriendNpcCountDict();
+        }
+        
+        private void SaveFriendNpcCountDict()
+        {
+            Dictionary<string, int> serializedDict = new Dictionary<string, int>();
+
+            foreach (var keyValuePair in friendNpcCountDict)
+            {
+                // Convert the enum key to string
+                serializedDict.Add(keyValuePair.Key.ToString(), keyValuePair.Value);
+            }
+            
+            DataManager.Save(dataKey, serializedDict);
         }
     }
 }

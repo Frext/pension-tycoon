@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
-    public class Cook : NPC
+    public class Cook : Npc
     {
         [Space]
         [Header(nameof(Cook) + " Properties")]

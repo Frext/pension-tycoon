@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
-    public class Customer : NPC
+    public class Customer : Npc
     {
         [Space]
         [Header(nameof(Customer) + " Properties")]

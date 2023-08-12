@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
-    public class Cleaner : NPC
+    public class Cleaner : Npc
     {
         [Space]
         [Header(nameof(Cleaner) + " Properties")]
