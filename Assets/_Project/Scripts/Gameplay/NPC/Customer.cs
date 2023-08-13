@@ -1,4 +1,5 @@
 using _Project.Scripts.Gameplay.Building;
+using _Project.Scripts.ScriptableObjects.IntObject;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,6 +21,9 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private float extraRoomChance;
         [Range(0, 1)] 
         [SerializeField] private float makeExtraRoomNotUsableChance;
+
+        [Header("Money")] 
+        [SerializeField] private int payAmount;
 
         Room extraRoom;
         
@@ -45,7 +49,10 @@ namespace _Project.Scripts.Gameplay.NPC
             wayPointsList.Add(new WayPoint
             {
                 position = GetRandomStartPoint(),
-                OnStartMoving = () => { OnCustomerLeave.Invoke(); },
+                OnStartMoving = () =>
+                {
+                    OnCustomerLeave.Invoke();
+                },
                 OnReachDestination = () => { Destroy(gameObject); }
             });
         }
@@ -97,6 +104,16 @@ namespace _Project.Scripts.Gameplay.NPC
 
             if (Random.value > 1 - makeExtraRoomNotUsableChance)
                 floorManagerScript.MakeRoomNotUsable(extraRoom);
+        }
+
+        public void PayRoom(IntObject coinCountSo)
+        {
+            if (wayPointsList.Count < 3)
+            {
+                return;
+            }
+            
+            coinCountSo.IncrementValue(payAmount);
         }
     }
 }

@@ -60,14 +60,14 @@ namespace _Project.Scripts.ScriptableObjects.IntObject
             }
         }
         
-        public void IncrementValue()
+        public void IncrementValue(int amount = 1)
         {
-            SetValueTo(Value + 1);
+            SetValueTo(Value + amount);
         }
 
-        public void DecrementValue()
+        public void DecrementValue(int amount = 1)
         {
-            SetValueTo(Value - 1);
+            SetValueTo(Value - amount);
         }
 
         public void ResetToInitialValue()

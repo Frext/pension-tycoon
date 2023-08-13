@@ -5,19 +5,20 @@ using UnityEngine;
 
 namespace _Project.Scripts.UI
 {
-    public class ShowDayCounter : MonoBehaviour
+    public class ShowIntObject : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI textMeshPro;
         [Space]
         
         [SerializeField] private string precedingText;
-        [SerializeField] private IntObject dayIntObjectSo;
+        [SerializeField] private IntObject intObjectSo;
 
-        [SerializeField] private SoEvent OnChangeDay;
+        [Tooltip("This is required to update the TMP text when the event gets triggered.")]
+        [SerializeField] private SoEvent OnChangeValue;
 
         void Awake()
         {
-            OnChangeDay.RegisterToEvent(UpdateText);
+            OnChangeValue.RegisterToEvent(UpdateText);
         }
 
         void Start()
@@ -27,12 +28,12 @@ namespace _Project.Scripts.UI
 
         void OnDestroy()
         {
-            OnChangeDay.DeregisterFromEvent(UpdateText);
+            OnChangeValue.DeregisterFromEvent(UpdateText);
         }
 
         private void UpdateText()
         {
-            textMeshPro.text = precedingText + " " + dayIntObjectSo.Value;
+            textMeshPro.text = precedingText + intObjectSo.Value;
         }
     }
 }
