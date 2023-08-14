@@ -46,18 +46,24 @@ namespace _Project.Scripts.Gameplay.Data
             return new JNull();
         }
 
-        public static T Load<T>(string key)
+        public static bool Load<T>(string key, out T data)
         {
             if (!File.Exists(filePath + key))
             {
-                return default;
+                data = default;
+                return false;
             }
             
             JSON jsonObject = JSON.ParseString(File.ReadAllText(filePath + key));
-            
-            jsonObject.DebugInEditor(key);
 
-            return !jsonObject.ContainsKey(key) ? default : DeserializeByType<T>(jsonObject, key);
+            if (jsonObject.ContainsKey(key))
+            {
+                data = DeserializeByType<T>(jsonObject, key);
+                return true;
+            }
+
+            data = default;
+            return false;
         }
 
         private static T DeserializeByType<T>(JSON jsonObject, string key)

@@ -5779,11 +5779,11 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
           Assembly-CSharp
         m_MethodName: IncrementValue
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9007,26 +9007,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 147679373}
     m_Modifications:
     - target: {fileID: 1896801470, guid: 5e3a9de98f103bf4380074a789653c3e, type: 3}
-      propertyPath: payAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1896801470, guid: 5e3a9de98f103bf4380074a789653c3e, type: 3}
       propertyPath: floorManagerScript
       value: 
       objectReference: {fileID: 1666848541}
-    - target: {fileID: 1896801470, guid: 5e3a9de98f103bf4380074a789653c3e, type: 3}
-      propertyPath: OnCustomerLeave.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1896801470, guid: 5e3a9de98f103bf4380074a789653c3e, type: 3}
-      propertyPath: OnCustomerLeave.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79,
-        type: 2}
-    - target: {fileID: 1896801470, guid: 5e3a9de98f103bf4380074a789653c3e, type: 3}
-      propertyPath: OnCustomerLeave.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.IntObject.IntObject, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 4170874207938076804, guid: 5e3a9de98f103bf4380074a789653c3e,
         type: 3}
       propertyPath: m_Name

@@ -1,4 +1,3 @@
-using _Project.Scripts.ScriptableObjects.IntObject;
 using _Project.Scripts.ScriptableObjects.RoomType;
 using UnityEngine;
 

@@ -1,4 +1,3 @@
-using System;
 using _Project.Scripts.ScriptableObjects.IntObject;
 using UnityEngine;
 
@@ -16,15 +15,13 @@ namespace _Project.Scripts.Gameplay.Data
 
         private void LoadData()
         {
-            int loadedValue = DataManager.Load<int>(dataKey);
-
-            if (loadedValue == default)
+            if (DataManager.Load(dataKey, out int loadedValue))
             {
-                intObjectSo.ResetToInitialValue();
+                intObjectSo.SetValueTo(loadedValue);
             }
             else
             {
-                intObjectSo.SetValueTo(loadedValue);
+                intObjectSo.ResetToInitialValue();
             }
         }
 

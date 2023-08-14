@@ -78,24 +78,18 @@ namespace _Project.Scripts.Gameplay.Building
             // Add the room scripts of the rooms in the first floor to the floors list because they already exist in the scene.
             AddRoomsInFloorToFloorsList(floorsParentTransform.GetChild(0).GetChild(RoomsParentIndex));
 
-            
-            // Load the state of the slots
-            var floorSlotsList = DataManager.Load<List<FloorSlot>>(dataKey);
-
-            // If it's default, that means there are no extra floors and any room to build.
-            if (floorSlotsList == default)
+            // Load the state of the slots if there are any.
+            if (DataManager.Load<List<FloorSlot>>(dataKey, out var floorSlotsList))
             {
-                return;
-            }
-
-            // Build the floors and add them to floors list
-            BuildFloors(floorSlotsList.Count - 1);
+                // Build the floors and add them to floors list
+                BuildFloors(floorSlotsList.Count - 1);
             
-            // Then assign the loaded slots to the floors list
-            AssignSlots(floorSlotsList);
+                // Then assign the loaded slots to the floors list
+                AssignSlots(floorSlotsList);
 
-            // Finally create the game objects because they weren't stored inside the data
-            CreateSlotGameObjects();
+                // Finally create the game objects because they weren't stored inside the data
+                CreateSlotGameObjects();
+            }
         }
         
         private void AddRoomsInFloorToFloorsList(Transform roomsTransform)

@@ -75,10 +75,14 @@ namespace _Project.Scripts.Gameplay.NPC
         private void LoadFriendNpcCountDict()
         {
             GetDefaultFriendNpcCountDict();
-            
-            LoadValuesFromDeserializedDict(DataManager.Load<Dictionary<string, int>>(dataKey));
 
-            SpawnByFriendNpcCountDict();
+            // Change the values if the deserialized dictionary is loaded.
+            if (DataManager.Load(dataKey, out Dictionary<string, int> deserialized))
+            {
+                LoadValuesFromDeserializedDict(deserialized);
+
+                SpawnByFriendNpcCountDict();
+            }
         }
 
         private void GetDefaultFriendNpcCountDict()
@@ -94,15 +98,11 @@ namespace _Project.Scripts.Gameplay.NPC
         
         private void LoadValuesFromDeserializedDict(Dictionary<string, int> deserializedDict)
         {
-            // Change the values if the deserialized dictionary is not default.
-            if (deserializedDict != default)
+            foreach (var keyValuePair in deserializedDict)
             {
-                foreach (var keyValuePair in deserializedDict)
+                if (Enum.TryParse(keyValuePair.Key, out FriendNpcTypesEnum keyEnum))
                 {
-                    if (Enum.TryParse(keyValuePair.Key, out FriendNpcTypesEnum keyEnum))
-                    {
-                        friendNpcCountDict[keyEnum] = keyValuePair.Value;
-                    }
+                    friendNpcCountDict[keyEnum] = keyValuePair.Value;
                 }
             }
         }
