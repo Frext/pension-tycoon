@@ -69,6 +69,16 @@ namespace _Project.Scripts.ScriptableObjects.IntObject
         {
             SetValueTo(Value - amount);
         }
+        
+        public void IncrementValue(IntObject intObjectSo)
+        {
+            SetValueTo(Value + intObjectSo.Value);
+        }
+        
+        public void DecrementValue(IntObject intObjectSo)
+        {
+            SetValueTo(Value - intObjectSo.Value);
+        }
 
         public void ResetToInitialValue()
         {

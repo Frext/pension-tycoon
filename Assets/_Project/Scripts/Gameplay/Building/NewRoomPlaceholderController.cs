@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Project.Scripts.Gameplay.Building
 {
@@ -20,6 +21,9 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private List<MeshRenderer> childMeshRenderersList;
         
         [SerializeField] private FloorManager floorManagerScript;
+        [Space]
+        
+        [SerializeField] private UnityEvent OnCancelPlacing;
 
         private float passedTime;
 
@@ -126,9 +130,9 @@ namespace _Project.Scripts.Gameplay.Building
         
         public void CancelPlacingRoom()
         {
-            // TODO: Refund coins
+            OnCancelPlacing.Invoke();
             
-            DestroyObject();            
+            DestroyObject();
         }
 
         #endregion

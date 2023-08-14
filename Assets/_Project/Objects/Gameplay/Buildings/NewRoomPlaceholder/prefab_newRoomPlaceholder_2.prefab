@@ -159,6 +159,24 @@ MonoBehaviour:
   - {fileID: 3921400915542827800}
   - {fileID: 8689624956492531347}
   floorManagerScript: {fileID: 0}
+  OnCancelPlacing:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
+          Assembly-CSharp
+        m_MethodName: IncrementValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 388f5c504d79db04e8faff02ef39115b,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7655671223640990409
 GameObject:
   m_ObjectHideFlags: 0
