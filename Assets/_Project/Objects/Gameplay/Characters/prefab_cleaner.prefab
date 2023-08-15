@@ -115,9 +115,7 @@ MonoBehaviour:
   startPositionsList:
   - {x: -1, y: 0.25, z: 1.5}
   - {x: 2, y: 0.25, z: 1.5}
-  stayRange:
-    min: 3
-    max: 3
+  timeRangeObjectSo: {fileID: 11400000, guid: 4b04390288c105243a167e56bc2ed3c4, type: 2}
   floorManagerScript: {fileID: 0}
   extraTargetRoomTypes: 0200000001000000
   onCleanRoom:

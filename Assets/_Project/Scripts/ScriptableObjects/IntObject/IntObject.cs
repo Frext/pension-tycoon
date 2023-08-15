@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.SOEvent;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -64,20 +65,25 @@ namespace _Project.Scripts.ScriptableObjects.IntObject
         {
             SetValueTo(Value + amount);
         }
+        
+        public void IncrementValue(IntObject intObjectSo)
+        {
+            SetValueTo(Value + intObjectSo.Value);
+        }
 
         public void DecrementValue(int amount = 1)
         {
             SetValueTo(Value - amount);
         }
         
-        public void IncrementValue(IntObject intObjectSo)
-        {
-            SetValueTo(Value + intObjectSo.Value);
-        }
-        
         public void DecrementValue(IntObject intObjectSo)
         {
             SetValueTo(Value - intObjectSo.Value);
+        }
+        
+        public void DecrementValue(TextMeshProUGUI intText)
+        {
+            SetValueTo(Value - int.Parse(intText.text));
         }
 
         public void ResetToInitialValue()
@@ -85,9 +91,9 @@ namespace _Project.Scripts.ScriptableObjects.IntObject
             SetValueTo(initialValue);
         }
         
-        public int GetMaxValue()
+        public float GetRatio()
         {
-            return max;
+            return (float)Value / max;
         }
     }
 }

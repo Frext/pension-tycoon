@@ -115,9 +115,7 @@ MonoBehaviour:
   startPositionsList:
   - {x: -0.5, y: 0.25, z: 1.5}
   - {x: 1.5, y: 0.25, z: 1.5}
-  stayRange:
-    min: 5
-    max: 5
+  timeRangeObjectSo: {fileID: 11400000, guid: 26cc6998d0494904b8bef236a5bc35fb, type: 2}
   floorManagerScript: {fileID: 0}
   onCookFood:
     m_PersistentCalls:

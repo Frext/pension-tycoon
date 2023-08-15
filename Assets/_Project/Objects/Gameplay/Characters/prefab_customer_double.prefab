@@ -148,9 +148,7 @@ MonoBehaviour:
   startPositionsList:
   - {x: -3.6, y: 0.25, z: -1.75}
   - {x: 3.6, y: 0.25, z: -1.75}
-  stayRange:
-    min: 5
-    max: 5
+  timeRangeObjectSo: {fileID: 11400000, guid: c52a1ad8e35b6e34486c37b3e4123ed0, type: 2}
   floorManagerScript: {fileID: 0}
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
   OnCustomerLeave:

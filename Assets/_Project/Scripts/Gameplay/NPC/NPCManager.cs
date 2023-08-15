@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Data;
 using _Project.Scripts.ScriptableObjects.IntObject;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
+using _Project.Scripts.ScriptableObjects.TimeRangeObject;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -38,7 +39,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private List<SpawnableObject> enemySpawnableObjects;
         [Space]
         [SerializeField] private IntObject dayCountSo;
-        [SerializeField] private FloatRange timeBetweenEachSpawn;
+        [SerializeField] private TimeRangeObject.FloatRange timeBetweenEachSpawn;
         [Space]
         
         [Header("Friend Spawnable Objects")]

@@ -2,23 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
+using _Project.Scripts.ScriptableObjects.TimeRangeObject;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
-    [Serializable]
-    public class FloatRange
-    {
-        public float min;
-        public float max;
-
-        public float Randomize()
-        {
-            return Random.Range(min, max);
-        }
-    }
-    
     public abstract class Npc : MonoBehaviour
     {
         [Serializable]
@@ -44,7 +33,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
         
-        [SerializeField] protected FloatRange stayRange;
+        [SerializeField] protected TimeRangeObject timeRangeObjectSo;
         [Space]
         
         [SerializeField] protected FloorManager floorManagerScript;
@@ -177,7 +166,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             return new WayPoint {
                 position = roomPosition + characterOffset,
-                waitTime = stayRange.Randomize(),
+                waitTime = timeRangeObjectSo.GetRandomTime(),
                 OnLeaveDestination = OnLeaveDestination
             };
         }

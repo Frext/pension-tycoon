@@ -31,7 +31,7 @@ namespace _Project.Scripts.UI
 
         void UpdateImage()
         {
-            image.fillAmount = (float)pensionRatingIntObjectSo.Value / pensionRatingIntObjectSo.GetMaxValue();
+            image.fillAmount = pensionRatingIntObjectSo.GetRatio();
         }
     }
 }
