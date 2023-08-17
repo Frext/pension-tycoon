@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3076466fcd2db04c9919eec726e2024, type: 3}
-  m_Name: int_currentLevelCleaner
+  m_Name: int_currentLevel_gameTechnician
   m_EditorClassIdentifier: 
-  OnChangeValue: {fileID: 11400000, guid: 970e95ed70639614eb9c8cc77e8c0ebc, type: 2}
+  OnChangeValue: {fileID: 11400000, guid: 6c1654ca0fb9d534f9b0131fb83978df, type: 2}
   specialConditions: []
   min: 0
   max: 4

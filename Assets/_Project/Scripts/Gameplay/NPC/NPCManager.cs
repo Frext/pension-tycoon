@@ -45,6 +45,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header("Friend Spawnable Objects")]
         [SerializeField] private GameObject cleanerPrefab;
         [SerializeField] private GameObject cookPrefab;
+        [SerializeField] private GameObject gameTechnicianPrefab;
 
         [Header("Events")] 
         [SerializeField] private SoEventGameObject OnCustomerLeave;
@@ -58,7 +59,8 @@ namespace _Project.Scripts.Gameplay.NPC
         private enum FriendNpcTypesEnum
         {
             Cook,
-            Cleaner
+            Cleaner,
+            GameTechnician
         }
         private readonly Dictionary<FriendNpcTypesEnum, int> friendNpcCountDict = new();
         
@@ -183,6 +185,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
         public void SpawnCook() => SpawnFriendCharacter(FriendNpcTypesEnum.Cook);
         public void SpawnCleaner() => SpawnFriendCharacter(FriendNpcTypesEnum.Cleaner);
+        public void SpawnGameTechnician() => SpawnFriendCharacter(FriendNpcTypesEnum.GameTechnician);
 
         private void SpawnFriendCharacter(FriendNpcTypesEnum characterType, bool incrementInDictionary = true)
         {
@@ -200,6 +203,7 @@ namespace _Project.Scripts.Gameplay.NPC
             {
                 FriendNpcTypesEnum.Cleaner => cleanerPrefab,
                 FriendNpcTypesEnum.Cook => cookPrefab,
+                FriendNpcTypesEnum.GameTechnician => gameTechnicianPrefab,
                 _ => null
             };
         }

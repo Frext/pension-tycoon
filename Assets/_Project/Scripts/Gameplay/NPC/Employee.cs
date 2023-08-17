@@ -5,20 +5,25 @@ using UnityEngine.Events;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
-    public class Cleaner : Npc
+    public class Employee : Npc
     {
         [Space]
-        [Header(nameof(Cleaner) + " Properties")]
+        [Header(nameof(Employee) + " Properties")]
         [Space]
         [SerializeField] private List<Room.RoomTypeEnum> extraTargetRoomTypes;
         [Space]
-        [SerializeField] private UnityEvent onCleanRoom;
+        [SerializeField] private float searchInterval = .6f;
+        [Space]
+        [SerializeField] private UnityEvent onMakeRoomUsable;
 
+        
         protected override void OnEnable()
         {
             base.OnEnable();
-            
-            StartCoroutine(SearchForTargetRoomsForever(extraTargetRoomTypes, .6f));
+
+            StartCoroutine(extraTargetRoomTypes.Count > 0
+                ? SearchForTargetRoomsForever(extraTargetRoomTypes, searchInterval)
+                : SearchForTargetRoomsForever(null, searchInterval));
         }
         
         protected override void AddWayPoints()
@@ -35,14 +40,14 @@ namespace _Project.Scripts.Gameplay.NPC
             base.LeaveSelectedRoom();
             
             floorManagerScript.MakeRoomUsable(selectedRoom);
-            CleanRoom();
+            InvokeOnMakeRoomUsable();
 
             isNpcMoving = false;
         }
 
-        private void CleanRoom()
+        private void InvokeOnMakeRoomUsable()
         {
-            onCleanRoom.Invoke();
+            onMakeRoomUsable.Invoke();
         }
     }
 }

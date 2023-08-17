@@ -27,6 +27,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
         Room extraRoom;
         
+        const int NoOfWayPointsIfSuccessful = 3;
         
         protected override void OnEnable()
         {
@@ -46,6 +47,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 waitTime = 2f,
                 OnReachDestination = InsertSelectedRoomToWayPoints
             });
+            
             wayPointsList.Add(new WayPoint
             {
                 position = GetRandomStartPoint(),
@@ -108,7 +110,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
         public void PayRoom(IntObject coinCountSo)
         {
-            if (wayPointsList.Count < 3)
+            if (wayPointsList.Count < NoOfWayPointsIfSuccessful)
             {
                 return;
             }
