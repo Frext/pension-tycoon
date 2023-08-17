@@ -105,8 +105,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   textMesh: {fileID: 7508967590395660322}
-  OnChangeDay: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
+  OnChangeDay: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
   showAfterLevel: 0
 --- !u!1 &3693529170666799879
 GameObject:
@@ -766,7 +766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7139838612941762557
 RectTransform:
   m_ObjectHideFlags: 0

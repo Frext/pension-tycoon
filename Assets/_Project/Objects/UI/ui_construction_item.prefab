@@ -628,8 +628,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   textMesh: {fileID: 4041394995908955568}
-  OnChangeDay: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
+  OnChangeDay: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
   showAfterLevel: 0
 --- !u!1 &8517801701559271537
 GameObject:

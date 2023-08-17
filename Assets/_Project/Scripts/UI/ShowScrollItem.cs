@@ -13,10 +13,10 @@ namespace _Project.Scripts.UI
         [Space] 
         [SerializeField] private TextMeshProUGUI textMesh;
         
-        [SerializeField] private SoEvent OnChangeDay;
         [SerializeField] private IntObject dayCountSo;
+        [SerializeField] private SoEvent OnChangeDay;
         
-        [Tooltip("Inclusive")] [Range(0, 100)] [SerializeField] private int showAfterLevel;
+        [Tooltip("Inclusive")] [Range(0, 25)] [SerializeField] private int showAfterLevel;
 
         void Awake()
         {

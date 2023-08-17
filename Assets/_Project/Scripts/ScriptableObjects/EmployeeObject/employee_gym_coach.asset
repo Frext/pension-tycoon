@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c9893120e558e40b0793c9735b546a, type: 3}
+  m_Name: employee_gym_coach
+  m_EditorClassIdentifier: 
+  levelsList:
+  - purchaseAmount: 20
+    upgradeAmount: 50
+    makeRoomUsableTimeRange:
+      min: 5
+      max: 6
+  - purchaseAmount: 40
+    upgradeAmount: 75
+    makeRoomUsableTimeRange:
+      min: 4
+      max: 5
+  - purchaseAmount: 60
+    upgradeAmount: 100
+    makeRoomUsableTimeRange:
+      min: 3
+      max: 5
+  - purchaseAmount: 80
+    upgradeAmount: 125
+    makeRoomUsableTimeRange:
+      min: 3
+      max: 4
+  - purchaseAmount: 100
+    upgradeAmount: 150
+    makeRoomUsableTimeRange:
+      min: 1
+      max: 2
+  currentLevelIndex: {fileID: 11400000, guid: ea0062c7a8043874899523a89ed457e4, type: 2}
+  timeRangeObjectSo: {fileID: 11400000, guid: 0e70ab37ad51c2b4e865ae2bd91388a2, type: 2}

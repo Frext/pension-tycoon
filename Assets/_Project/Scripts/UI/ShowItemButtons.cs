@@ -27,8 +27,6 @@ namespace _Project.Scripts.UI
         [Space]
         
         [SerializeField] private List<ScrollElement> scrollElementsList;
-        [Space] 
-        [SerializeField] private GameObject panelObject;
         
         void Awake()
         {
@@ -37,10 +35,7 @@ namespace _Project.Scripts.UI
         
         void UpdateButtonStatesAfterDelay()
         {
-            if (panelObject.activeInHierarchy)
-            {
-                StartCoroutine(IUpdateButtons(updateDelay));
-            }
+            StartCoroutine(IUpdateButtons(updateDelay));
         }
         
         private IEnumerator IUpdateButtons(float time = 0f)
