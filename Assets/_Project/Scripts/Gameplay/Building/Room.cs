@@ -15,6 +15,8 @@ namespace _Project.Scripts.Gameplay.Building
             CustomerDouble,
             Dining,
             Bathroom,
+            Arcade,
+            Gym,
             Reception
         }
         

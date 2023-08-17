@@ -31,6 +31,7 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private GameObject customerDoubleRoomPrefab;
         [SerializeField] private GameObject bathroomPrefab;
         [SerializeField] private GameObject diningRoomPrefab;
+        [SerializeField] private GameObject arcadePrefab;
         
         [Header("Floor Positioning")] 
         [SerializeField] private Transform floorsParentTransform;
@@ -384,6 +385,7 @@ namespace _Project.Scripts.Gameplay.Building
                 CustomerDouble => customerDoubleRoomPrefab,
                 Bathroom => bathroomPrefab,
                 Dining => diningRoomPrefab,
+                Arcade => arcadePrefab,
                 _ => null
             };
         }

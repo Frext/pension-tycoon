@@ -13,6 +13,8 @@ namespace _Project.Scripts.ScriptableObjects.RoomType
         public void SetSelectedRoomTypeToBathroom() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Bathroom);
         public void SetSelectedRoomTypeToDiningRoom() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Dining);
         
+        public void SetSelectedRoomTypeToArcade() => SetSelectedRoomTypeTo(Room.RoomTypeEnum.Arcade);
+        
         public void SetSelectedRoomTypeTo(Room.RoomTypeEnum roomType)
         {
             SelectedRoomType = roomType;

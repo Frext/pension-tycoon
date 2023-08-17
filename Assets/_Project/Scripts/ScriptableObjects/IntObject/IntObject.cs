@@ -61,6 +61,11 @@ namespace _Project.Scripts.ScriptableObjects.IntObject
             }
         }
         
+        public void SetValueTo(TextMeshProUGUI intText)
+        {
+            SetValueTo(int.Parse(intText.text));
+        }
+        
         public void IncrementValue(int amount = 1)
         {
             SetValueTo(Value + amount);
