@@ -33,7 +33,7 @@ namespace _Project.Scripts.UI
       
       private void UpdateUI()
       {
-         // If the update progress is at max, don't let the user press it again.
+         // If the update progress is at max, don't let the user press it again by making it not interactable.
          if (Mathf.Approximately(upgradeImage.fillAmount, 1f))
          {
             upgradeButton.interactable = false;

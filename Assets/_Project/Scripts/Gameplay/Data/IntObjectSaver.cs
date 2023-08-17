@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.IntObject;
 using UnityEngine;
 
@@ -5,8 +7,14 @@ namespace _Project.Scripts.Gameplay.Data
 {
     public class IntObjectSaver : MonoBehaviour
     {
-        [SerializeField] private IntObject intObjectSo;
-        [SerializeField] private string dataKey;
+        [Serializable]
+        public class IntData
+        {
+            public IntObject intObjectSo;
+            public string dataKey;
+        }
+        
+        [SerializeField] private List<IntData> intDataList;
 
         void Awake()
         {
@@ -15,13 +23,16 @@ namespace _Project.Scripts.Gameplay.Data
 
         private void LoadData()
         {
-            if (DataManager.Load(dataKey, out int loadedValue))
+            foreach (var intData in intDataList)
             {
-                intObjectSo.SetValueTo(loadedValue);
-            }
-            else
-            {
-                intObjectSo.ResetToInitialValue();
+                if (DataManager.Load(intData.dataKey, out int loadedValue))
+                {
+                    intData.intObjectSo.SetValueTo(loadedValue);
+                }
+                else
+                {
+                    intData.intObjectSo.ResetToInitialValue();
+                }
             }
         }
 
@@ -32,7 +43,10 @@ namespace _Project.Scripts.Gameplay.Data
         
         private void SaveData()
         {
-            DataManager.Save(dataKey, intObjectSo.Value);
+            foreach (var intData in intDataList)
+            {
+                DataManager.Save(intData.dataKey, intData.intObjectSo.Value);
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.EmployeeObject;
 using UnityEngine;
 
@@ -5,11 +6,14 @@ namespace _Project.Scripts.Gameplay.Data
 {
     public class EmployeeTimeLoader : MonoBehaviour
     {
-        [SerializeField] private EmployeeObject employeeObjectSo;
+        [SerializeField] private List<EmployeeObject> employeeObjectSoList;
 
         void Start()
         {
-            employeeObjectSo.UpdateTimeRange();
+            foreach (var employeeObjectSo in employeeObjectSoList)
+            {
+                employeeObjectSo.UpdateTimeRange();
+            }
         }
     }
 }

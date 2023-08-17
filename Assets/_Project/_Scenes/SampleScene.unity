@@ -1483,7 +1483,6 @@ GameObject:
   m_Component:
   - component: {fileID: 612552978}
   - component: {fileID: 612552980}
-  - component: {fileID: 612552979}
   m_Layer: 0
   m_Name: EmployeeTimeLoader
   m_TagString: Untagged
@@ -1506,19 +1505,6 @@ Transform:
   m_Father: {fileID: 9545081}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &612552979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612552977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a8fadd8c00360949b3f02e00509ced1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  employeeObjectSo: {fileID: 11400000, guid: cc5e23ecf71905947a9fbb11cdf5a1a3, type: 2}
 --- !u!114 &612552980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,7 +1517,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8fadd8c00360949b3f02e00509ced1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  employeeObjectSo: {fileID: 11400000, guid: 8a58f28b66630334e96b02a96cd97b86, type: 2}
+  employeeObjectSoList:
+  - {fileID: 11400000, guid: 8a58f28b66630334e96b02a96cd97b86, type: 2}
+  - {fileID: 11400000, guid: cc5e23ecf71905947a9fbb11cdf5a1a3, type: 2}
 --- !u!1 &613314587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +1966,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_Name
-      value: ui_construction_item
+      value: DoubleCustomerRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -2068,7 +2056,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 161.91635
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -2807,7 +2795,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_Name
-      value: ui_construction_item
+      value: Bathroom
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -2897,7 +2885,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 91.91635
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -5631,7 +5619,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_Name
-      value: ui_construction_item
+      value: DiningRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -5721,7 +5709,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 21.916351
+      value: -120
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -5772,9 +5760,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1504264521}
-  - component: {fileID: 1504264523}
-  - component: {fileID: 1504264524}
-  - component: {fileID: 1504264525}
   - component: {fileID: 1504264526}
   m_Layer: 0
   m_Name: IntObjectSaver
@@ -5798,48 +5783,6 @@ Transform:
   m_Father: {fileID: 9545081}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1504264523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504264520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae18e9b9014afe47af76a8566445b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intObjectSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
-  dataKey: dayCount
---- !u!114 &1504264524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504264520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae18e9b9014afe47af76a8566445b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intObjectSo: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79, type: 2}
-  dataKey: coinAmount
---- !u!114 &1504264525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504264520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae18e9b9014afe47af76a8566445b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intObjectSo: {fileID: 11400000, guid: 73c6407350069094cb1e8dfa89dcb464, type: 2}
-  dataKey: currentLevelCleaner
 --- !u!114 &1504264526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5852,8 +5795,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae18e9b9014afe47af76a8566445b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intObjectSo: {fileID: 11400000, guid: f5cb759120a135641983c69fcf422692, type: 2}
-  dataKey: currentLevelCook
+  intDataList:
+  - intObjectSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
+    dataKey: dayCount
+  - intObjectSo: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79, type: 2}
+    dataKey: coinAmount
+  - intObjectSo: {fileID: 11400000, guid: 73c6407350069094cb1e8dfa89dcb464, type: 2}
+    dataKey: currentLevelCleaner
+  - intObjectSo: {fileID: 11400000, guid: f5cb759120a135641983c69fcf422692, type: 2}
+    dataKey: currentLevelCook
 --- !u!1 &1512807731
 GameObject:
   m_ObjectHideFlags: 0
@@ -6794,11 +6744,11 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
           Assembly-CSharp
         m_MethodName: DecrementValue
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6962,7 +6912,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_Name
-      value: ui_construction_item
+      value: NewFloor
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -7052,7 +7002,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -230
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -9503,7 +9453,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_Name
-      value: ui_construction_item
+      value: SingleCustomerRoom
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -9593,7 +9543,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 231.91638
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -9616,6 +9566,16 @@ PrefabInstance:
       value: 'Single Customer Room
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517801701559271539, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517801701559271539, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a, type: 3}
