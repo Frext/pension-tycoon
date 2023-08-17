@@ -19,7 +19,15 @@ namespace _Project.Scripts.Gameplay.Building
 
         private void InstantiatePlaceholder(GameObject prefab)
         {
-            GameObject go = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+            GameObject go = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
+        }
+
+        public void CancelAllRoomPlacing()
+        {
+            for (int index = 0; index < transform.childCount; index++)
+            {
+                transform.GetChild(index).GetComponent<NewRoomPlaceholderController>().CancelPlacingRoom();
+            }
         }
     }
 }

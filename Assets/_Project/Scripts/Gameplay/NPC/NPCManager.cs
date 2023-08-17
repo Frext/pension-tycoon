@@ -31,6 +31,7 @@ namespace _Project.Scripts.Gameplay.NPC
         public class SpawnableObject
         {
             public GameObject prefab;
+            public int firstLevel;
             public int initialValue;
             public int incrementAmount;
             public int incrementEveryRoundOf;
@@ -141,19 +142,24 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             enemyWaveList.Clear();
 
-            int waveCount = dayCountSo.Value - 1;
+            int waveCount = dayCountSo.Value;
 
             foreach (var spawnableObject in enemySpawnableObjects)
             {
+                if (waveCount < spawnableObject.firstLevel)
+                {
+                    continue;
+                }
+                
                 for (int count = 0;
                      count < spawnableObject.initialValue +
-                     waveCount / spawnableObject.incrementEveryRoundOf * spawnableObject.incrementAmount;
+                     (waveCount - 1) / spawnableObject.incrementEveryRoundOf * spawnableObject.incrementAmount;
                      count++)
                 {
                     enemyWaveList.Add(InstantiateObject(spawnableObject.prefab));
                 }
             }
-
+            
             lastSpawnedEnemyWaveSize = enemyWaveList.Count;
             StartCoroutine(IEnableEveryEnemyWaveObject());
         }
@@ -169,8 +175,11 @@ namespace _Project.Scripts.Gameplay.NPC
             
             int i = 0;
             
+            
+            
             while (GetCurrentEnemyWaveSize() > 0)
             {
+                
                 enemyWaveList[Mathf.Clamp(i, 0, GetCurrentEnemyWaveSize() - 1)].SetActive(true);
                 i++;
                 
