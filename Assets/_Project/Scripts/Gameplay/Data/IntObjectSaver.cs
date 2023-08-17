@@ -48,5 +48,21 @@ namespace _Project.Scripts.Gameplay.Data
                 DataManager.Save(intData.dataKey, intData.intObjectSo.Value);
             }
         }
+        
+        #region Public Methods
+        
+        public void SaveDataOf(IntObject intObjectSo)
+        {
+            foreach (var intData in intDataList)
+            {
+                if (intData.intObjectSo == intObjectSo)
+                {
+                    DataManager.Save(intData.dataKey, intData.intObjectSo.Value);
+                    return;
+                }
+            }
+        }
+        
+        #endregion
     }
 }

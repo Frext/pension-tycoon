@@ -5947,6 +5947,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1504264521}
   - component: {fileID: 1504264526}
+  - component: {fileID: 1504264527}
+  - component: {fileID: 1504264528}
+  - component: {fileID: 1504264529}
   m_Layer: 0
   m_Name: IntObjectSaver
   m_TagString: Untagged
@@ -5984,8 +5987,6 @@ MonoBehaviour:
   intDataList:
   - intObjectSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
     dataKey: dayCount
-  - intObjectSo: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79, type: 2}
-    dataKey: coinAmount
   - intObjectSo: {fileID: 11400000, guid: 73c6407350069094cb1e8dfa89dcb464, type: 2}
     dataKey: currentLevelCleaner
   - intObjectSo: {fileID: 11400000, guid: f5cb759120a135641983c69fcf422692, type: 2}
@@ -5994,6 +5995,81 @@ MonoBehaviour:
     dataKey: currentLevelGameTechnician
   - intObjectSo: {fileID: 11400000, guid: ea0062c7a8043874899523a89ed457e4, type: 2}
     dataKey: currentLevelGymCoach
+--- !u!114 &1504264527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504264520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a8972bed3171144b3a1c2bb5df7ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinAmountData:
+    intObjectSo: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79, type: 2}
+    dataKey: coinAmount
+  isWaveStartedBoolObjectSo: {fileID: 11400000, guid: 2157bf9e042ccbf49aacf52e485cdd42,
+    type: 2}
+--- !u!114 &1504264528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504264520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1504264527}
+        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.Data.CoinAmountSaver,
+          Assembly-CSharp
+        m_MethodName: SaveCoinAmount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1504264529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504264520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: f5516524a8ef58d469e30e3257cdcbd7, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1504264527}
+        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.Data.CoinAmountSaver,
+          Assembly-CSharp
+        m_MethodName: LoadCoinAmount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1512807731
 GameObject:
   m_ObjectHideFlags: 0
@@ -6121,6 +6197,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f5516524a8ef58d469e30e3257cdcbd7, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SoEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnEnemyWaveDecreased:
     m_PersistentCalls:
       m_Calls:
@@ -6201,6 +6290,19 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2157bf9e042ccbf49aacf52e485cdd42, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.BoolObject.BoolObject,
+          Assembly-CSharp
+        m_MethodName: SetTo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   dataKey: friendNpcCountDict
 --- !u!1 &1513462214
@@ -9234,6 +9336,19 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 2157bf9e042ccbf49aacf52e485cdd42, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.BoolObject.BoolObject,
+          Assembly-CSharp
+        m_MethodName: SetTo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1763550858}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
