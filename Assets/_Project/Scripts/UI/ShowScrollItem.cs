@@ -1,5 +1,4 @@
 using _Project.Scripts.ScriptableObjects.IntObject;
-using _Project.Scripts.ScriptableObjects.SOEvent;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,7 +14,7 @@ namespace _Project.Scripts.UI
         
         [SerializeField] private IntObject dayCountSo;
         
-        [Tooltip("Inclusive")] [Range(0, 25)] [SerializeField] private int showAfterLevel;
+        [Tooltip("Inclusive")] [Range(0, 20)] [SerializeField] private int showAfterLevel;
         
         void Start()
         {

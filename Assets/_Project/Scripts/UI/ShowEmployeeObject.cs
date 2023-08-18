@@ -1,5 +1,4 @@
 using _Project.Scripts.ScriptableObjects.EmployeeObject;
-using _Project.Scripts.ScriptableObjects.SOEvent;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

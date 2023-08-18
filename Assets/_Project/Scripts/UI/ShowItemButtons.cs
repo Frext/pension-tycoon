@@ -44,10 +44,13 @@ namespace _Project.Scripts.UI
             
             foreach (var scrollElement in scrollElementsList)
             {
-                // If it's a number, enable or disable the button.
-                if (int.TryParse(scrollElement.priceText.text, out int amount))
+                if (scrollElement.button.enabled)
                 {
-                    scrollElement.button.interactable = amount <= coinAmountSo.Value;
+                    // If it's a number, enable or disable the button.
+                    if (int.TryParse(scrollElement.priceText.text, out int amount))
+                    {
+                        scrollElement.button.interactable = amount <= coinAmountSo.Value;
+                    }
                 }
             }
         }

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Data;
 using _Project.Scripts.ScriptableObjects.RoomType;
-using _Project.Scripts.ScriptableObjects.SOEvent;
 using _Project.Scripts.ScriptableObjects.SoEventRoom;
 using UnityEngine;
 using UnityEngine.Events;

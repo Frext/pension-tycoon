@@ -15,5 +15,5 @@ MonoBehaviour:
   OnChangeValue: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
   specialConditions: []
   min: 1
-  max: 100
+  max: 20
   initialValue: 1
