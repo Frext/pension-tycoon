@@ -44,10 +44,7 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private Vector3 roofBasePosition;
         [SerializeField] private Vector3 roofOffsetPerFloor;
 
-        [Header("Events")] 
-        [SerializeField] private SoEvent OnAppendFloor;
-        [SerializeField] private SoEvent OnHideSlotUI;
-        [SerializeField] private SoEvent OnShowRemoveSigns;
+        [Header("Events")]
         [SerializeField] private SoEventRoom OnRemoveRoom;
         [Space] 
         [SerializeField] private UnityEvent OnDecrementPensionRating;
@@ -71,6 +68,11 @@ namespace _Project.Scripts.Gameplay.Building
             LoadRooms();
             
             RegisterEvents();
+        }
+
+        private void RegisterEvents()
+        {
+            OnRemoveRoom.RegisterToEvent(RemoveRoom);
         }
 
         private void LoadRooms()
@@ -115,7 +117,7 @@ namespace _Project.Scripts.Gameplay.Building
             }
         }
         
-        private void AppendFloor()
+        public void AppendFloor()
         {
             GameObject instantiatedFloor = Instantiate(floorPrefab,
                 floorBasePosition + floorOffsetPerFloor * FloorCount,
@@ -170,15 +172,7 @@ namespace _Project.Scripts.Gameplay.Building
             }
         }
         
-        private void RegisterEvents()
-        {
-            OnAppendFloor.RegisterToEvent(AppendFloor);
-            OnShowRemoveSigns.RegisterToEvent(ShowAllRemoveSigns);
-            OnHideSlotUI.RegisterToEvent(HideAllSlots);
-            OnRemoveRoom.RegisterToEvent(RemoveRoom);
-        }
-        
-        private void ShowAllRemoveSigns()
+        public void ShowAllRemoveSigns()
         {
             for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
             {
@@ -211,7 +205,7 @@ namespace _Project.Scripts.Gameplay.Building
             return room.slot.roomType != None;
         }
         
-        private void HideAllSlots()
+        public void HideAllSlots()
         {
             foreach (Floor floor in floorsList)
             {
@@ -325,9 +319,6 @@ namespace _Project.Scripts.Gameplay.Building
 
         private void DeregisterEvents()
         {
-            OnAppendFloor.DeregisterFromEvent(AppendFloor);
-            OnShowRemoveSigns.DeregisterFromEvent(ShowAllRemoveSigns);
-            OnHideSlotUI.DeregisterFromEvent(HideAllSlots);
             OnRemoveRoom.DeregisterFromEvent(RemoveRoom);
         }
         

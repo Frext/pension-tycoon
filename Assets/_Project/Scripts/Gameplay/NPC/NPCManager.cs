@@ -51,6 +51,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
         [Header("Events")] 
         [SerializeField] private SoEventGameObject OnCustomerLeave;
+        [Space]
         [SerializeField] private UnityEvent OnEnemyWaveRestart;
         [SerializeField] private UnityEvent OnEnemyWaveDecreased;
         [SerializeField] private UnityEvent OnEnemyWaveFinished;

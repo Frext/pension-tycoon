@@ -12,26 +12,19 @@ namespace _Project.Scripts.UI
       [SerializeField] private EmployeeObject employeeObject;
       [SerializeField] private string maxText = "Max";
 
-      [SerializeField] private SoEvent OnChangeLevel;
-
       [Header("UI Elements")] 
       [SerializeField] private TextMeshProUGUI purchaseText;
       [SerializeField] private Button upgradeButton;
       [SerializeField] private TextMeshProUGUI upgradeText;
       [SerializeField] private Image upgradeImage;
-
       
-      void Awake()
-      {
-         OnChangeLevel.RegisterToEvent(UpdateUI);
-      }
 
       void Start()
       {
          UpdateUI();
       }
       
-      private void UpdateUI()
+      public void UpdateUI()
       {
          // If the update progress is at max, don't let the user press it again by making it not interactable.
          if (Mathf.Approximately(upgradeImage.fillAmount, 1f))
@@ -46,11 +39,6 @@ namespace _Project.Scripts.UI
          purchaseText.text = currentLevel.purchaseAmount.ToString();
          upgradeText.text = currentLevel.upgradeAmount.ToString();
          upgradeImage.fillAmount = employeeObject.GetUpdateProgressRatio();
-      }
-
-      void OnDestroy()
-      {
-         OnChangeLevel.DeregisterFromEvent(UpdateUI);
       }
    }
 }

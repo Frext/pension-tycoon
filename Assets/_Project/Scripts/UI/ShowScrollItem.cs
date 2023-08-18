@@ -14,25 +14,9 @@ namespace _Project.Scripts.UI
         [SerializeField] private TextMeshProUGUI textMesh;
         
         [SerializeField] private IntObject dayCountSo;
-        [SerializeField] private SoEvent OnChangeDay;
         
         [Tooltip("Inclusive")] [Range(0, 25)] [SerializeField] private int showAfterLevel;
-
-        void Awake()
-        {
-            OnChangeDay.RegisterToEvent(UpdateVisibility);
-        }
         
-        private void UpdateVisibility()
-        {
-            if (dayCountSo.Value >= showAfterLevel)
-            {
-                OnTurnOn.Invoke();
-            } else {
-                OnTurnOff.Invoke();
-            }
-        }
-
         void Start()
         {
             UpdateVisibility();
@@ -40,9 +24,14 @@ namespace _Project.Scripts.UI
             textMesh.text += showAfterLevel.ToString();
         }
         
-        private void OnDestroy()
+        public void UpdateVisibility()
         {
-            OnChangeDay.DeregisterFromEvent(UpdateVisibility);
+            if (dayCountSo.Value >= showAfterLevel)
+            {
+                OnTurnOn.Invoke();
+            } else {
+                OnTurnOff.Invoke();
+            }
         }
     }
 }

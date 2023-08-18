@@ -11,25 +11,13 @@ namespace _Project.Scripts.UI
         [Space]
         
         [SerializeField] private IntObject pensionRatingIntObjectSo;
-        
-        [SerializeField] private SoEvent OnChangePensionRating;
-
-        void Awake()
-        {
-            OnChangePensionRating.RegisterToEvent(UpdateImage);
-        }
 
         void Start()
         {
             UpdateImage();
         }
 
-        void OnDestroy()
-        {
-            OnChangePensionRating.DeregisterFromEvent(UpdateImage);
-        }
-
-        void UpdateImage()
+        public void UpdateImage()
         {
             image.fillAmount = pensionRatingIntObjectSo.GetRatio();
         }

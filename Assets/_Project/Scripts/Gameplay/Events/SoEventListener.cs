@@ -1,4 +1,3 @@
-using System;
 using _Project.Scripts.ScriptableObjects.SOEvent;
 using UnityEngine;
 using UnityEngine.Events;
