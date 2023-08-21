@@ -7103,7 +7103,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1666848541}
         m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.Building.FloorManager,
           Assembly-CSharp
-        m_MethodName: HideAllSlots
+        m_MethodName: HideAllRemoveSlotsButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

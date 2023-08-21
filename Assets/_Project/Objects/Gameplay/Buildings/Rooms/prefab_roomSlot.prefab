@@ -52,60 +52,8 @@ MonoBehaviour:
     roomObject: {fileID: 0}
   removeRoomWidth1Button: {fileID: 6700683739606483014}
   removeRoomWidth2Button: {fileID: 6403544917288933303}
-  OnOccupied:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnNotOccupied:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  makeRoomUsableWidth1Button: {fileID: 1632428369897758738}
+  makeRoomUsableWidth2Button: {fileID: 4958745147366479242}
 --- !u!1001 &3792165589491496043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,6 +61,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1324427239650965420}
     m_Modifications:
+    - target: {fileID: 1070825111899752566, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5255450450470155585}
+    - target: {fileID: 2452199513593418873, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298004583682896509, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_Pivot.x
@@ -223,11 +181,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 5255450450470155585}
-    - target: {fileID: 4582618517337812140, guid: 3093f210ae6d1534c9914d479f6dce81,
+    - target: {fileID: 4208032940484838630, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5255450450470155585}
     - target: {fileID: 5542438871921776591, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -238,11 +196,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: canvas_roomSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7520420798371378221, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817559214810358748, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102392390513402337, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3093f210ae6d1534c9914d479f6dce81, type: 3}
+--- !u!1 &1632428369897758738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2452199513593418873, guid: 3093f210ae6d1534c9914d479f6dce81,
+    type: 3}
+  m_PrefabInstance: {fileID: 3792165589491496043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1829771185921902102 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3298004583682896509, guid: 3093f210ae6d1534c9914d479f6dce81,
+    type: 3}
+  m_PrefabInstance: {fileID: 3792165589491496043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4958745147366479242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8102392390513402337, guid: 3093f210ae6d1534c9914d479f6dce81,
     type: 3}
   m_PrefabInstance: {fileID: 3792165589491496043}
   m_PrefabAsset: {fileID: 0}

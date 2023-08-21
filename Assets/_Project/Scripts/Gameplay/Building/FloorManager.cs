@@ -21,7 +21,7 @@ namespace _Project.Scripts.Gameplay.Building
         [Serializable]
         public class FloorSlot
         {
-            public List<Slot> slotsList = new();
+            public List<RoomSlot> slotsList = new();
         }
         
         [Header("Building Parts Prefabs")]
@@ -204,7 +204,7 @@ namespace _Project.Scripts.Gameplay.Building
             return room.slot.roomType != None;
         }
         
-        public void HideAllSlots()
+        public void HideAllRemoveSlotsButtons()
         {
             foreach (Floor floor in floorsList)
             {
@@ -213,6 +213,18 @@ namespace _Project.Scripts.Gameplay.Building
                     room.SetRemoveRoomWidth1Button(false);
                     room.SetRemoveRoomWidth2Button(false);
                 }
+            }
+        }
+        
+        private void SetMakeRoomUsableButton(Room room, bool activeState)
+        {
+            if (GetRoomWidth(room.slot.roomType) == 2)
+            {
+                room.SetMakeUsableWidth2Button(activeState);
+            }
+            else
+            {
+                room.SetMakeUsableWidth1Button(activeState);
             }
         }
         
@@ -251,25 +263,28 @@ namespace _Project.Scripts.Gameplay.Building
             Room room = floorsList[index.y].roomsList[index.x];
             
             // If it's a 2-wide room is getting created or removed, set the next room slot too before changing the type.
-            if ((GetRoomWidth(room.slot.roomType) == 2 || GetRoomWidth(roomType) == 2)
-                && IsIndexValid(new Vector2Int(index.x + 1, index.y)))
+            if (GetRoomWidth(room.slot.roomType) == 2 || GetRoomWidth(roomType) == 2)
             {
                 SetSingleSlot(floorsList[index.y].roomsList[index.x + 1], roomType, isOccupied, isUsable);
             }
             
             SetSingleSlot(room, roomType, isOccupied, isUsable);
+            
+            SetMakeRoomUsableButton(room, !isUsable);
         }
         
         private void SetRoomSlotProperties(Vector2Int index, bool isOccupied, bool isUsable)
         {
             Room room = floorsList[index.y].roomsList[index.x];
             
-            if (GetRoomWidth(room.slot.roomType) == 2 && IsIndexValid(new Vector2Int(index.x + 1, index.y)))
+            if (GetRoomWidth(room.slot.roomType) == 2)
             {
                 SetSingleSlot(floorsList[index.y].roomsList[index.x + 1], isOccupied, isUsable);
             }
             
             SetSingleSlot(room, isOccupied, isUsable);
+            
+            SetMakeRoomUsableButton(room, !isUsable);
         }
 
         private bool IsIndexValid(Vector2Int index)
@@ -431,7 +446,9 @@ namespace _Project.Scripts.Gameplay.Building
 
         public void MakeRoomNotUsable(Room room)
         {
-            SetRoomSlotProperties(GetIndexByRoom(room), room.slot.isOccupied, false);
+            Vector2Int index = GetIndexByRoom(room);
+            
+            SetRoomSlotProperties(index, room.slot.isOccupied, false);
         }
 
         public void ResetEveryRoom()

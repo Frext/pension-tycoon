@@ -26,7 +26,7 @@ namespace _Project.Scripts.Gameplay.Building
         }
         
         [Serializable]
-        public class Slot
+        public class RoomSlot
         {
             public bool isOccupied;
             public bool isUsable = true;
@@ -43,20 +43,16 @@ namespace _Project.Scripts.Gameplay.Building
             }
         }
 
-        public Slot slot;
+        public RoomSlot slot;
         [Space]
         
         [Header("UI Slots")]
         [SerializeField] private GameObject removeRoomWidth1Button;
         [SerializeField] private GameObject removeRoomWidth2Button;
-
+        [Space]
+        [SerializeField] private GameObject makeRoomUsableWidth1Button;
+        [SerializeField] private GameObject makeRoomUsableWidth2Button;
         
-        void Awake()
-        {
-            SetRemoveRoomWidth1Button(false);
-            SetRemoveRoomWidth2Button(false);
-        }
-
         #region Button Methods
         
         public void SetRemoveRoomWidth1Button(bool activeState)
@@ -67,6 +63,16 @@ namespace _Project.Scripts.Gameplay.Building
         public void SetRemoveRoomWidth2Button(bool activeState)
         {
             removeRoomWidth2Button.SetActive(activeState);
+        }
+
+        public void SetMakeUsableWidth1Button(bool activeState)
+        {
+            makeRoomUsableWidth1Button.SetActive(activeState);
+        }
+        
+        public void SetMakeUsableWidth2Button(bool activeState)
+        {
+            makeRoomUsableWidth2Button.SetActive(activeState);
         }
         
         #endregion
