@@ -186,14 +186,14 @@ namespace _Project.Scripts.Gameplay.Building
 
                     if (GetRoomWidth(room.slot.roomType) == 2)
                     {
-                        room.SetRemoveRoomWidth2Button(true);
+                        room.SetMakeUsableButton(true, 2);
                     
                         // We increment the room index because we don't want the other room to show its removal button of width 2.
                         roomIndex++;
                     }
                     else
                     {
-                        room.SetRemoveRoomWidth1Button(true);
+                        room.SetMakeUsableButton(true);
                     }
                 }
             }
@@ -210,22 +210,14 @@ namespace _Project.Scripts.Gameplay.Building
             {
                 foreach (Room room in floor.roomsList)
                 {
-                    room.SetRemoveRoomWidth1Button(false);
-                    room.SetRemoveRoomWidth2Button(false);
+                    room.SetRemoveRoomButton(false);
                 }
             }
         }
         
         private void SetMakeRoomUsableButton(Room room, bool activeState)
         {
-            if (GetRoomWidth(room.slot.roomType) == 2)
-            {
-                room.SetMakeUsableWidth2Button(activeState);
-            }
-            else
-            {
-                room.SetMakeUsableWidth1Button(activeState);
-            }
+            room.SetMakeUsableButton(activeState, GetRoomWidth(room.slot.roomType));
         }
         
         private void RemoveRoom(Room room)

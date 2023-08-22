@@ -5,7 +5,7 @@ using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.Gameplay.Data;
 using _Project.Scripts.ScriptableObjects.IntObject;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
-using _Project.Scripts.ScriptableObjects.SoEventRoom;
+using _Project.Scripts.ScriptableObjects.SoEventRoomBool;
 using _Project.Scripts.ScriptableObjects.TimeRangeObject;
 using UnityEngine;
 using UnityEngine.Events;
@@ -54,16 +54,16 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header("Events")] 
         [SerializeField] private SoEventGameObject OnCustomerLeave;
         [Space]
-        [SerializeField] private SoEventRoom OnAssignEmployeToRoom;
+        [SerializeField] private SoEventRoomBool OnAssignEmployeToRoom;
         [Space]
         [SerializeField] private UnityEvent OnEnemyWaveRestart;
         [SerializeField] private UnityEvent OnEnemyWaveDecreased;
         [SerializeField] private UnityEvent OnEnemyWaveFinished;
         
         [Header("Data Saving")]
-        [SerializeField] private string dataKey = "friendNpcCountDict";
+        [SerializeField] private string dataKey = "employeeCountDict";
         
-        private enum EmployeeTypesEnum
+        public enum EmployeeTypesEnum
         {
             Cook,
             Cleaner,
@@ -210,7 +210,7 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
         
-        private void AssignEmployeeToRoom(Room room)
+        private bool AssignEmployeeToRoom(Room room)
         {
             for (int typeIndex = 0; typeIndex < employeeScriptsListDict.Keys.Count; typeIndex++)
             {
@@ -223,13 +223,14 @@ namespace _Project.Scripts.Gameplay.NPC
                         if (employee.IsAvailable())
                         {
                             employee.AssignToRoom(room);
-                            return;
+                            return true;
                         }
                     }
                 }
             }
             
             // If the program comes here, that means no employees were available.
+            return false;
         }
         
         void OnDestroy()

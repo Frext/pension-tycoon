@@ -6048,7 +6048,7 @@ MonoBehaviour:
     incrementAmount: 1
     incrementEveryRoundOf: 1
   - prefab: {fileID: 2017161375}
-    firstLevel: 5
+    firstLevel: 3
     initialValue: 1
     incrementAmount: 2
     incrementEveryRoundOf: 2
@@ -6071,7 +6071,7 @@ MonoBehaviour:
   gameTechnicianPrefab: {fileID: 6789912717264631411}
   gymCoachPrefab: {fileID: 1143943069}
   OnCustomerLeave: {fileID: 11400000, guid: 88713c829ba7da04ca73d4fdfe361cd3, type: 2}
-  OnAssignEmployeToRoom: {fileID: 11400000, guid: 34c7c044a32d4fb4f901c02d17017e1b,
+  OnAssignEmployeToRoom: {fileID: 11400000, guid: 5c8c13d6b0289b748be345f4b78f491a,
     type: 2}
   OnEnemyWaveRestart:
     m_PersistentCalls:
@@ -8900,6 +8900,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1596681524}
     m_Modifications:
+    - target: {fileID: 270792163511613116, guid: baf4a5ae09398c7439619cc9c203af19,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 647055763154742010, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
       propertyPath: m_RootOrder

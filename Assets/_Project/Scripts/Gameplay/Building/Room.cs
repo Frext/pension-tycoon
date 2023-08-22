@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using Leguar.TotalJSON;
 using UnityEngine;
 using static _Project.Scripts.Gameplay.Building.Room.RoomTypeEnum;
+using static _Project.Scripts.Gameplay.NPC.NpcManager;
 
 namespace _Project.Scripts.Gameplay.Building
 {
@@ -25,6 +27,11 @@ namespace _Project.Scripts.Gameplay.Building
             return roomType is CustomerDouble or Dining ? 2 : 1;
         }
         
+        public static EmployeeTypesEnum GetEmployeeTypeForRoom(RoomTypeEnum roomType)
+        {
+            throw new Exception("Not implemented yet!");
+        }
+        
         [Serializable]
         public class RoomSlot
         {
@@ -44,35 +51,37 @@ namespace _Project.Scripts.Gameplay.Building
         }
 
         public RoomSlot slot;
-        [Space]
+
         
-        [Header("UI Slots")]
-        [SerializeField] private GameObject removeRoomWidth1Button;
-        [SerializeField] private GameObject removeRoomWidth2Button;
-        [Space]
-        [SerializeField] private GameObject makeRoomUsableWidth1Button;
-        [SerializeField] private GameObject makeRoomUsableWidth2Button;
-        
-        #region Button Methods
-        
-        public void SetRemoveRoomWidth1Button(bool activeState)
+        [Serializable]
+        public class RoomButton
         {
-            removeRoomWidth1Button.SetActive(activeState);
-        }
-        
-        public void SetRemoveRoomWidth2Button(bool activeState)
-        {
-            removeRoomWidth2Button.SetActive(activeState);
+            public GameObject roomButton;
+            public RectTransform roomButtonRectTransform;
+            public List<RectTransform> roomButtonPositionsList;
         }
 
-        public void SetMakeUsableWidth1Button(bool activeState)
+        [Header("UI Slots")] 
+        [SerializeField] private RoomButton removeRoomButton;
+        [SerializeField] private RoomButton makeRoomUsableButton;
+        
+
+        #region Button Methods
+        
+        public void SetRemoveRoomButton(bool activeState, int width = 1)
         {
-            makeRoomUsableWidth1Button.SetActive(activeState);
+            SetButton(removeRoomButton, activeState, width);
         }
         
-        public void SetMakeUsableWidth2Button(bool activeState)
+        public void SetMakeUsableButton(bool activeState, int width = 1)
         {
-            makeRoomUsableWidth2Button.SetActive(activeState);
+            SetButton(makeRoomUsableButton, activeState, width);
+        }
+
+        private void SetButton(RoomButton roomButton, bool activeState, int width)
+        {
+            roomButton.roomButtonRectTransform.anchoredPosition = roomButton.roomButtonPositionsList[width - 1].anchoredPosition;
+            roomButton.roomButton.SetActive(activeState);
         }
         
         #endregion
