@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
 using UnityEngine.Events;
 using static _Project.Scripts.Gameplay.Building.Room;
+using static _Project.Scripts.ScriptableObjects.TimeRangeObject.TimeRangeObject;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -13,6 +15,9 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private List<RoomTypeEnum> extraRoomTypes;
         [Space]
         [SerializeField] private UnityEvent onMakeRoomUsable;
+        [Space]
+        [Tooltip("The amount of time to make the employee available")]
+        [SerializeField] private FloatRange availabilityRange;
         
         public bool IsAvailable()
         {
@@ -42,6 +47,13 @@ namespace _Project.Scripts.Gameplay.NPC
             floorManagerScript.MakeRoomUsable(selectedRoom);
             InvokeOnMakeRoomUsable();
 
+            StartCoroutine(MakeEmployeeAvailable());
+        }
+
+        private IEnumerator MakeEmployeeAvailable()
+        {
+            yield return new WaitForSeconds(availabilityRange.Randomize());
+            
             isNpcMoving = false;
         }
 

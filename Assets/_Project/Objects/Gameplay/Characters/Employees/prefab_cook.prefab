@@ -123,6 +123,9 @@ MonoBehaviour:
   onMakeRoomUsable:
     m_PersistentCalls:
       m_Calls: []
+  availabilityRange:
+    min: 0.4
+    max: 0.8
 --- !u!114 &7508758557249543437
 MonoBehaviour:
   m_ObjectHideFlags: 0
