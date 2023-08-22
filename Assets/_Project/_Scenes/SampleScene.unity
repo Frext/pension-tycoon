@@ -6041,27 +6041,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce56eb6c257d954a8906625117ed598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnableObjects:
+  customerObjectsList:
   - prefab: {fileID: 1960413735}
     firstLevel: 0
-    initialValue: 3
-    incrementAmount: 2
+    initialValue: 4
+    incrementAmount: 1
     incrementEveryRoundOf: 1
   - prefab: {fileID: 2017161375}
-    firstLevel: 3
+    firstLevel: 5
     initialValue: 1
-    incrementAmount: 1
-    incrementEveryRoundOf: 2
-  - prefab: {fileID: 4170874208201927306}
-    firstLevel: 4
-    initialValue: 1
-    incrementAmount: 1
+    incrementAmount: 2
     incrementEveryRoundOf: 2
   - prefab: {fileID: 2068178605}
-    firstLevel: 8
+    firstLevel: 10
+    initialValue: 1
+    incrementAmount: 2
+    incrementEveryRoundOf: 2
+  - prefab: {fileID: 4170874208201927306}
+    firstLevel: 15
     initialValue: 1
     incrementAmount: 1
-    incrementEveryRoundOf: 2
+    incrementEveryRoundOf: 3
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
   timeBetweenEachSpawn:
     min: 1
@@ -6071,6 +6071,8 @@ MonoBehaviour:
   gameTechnicianPrefab: {fileID: 6789912717264631411}
   gymCoachPrefab: {fileID: 1143943069}
   OnCustomerLeave: {fileID: 11400000, guid: 88713c829ba7da04ca73d4fdfe361cd3, type: 2}
+  OnAssignEmployeToRoom: {fileID: 11400000, guid: 34c7c044a32d4fb4f901c02d17017e1b,
+    type: 2}
   OnEnemyWaveRestart:
     m_PersistentCalls:
       m_Calls:

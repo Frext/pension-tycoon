@@ -61,38 +61,6 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             StopAllCoroutines();
         }
-
-        protected IEnumerator SearchForTargetRoomsForever(List<Room.RoomTypeEnum> extraTargetRoomTypes = null, float searchInterval = .4f, bool isOccupied = false, bool isUsable = false)
-        {
-            extraTargetRoomTypes ??= new List<Room.RoomTypeEnum>();
-            extraTargetRoomTypes.Add(baseTargetRoomType);
-            
-            while (true)
-            {
-                if (!isNpcMoving)
-                {
-                    foreach (var roomType in extraTargetRoomTypes)
-                    {
-                        Room foundRoom = floorManagerScript.GetRoom(roomType, isOccupied, isUsable);
-
-                        if (foundRoom != null)
-                        {
-                            selectedRoom = foundRoom;
-
-                            // We occupy the room before we get here because 2 npc could go to the same room otherwise.
-                            EnterSelectedRoom();
-
-                            AddWayPoints();
-                            Move();
-                            
-                            break;
-                        }
-                    }
-                }
-                
-                yield return new WaitForSeconds(searchInterval);
-            }
-        }
         
         protected virtual void EnterSelectedRoom()
         {
@@ -101,11 +69,12 @@ namespace _Project.Scripts.Gameplay.NPC
         
         protected abstract void AddWayPoints();
 
-        protected void Move()
+        protected void Move(int index = 0)
         {
-            currentWayPointIndex = 0;
-            
             StopCoroutine(nameof(IMove));
+            
+            currentWayPointIndex = index;
+            
             StartCoroutine(nameof(IMove));
         }
         
@@ -135,16 +104,6 @@ namespace _Project.Scripts.Gameplay.NPC
 
             isNpcMoving = false;
         }
-        
-        protected void AssignSelectedRoomToBaseTargetRoom()
-        {
-            selectedRoom = floorManagerScript.GetRoom(baseTargetRoomType);
-
-            if (selectedRoom != null)
-            {
-                EnterSelectedRoom();
-            }
-        }
 
         protected virtual void InsertSelectedRoomToWayPoints()
         {
@@ -153,7 +112,8 @@ namespace _Project.Scripts.Gameplay.NPC
             // We make the null comparison for the customer scripts if they don't get a room.
             if (roomWayPoint != null)
             {
-                wayPointsList.Insert(currentWayPointIndex + 1, roomWayPoint);
+                // Insert the new waypoint in between the start and end or in the first place.
+                wayPointsList.Insert(Mathf.Clamp(wayPointsList.Count - 1, 0 , int.MaxValue), roomWayPoint);
             }
         }
 
@@ -174,6 +134,11 @@ namespace _Project.Scripts.Gameplay.NPC
         protected virtual void LeaveSelectedRoom()
         {
             floorManagerScript.LeaveRoom(selectedRoom);
+        }
+        
+        public void StopTask()
+        {
+            Move(wayPointsList.Count - 1);
         }
     }
 }

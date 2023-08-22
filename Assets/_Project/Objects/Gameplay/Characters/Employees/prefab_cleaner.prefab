@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6789912717443802921}
   - component: {fileID: 6789912717443802920}
   - component: {fileID: 4160008399667624262}
+  - component: {fileID: -9150304402200711199}
+  - component: {fileID: -5565433304140854472}
   m_Layer: 0
   m_Name: prefab_cleaner
   m_TagString: Untagged
@@ -117,7 +119,63 @@ MonoBehaviour:
   - {x: 2, y: 0.25, z: 1.5}
   timeRangeObjectSo: {fileID: 11400000, guid: 4b04390288c105243a167e56bc2ed3c4, type: 2}
   floorManagerScript: {fileID: 0}
-  extraTargetRoomTypes: 0200000001000000
-  onCleanRoom:
+  extraRoomTypes: 0100000002000000
+  onMakeRoomUsable:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-9150304402200711199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789912717443802918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: f5516524a8ef58d469e30e3257cdcbd7, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4160008399667624262}
+        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.NPC.Npc, Assembly-CSharp
+        m_MethodName: StopTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-5565433304140854472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789912717443802918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4160008399667624262}
+        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.NPC.Npc, Assembly-CSharp
+        m_MethodName: StopTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
 using UnityEngine;
 using UnityEngine.Events;
+using static _Project.Scripts.Gameplay.Building.Room;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -9,29 +10,33 @@ namespace _Project.Scripts.Gameplay.NPC
     {
         [Space]
         [Header(nameof(Employee) + " Properties")]
-        [Space]
-        [SerializeField] private List<Room.RoomTypeEnum> extraTargetRoomTypes;
-        [Space]
-        [SerializeField] private float searchInterval = .6f;
+        [SerializeField] private List<RoomTypeEnum> extraRoomTypes;
         [Space]
         [SerializeField] private UnityEvent onMakeRoomUsable;
 
-        
-        protected override void OnEnable()
+        public bool CanGetAssignedToRoom(RoomTypeEnum roomType)
         {
-            base.OnEnable();
+            return roomType == baseTargetRoomType || extraRoomTypes.Contains(roomType);
+        }
 
-            StartCoroutine(extraTargetRoomTypes.Count > 0
-                ? SearchForTargetRoomsForever(extraTargetRoomTypes, searchInterval)
-                : SearchForTargetRoomsForever(null, searchInterval));
+        public bool IsAvailable()
+        {
+            return !isNpcMoving;
+        }
+
+        public void AssignToRoom(Room room)
+        {
+            selectedRoom = room;
+            
+            AddWayPoints();
+            Move();
         }
         
         protected override void AddWayPoints()
         {
             wayPointsList.Clear();
-            
-            wayPointsList.Add(new WayPoint{ position = transform.position,
-                OnReachDestination = InsertSelectedRoomToWayPoints});
+
+            InsertSelectedRoomToWayPoints();
             wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint() });
         }
         

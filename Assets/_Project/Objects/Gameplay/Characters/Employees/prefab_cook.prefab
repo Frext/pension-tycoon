@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4808535324815157470}
   - component: {fileID: 4808535324815157469}
   - component: {fileID: 1180020525}
+  - component: {fileID: 7508758557249543437}
+  - component: {fileID: -6638094328088766698}
   m_Layer: 0
   m_Name: prefab_cook
   m_TagString: Untagged
@@ -117,8 +119,63 @@ MonoBehaviour:
   - {x: 1.5, y: 0.25, z: 1.5}
   timeRangeObjectSo: {fileID: 11400000, guid: 26cc6998d0494904b8bef236a5bc35fb, type: 2}
   floorManagerScript: {fileID: 0}
-  extraTargetRoomTypes: 
-  searchInterval: 0.6
+  extraRoomTypes: 
   onMakeRoomUsable:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7508758557249543437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808535324815157459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: f5516524a8ef58d469e30e3257cdcbd7, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1180020525}
+        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.NPC.Npc, Assembly-CSharp
+        m_MethodName: StopTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-6638094328088766698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808535324815157459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1180020525}
+        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.NPC.Npc, Assembly-CSharp
+        m_MethodName: StopTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

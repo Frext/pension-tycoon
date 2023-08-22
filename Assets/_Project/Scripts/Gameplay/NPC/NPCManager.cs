@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.Gameplay.Data;
 using _Project.Scripts.ScriptableObjects.IntObject;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
+using _Project.Scripts.ScriptableObjects.SoEventRoom;
 using _Project.Scripts.ScriptableObjects.TimeRangeObject;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,7 +30,7 @@ namespace _Project.Scripts.Gameplay.NPC
     public class NpcManager : MonoBehaviour
     {
         [Serializable]
-        public class SpawnableObject
+        public class CustomerObject
         {
             public GameObject prefab;
             public int firstLevel;
@@ -37,13 +39,13 @@ namespace _Project.Scripts.Gameplay.NPC
             public int incrementEveryRoundOf;
         }
         
-        [SerializeField] private List<SpawnableObject> enemySpawnableObjects;
+        [SerializeField] private List<CustomerObject> customerObjectsList;
         [Space]
         [SerializeField] private IntObject dayCountSo;
         [SerializeField] private TimeRangeObject.FloatRange timeBetweenEachSpawn;
         [Space]
         
-        [Header("Friend Spawnable Objects")]
+        [Header("Employee Prefabs")]
         [SerializeField] private GameObject cleanerPrefab;
         [SerializeField] private GameObject cookPrefab;
         [SerializeField] private GameObject gameTechnicianPrefab;
@@ -52,6 +54,8 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header("Events")] 
         [SerializeField] private SoEventGameObject OnCustomerLeave;
         [Space]
+        [SerializeField] private SoEventRoom OnAssignEmployeToRoom;
+        [Space]
         [SerializeField] private UnityEvent OnEnemyWaveRestart;
         [SerializeField] private UnityEvent OnEnemyWaveDecreased;
         [SerializeField] private UnityEvent OnEnemyWaveFinished;
@@ -59,14 +63,15 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header("Data Saving")]
         [SerializeField] private string dataKey = "friendNpcCountDict";
         
-        private enum FriendNpcTypesEnum
+        private enum EmployeeTypesEnum
         {
             Cook,
             Cleaner,
             GameTechnician,
-            GymCoach,
+            GymCoach
         }
-        private readonly Dictionary<FriendNpcTypesEnum, int> friendNpcCountDict = new();
+        private readonly Dictionary<EmployeeTypesEnum, int> employeeCountDict = new();
+        private readonly Dictionary<EmployeeTypesEnum, List<Employee>> employeeScriptsListDict = new();
         
         private readonly List<GameObject> enemyWaveList = new();
         private int lastSpawnedEnemyWaveSize;
@@ -74,14 +79,21 @@ namespace _Project.Scripts.Gameplay.NPC
         
         void Awake()
         {
-            OnCustomerLeave.RegisterToEvent(UpdateEnemyWaveList);
+            RegisterEvents();
             
             LoadFriendNpcCountDict();
         }
-        
+
+        private void RegisterEvents()
+        {
+            OnCustomerLeave.RegisterToEvent(UpdateEnemyWaveList);
+            OnAssignEmployeToRoom.RegisterToEvent(AssignEmployeeToRoom);
+        }
+
         private void LoadFriendNpcCountDict()
         {
-            GetDefaultFriendNpcCountDict();
+            GetDefaultEmployeeNpcCountDict();
+            GetDefaultEmployeeScriptsListDict();
 
             // Change the values if the deserialized dictionary is loaded.
             if (DataManager.Load(dataKey, out Dictionary<string, int> deserialized))
@@ -91,15 +103,26 @@ namespace _Project.Scripts.Gameplay.NPC
                 SpawnByFriendNpcCountDict();
             }
         }
-
-        private void GetDefaultFriendNpcCountDict()
+        
+        private void GetDefaultEmployeeNpcCountDict()
         {
-            friendNpcCountDict.Clear();
+            employeeCountDict.Clear();
             
             // Add each type in enum to the dictionary before changing values.
-            for (int index = 0; index < Enum.GetNames(typeof(FriendNpcTypesEnum)).Length; index++)
+            for (int index = 0; index < Enum.GetNames(typeof(EmployeeTypesEnum)).Length; index++)
             {
-                friendNpcCountDict.Add((FriendNpcTypesEnum)index, 0);
+                employeeCountDict.Add((EmployeeTypesEnum)index, 0);
+            }
+        }
+        
+        private void GetDefaultEmployeeScriptsListDict()
+        {
+            employeeScriptsListDict.Clear();
+            
+            // Add each type in enum to the dictionary before changing values.
+            for (int index = 0; index < Enum.GetNames(typeof(EmployeeTypesEnum)).Length; index++)
+            {
+                employeeScriptsListDict.Add((EmployeeTypesEnum)index, new List<Employee>());
             }
         }
         
@@ -107,21 +130,21 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             foreach (var keyValuePair in deserializedDict)
             {
-                if (Enum.TryParse(keyValuePair.Key, out FriendNpcTypesEnum keyEnum))
+                if (Enum.TryParse(keyValuePair.Key, out EmployeeTypesEnum keyEnum))
                 {
-                    friendNpcCountDict[keyEnum] = keyValuePair.Value;
+                    employeeCountDict[keyEnum] = keyValuePair.Value;
                 }
             }
         }
         
         private void SpawnByFriendNpcCountDict()
         {
-            foreach (var keyValuePair in friendNpcCountDict)
+            foreach (var keyValuePair in employeeCountDict)
             {
                 // Convert the enum key to string
                 for (int count = 0; count < keyValuePair.Value; count++)
                 {
-                    SpawnFriendCharacter(keyValuePair.Key, false);
+                    SpawnEmployee(keyValuePair.Key, false);
                 }
             }
         }
@@ -147,7 +170,7 @@ namespace _Project.Scripts.Gameplay.NPC
 
             int waveCount = dayCountSo.Value;
 
-            foreach (var spawnableObject in enemySpawnableObjects)
+            foreach (var spawnableObject in customerObjectsList)
             {
                 if (waveCount < spawnableObject.firstLevel)
                 {
@@ -178,11 +201,8 @@ namespace _Project.Scripts.Gameplay.NPC
             
             int i = 0;
             
-            
-            
             while (GetCurrentEnemyWaveSize() > 0)
             {
-                
                 enemyWaveList[Mathf.Clamp(i, 0, GetCurrentEnemyWaveSize() - 1)].SetActive(true);
                 i++;
                 
@@ -190,34 +210,64 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
         
+        private void AssignEmployeeToRoom(Room room)
+        {
+            for (int typeIndex = 0; typeIndex < employeeScriptsListDict.Keys.Count; typeIndex++)
+            {
+                List<Employee> employeeScriptsList = employeeScriptsListDict[(EmployeeTypesEnum)typeIndex];
+                
+                if (employeeScriptsList.Count > 0 && employeeScriptsList[0].CanGetAssignedToRoom(room.slot.roomType))
+                {
+                    foreach (var employee in employeeScriptsList)
+                    {
+                        if (employee.IsAvailable())
+                        {
+                            employee.AssignToRoom(room);
+                            return;
+                        }
+                    }
+                }
+            }
+            
+            // If the program comes here, that means no employees were available.
+        }
+        
         void OnDestroy()
         {
-            OnCustomerLeave.DeregisterFromEvent(UpdateEnemyWaveList);
+            DeregisterEvents();
         }
 
-        public void SpawnCook() => SpawnFriendCharacter(FriendNpcTypesEnum.Cook);
-        public void SpawnCleaner() => SpawnFriendCharacter(FriendNpcTypesEnum.Cleaner);
-        public void SpawnGameTechnician() => SpawnFriendCharacter(FriendNpcTypesEnum.GameTechnician);
-        public void SpawnGymCoach() => SpawnFriendCharacter(FriendNpcTypesEnum.GymCoach);
+        private void DeregisterEvents()
+        {
+            OnCustomerLeave.DeregisterFromEvent(UpdateEnemyWaveList);
+            OnAssignEmployeToRoom.DeregisterFromEvent(AssignEmployeeToRoom);
+        }
 
-        private void SpawnFriendCharacter(FriendNpcTypesEnum characterType, bool incrementInDictionary = true)
+        public void SpawnCook() => SpawnEmployee(EmployeeTypesEnum.Cook);
+        public void SpawnCleaner() => SpawnEmployee(EmployeeTypesEnum.Cleaner);
+        public void SpawnGameTechnician() => SpawnEmployee(EmployeeTypesEnum.GameTechnician);
+        public void SpawnGymCoach() => SpawnEmployee(EmployeeTypesEnum.GymCoach);
+
+        private void SpawnEmployee(EmployeeTypesEnum characterType, bool incrementInDictionary = true)
         {
             if (incrementInDictionary)
             {
-                friendNpcCountDict[characterType]++;
+                employeeCountDict[characterType]++;
             }
             
-            InstantiateObject(GetPrefabByCharacterType(characterType));
+            GameObject employeeGo = InstantiateObject(GetPrefabByCharacterType(characterType));
+            
+            employeeScriptsListDict[characterType].Add(employeeGo.GetComponent<Employee>());
         }
 
-        private GameObject GetPrefabByCharacterType(FriendNpcTypesEnum roomType)
+        private GameObject GetPrefabByCharacterType(EmployeeTypesEnum roomType)
         {
             return roomType switch
             {
-                FriendNpcTypesEnum.Cleaner => cleanerPrefab,
-                FriendNpcTypesEnum.Cook => cookPrefab,
-                FriendNpcTypesEnum.GameTechnician => gameTechnicianPrefab,
-                FriendNpcTypesEnum.GymCoach => gymCoachPrefab,
+                EmployeeTypesEnum.Cleaner => cleanerPrefab,
+                EmployeeTypesEnum.Cook => cookPrefab,
+                EmployeeTypesEnum.GameTechnician => gameTechnicianPrefab,
+                EmployeeTypesEnum.GymCoach => gymCoachPrefab,
                 _ => null
             };
         }
@@ -253,7 +303,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             Dictionary<string, int> serializedDict = new Dictionary<string, int>();
 
-            foreach (var keyValuePair in friendNpcCountDict)
+            foreach (var keyValuePair in employeeCountDict)
             {
                 // Convert the enum key to string
                 serializedDict.Add(keyValuePair.Key.ToString(), keyValuePair.Value);

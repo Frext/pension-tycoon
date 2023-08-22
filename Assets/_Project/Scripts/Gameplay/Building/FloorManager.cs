@@ -453,12 +453,18 @@ namespace _Project.Scripts.Gameplay.Building
 
         public void ResetEveryRoom()
         {
-            foreach (Floor floor in floorsList)
+            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
             {
-                foreach (Room room in floor.roomsList)
+                for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
-                    room.slot.isOccupied = false;
-                    room.slot.isUsable = true;
+                    int roomWidth = GetRoomWidth(floorsList[floorIndex].roomsList[roomIndex].slot.roomType);
+                    
+                    SetRoomSlotProperties(new Vector2Int(roomIndex, floorIndex), false, true);
+
+                    if (roomWidth == 2)
+                    {
+                        roomIndex++;
+                    }
                 }
             }
         }

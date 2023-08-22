@@ -61,9 +61,19 @@ namespace _Project.Scripts.Gameplay.NPC
 
         protected override void InsertSelectedRoomToWayPoints()
         {
-            AssignSelectedRoomToBaseTargetRoom();
+            GetOneTargetRoom();
             
             base.InsertSelectedRoomToWayPoints();
+        }
+        
+        private void GetOneTargetRoom()
+        {
+            selectedRoom = floorManagerScript.GetRoom(baseTargetRoomType);
+
+            if (selectedRoom != null)
+            {
+                EnterSelectedRoom();
+            }
         }
         
         protected override void LeaveSelectedRoom()
