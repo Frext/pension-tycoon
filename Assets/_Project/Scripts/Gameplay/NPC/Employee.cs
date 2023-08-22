@@ -13,12 +13,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private List<RoomTypeEnum> extraRoomTypes;
         [Space]
         [SerializeField] private UnityEvent onMakeRoomUsable;
-
-        public bool CanGetAssignedToRoom(RoomTypeEnum roomType)
-        {
-            return roomType == baseTargetRoomType || extraRoomTypes.Contains(roomType);
-        }
-
+        
         public bool IsAvailable()
         {
             return !isNpcMoving;

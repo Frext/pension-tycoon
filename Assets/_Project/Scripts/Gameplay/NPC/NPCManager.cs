@@ -214,9 +214,11 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             for (int typeIndex = 0; typeIndex < employeeScriptsListDict.Keys.Count; typeIndex++)
             {
-                List<Employee> employeeScriptsList = employeeScriptsListDict[(EmployeeTypesEnum)typeIndex];
+                EmployeeTypesEnum employeeType = (EmployeeTypesEnum)typeIndex;
                 
-                if (employeeScriptsList.Count > 0 && employeeScriptsList[0].CanGetAssignedToRoom(room.slot.roomType))
+                List<Employee> employeeScriptsList = employeeScriptsListDict[employeeType];
+                
+                if (Equals(Room.GetEmployeeTypeForRoom(room.slot.roomType), employeeType))
                 {
                     foreach (var employee in employeeScriptsList)
                     {

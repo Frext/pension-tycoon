@@ -29,7 +29,16 @@ namespace _Project.Scripts.Gameplay.Building
         
         public static EmployeeTypesEnum GetEmployeeTypeForRoom(RoomTypeEnum roomType)
         {
-            throw new Exception("Not implemented yet!");
+            return roomType switch
+            {
+                Bathroom => EmployeeTypesEnum.Cleaner,
+                CustomerSingle => EmployeeTypesEnum.Cleaner,
+                CustomerDouble => EmployeeTypesEnum.Cleaner,
+                Dining => EmployeeTypesEnum.Cook,
+                Arcade => EmployeeTypesEnum.GameTechnician,
+                Gym => EmployeeTypesEnum.GymCoach,
+                _ => throw new ArgumentOutOfRangeException(nameof(roomType), roomType, null)
+            };
         }
         
         [Serializable]
