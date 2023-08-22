@@ -18,25 +18,42 @@ MonoBehaviour:
     makeRoomUsableTimeRange:
       min: 5
       max: 6
+    availabilityRange:
+      min: 1
+      max: 2
   - purchaseAmount: 40
     upgradeAmount: 75
     makeRoomUsableTimeRange:
       min: 4
       max: 5
+    availabilityRange:
+      min: 1
+      max: 1.5
   - purchaseAmount: 60
     upgradeAmount: 100
     makeRoomUsableTimeRange:
       min: 3
       max: 5
+    availabilityRange:
+      min: 0.8
+      max: 1.2
   - purchaseAmount: 80
     upgradeAmount: 125
     makeRoomUsableTimeRange:
       min: 3
       max: 4
+    availabilityRange:
+      min: 0.5
+      max: 1
   - purchaseAmount: 100
     upgradeAmount: 150
     makeRoomUsableTimeRange:
-      min: 1
-      max: 2
+      min: 0.25
+      max: 0.75
+    availabilityRange:
+      min: 0
+      max: 0
   currentLevelIndex: {fileID: 11400000, guid: 73c6407350069094cb1e8dfa89dcb464, type: 2}
   timeRangeObjectSo: {fileID: 11400000, guid: 4b04390288c105243a167e56bc2ed3c4, type: 2}
+  availabilityRangeObjectSo: {fileID: 11400000, guid: c73c16877b44ed549ac4d0bbbfccdeb4,
+    type: 2}

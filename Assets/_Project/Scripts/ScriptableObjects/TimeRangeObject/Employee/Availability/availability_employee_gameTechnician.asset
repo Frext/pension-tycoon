@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92eb178fc42db52489d040dfe7490255, type: 3}
-  m_Name: time_cook
+  m_Name: availability_employee_gameTechnician
   m_EditorClassIdentifier: 
   timeRange:
-    min: 3
-    max: 6
+    min: 0
+    max: 0

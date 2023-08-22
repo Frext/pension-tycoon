@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static _Project.Scripts.ScriptableObjects.TimeRangeObject.TimeRangeObject;
+using static _Project.Scripts.ScriptableObjects.TimeRangeObject.FloatRangeObject;
 
 namespace _Project.Scripts.ScriptableObjects.EmployeeObject
 {
@@ -14,16 +14,19 @@ namespace _Project.Scripts.ScriptableObjects.EmployeeObject
             public int purchaseAmount;
             public int upgradeAmount;
             public FloatRange makeRoomUsableTimeRange;
+            public FloatRange availabilityRange;
         }
 
         [SerializeField] private List<Level> levelsList;
         [SerializeField] private IntObject.IntObject currentLevelIndex;
 
-        [SerializeField] private TimeRangeObject.TimeRangeObject timeRangeObjectSo;
+        [SerializeField] private TimeRangeObject.FloatRangeObject timeRangeObjectSo;
+        [SerializeField] private TimeRangeObject.FloatRangeObject availabilityRangeObjectSo;
         
-        public void UpdateTimeRange()
+        public void UpdateFloatRangeObjects()
         {
-            timeRangeObjectSo.SetTimeRange(levelsList[currentLevelIndex.Value].makeRoomUsableTimeRange);
+            timeRangeObjectSo.SetRange(levelsList[currentLevelIndex.Value].makeRoomUsableTimeRange);
+            availabilityRangeObjectSo.SetRange(levelsList[currentLevelIndex.Value].availabilityRange);
         }
 
         public void IncrementLevel()
@@ -32,7 +35,7 @@ namespace _Project.Scripts.ScriptableObjects.EmployeeObject
             {
                 currentLevelIndex.IncrementValue();
 
-                UpdateTimeRange();
+                UpdateFloatRangeObjects();
             }
         }
         

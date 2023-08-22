@@ -4,8 +4,8 @@ using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.ScriptableObjects.TimeRangeObject
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/" + nameof(TimeRangeObject))]
-    public class TimeRangeObject : ScriptableObject
+    [CreateAssetMenu(menuName = "ScriptableObjects/" + nameof(FloatRangeObject))]
+    public class FloatRangeObject : ScriptableObject
     {
         [Serializable]
         public struct FloatRange
@@ -21,12 +21,12 @@ namespace _Project.Scripts.ScriptableObjects.TimeRangeObject
 
         [SerializeField] private FloatRange timeRange;
 
-        public float GetRandomTime()
+        public float Randomize()
         {
             return timeRange.Randomize();
         }
 
-        public void SetTimeRange(FloatRange newTimeRange)
+        public void SetRange(FloatRange newTimeRange)
         {
             timeRange = newTimeRange;
         }

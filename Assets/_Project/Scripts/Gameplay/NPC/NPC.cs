@@ -33,7 +33,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
         
-        [SerializeField] protected TimeRangeObject timeRangeObjectSo;
+        [SerializeField] protected FloatRangeObject timeRangeObjectSo;
         [Space]
         
         [SerializeField] protected FloorManager floorManagerScript;
@@ -126,7 +126,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             return new WayPoint {
                 position = roomPosition + characterOffset,
-                waitTime = timeRangeObjectSo.GetRandomTime(),
+                waitTime = timeRangeObjectSo.Randomize(),
                 OnLeaveDestination = OnLeaveDestination
             };
         }

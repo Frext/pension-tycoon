@@ -42,7 +42,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private List<CustomerObject> customerObjectsList;
         [Space]
         [SerializeField] private IntObject dayCountSo;
-        [SerializeField] private TimeRangeObject.FloatRange timeBetweenEachSpawn;
+        [SerializeField] private FloatRangeObject.FloatRange timeBetweenEachSpawn;
         [Space]
         
         [Header("Employee Prefabs")]

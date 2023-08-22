@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8873219424540059787}
   - component: {fileID: -6280404203599363702}
   m_Layer: 0
-  m_Name: prefab_game_technician
+  m_Name: prefab_gameTechnician
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,13 +119,12 @@ MonoBehaviour:
   - {x: 2, y: 0.25, z: 1.5}
   timeRangeObjectSo: {fileID: 11400000, guid: 6f89eef4584ed8245ba0dc6c1a508034, type: 2}
   floorManagerScript: {fileID: 0}
+  availabilityRangeSo: {fileID: 11400000, guid: 509c5307c58868347a6b61490a21b234,
+    type: 2}
   extraRoomTypes: 
   onMakeRoomUsable:
     m_PersistentCalls:
       m_Calls: []
-  availabilityRange:
-    min: 0.4
-    max: 0.8
 --- !u!114 &8873219424540059787
 MonoBehaviour:
   m_ObjectHideFlags: 0

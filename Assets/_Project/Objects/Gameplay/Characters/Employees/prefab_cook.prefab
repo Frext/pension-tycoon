@@ -119,13 +119,12 @@ MonoBehaviour:
   - {x: 1.5, y: 0.25, z: 1.5}
   timeRangeObjectSo: {fileID: 11400000, guid: 26cc6998d0494904b8bef236a5bc35fb, type: 2}
   floorManagerScript: {fileID: 0}
+  availabilityRangeSo: {fileID: 11400000, guid: 8e05c1e29c09ea44988abd2cf5c52792,
+    type: 2}
   extraRoomTypes: 
   onMakeRoomUsable:
     m_PersistentCalls:
       m_Calls: []
-  availabilityRange:
-    min: 0.4
-    max: 0.8
 --- !u!114 &7508758557249543437
 MonoBehaviour:
   m_ObjectHideFlags: 0

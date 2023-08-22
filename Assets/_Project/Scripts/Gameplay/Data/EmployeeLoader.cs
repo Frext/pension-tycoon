@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Data
 {
-    public class EmployeeTimeLoader : MonoBehaviour
+    public class EmployeeLoader : MonoBehaviour
     {
         [SerializeField] private List<EmployeeObject> employeeObjectSoList;
 
@@ -12,7 +12,7 @@ namespace _Project.Scripts.Gameplay.Data
         {
             foreach (var employeeObjectSo in employeeObjectSoList)
             {
-                employeeObjectSo.UpdateTimeRange();
+                employeeObjectSo.UpdateFloatRangeObjects();
             }
         }
     }
