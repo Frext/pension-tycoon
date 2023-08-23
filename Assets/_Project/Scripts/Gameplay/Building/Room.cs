@@ -24,7 +24,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         public static int GetRoomWidth(RoomTypeEnum roomType)
         {
-            return roomType is CustomerDouble or Dining ? 2 : 1;
+            return roomType is CustomerDouble ? 2 : 1;
         }
         
         public static EmployeeTypesEnum GetEmployeeTypeForRoom(RoomTypeEnum roomType)
