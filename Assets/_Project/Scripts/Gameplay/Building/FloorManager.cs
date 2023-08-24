@@ -171,7 +171,7 @@ namespace _Project.Scripts.Gameplay.Building
             }
         }
         
-        public void ShowAllRemoveSigns()
+        public void ShowAllRemoveButtonsUI()
         {
             for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
             {
@@ -186,14 +186,14 @@ namespace _Project.Scripts.Gameplay.Building
 
                     if (GetRoomWidth(room.slot.roomType) == 2)
                     {
-                        room.SetMakeUsableButton(true, 2);
+                        room.SetRemoveRoomButton(true, 2);
                     
                         // We increment the room index because we don't want the other room to show its removal button of width 2.
                         roomIndex++;
                     }
                     else
                     {
-                        room.SetMakeUsableButton(true);
+                        room.SetRemoveRoomButton(true);
                     }
                 }
             }
@@ -204,7 +204,7 @@ namespace _Project.Scripts.Gameplay.Building
             return room.slot.roomType != None;
         }
         
-        public void HideAllRemoveSlotsButtons()
+        public void HideAllRemoveButtonsUI()
         {
             foreach (Floor floor in floorsList)
             {
