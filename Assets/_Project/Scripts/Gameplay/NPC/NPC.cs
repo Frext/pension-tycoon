@@ -28,8 +28,6 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
         
-        [SerializeField] protected Room.RoomTypeEnum baseTargetRoomType;
-        
         [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
         
@@ -138,7 +136,10 @@ namespace _Project.Scripts.Gameplay.NPC
         
         public void StopTask()
         {
-            Move(wayPointsList.Count - 1);
+            if (isNpcMoving)
+            {
+                Move(wayPointsList.Count - 1);
+            }
         }
     }
 }

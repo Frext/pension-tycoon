@@ -111,12 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa78fc73abb128f46ad04666c9ef5a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseTargetRoomType: 1
   startPositionsList:
   - {x: -3.5, y: 0.25, z: -1.75}
   - {x: 3.5, y: 0.25, z: -1.75}
   timeRangeObjectSo: {fileID: 11400000, guid: b96e99960dbd78b4a93b764bd5e022c2, type: 2}
   floorManagerScript: {fileID: 0}
+  baseTargetRoomType: 1
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
   OnCustomerLeave:
     m_PersistentCalls:

@@ -60,9 +60,9 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private UnityEvent OnEnemyWaveRestart;
         [SerializeField] private UnityEvent OnEnemyWaveDecreased;
         [SerializeField] private UnityEvent OnEnemyWaveFinished;
-
+        
         [Space] 
-        [SerializeField] private EmployeeDictObject employeeCountDictSo;
+        [SerializeField] private EmployeeDictObject employeeDictSo;
         
         private readonly List<GameObject> enemyWaveList = new();
         private int lastSpawnedEnemyWaveSize;
@@ -71,6 +71,8 @@ namespace _Project.Scripts.Gameplay.NPC
         void Awake()
         {
             RegisterEvents();
+            
+            SpawnByFriendNpcCountDict();
         }
 
         private void RegisterEvents()
@@ -94,14 +96,9 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
         
-        void Start()
-        {
-            SpawnByFriendNpcCountDict();
-        }
-        
         private void SpawnByFriendNpcCountDict()
         {
-            foreach (var keyValuePair in employeeCountDictSo.employeeCountDict)
+            foreach (var keyValuePair in employeeDictSo.employeeCountDict)
             {
                 // Convert the enum key to string
                 for (int count = 0; count < keyValuePair.Value; count++)
@@ -113,11 +110,11 @@ namespace _Project.Scripts.Gameplay.NPC
         
         private bool AssignEmployeeToRoom(Room room)
         {
-            for (int typeIndex = 0; typeIndex < employeeCountDictSo.employeeScriptsDict.Keys.Count; typeIndex++)
+            for (int typeIndex = 0; typeIndex < employeeDictSo.employeeScriptsDict.Keys.Count; typeIndex++)
             {
                 EmployeeTypesEnum employeeType = (EmployeeTypesEnum)typeIndex;
                 
-                List<Employee> employeeScriptsList = employeeCountDictSo.employeeScriptsDict[employeeType];
+                List<Employee> employeeScriptsList = employeeDictSo.employeeScriptsDict[employeeType];
                 
                 if (Equals(Room.GetEmployeeTypeForRoom(room.slot.roomType), employeeType))
                 {
@@ -156,12 +153,12 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             if (incrementInDictionary)
             {
-                employeeCountDictSo.employeeCountDict[characterType]++;
+                employeeDictSo.employeeCountDict[characterType]++;
             }
             
             GameObject employeeGo = InstantiateObject(GetPrefabByCharacterType(characterType));
             
-            employeeCountDictSo.employeeScriptsDict[characterType].Add(employeeGo.GetComponent<Employee>());
+            employeeDictSo.employeeScriptsDict[characterType].Add(employeeGo.GetComponent<Employee>());
         }
 
         private GameObject GetPrefabByCharacterType(EmployeeTypesEnum roomType)

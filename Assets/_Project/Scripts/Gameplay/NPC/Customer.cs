@@ -14,7 +14,8 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space] 
         [SerializeField] private UnityEvent OnCustomerLeave;
         
-        [Header("Extra Rooms")]
+        [Header("Rooms")]
+        [SerializeField] private Room.RoomTypeEnum baseTargetRoomType;
         [Space]
         [SerializeField] private Room.RoomTypeEnum[] extraRoomTypes;
         [Range(0, 1)] 

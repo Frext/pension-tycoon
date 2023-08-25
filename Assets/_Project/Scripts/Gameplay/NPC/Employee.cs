@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.TimeRangeObject;
 using UnityEngine;
 using UnityEngine.Events;
-using static _Project.Scripts.Gameplay.Building.Room;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -15,8 +13,6 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         [Tooltip("The amount of time to make the employee available")]
         [SerializeField] private FloatRangeObject availabilityRangeSo;
-        [Space]
-        [SerializeField] private List<RoomTypeEnum> extraRoomTypes;
         [Space]
         [SerializeField] private UnityEvent onMakeRoomUsable;
         
