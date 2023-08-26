@@ -60,7 +60,7 @@ namespace _Project.Scripts.Gameplay.NPC
             StopAllCoroutines();
         }
         
-        protected virtual void EnterSelectedRoom()
+        protected void EnterSelectedRoom()
         {
             floorManagerScript.EnterRoom(selectedRoom);
         }
@@ -132,14 +132,6 @@ namespace _Project.Scripts.Gameplay.NPC
         protected virtual void LeaveSelectedRoom()
         {
             floorManagerScript.LeaveRoom(selectedRoom);
-        }
-        
-        public void StopTask()
-        {
-            if (isNpcMoving)
-            {
-                Move(wayPointsList.Count - 1);
-            }
         }
     }
 }

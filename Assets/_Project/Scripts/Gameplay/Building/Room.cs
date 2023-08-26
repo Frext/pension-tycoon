@@ -92,6 +92,11 @@ namespace _Project.Scripts.Gameplay.Building
             roomButton.roomButtonRectTransform.anchoredPosition = roomButton.roomButtonPositionsList[width - 1].anchoredPosition;
             roomButton.roomButton.SetActive(activeState);
         }
+
+        public bool GetMakeUsableButtonState()
+        {
+            return makeRoomUsableButton.roomButton.activeInHierarchy;
+        }
         
         #endregion
     }

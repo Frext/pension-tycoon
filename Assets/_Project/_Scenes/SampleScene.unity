@@ -5754,6 +5754,7 @@ GameObject:
   - component: {fileID: 1143832175}
   - component: {fileID: 1143832177}
   - component: {fileID: 1143832178}
+  - component: {fileID: 1143832179}
   m_Layer: 5
   m_Name: PanelEmployee
   m_TagString: Untagged
@@ -5896,7 +5897,35 @@ MonoBehaviour:
   - {fileID: 1085249077}
   - {fileID: 123048094}
   - {fileID: 354608533}
-  onCustomerLeave: {fileID: 11400000, guid: 88713c829ba7da04ca73d4fdfe361cd3, type: 2}
+--- !u!114 &1143832179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143832171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: ea89ee5b69a0cf945be935a9c286169a, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1143832178}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.HUDPanel.ShowEmployeePanel,
+          Assembly-CSharp
+        m_MethodName: UpdateEmployeeElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1143943067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8231,7 +8260,7 @@ MonoBehaviour:
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
   timeBetweenEachSpawn:
     min: 1
-    max: 4
+    max: 3
   cleanerPrefab: {fileID: 198046615}
   cookPrefab: {fileID: 355679140}
   gameTechnicianPrefab: {fileID: 6789912717264631411}
@@ -8305,6 +8334,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1143832178}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.HUDPanel.ShowEmployeePanel,
+          Assembly-CSharp
+        m_MethodName: UpdateEmployeeElements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnEnemyWaveDecreased:
     m_PersistentCalls:
       m_Calls:
@@ -8323,19 +8365,6 @@ MonoBehaviour:
   OnEnemyWaveFinished:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
-        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
-          Assembly-CSharp
-        m_MethodName: IncrementValue
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: eba5ef16767bf1847918495239fcffb5, type: 2}
         m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
           Assembly-CSharp
@@ -8348,6 +8377,19 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
+          Assembly-CSharp
+        m_MethodName: IncrementValue
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 376068116557882862}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -11632,11 +11674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1596681524}
     m_Modifications:
-    - target: {fileID: 270792163511613116, guid: baf4a5ae09398c7439619cc9c203af19,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 647055763154742010, guid: baf4a5ae09398c7439619cc9c203af19,
         type: 3}
       propertyPath: m_RootOrder

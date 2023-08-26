@@ -5,17 +5,17 @@ using UnityEngine.Events;
 
 namespace _Project.Scripts.Gameplay.Events
 {
-    public class SoEventRoomBoolManager : MonoBehaviour
+    public class SoEventRoomBoolHandler : MonoBehaviour
     {
         [SerializeField] private SoEventRoomBool soEventRoomBool;
         [Space]
-        [SerializeField] private UnityEvent OnEmployeeNotFound;
+        [SerializeField] private UnityEvent onEmployeeNotFound;
 
         public void Invoke(Room room)
         {
             if (!soEventRoomBool.Invoke(room))
             {
-                OnEmployeeNotFound.Invoke();
+                onEmployeeNotFound.Invoke();
             }
         }
     }

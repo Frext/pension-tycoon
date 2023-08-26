@@ -14,12 +14,7 @@ namespace _Project.Scripts.ScriptableObjects.SoEventRoomBool
 
         public bool Invoke(Room room)
         {
-            if (OnFire != null)
-            {
-                return OnFire.Invoke(room);
-            }
-
-            return false;
+            return OnFire != null && OnFire.Invoke(room);
         }
     }
 }

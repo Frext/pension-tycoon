@@ -74,6 +74,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 5255450450470155585}
+    - target: {fileID: 1070825111899752566, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5255450450470155585}
     - target: {fileID: 3298004583682896509, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_Pivot.x
@@ -178,6 +183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582618517337812140, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5542438871921776591, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}

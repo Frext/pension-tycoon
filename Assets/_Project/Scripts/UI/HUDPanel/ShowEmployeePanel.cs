@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.EmployeeDictObject;
-using _Project.Scripts.ScriptableObjects.SoEventGameObject;
 using UnityEngine;
 using static _Project.Scripts.ScriptableObjects.EmployeeDictObject.EmployeeDictObject;
 
@@ -12,23 +9,7 @@ namespace _Project.Scripts.UI.HUDPanel
     {
         [SerializeField] private EmployeeDictObject employeeDictSo;
         [SerializeField] private List<EmployeeElement> employeeElementsList;
-        [Space]
 
-        private const float EventDelay = 0.1f;
-        
-        private void UpdateEmployeeElementsAfterDelay(GameObject go)
-        {
-            // The delay is needed to wait the employees to get assigned to a room and change their availability status.
-
-            StartCoroutine(RunAfterSeconds(UpdateEmployeeElements, EventDelay));
-        }
-
-        private IEnumerator RunAfterSeconds(Action action, float seconds)
-        {
-            yield return new WaitForSeconds(seconds);
-            
-            action.Invoke();
-        }
 
         public void UpdateEmployeeElements()
         {

@@ -312,8 +312,7 @@ MonoBehaviour:
         m_MethodName: Invoke
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5255450450470155585, guid: 33a98d82f60e6b84cbb9aa515a0fb9a4,
-            type: 3}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: _Project.Scripts.Gameplay.Building.Room,
             Assembly-CSharp
           m_IntArgument: 0
@@ -334,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soEventRoomBool: {fileID: 11400000, guid: 5c8c13d6b0289b748be345f4b78f491a, type: 2}
-  OnEmployeeNotFound:
+  onEmployeeNotFound:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2452199513593418873}
@@ -511,7 +510,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2784314492346986140
 MonoBehaviour:
   m_ObjectHideFlags: 0

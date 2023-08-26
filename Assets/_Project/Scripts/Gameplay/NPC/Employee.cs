@@ -13,8 +13,9 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         [Tooltip("The amount of time to make the employee available")]
         [SerializeField] private FloatRangeObject availabilityRangeSo;
-        [Space]
-        [SerializeField] private UnityEvent onMakeRoomUsable;
+
+        [Space] 
+        [SerializeField] private UnityEvent onEmployeeAvailabilityChange;
         
         
         public bool IsAvailable()
@@ -24,12 +25,20 @@ namespace _Project.Scripts.Gameplay.NPC
 
         public void AssignToRoom(Room room)
         {
+            // First, set the selected room.
             selectedRoom = room;
             
+            // Don't enter the room because it reactivates the make room usable button if it was disabled before.
+            // Also the make room usable button doesn't look if the room is occupied, we don't have to set room as occupied.
+            
+            // Then add the waypoints and start moving.
             AddWayPoints();
             Move();
+            
+            // Also update the employee panel UI about how many employees are available.
+            onEmployeeAvailabilityChange.Invoke();
         }
-        
+
         protected override void AddWayPoints()
         {
             wayPointsList.Clear();
@@ -43,21 +52,29 @@ namespace _Project.Scripts.Gameplay.NPC
             base.LeaveSelectedRoom();
             
             floorManagerScript.MakeRoomUsable(selectedRoom);
-            InvokeOnMakeRoomUsable();
 
-            StartCoroutine(MakeEmployeeAvailable());
+            StartCoroutine(MakeEmployeeAvailable(availabilityRangeSo.Randomize()));
         }
 
-        private IEnumerator MakeEmployeeAvailable()
+        private IEnumerator MakeEmployeeAvailable(float seconds = 0f)
         {
-            yield return new WaitForSeconds(availabilityRangeSo.Randomize());
+            yield return new WaitForSeconds(seconds);
             
             isNpcMoving = false;
+            
+            onEmployeeAvailabilityChange.Invoke();
         }
-
-        private void InvokeOnMakeRoomUsable()
+        
+        public void StopTask()
         {
-            onMakeRoomUsable.Invoke();
+            if (isNpcMoving)
+            {
+                // Go to the last waypoint immediately.
+                Move(wayPointsList.Count - 1);
+
+                // This is for the employee panel UI to count these employees as available when they are moving towards their last waypoint.
+                StartCoroutine(MakeEmployeeAvailable());
+            }
         }
     }
 }

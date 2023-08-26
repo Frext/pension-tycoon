@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e74d5db995ec54dab9886483bd7a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseTargetRoomType: 4
   startPositionsList:
   - {x: -1, y: 0.25, z: 1.5}
   - {x: 2, y: 0.25, z: 1.5}
@@ -121,10 +120,22 @@ MonoBehaviour:
   floorManagerScript: {fileID: 0}
   availabilityRangeSo: {fileID: 11400000, guid: c73c16877b44ed549ac4d0bbbfccdeb4,
     type: 2}
-  extraRoomTypes: 0100000002000000
-  onMakeRoomUsable:
+  onEmployeeAvailabilityChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ea89ee5b69a0cf945be935a9c286169a, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SoEvent,
+          Assembly-CSharp
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-9150304402200711199
 MonoBehaviour:
   m_ObjectHideFlags: 0

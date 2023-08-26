@@ -114,11 +114,9 @@ namespace _Project.Scripts.Gameplay.NPC
             {
                 EmployeeTypesEnum employeeType = (EmployeeTypesEnum)typeIndex;
                 
-                List<Employee> employeeScriptsList = employeeDictSo.employeeScriptsDict[employeeType];
-                
                 if (Equals(Room.GetEmployeeTypeForRoom(room.slot.roomType), employeeType))
                 {
-                    foreach (var employee in employeeScriptsList)
+                    foreach (var employee in employeeDictSo.employeeScriptsDict[employeeType])
                     {
                         if (employee.IsAvailable())
                         {
