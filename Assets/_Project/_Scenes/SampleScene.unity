@@ -781,11 +781,26 @@ PrefabInstance:
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_Name
-      value: ElementEmployee
+      value: ElementEmployeeGameTechnician
       objectReference: {fileID: 0}
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.024230612
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1843,12 +1858,27 @@ PrefabInstance:
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_Name
-      value: ElementEmployee
+      value: ElementEmployeeGymCoach
       objectReference: {fileID: 0}
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 661a42b07979d914a8be7f08e6a79b0d, type: 3}
@@ -5286,11 +5316,26 @@ PrefabInstance:
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_Name
-      value: ElementEmployee
+      value: ElementEmployeeCook
       objectReference: {fileID: 0}
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.22779655
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5752,6 +5797,7 @@ GameObject:
   - component: {fileID: 1143832173}
   - component: {fileID: 1143832176}
   - component: {fileID: 1143832175}
+  - component: {fileID: 1143832180}
   - component: {fileID: 1143832177}
   - component: {fileID: 1143832178}
   - component: {fileID: 1143832179}
@@ -5761,7 +5807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1143832172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5784,7 +5830,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: -1260, y: 90}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1143832173
 MonoBehaviour:
@@ -5836,8 +5882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 1
-  m_VerticalFit: 0
+  m_HorizontalFit: 2
+  m_VerticalFit: 1
 --- !u!114 &1143832176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5853,8 +5899,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 10
     m_Right: 10
-    m_Top: 0
-    m_Bottom: 0
+    m_Top: 5
+    m_Bottom: 5
   m_ChildAlignment: 4
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
@@ -5892,11 +5938,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   employeeDictSo: {fileID: 11400000, guid: 3f8ae4d8f5de0b94581a82145848b8b7, type: 2}
-  employeeElementsList:
-  - {fileID: 1595761218}
-  - {fileID: 1085249077}
-  - {fileID: 123048094}
-  - {fileID: 354608533}
+  employeeElementCleaner: {fileID: 1595761218}
+  employeeElementCook: {fileID: 1085249077}
+  employeeElementGameTechnician: {fileID: 123048094}
+  employeeElementGymCoach: {fileID: 354608533}
 --- !u!114 &1143832179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5926,6 +5971,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1143832180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143832171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 93.2
+  m_MinHeight: 90.6
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1001 &1143943067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6661,7 +6726,7 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -6675,6 +6740,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1115952097}
@@ -6685,12 +6755,22 @@ PrefabInstance:
       objectReference: {fileID: 60077969}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1143832178}
+    - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
@@ -6705,6 +6785,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: UpdateEmployeeElements
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -6712,6 +6797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: _Project.Scripts.UI.HUDPanel.ShowEmployeePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
@@ -6731,6 +6821,11 @@ PrefabInstance:
     - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970551449302168503, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4083981601405576966, guid: 7ed4b2d7e3fef1d41b45ae8973bb1804,
@@ -8334,19 +8429,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1143832178}
-        m_TargetAssemblyTypeName: _Project.Scripts.UI.HUDPanel.ShowEmployeePanel,
-          Assembly-CSharp
-        m_MethodName: UpdateEmployeeElements
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   OnEnemyWaveDecreased:
     m_PersistentCalls:
       m_Calls:
@@ -8452,18 +8534,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1143832171}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
   employeeDictSo: {fileID: 11400000, guid: 3f8ae4d8f5de0b94581a82145848b8b7, type: 2}
 --- !u!1 &1513462214
@@ -8858,7 +8928,7 @@ PrefabInstance:
     - target: {fileID: 6211408658955405858, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -45
+      value: -45.3
       objectReference: {fileID: 0}
     - target: {fileID: 6211408658955405858, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
@@ -8878,12 +8948,27 @@ PrefabInstance:
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_Name
-      value: ElementEmployee
+      value: ElementEmployeeCleaner
       objectReference: {fileID: 0}
     - target: {fileID: 6211408658955405869, guid: 661a42b07979d914a8be7f08e6a79b0d,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.4178648
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211408660807308377, guid: 661a42b07979d914a8be7f08e6a79b0d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 661a42b07979d914a8be7f08e6a79b0d, type: 3}
@@ -12159,19 +12244,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1143832178}
-        m_TargetAssemblyTypeName: _Project.Scripts.UI.HUDPanel.ShowEmployeePanel,
-          Assembly-CSharp
-        m_MethodName: UpdateEmployeeElements
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

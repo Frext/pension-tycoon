@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using _Project.Scripts.ScriptableObjects.EmployeeDictObject;
 using UnityEngine;
 using static _Project.Scripts.ScriptableObjects.EmployeeDictObject.EmployeeDictObject;
@@ -8,9 +8,19 @@ namespace _Project.Scripts.UI.HUDPanel
     public class ShowEmployeePanel : MonoBehaviour
     {
         [SerializeField] private EmployeeDictObject employeeDictSo;
-        [SerializeField] private List<EmployeeElement> employeeElementsList;
+        [Space]
+        
+        [SerializeField] private EmployeeElement employeeElementCleaner;
+        [SerializeField] private EmployeeElement employeeElementCook;
+        [SerializeField] private EmployeeElement employeeElementGameTechnician;
+        [SerializeField] private EmployeeElement employeeElementGymCoach;
 
-
+        
+        void Start()
+        {
+            UpdateEmployeeElements();
+        }
+        
         public void UpdateEmployeeElements()
         {
             gameObject.SetActive(true);
@@ -19,19 +29,33 @@ namespace _Project.Scripts.UI.HUDPanel
             {
                 EmployeeTypesEnum currentEmployeeType = (EmployeeTypesEnum)index;
                 int totalEmployeeCount = employeeDictSo.employeeCountDict[currentEmployeeType];
+
+                EmployeeElement employeeElement = GetCorrespondingEmployeeElement(currentEmployeeType);
                 
                 if (totalEmployeeCount > 0)
                 {
-                    employeeElementsList[index].SetEmployeeElement(
+                    employeeElement.SetEmployeeElement(
                         GetAvailableEmployeeCount(currentEmployeeType), totalEmployeeCount);
                     
-                    employeeElementsList[index].gameObject.SetActive(true);
+                    employeeElement.gameObject.SetActive(true);
                 }
                 else
                 {
-                    employeeElementsList[index].gameObject.SetActive(false);
+                    employeeElement.gameObject.SetActive(false);
                 }
             }
+        }
+
+        private EmployeeElement GetCorrespondingEmployeeElement(EmployeeTypesEnum employeeType)
+        {
+            return employeeType switch
+            {
+                EmployeeTypesEnum.Cleaner => employeeElementCleaner,
+                EmployeeTypesEnum.Cook => employeeElementCook,
+                EmployeeTypesEnum.GameTechnician => employeeElementGameTechnician,
+                EmployeeTypesEnum.GymCoach => employeeElementGymCoach,
+                _ => throw new ArgumentOutOfRangeException(nameof(employeeType), employeeType, null)
+            };
         }
 
         private int GetAvailableEmployeeCount(EmployeeTypesEnum employeeType)
