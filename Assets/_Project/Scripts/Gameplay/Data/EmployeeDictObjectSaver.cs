@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using _Project.Scripts.ScriptableObjects.EmployeeDictObject;
+using _Project.Scripts.ScriptableObjects.EmployeeDict;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Data
 {
     public class EmployeeDictObjectSaver : MonoBehaviour
     {
-        public EmployeeDictObject employeeCountDictSo;
+        public EmployeeDictSo employeeCountDictSo;
         public string dataKey;
 
         void Awake()

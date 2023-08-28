@@ -49,7 +49,7 @@ namespace _Project.Scripts.Gameplay.Building
         [SerializeField] private UnityEvent OnDecrementPensionRating;
         [Space]
         
-        [SerializeField] private SoRoomType selectedRoomTypeSo;
+        [SerializeField] private RoomTypeSo selectedRoomTypeSo;
         [Space]
         
         [Header("Data Saving")] 

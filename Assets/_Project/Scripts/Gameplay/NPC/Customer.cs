@@ -1,5 +1,5 @@
 using _Project.Scripts.Gameplay.Building;
-using _Project.Scripts.ScriptableObjects.IntObject;
+using _Project.Scripts.ScriptableObjects.Int;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -119,7 +119,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 floorManagerScript.MakeRoomNotUsable(extraRoom);
         }
 
-        public void PayRoom(IntObject coinCountSo)
+        public void PayRoom(IntSo coinCountSo)
         {
             if (wayPointsList.Count < NoOfWayPointsIfSuccessful)
             {

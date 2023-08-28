@@ -5,7 +5,7 @@ namespace _Project.Scripts.Gameplay.Building
 {
     public class InitializeNewRoomPlaceholder : MonoBehaviour
     {
-        [SerializeField] private SoRoomType selectedRoomTypeSo;
+        [SerializeField] private RoomTypeSo selectedRoomTypeSo;
         
         [SerializeField] private GameObject newRoomPlaceholderWidth1Prefab;
         [SerializeField] private GameObject newRoomPlaceholderWidth2Prefab;

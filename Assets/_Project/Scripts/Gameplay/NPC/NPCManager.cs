@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
-using _Project.Scripts.ScriptableObjects.EmployeeDictObject;
-using _Project.Scripts.ScriptableObjects.IntObject;
+using _Project.Scripts.ScriptableObjects.EmployeeDict;
+using _Project.Scripts.ScriptableObjects.FloatRange;
+using _Project.Scripts.ScriptableObjects.Int;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
 using _Project.Scripts.ScriptableObjects.SoEventRoomBool;
-using _Project.Scripts.ScriptableObjects.TimeRangeObject;
 using UnityEngine;
 using UnityEngine.Events;
-using static _Project.Scripts.ScriptableObjects.EmployeeDictObject.EmployeeDictObject;
+using static _Project.Scripts.ScriptableObjects.EmployeeDict.EmployeeDictSo;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -42,8 +42,8 @@ namespace _Project.Scripts.Gameplay.NPC
         
         [SerializeField] private List<CustomerObject> customerObjectsList;
         [Space]
-        [SerializeField] private IntObject dayCountSo;
-        [SerializeField] private FloatRangeObject.FloatRange timeBetweenEachSpawn;
+        [SerializeField] private IntSo dayCountSo;
+        [SerializeField] private FloatRangeSo.FloatRange timeBetweenEachSpawn;
         [Space]
         
         [Header("Employee Prefabs")]
@@ -62,7 +62,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private UnityEvent OnEnemyWaveFinished;
         
         [Space] 
-        [SerializeField] private EmployeeDictObject employeeDictSo;
+        [SerializeField] private EmployeeDictSo employeeDictSo;
         
         private readonly List<GameObject> enemyWaveList = new();
         private int lastSpawnedEnemyWaveSize;

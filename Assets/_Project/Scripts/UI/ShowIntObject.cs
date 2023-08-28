@@ -1,4 +1,4 @@
-using _Project.Scripts.ScriptableObjects.IntObject;
+using _Project.Scripts.ScriptableObjects.Int;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace _Project.Scripts.UI
         [Space]
         
         [SerializeField] private string precedingText;
-        [SerializeField] private IntObject intObjectSo;
+        [SerializeField] private IntSo intObjectSo;
 
         void Start()
         {

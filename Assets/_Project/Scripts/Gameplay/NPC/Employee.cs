@@ -1,6 +1,6 @@
 using System.Collections;
 using _Project.Scripts.Gameplay.Building;
-using _Project.Scripts.ScriptableObjects.TimeRangeObject;
+using _Project.Scripts.ScriptableObjects.FloatRange;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +12,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header(nameof(Employee) + " Properties")]
         [Space]
         [Tooltip("The amount of time to make the employee available")]
-        [SerializeField] private FloatRangeObject availabilityRangeSo;
+        [SerializeField] private FloatRangeSo availabilityRangeSo;
 
         [Space] 
         [SerializeField] private UnityEvent onEmployeeAvailabilityChange;

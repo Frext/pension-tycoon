@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Leguar.TotalJSON;
 using UnityEngine;
 using static _Project.Scripts.Gameplay.Building.Room.RoomTypeEnum;
-using static _Project.Scripts.ScriptableObjects.EmployeeDictObject.EmployeeDictObject;
+using static _Project.Scripts.ScriptableObjects.EmployeeDict.EmployeeDictSo;
 
 namespace _Project.Scripts.Gameplay.Building
 {

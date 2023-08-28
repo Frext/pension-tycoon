@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
-using _Project.Scripts.ScriptableObjects.TimeRangeObject;
+using _Project.Scripts.ScriptableObjects.FloatRange;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,7 +31,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
         
-        [SerializeField] protected FloatRangeObject timeRangeObjectSo;
+        [SerializeField] protected FloatRangeSo timeRangeObjectSo;
         [Space]
         
         [SerializeField] protected FloorManager floorManagerScript;

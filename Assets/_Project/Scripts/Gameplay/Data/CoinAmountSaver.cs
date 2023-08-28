@@ -1,4 +1,4 @@
-using _Project.Scripts.ScriptableObjects.BoolObject;
+using _Project.Scripts.ScriptableObjects.Bool;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Data
@@ -8,7 +8,7 @@ namespace _Project.Scripts.Gameplay.Data
         [SerializeField] private IntObjectSaver.IntData coinAmountData;
         [Space]
         
-        [SerializeField] private BoolObject isWaveStartedBoolObjectSo;
+        [SerializeField] private BoolSo isWaveStartedBoolObjectSo;
 
         void Awake()
         {

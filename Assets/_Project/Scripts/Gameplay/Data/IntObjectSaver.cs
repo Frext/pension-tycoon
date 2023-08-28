@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using _Project.Scripts.ScriptableObjects.IntObject;
+using _Project.Scripts.ScriptableObjects.Int;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Data
@@ -10,7 +10,7 @@ namespace _Project.Scripts.Gameplay.Data
         [Serializable]
         public class IntData
         {
-            public IntObject intObjectSo;
+            public IntSo intObjectSo;
             public string dataKey;
         }
         
