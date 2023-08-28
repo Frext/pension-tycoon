@@ -802,7 +802,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  textMesh: {fileID: 4041394995908955568}
+  showAfterLevelTextMesh: {fileID: 4041394995908955568}
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
   showAfterLevel: 0
 --- !u!114 &3182990881146523469

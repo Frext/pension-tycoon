@@ -10,7 +10,7 @@ namespace _Project.Scripts.UI.Shop
         [SerializeField] private UnityEvent OnTurnOn;
         [SerializeField] private UnityEvent OnTurnOff;
         [Space] 
-        [SerializeField] private TextMeshProUGUI textMesh;
+        [SerializeField] private TextMeshProUGUI showAfterLevelTextMesh;
         
         [SerializeField] private IntSo dayCountSo;
         
@@ -20,7 +20,7 @@ namespace _Project.Scripts.UI.Shop
         {
             UpdateVisibility();
 
-            textMesh.text += showAfterLevel.ToString();
+            showAfterLevelTextMesh.text += showAfterLevel.ToString();
         }
         
         public void UpdateVisibility()

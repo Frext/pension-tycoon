@@ -327,7 +327,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  textMesh: {fileID: 7508967590395660322}
+  showAfterLevelTextMesh: {fileID: 7508967590395660322}
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
   showAfterLevel: 0
 --- !u!114 &2780697986081573719
@@ -508,19 +508,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: cc5e23ecf71905947a9fbb11cdf5a1a3, type: 2}
-        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.EmployeeObject.EmployeeObject,
-          Assembly-CSharp
-        m_MethodName: IncrementLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79, type: 2}
         m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
           Assembly-CSharp
@@ -529,6 +516,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 3693529171531580766}
           m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 50
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 8a58f28b66630334e96b02a96cd97b86, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.EmployeeObject.EmployeeObject,
+          Assembly-CSharp
+        m_MethodName: IncrementLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

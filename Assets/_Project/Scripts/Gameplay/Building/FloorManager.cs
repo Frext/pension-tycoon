@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Data;
+using _Project.Scripts.ScriptableObjects.Int;
 using _Project.Scripts.ScriptableObjects.RoomType;
 using _Project.Scripts.ScriptableObjects.SoEventRoom;
 using UnityEngine;
@@ -50,6 +51,7 @@ namespace _Project.Scripts.Gameplay.Building
         [Space]
         
         [SerializeField] private RoomTypeSo selectedRoomTypeSo;
+        [SerializeField] private IntSo maxFloorCountSo;
         [Space]
         
         [Header("Data Saving")] 
@@ -118,6 +120,11 @@ namespace _Project.Scripts.Gameplay.Building
         
         public void AppendFloor()
         {
+            if (FloorCount >= maxFloorCountSo.Value)
+            {
+                return;
+            }
+            
             GameObject instantiatedFloor = Instantiate(floorPrefab,
                 floorBasePosition + floorOffsetPerFloor * FloorCount,
                 Quaternion.identity, floorsParentTransform);

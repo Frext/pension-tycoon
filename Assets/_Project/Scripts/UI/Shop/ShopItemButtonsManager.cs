@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.ScriptableObjects.Int;
-using _Project.Scripts.ScriptableObjects.SOEvent;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,17 +22,11 @@ namespace _Project.Scripts.UI.Shop
         [Space]
         
         [SerializeField] private IntSo coinAmountSo;
-        [SerializeField] private SoEvent OnChangeCoinAmount;
         [Space]
         
         [SerializeField] private List<ScrollElement> scrollElementsList;
         
-        void Awake()
-        {
-            OnChangeCoinAmount.RegisterToEvent(UpdateButtonStatesAfterDelay);
-        }
-        
-        void UpdateButtonStatesAfterDelay()
+        public void UpdateButtonStatesAfterDelay()
         {
             StartCoroutine(IUpdateButtons(updateDelay));
         }
@@ -58,11 +51,6 @@ namespace _Project.Scripts.UI.Shop
         void Start()
         {
             StartCoroutine(IUpdateButtons());
-        }
-
-        void OnDestroy()
-        {
-            OnChangeCoinAmount.DeregisterFromEvent(UpdateButtonStatesAfterDelay);
         }
     }
 }

@@ -392,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &60077970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1275,8 +1275,8 @@ RectTransform:
   m_Father: {fileID: 1324144815}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.43639332}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3839,7 +3839,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4350,6 +4350,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: cc5e23ecf71905947a9fbb11cdf5a1a3,
+        type: 2}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: IncrementLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: _Project.Scripts.ScriptableObjects.Employee.EmployeeSo, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5005542847130609155, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}
       propertyPath: m_text
@@ -4836,9 +4852,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 20}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1050729625
 MonoBehaviour:
@@ -5122,7 +5138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1115952098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5499,9 +5515,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1181891884
 MonoBehaviour:
@@ -5698,6 +5714,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c1c0b887de1f344a990c721dac88132,
+        type: 2}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: IncrementLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: _Project.Scripts.ScriptableObjects.Employee.EmployeeSo, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5005542847130609155, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}
@@ -6902,9 +6934,9 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1418602987
 MonoBehaviour:
@@ -8276,8 +8308,9 @@ GameObject:
   - component: {fileID: 1600938359}
   - component: {fileID: 1600938360}
   - component: {fileID: 1600938361}
-  - component: {fileID: 1600938363}
+  - component: {fileID: 1600938364}
   - component: {fileID: 1600938362}
+  - component: {fileID: 1600938363}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -8408,9 +8441,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1724bbffe127da4ba940cc55fb6fe2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateDelay: 0.001
+  updateDelay: 0.005
   coinAmountSo: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79, type: 2}
-  OnChangeCoinAmount: {fileID: 11400000, guid: c2fc4a27ab1e9644c95265c03e48b80e, type: 2}
   scrollElementsList:
   - button: {fileID: 1728965676}
     priceText: {fileID: 1302775738}
@@ -8477,6 +8509,35 @@ MonoBehaviour:
       - m_Target: {fileID: 1600938362}
         m_TargetAssemblyTypeName: _Project.Scripts.UI.ShowShopItemInfo, Assembly-CSharp
         m_MethodName: ShowItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1600938364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600938358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: c2fc4a27ab1e9644c95265c03e48b80e, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1600938361}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.Shop.ShopItemButtonsManager,
+          Assembly-CSharp
+        m_MethodName: UpdateButtonStatesAfterDelay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8909,6 +8970,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
+  maxFloorCountSo: {fileID: 11400000, guid: 9d34222d0e4a75249847749193129b86, type: 2}
   dataKey: floorSlotsList
 --- !u!114 &1666848542
 MonoBehaviour:
@@ -10345,6 +10407,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 6172a59efb2ff39468a53641f7618d89,
+        type: 2}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: IncrementLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: _Project.Scripts.ScriptableObjects.Employee.EmployeeSo, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5005542847130609155, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}
       propertyPath: m_text
@@ -11542,12 +11620,12 @@ PrefabInstance:
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -1186.8
       objectReference: {fileID: 0}
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 96.6
       objectReference: {fileID: 0}
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
@@ -12071,67 +12149,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ui_shop_employeeItem_cleaner
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: 8a58f28b66630334e96b02a96cd97b86,
-        type: 2}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: IncrementLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.EmployeeObject.EmployeeObject, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.IntObject.IntObject, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 1086338189}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3693529170666799877, guid: 5460ac8de5a7ec74384d30a69ec05163,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
       objectReference: {fileID: 0}
     - target: {fileID: 5066491502007806395, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}

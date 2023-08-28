@@ -25,19 +25,18 @@ namespace _Project.Scripts.UI.Shop
       
       public void UpdateUI()
       {
-         // If the update progress is at max, don't let the user press it again by making it not interactable.
-         if (Mathf.Approximately(upgradeImage.fillAmount, 1f))
-         {
-            upgradeButton.interactable = false;
-            upgradeText.text = maxText;
-            return;
-         }
-         
          Level currentLevel = employeeObject.GetCurrentLevel();
 
          purchaseText.text = currentLevel.purchaseAmount.ToString();
          upgradeText.text = currentLevel.upgradeAmount.ToString();
          upgradeImage.fillAmount = employeeObject.GetUpdateProgressRatio();
+         
+         // If the update progress is at max, don't let the user press it again by making it not interactable.
+         if (Mathf.Approximately(upgradeImage.fillAmount, 1f))
+         {
+            upgradeButton.interactable = false;
+            upgradeText.text = maxText;
+         }
       }
    }
 }
