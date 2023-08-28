@@ -10,11 +10,19 @@ namespace _Project.Scripts.UI.Hud.EmployeePanel
         [SerializeField] private EmployeeDictSo employeeDictSo;
         [Space]
         
+        [SerializeField] private EmployeeViewMode employeeViewMode;
+        [Space]
+        
         [SerializeField] private EmployeeElement employeeElementCleaner;
         [SerializeField] private EmployeeElement employeeElementCook;
         [SerializeField] private EmployeeElement employeeElementGameTechnician;
         [SerializeField] private EmployeeElement employeeElementGymCoach;
 
+        private enum EmployeeViewMode
+        {
+            AvailableAndTotal,
+            Total
+        }
         
         void OnEnable()
         {
@@ -23,8 +31,6 @@ namespace _Project.Scripts.UI.Hud.EmployeePanel
         
         public void UpdateEmployeeElements()
         {
-            gameObject.SetActive(true);
-            
             for (int index = 0; index < employeeDictSo.employeeCountDict.Keys.Count; index++)
             {
                 EmployeeTypesEnum currentEmployeeType = (EmployeeTypesEnum)index;
@@ -34,8 +40,15 @@ namespace _Project.Scripts.UI.Hud.EmployeePanel
                 
                 if (totalEmployeeCount > 0)
                 {
-                    employeeElement.SetEmployeeElement(
-                        GetAvailableEmployeeCount(currentEmployeeType), totalEmployeeCount);
+                    if (employeeViewMode == EmployeeViewMode.AvailableAndTotal)
+                    {
+                        employeeElement.SetEmployeeElement(
+                            GetAvailableEmployeeCount(currentEmployeeType), totalEmployeeCount);
+                    }
+                    else
+                    {
+                        employeeElement.SetEmployeeElement(totalEmployeeCount);
+                    }
                     
                     employeeElement.gameObject.SetActive(true);
                 }

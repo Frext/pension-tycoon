@@ -13,5 +13,10 @@ namespace _Project.Scripts.UI.Hud.EmployeePanel
             availableEmployeeCountText.text = availableEmployeeCount.ToString();
             totalEmployeeCountText.text = totalEmployeeCount.ToString();
         }
+        
+        public void SetEmployeeElement(int totalEmployeeCount)
+        {
+            totalEmployeeCountText.text = totalEmployeeCount.ToString();
+        }
     }
 }
