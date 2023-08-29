@@ -116,11 +116,35 @@ MonoBehaviour:
   - {x: 3.5, y: 0.25, z: -1.75}
   timeRangeObjectSo: {fileID: 11400000, guid: b96e99960dbd78b4a93b764bd5e022c2, type: 2}
   floorManagerScript: {fileID: 0}
-  baseTargetRoomType: 1
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
-  OnCustomerLeave:
+  baseTargetRoomType: 1
+  extraRoomTypes: 06000000
+  extraRoomChance: 0.4
+  makeExtraRoomNotUsableChance: 0.4
+  payAmount: 5
+  onNotGetBaseRoom:
+    m_PersistentCalls:
+      m_Calls: []
+  onNotGetExtraRoom:
+    m_PersistentCalls:
+      m_Calls: []
+  onCustomerLeave:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8520248397880446868}
+        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.NPC.Customer, Assembly-CSharp
+        m_MethodName: PayRoom
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: _Project.Scripts.ScriptableObjects.Int.IntSo,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 88713c829ba7da04ca73d4fdfe361cd3, type: 2}
         m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SoEventGameObject.SoEventGameObject,
           Assembly-CSharp
@@ -134,21 +158,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8520248397880446868}
-        m_TargetAssemblyTypeName: _Project.Scripts.Gameplay.NPC.Customer, Assembly-CSharp
-        m_MethodName: PayRoom
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3f7370dec3ebc6e47b37f85f3b07ac79,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: _Project.Scripts.ScriptableObjects.IntObject.IntObject,
-            Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  extraRoomTypes: 06000000
-  extraRoomChance: 0.4
-  makeExtraRoomNotUsableChance: 0.4
-  payAmount: 5
+  onNoAvailableRoom: {fileID: 11400000, guid: a23496b3945d91e4a984d30bf815fb34, type: 2}

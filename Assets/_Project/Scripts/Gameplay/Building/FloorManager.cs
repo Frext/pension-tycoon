@@ -147,8 +147,15 @@ namespace _Project.Scripts.Gameplay.Building
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
+                    RoomTypeEnum roomType = floorSlotsList[floorIndex].slotsList[roomIndex].roomType;
+                    
                     // Assign the slot properties
-                    SetRoomSlotProperties(new Vector2Int(roomIndex, floorIndex), floorSlotsList[floorIndex].slotsList[roomIndex].roomType);
+                    SetRoomSlotProperties(new Vector2Int(roomIndex, floorIndex), roomType);
+
+                    if (GetRoomWidth(roomType) == 2)
+                    {
+                        roomIndex++;
+                    }
                 }
             }
         }

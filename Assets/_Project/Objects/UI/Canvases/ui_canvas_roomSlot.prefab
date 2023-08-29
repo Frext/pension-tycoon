@@ -333,6 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soEventRoomBool: {fileID: 11400000, guid: 5c8c13d6b0289b748be345f4b78f491a, type: 2}
+  onNoAvailableRoomOrEmployee: {fileID: 11400000, guid: a23496b3945d91e4a984d30bf815fb34,
+    type: 2}
   onEmployeeNotFound:
     m_PersistentCalls:
       m_Calls:

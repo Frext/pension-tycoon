@@ -1,5 +1,7 @@
 using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.Int;
+using _Project.Scripts.ScriptableObjects.SoEventRoom;
+using _Project.Scripts.ScriptableObjects.SoEventRoomString;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +14,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         [SerializeField] private Vector3 receptionPosition;
         [Space] 
-        [SerializeField] private UnityEvent OnCustomerLeave;
+        
         
         [Header("Rooms")]
         [SerializeField] private Room.RoomTypeEnum baseTargetRoomType;
@@ -26,6 +28,15 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header("Money")] 
         [SerializeField] private int payAmount;
 
+        [Header("Events")] 
+        [SerializeField] private UnityEvent onNotGetBaseRoom;
+        [SerializeField] private UnityEvent onNotGetExtraRoom;
+        [SerializeField] private UnityEvent onCustomerLeave;
+        [Space] 
+        
+        [SerializeField] private SoEventString onNoAvailableRoom; 
+
+            
         Room extraRoom;
         
         const int NoOfWayPointsIfSuccessful = 3;
@@ -54,7 +65,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 position = GetRandomStartPoint(),
                 OnStartMoving = () =>
                 {
-                    OnCustomerLeave.Invoke();
+                    onCustomerLeave.Invoke();
                 },
                 OnReachDestination = () => { Destroy(gameObject); }
             });
@@ -75,8 +86,19 @@ namespace _Project.Scripts.Gameplay.NPC
             {
                 EnterSelectedRoom();
             }
+            else
+            {
+                FindNoRoom(baseTargetRoomType, onNotGetBaseRoom);
+            }
         }
-        
+
+        private void FindNoRoom(Room.RoomTypeEnum roomType, UnityEvent unityEvent)
+        {
+            onNoAvailableRoom.Invoke(Room.GetLegibleRoomName(roomType));
+            
+            unityEvent.Invoke();
+        }
+
         protected override void LeaveSelectedRoom()
         {
             base.LeaveSelectedRoom();
@@ -109,7 +131,12 @@ namespace _Project.Scripts.Gameplay.NPC
                 wayPointsList.Insert(currentWayPointIndex + 1, 
                     CreateWayPoint(extraRoom.slot.roomObject.transform.position, LeaveExtraRoom));
             }
+            else
+            {
+                FindNoRoom(roomType, onNotGetExtraRoom);
+            }
         }
+        
 
         private void LeaveExtraRoom()
         {

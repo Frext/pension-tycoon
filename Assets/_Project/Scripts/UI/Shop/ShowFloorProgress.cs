@@ -17,7 +17,7 @@ namespace _Project.Scripts.UI.Shop
             UpdateProgress();
         }
 
-        private void UpdateProgress()
+        public void UpdateProgress()
         {
             image.fillAmount = constructedRoomsCountSo.Value / (float)floorCountSo.GetMax() / FloorManager.RoomCountPerFloor;
         }

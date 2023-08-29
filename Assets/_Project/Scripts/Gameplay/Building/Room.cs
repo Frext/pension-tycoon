@@ -40,6 +40,32 @@ namespace _Project.Scripts.Gameplay.Building
                 _ => throw new ArgumentOutOfRangeException(nameof(roomType), roomType, null)
             };
         }
+
+        public static string GetLegibleRoomName(RoomTypeEnum roomType)
+        {
+            return roomType switch
+            {
+                Bathroom => "Bathroom",
+                CustomerSingle => "Single Customer Room",
+                CustomerDouble => "Double Customer Room",
+                Dining => "Dining Room",
+                Arcade => "Arcade",
+                Gym => "Gym",
+                _ => throw new ArgumentOutOfRangeException(nameof(roomType), roomType, null)
+            };
+        }
+        
+        public static string GetLegibleEmployeeName(EmployeeTypesEnum employeeType)
+        {
+            return employeeType switch
+            {
+                EmployeeTypesEnum.Cleaner => "Cleaner",
+                EmployeeTypesEnum.Cook => "Cook",
+                EmployeeTypesEnum.GameTechnician => "Game Technician",
+                EmployeeTypesEnum.GymCoach => "Gym Coach",
+                _ => throw new ArgumentOutOfRangeException(nameof(employeeType), employeeType, null)
+            };
+        }
         
         [Serializable]
         public class RoomSlot
