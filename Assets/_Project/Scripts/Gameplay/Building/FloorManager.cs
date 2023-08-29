@@ -52,6 +52,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         [SerializeField] private RoomTypeSo selectedRoomTypeSo;
         [SerializeField] private IntSo floorCountSo;
+        [SerializeField] private IntSo constructedRoomsCountSo;
         [Space]
         
         [Header("Data Saving")] 
@@ -89,7 +90,7 @@ namespace _Project.Scripts.Gameplay.Building
                 BuildFloors(floorSlotsList.Count - 1);
             
                 // Then assign the loaded slots to the floors list
-                AssignSlots(floorSlotsList);
+                AssignRoomSlots(floorSlotsList);
 
                 // Finally create the game objects because they weren't stored inside the data
                 CreateSlotGameObjects();
@@ -140,14 +141,14 @@ namespace _Project.Scripts.Gameplay.Building
             roofTransform.position = roofPos;
         }
         
-        private void AssignSlots(List<FloorSlot> floorSlotsList)
+        private void AssignRoomSlots(List<FloorSlot> floorSlotsList)
         {
             for (int floorIndex = 0; floorIndex < floorCountSo.Value; floorIndex++)
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
                     // Assign the slot properties
-                    floorsList[floorIndex].roomsList[roomIndex].slot = floorSlotsList[floorIndex].slotsList[roomIndex];
+                    SetRoomSlotProperties(new Vector2Int(roomIndex, floorIndex), floorSlotsList[floorIndex].slotsList[roomIndex].roomType);
                 }
             }
         }
@@ -269,6 +270,8 @@ namespace _Project.Scripts.Gameplay.Building
             SetSingleSlot(room, roomType, isOccupied, isUsable);
             
             SetMakeRoomUsableButton(room, !isUsable);
+
+            UpdateConstructedRoomCount();
         }
         
         private void SetRoomSlotProperties(Vector2Int index, bool isOccupied, bool isUsable)
@@ -283,6 +286,8 @@ namespace _Project.Scripts.Gameplay.Building
             SetSingleSlot(room, isOccupied, isUsable);
             
             SetMakeRoomUsableButton(room, !isUsable);
+            
+            UpdateConstructedRoomCount();
         }
 
         private bool IsIndexValid(Vector2Int index)
@@ -317,6 +322,24 @@ namespace _Project.Scripts.Gameplay.Building
         private void DestroyRoomGameObject(Room room)
         {
             Destroy(room.slot.roomObject);
+        }
+
+        private void UpdateConstructedRoomCount()
+        {
+            int count = 0;
+            
+            foreach (var floor in floorsList)
+            {
+                foreach (var room in floor.roomsList)
+                {
+                    if (IsRoomConstructed(room))
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            constructedRoomsCountSo.SetValueTo(count);
         }
         
         void OnDestroy()

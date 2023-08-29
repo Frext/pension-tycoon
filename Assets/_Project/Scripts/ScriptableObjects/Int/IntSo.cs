@@ -100,5 +100,10 @@ namespace _Project.Scripts.ScriptableObjects.Int
         {
             return (float)Value / max;
         }
+
+        public int GetMax()
+        {
+            return max;
+        }
     }
 }

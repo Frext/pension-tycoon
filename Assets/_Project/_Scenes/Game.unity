@@ -5154,7 +5154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1115952098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8977,6 +8977,8 @@ MonoBehaviour:
         m_CallState: 2
   selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
   floorCountSo: {fileID: 11400000, guid: ff788e221b263764689c725d1218a592, type: 2}
+  constructedRoomsCountSo: {fileID: 11400000, guid: 39e702bae514dfd47894b76e3bd2f784,
+    type: 2}
   dataKey: floorSlotsList
 --- !u!114 &1666848542
 MonoBehaviour:
@@ -9077,9 +9079,8 @@ GameObject:
   - component: {fileID: 1693808601}
   - component: {fileID: 1693808600}
   - component: {fileID: 1693808602}
-  - component: {fileID: 1693808603}
   m_Layer: 5
-  m_Name: image_floorProgressBar
+  m_Name: image_roomProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9102,8 +9103,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1129.2656, y: -388.3291}
-  m_SizeDelta: {x: 294.2683, y: 18.5296}
+  m_AnchoredPosition: {x: 1129.2656, y: -461.9632}
+  m_SizeDelta: {x: 441.5365, y: 18.53}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1693808600
 MonoBehaviour:
@@ -9155,36 +9156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42400b5b0fe1d2a4ea36509ef9d47c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  constructedRoomsCountSo: {fileID: 11400000, guid: 39e702bae514dfd47894b76e3bd2f784,
+    type: 2}
   floorCountSo: {fileID: 11400000, guid: ff788e221b263764689c725d1218a592, type: 2}
   image: {fileID: 1693808600}
---- !u!114 &1693808603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693808596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soEvent: {fileID: 11400000, guid: db7a95aacdfc3754f97380785b23daf8, type: 2}
-  responseEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1693808602}
-        m_TargetAssemblyTypeName: _Project.Scripts.UI.Shop.ShowFloorProgress, Assembly-CSharp
-        m_MethodName: UpdateProgress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &1728965674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11701,12 +11676,12 @@ PrefabInstance:
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -1186.8
       objectReference: {fileID: 0}
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 96.6
       objectReference: {fileID: 0}
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
