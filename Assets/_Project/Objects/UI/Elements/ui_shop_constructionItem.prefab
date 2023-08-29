@@ -704,7 +704,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8517801700781870655}
   - component: {fileID: 6946206706314555512}
-  - component: {fileID: 3182990881146523469}
   m_Layer: 5
   m_Name: ui_shop_constructionItem
   m_TagString: Untagged
@@ -803,36 +802,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   showAfterLevelTextMesh: {fileID: 4041394995908955568}
+  shouldAppendNumberToText: 1
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
-  showAfterLevel: 0
---- !u!114 &3182990881146523469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8517801700781870654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soEvent: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
-  responseEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6946206706314555512}
-        m_TargetAssemblyTypeName: _Project.Scripts.UI.ShowScrollItem, Assembly-CSharp
-        m_MethodName: UpdateVisibility
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  showBetweenLevels:
+    min: 0
+    max: 25
 --- !u!1 &8517801701559271537
 GameObject:
   m_ObjectHideFlags: 0

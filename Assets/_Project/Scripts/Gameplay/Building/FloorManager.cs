@@ -51,13 +51,12 @@ namespace _Project.Scripts.Gameplay.Building
         [Space]
         
         [SerializeField] private RoomTypeSo selectedRoomTypeSo;
-        [SerializeField] private IntSo maxFloorCountSo;
+        [SerializeField] private IntSo floorCountSo;
         [Space]
         
         [Header("Data Saving")] 
         [SerializeField] private string dataKey = "floorSlotsList";
-
-        public int FloorCount => floorsList.Count;
+        
         public const int RoomCountPerFloor = 6;
         private const int RoomsParentIndex = 2;
 
@@ -66,9 +65,9 @@ namespace _Project.Scripts.Gameplay.Building
         
         void Awake()
         {
-            LoadRooms();
-            
             RegisterEvents();
+            
+            LoadRooms();
         }
 
         private void RegisterEvents()
@@ -116,17 +115,17 @@ namespace _Project.Scripts.Gameplay.Building
             {
                 AppendFloor();
             }
+            
+            // Place the roof in case no new rooms were appended.
+            PlaceRoof();
         }
         
         public void AppendFloor()
         {
-            if (FloorCount >= maxFloorCountSo.Value)
-            {
-                return;
-            }
+            floorCountSo.IncrementValue();
             
             GameObject instantiatedFloor = Instantiate(floorPrefab,
-                floorBasePosition + floorOffsetPerFloor * FloorCount,
+                floorBasePosition + floorOffsetPerFloor * (floorCountSo.Value - 1),
                 Quaternion.identity, floorsParentTransform);
             
             AddRoomsInFloorToFloorsList(instantiatedFloor.transform.GetChild(RoomsParentIndex));
@@ -136,14 +135,14 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void PlaceRoof()
         {
-            Vector3 roofPos = roofBasePosition + roofOffsetPerFloor * (FloorCount - 1);
+            Vector3 roofPos = roofBasePosition + roofOffsetPerFloor * floorCountSo.Value;
 
             roofTransform.position = roofPos;
         }
         
         private void AssignSlots(List<FloorSlot> floorSlotsList)
         {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            for (int floorIndex = 0; floorIndex < floorCountSo.Value; floorIndex++)
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
@@ -155,7 +154,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         private void CreateSlotGameObjects()
         {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            for (int floorIndex = 0; floorIndex < floorCountSo.Value; floorIndex++)
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
@@ -180,7 +179,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         public void ShowAllRemoveButtonsUI()
         {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            for (int floorIndex = 0; floorIndex < floorCountSo.Value; floorIndex++)
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
@@ -243,7 +242,7 @@ namespace _Project.Scripts.Gameplay.Building
         
         private Vector2Int GetIndexByRoom(Room room)
         {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            for (int floorIndex = 0; floorIndex < floorCountSo.Value; floorIndex++)
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
@@ -288,7 +287,7 @@ namespace _Project.Scripts.Gameplay.Building
 
         private bool IsIndexValid(Vector2Int index)
         {
-            if (IsOutOfBoundaries(index.y, 0, FloorCount - 1) || 
+            if (IsOutOfBoundaries(index.y, 0, floorCountSo.Value - 1) || 
                 IsOutOfBoundaries(index.x, 0, RoomCountPerFloor - 1))
             {
                 return false;
@@ -318,11 +317,6 @@ namespace _Project.Scripts.Gameplay.Building
         private void DestroyRoomGameObject(Room room)
         {
             Destroy(room.slot.roomObject);
-        }
-
-        void Start()
-        {
-            PlaceRoof();
         }
         
         void OnDestroy()
@@ -452,7 +446,7 @@ namespace _Project.Scripts.Gameplay.Building
 
         public void ResetEveryRoom()
         {
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            for (int floorIndex = 0; floorIndex < floorCountSo.Value; floorIndex++)
             {
                 for (int roomIndex = 0; roomIndex < RoomCountPerFloor; roomIndex++)
                 {
@@ -479,7 +473,7 @@ namespace _Project.Scripts.Gameplay.Building
         {
             List<FloorSlot> floorSlots = new();
             
-            for (int floorIndex = 0; floorIndex < FloorCount; floorIndex++)
+            for (int floorIndex = 0; floorIndex < floorCountSo.Value; floorIndex++)
             {
                 floorSlots.Add(new FloorSlot());
 

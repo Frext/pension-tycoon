@@ -1,7 +1,9 @@
+using System;
 using _Project.Scripts.ScriptableObjects.Int;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using static _Project.Scripts.ScriptableObjects.FloatRange.FloatRangeSo;
 
 namespace _Project.Scripts.UI.Shop
 {
@@ -11,21 +13,29 @@ namespace _Project.Scripts.UI.Shop
         [SerializeField] private UnityEvent OnTurnOff;
         [Space] 
         [SerializeField] private TextMeshProUGUI showAfterLevelTextMesh;
+        [SerializeField] private bool shouldAppendNumberToText = true;
         
         [SerializeField] private IntSo dayCountSo;
         
-        [Tooltip("Inclusive")] [Range(0, 20)] [SerializeField] private int showAfterLevel;
-        
+        [Tooltip("Inclusive")] 
+        [SerializeField] private FloatRange showBetweenLevels;
+
         void Start()
         {
-            UpdateVisibility();
+            if (shouldAppendNumberToText)
+            {
+                showAfterLevelTextMesh.text += showBetweenLevels.min;
+            }
+        }
 
-            showAfterLevelTextMesh.text += showAfterLevel.ToString();
+        void OnEnable()
+        {
+            UpdateVisibility();
         }
         
         public void UpdateVisibility()
         {
-            if (dayCountSo.Value >= showAfterLevel)
+            if (showBetweenLevels.IsBetween(dayCountSo.Value))
             {
                 OnTurnOn.Invoke();
             } else {

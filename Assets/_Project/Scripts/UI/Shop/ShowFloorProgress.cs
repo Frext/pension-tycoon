@@ -1,4 +1,3 @@
-using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.Int;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,10 +6,7 @@ namespace _Project.Scripts.UI.Shop
 {
     public class ShowFloorProgress : MonoBehaviour
     {
-        [SerializeField] private IntSo maxFloorCount;
-        [Space]
-        
-        [SerializeField] private FloorManager floorManagerScript;
+        [SerializeField] private IntSo floorCountSo;
 
         [SerializeField] private Image image;
 
@@ -21,7 +17,7 @@ namespace _Project.Scripts.UI.Shop
 
         public void UpdateProgress()
         {
-            image.fillAmount = (float)floorManagerScript.FloorCount / maxFloorCount.Value;
+            image.fillAmount = floorCountSo.GetRatio();
         }
     }
 }

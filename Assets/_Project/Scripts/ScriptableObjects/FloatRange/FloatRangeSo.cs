@@ -17,6 +17,11 @@ namespace _Project.Scripts.ScriptableObjects.FloatRange
             {
                 return Random.Range(min, max);
             }
+
+            public bool IsBetween(float num)
+            {
+                return num >= min && num < max;
+            }
         }
 
         [SerializeField] private FloatRange timeRange;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Project.Scripts.ScriptableObjects.Int;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,8 +20,10 @@ namespace _Project.Scripts.Gameplay.Building
         [Space]
         
         [SerializeField] private List<MeshRenderer> childMeshRenderersList;
+        [Space]
         
         [SerializeField] private FloorManager floorManagerScript;
+        [SerializeField] private IntSo floorCountSo;
         [Space]
         
         [SerializeField] private UnityEvent OnCancelPlacing;
@@ -46,7 +49,7 @@ namespace _Project.Scripts.Gameplay.Building
 
         private void GoToFirstUnconstructedRoom()
         {
-            for (int floor = 0; floor < floorManagerScript.FloorCount; floor++)
+            for (int floor = 0; floor < floorCountSo.Value; floor++)
             {
                 for (int room = 0; room < FloorManager.RoomCountPerFloor; room++)
                 {
@@ -94,7 +97,7 @@ namespace _Project.Scripts.Gameplay.Building
         {
             Vector3 newPos = transform.position + new Vector3(rawInput.x, rawInput.y);
             newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
-            newPos.y = Mathf.Clamp(newPos.y, minY, minY + (floorManagerScript.FloorCount - 1));
+            newPos.y = Mathf.Clamp(newPos.y, minY, minY + (floorCountSo.Value - 1));
 
             transform.position = newPos;
         }

@@ -1632,6 +1632,11 @@ PrefabInstance:
       propertyPath: showAfterLevel
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
@@ -1655,7 +1660,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -1730,7 +1735,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -223.23126
+      value: -108.2313
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -1772,6 +1777,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &425065604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1728965674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &457468875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,13 +1811,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1728965675}
   - {fileID: 1355460619}
   - {fileID: 790434793}
   - {fileID: 1476941937}
   - {fileID: 694321000}
   - {fileID: 402431519}
   - {fileID: 2000064769}
+  - {fileID: 1728965675}
   m_Father: {fileID: 1181891883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3239,6 +3250,11 @@ PrefabInstance:
       propertyPath: showAfterLevel
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_Name
@@ -3257,7 +3273,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -3332,7 +3348,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -108.23126
+      value: 6.768677
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -4036,7 +4052,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -4111,7 +4127,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 121.76868
+      value: 236.7687
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -5138,7 +5154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1115952098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5245,21 +5261,6 @@ PrefabInstance:
       propertyPath: floorManagerScript
       value: 
       objectReference: {fileID: 1666848541}
-    - target: {fileID: 1935015446804268590, guid: bc858fdf5de6bab4cb9cc3e93d1ce93c,
-        type: 3}
-      propertyPath: OnCancelPlacing.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1935015446804268590, guid: bc858fdf5de6bab4cb9cc3e93d1ce93c,
-        type: 3}
-      propertyPath: OnCancelPlacing.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1935015446804268590, guid: bc858fdf5de6bab4cb9cc3e93d1ce93c,
-        type: 3}
-      propertyPath: OnCancelPlacing.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: _Project.Scripts.ScriptableObjects.IntObject.IntObject, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 1935015446804268591, guid: bc858fdf5de6bab4cb9cc3e93d1ce93c,
         type: 3}
       propertyPath: m_RootOrder
@@ -5599,6 +5600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: showAfterLevel
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613682950410664478, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3693529170482071896, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}
@@ -7428,7 +7434,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -7503,7 +7509,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 6.7686768
+      value: 121.7687
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -8950,7 +8956,7 @@ MonoBehaviour:
   floorBasePosition: {x: 0, y: 0, z: 0}
   floorOffsetPerFloor: {x: 0, y: 1, z: 0}
   roofTransform: {fileID: 613314588}
-  roofBasePosition: {x: 0, y: 1.005, z: 0.505}
+  roofBasePosition: {x: 0, y: 0.005, z: 0.505}
   roofOffsetPerFloor: {x: 0, y: 1, z: 0}
   OnRemoveRoom: {fileID: 11400000, guid: 8899868c3619c654eaeb6aefb7ace7ce, type: 2}
   OnDecrementPensionRating:
@@ -8970,7 +8976,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
-  maxFloorCountSo: {fileID: 11400000, guid: 9d34222d0e4a75249847749193129b86, type: 2}
+  floorCountSo: {fileID: 11400000, guid: ff788e221b263764689c725d1218a592, type: 2}
   dataKey: floorSlotsList
 --- !u!114 &1666848542
 MonoBehaviour:
@@ -9149,8 +9155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42400b5b0fe1d2a4ea36509ef9d47c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFloorCount: {fileID: 11400000, guid: 9d34222d0e4a75249847749193129b86, type: 2}
-  floorManagerScript: {fileID: 1666848541}
+  floorCountSo: {fileID: 11400000, guid: ff788e221b263764689c725d1218a592, type: 2}
   image: {fileID: 1693808600}
 --- !u!114 &1693808603
 MonoBehaviour:
@@ -9187,6 +9192,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 457468876}
     m_Modifications:
+    - target: {fileID: 4041394995908955568, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: m_text
+      value: Reached the Floor limit of 6!
+      objectReference: {fileID: 0}
     - target: {fileID: 6849072648385906624, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -9273,6 +9283,27 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: dayCountSo
+      value: 
+      objectReference: {fileID: 11400000, guid: ff788e221b263764689c725d1218a592,
+        type: 2}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: showBetweenLevels.max
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: shouldAppendNumberToText
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
@@ -9296,7 +9327,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -9371,7 +9402,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 351.76868
+      value: -338.2313
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -9413,6 +9444,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1728965681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1728965674}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425065604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d084544d90d3546ae6ac776773768f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1728965682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425065604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88573ea1d074974eb77d966a50f93cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEvent: {fileID: 11400000, guid: db7a95aacdfc3754f97380785b23daf8, type: 2}
+  responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1728965681}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.Shop.ShowShopItem, Assembly-CSharp
+        m_MethodName: UpdateVisibility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1740082377
 GameObject:
   m_ObjectHideFlags: 0
@@ -10292,6 +10363,11 @@ PrefabInstance:
       propertyPath: showAfterLevel
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3613682950410664478, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3693529170482071896, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10932,6 +11008,11 @@ PrefabInstance:
       propertyPath: showAfterLevel
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
@@ -10955,7 +11036,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -11030,7 +11111,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -338.23126
+      value: -223.2313
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -11620,12 +11701,12 @@ PrefabInstance:
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1186.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 96.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2471005413603530819, guid: f7e4250d7dffcbe4a9185e6204d3f302,
         type: 3}
@@ -13038,7 +13119,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -13113,7 +13194,7 @@ PrefabInstance:
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 236.76868
+      value: 351.7687
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870655, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}

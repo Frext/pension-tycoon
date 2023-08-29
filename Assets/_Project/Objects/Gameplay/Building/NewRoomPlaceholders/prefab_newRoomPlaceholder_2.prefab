@@ -351,6 +351,7 @@ MonoBehaviour:
   - {fileID: 4153168421886259106}
   - {fileID: 7425370781368913511}
   floorManagerScript: {fileID: 0}
+  floorCountSo: {fileID: 11400000, guid: ff788e221b263764689c725d1218a592, type: 2}
   OnCancelPlacing:
     m_PersistentCalls:
       m_Calls:
