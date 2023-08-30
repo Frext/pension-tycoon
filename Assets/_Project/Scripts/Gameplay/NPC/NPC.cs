@@ -50,9 +50,16 @@ namespace _Project.Scripts.Gameplay.NPC
             transform.position = GetRandomStartPoint();
         }
 
-        protected Vector3 GetRandomStartPoint()
+        protected Vector3 GetRandomStartPoint(bool willSetRoomY = false, float yPos = 0)
         {
-            return startPositionsList[Random.Range(0, startPositionsList.Count)];
+            Vector3 randomStartPoint = startPositionsList[Random.Range(0, startPositionsList.Count)];
+
+            if (willSetRoomY)
+            {
+                randomStartPoint.y = yPos + characterOffset.y;
+            }
+
+            return randomStartPoint;
         }
         
         protected virtual void OnDisable()

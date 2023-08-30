@@ -44,7 +44,8 @@ namespace _Project.Scripts.Gameplay.NPC
             wayPointsList.Clear();
 
             InsertSelectedRoomToWayPoints();
-            wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint() });
+            wayPointsList.Add(new WayPoint{ position = 
+                GetRandomStartPoint(true, selectedRoom.transform.position.y) });
         }
         
         protected override void LeaveSelectedRoom()
