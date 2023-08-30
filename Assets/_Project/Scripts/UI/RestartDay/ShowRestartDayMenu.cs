@@ -22,14 +22,9 @@ namespace _Project.Scripts.UI.RestartDay
             OnRestartDay.DeregisterFromEvent(InvokeOnShow);
         }
 
-        private void InvokeOnShow()
+        public void InvokeOnShow()
         {
             OnShow.Invoke();
-        }
-
-        public void ToggleTime()
-        {
-            Time.timeScale = Mathf.Approximately(Time.timeScale, 0f) ? 1f : 0f;
         }
         
         public void InvokeOnHide()

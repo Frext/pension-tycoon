@@ -72,7 +72,7 @@ namespace _Project.Scripts.Gameplay.NPC
         {
             RegisterEvents();
             
-            SpawnByFriendNpcCountDict();
+            SpawnByEmployeeNpcCountDict();
         }
 
         private void RegisterEvents()
@@ -96,7 +96,7 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
         
-        private void SpawnByFriendNpcCountDict()
+        private void SpawnByEmployeeNpcCountDict()
         {
             foreach (var keyValuePair in employeeDictSo.employeeCountDict)
             {

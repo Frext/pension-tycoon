@@ -14,7 +14,7 @@ namespace _Project.Scripts.Gameplay.Camera
         private float minX, maxX, minY, maxY, minZ, maxZ;
         
         private Vector3 velocity = Vector3.zero;
-
+        
         
         void Start()
         {
@@ -43,18 +43,20 @@ namespace _Project.Scripts.Gameplay.Camera
 
         private void HandleCameraMovement()
         {
+            float deltaTime = Time.unscaledDeltaTime;
+            
             var currentPos = cameraObjectTransform.position;
             Vector3 targetPos = currentPos;
 
-            targetPos.x += Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-            targetPos.y += Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            targetPos.x += Input.GetAxis("Horizontal") * speed * deltaTime;
+            targetPos.y += Input.GetAxis("Vertical") * speed * deltaTime;
             targetPos.z += Input.mouseScrollDelta.y * speed / 4;
 
             targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
             targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
             targetPos.z = Mathf.Clamp(targetPos.z, minZ, maxZ);
 
-            currentPos = Vector3.SmoothDamp(currentPos, targetPos, ref velocity, Time.deltaTime);
+            currentPos = Vector3.SmoothDamp(currentPos, targetPos, ref velocity, deltaTime);
             cameraObjectTransform.position = currentPos;
         }
     }

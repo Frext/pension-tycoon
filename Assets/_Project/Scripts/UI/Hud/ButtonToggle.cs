@@ -28,5 +28,19 @@ namespace _Project.Scripts.UI.Hud
                 OnToggleOff.Invoke();
             }
         }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+            
+            SetTo();
+        }
+
+        public void Hide()
+        {
+            SetTo();
+            
+            gameObject.SetActive(false);
+        }
     }
 }
