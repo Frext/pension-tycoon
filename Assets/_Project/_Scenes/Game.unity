@@ -2808,6 +2808,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 167f2bbfc3e3c284bbe5fa50239305e3, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.Int.IntSo, Assembly-CSharp
+        m_MethodName: SetValueTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnToggleOff:
     m_PersistentCalls:
       m_Calls:
@@ -2844,6 +2856,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 167f2bbfc3e3c284bbe5fa50239305e3, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.Int.IntSo, Assembly-CSharp
+        m_MethodName: SetValueTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -8352,6 +8376,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 528220601}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.Hud.ButtonToggle, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1600938366}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.ToggleTime, Assembly-CSharp
+        m_MethodName: SetTimeScaleTo
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 167f2bbfc3e3c284bbe5fa50239305e3, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.Int.IntSo, Assembly-CSharp
+        m_MethodName: SetValueTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 376068116557882862}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -8457,6 +8517,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1600938366}
+        m_TargetAssemblyTypeName: _Project.Scripts.UI.ToggleTime, Assembly-CSharp
+        m_MethodName: SetTimeScaleTo
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 167f2bbfc3e3c284bbe5fa50239305e3, type: 2}
+        m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.Int.IntSo, Assembly-CSharp
+        m_MethodName: SetValueTo
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1763550858}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -8978,10 +9062,12 @@ MonoBehaviour:
       - m_Target: {fileID: 1600938366}
         m_TargetAssemblyTypeName: _Project.Scripts.UI.ToggleTime, Assembly-CSharp
         m_MethodName: SetTimeScaleTo
-        m_Mode: 4
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 167f2bbfc3e3c284bbe5fa50239305e3,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: _Project.Scripts.ScriptableObjects.Int.IntSo,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 1
           m_StringArgument: 

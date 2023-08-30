@@ -1,4 +1,5 @@
 using System;
+using _Project.Scripts.ScriptableObjects.Int;
 using UnityEngine;
 
 namespace _Project.Scripts.UI
@@ -20,6 +21,11 @@ namespace _Project.Scripts.UI
         public void SetTimeScaleTo(float scale)
         {
             Time.timeScale = scale;
+        }
+        
+        public void SetTimeScaleTo(IntSo intSo)
+        {
+            Time.timeScale = intSo.Value;
         }
     }
 }
