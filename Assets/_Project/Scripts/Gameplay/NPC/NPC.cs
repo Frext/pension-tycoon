@@ -44,19 +44,30 @@ namespace _Project.Scripts.Gameplay.NPC
         
         private readonly Vector3 characterOffset = new(0,-0.25f,0);
         
+        protected enum RandomStartPointOverrideTypesEnum
+        {
+            None,
+            RoomYPosition,
+            IncrementYPosition
+        }
+        
         
         protected virtual void OnEnable()
         {
             transform.position = GetRandomStartPoint();
         }
 
-        protected Vector3 GetRandomStartPoint(bool willSetRoomY = false, float yPos = 0)
+        protected Vector3 GetRandomStartPoint(RandomStartPointOverrideTypesEnum randomStartPointOverrideTypesEnum = RandomStartPointOverrideTypesEnum.None, float yPos = 0)
         {
             Vector3 randomStartPoint = startPositionsList[Random.Range(0, startPositionsList.Count)];
 
-            if (willSetRoomY)
+            if (randomStartPointOverrideTypesEnum == RandomStartPointOverrideTypesEnum.RoomYPosition)
             {
                 randomStartPoint.y = yPos + characterOffset.y;
+            }
+            else if (randomStartPointOverrideTypesEnum == RandomStartPointOverrideTypesEnum.IncrementYPosition)
+            {
+                randomStartPoint.y += yPos;
             }
 
             return randomStartPoint;

@@ -118,6 +118,7 @@ MonoBehaviour:
   - {x: 1.5, y: 0.25, z: 1.5}
   timeRangeObjectSo: {fileID: 11400000, guid: 26cc6998d0494904b8bef236a5bc35fb, type: 2}
   floorManagerScript: {fileID: 0}
+  floorCountSo: {fileID: 11400000, guid: ff788e221b263764689c725d1218a592, type: 2}
   availabilityRangeSo: {fileID: 11400000, guid: 8e05c1e29c09ea44988abd2cf5c52792,
     type: 2}
   onEmployeeAvailabilityChange:

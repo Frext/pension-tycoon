@@ -1,6 +1,7 @@
 using System.Collections;
 using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.FloatRange;
+using _Project.Scripts.ScriptableObjects.Int;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,16 +9,25 @@ namespace _Project.Scripts.Gameplay.NPC
 {
     public class Employee : Npc
     {
+        [Space] 
+        [Header(nameof(Employee) + " Properties")] 
+        [Space] 
+        
+        [SerializeField] private IntSo floorCountSo;
         [Space]
-        [Header(nameof(Employee) + " Properties")]
-        [Space]
+        
         [Tooltip("The amount of time to make the employee available")]
         [SerializeField] private FloatRangeSo availabilityRangeSo;
 
         [Space] 
         [SerializeField] private UnityEvent onEmployeeAvailabilityChange;
-        
-        
+
+
+        protected override void OnEnable()
+        {
+            transform.position = GetRandomStartPoint(RandomStartPointOverrideTypesEnum.IncrementYPosition, Random.Range(0, floorCountSo.Value));
+        }
+
         public bool IsAvailable()
         {
             return !isNpcMoving;
@@ -44,8 +54,7 @@ namespace _Project.Scripts.Gameplay.NPC
             wayPointsList.Clear();
 
             InsertSelectedRoomToWayPoints();
-            wayPointsList.Add(new WayPoint{ position = 
-                GetRandomStartPoint(true, selectedRoom.transform.position.y) });
+            wayPointsList.Add(new WayPoint{ position = GetRandomStartPoint(RandomStartPointOverrideTypesEnum.RoomYPosition, selectedRoom.transform.position.y) });
         }
         
         protected override void LeaveSelectedRoom()
