@@ -13,7 +13,24 @@ MonoBehaviour:
   m_Name: int_dayCount
   m_EditorClassIdentifier: 
   OnChangeValue: {fileID: 11400000, guid: 85146a3603392c84a9bc867948a985e5, type: 2}
-  specialConditions: []
+  specialConditions:
+  - OnReachValue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 557091162ac3cfa4c9286679bd041c64, type: 2}
+          m_TargetAssemblyTypeName: _Project.Scripts.ScriptableObjects.SOEvent.SoEvent,
+            Assembly-CSharp
+          m_MethodName: Invoke
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    value: 26
   min: 1
-  max: 20
+  max: 10000
   initialValue: 1

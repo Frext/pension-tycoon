@@ -359,7 +359,7 @@ MonoBehaviour:
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
   showBetweenLevels:
     min: 0
-    max: 25
+    max: 10000
 --- !u!1 &3693529170666799879
 GameObject:
   m_ObjectHideFlags: 0

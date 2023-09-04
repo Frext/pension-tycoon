@@ -16,6 +16,8 @@ namespace _Project.Scripts.Gameplay
             }
 
             Instance = this;
+            
+            UpdateNavMesh();
         }
         
         public void UpdateNavMesh()

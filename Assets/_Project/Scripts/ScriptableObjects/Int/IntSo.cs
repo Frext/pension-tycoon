@@ -34,6 +34,8 @@ namespace _Project.Scripts.ScriptableObjects.Int
         
         public int Value { get; private set; }
 
+        private bool isInitialized = false;
+
         void OnEnable()
         {
             SetValueTo(initialValue);
@@ -52,12 +54,19 @@ namespace _Project.Scripts.ScriptableObjects.Int
                 OnChangeValue.Invoke();
             }
 
-            foreach (var specialCondition in specialConditions)
+            if (isInitialized)
             {
-                if (Value == specialCondition.value)
+                foreach (var specialCondition in specialConditions)
                 {
-                    specialCondition.InvokeEvent();
+                    if (Value == specialCondition.value)
+                    {
+                        specialCondition.InvokeEvent();
+                    }
                 }
+            }
+            else
+            {
+                isInitialized = true;
             }
         }
         
