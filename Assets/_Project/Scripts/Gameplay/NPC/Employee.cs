@@ -25,7 +25,8 @@ namespace _Project.Scripts.Gameplay.NPC
 
         protected override void OnEnable()
         {
-            transform.position = GetRandomStartPoint(RandomStartPointOverrideTypesEnum.IncrementYPosition, Random.Range(0, floorCountSo.Value));
+            navMeshAgent.Warp(GetRandomStartPoint(RandomStartPointOverrideTypesEnum.IncrementYPosition,
+                Random.Range(0, floorCountSo.Value)));
         }
 
         public bool IsAvailable()

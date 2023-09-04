@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.FloatRange;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.NPC
@@ -27,6 +28,8 @@ namespace _Project.Scripts.Gameplay.NPC
                 }
             }
         }
+
+        [SerializeField] protected NavMeshAgent navMeshAgent;
         
         [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
@@ -36,6 +39,7 @@ namespace _Project.Scripts.Gameplay.NPC
         
         [SerializeField] protected FloorManager floorManagerScript;
         
+        
         protected readonly List<WayPoint> wayPointsList = new();
         protected int currentWayPointIndex;
         protected bool isNpcMoving;
@@ -43,6 +47,7 @@ namespace _Project.Scripts.Gameplay.NPC
         protected Room selectedRoom;
         
         private readonly Vector3 characterOffset = new(0,-0.25f,0);
+        private readonly float humanMovementStimulus = 0.15f;
         
         protected enum RandomStartPointOverrideTypesEnum
         {
@@ -54,7 +59,7 @@ namespace _Project.Scripts.Gameplay.NPC
         
         protected virtual void OnEnable()
         {
-            transform.position = GetRandomStartPoint();
+            navMeshAgent.Warp(GetRandomStartPoint());
         }
 
         protected Vector3 GetRandomStartPoint(RandomStartPointOverrideTypesEnum randomStartPointOverrideTypesEnum = RandomStartPointOverrideTypesEnum.None, float yPos = 0)
@@ -103,18 +108,23 @@ namespace _Project.Scripts.Gameplay.NPC
                 WayPoint currentWayPoint = wayPointsList[currentWayPointIndex];
                 
                 currentWayPoint.InvokeAction(currentWayPoint.OnStartMoving);
-                while (Vector3.Distance(transform.position, currentWayPoint.position) > 0.001f)
+
+                navMeshAgent.SetDestination(currentWayPoint.position);
+                Debug.DrawLine(transform.position, currentWayPoint.position, Color.green, 1f, false);
+                
+                // Wait while the agent gets to the destination.
+                while (navMeshAgent.pathPending || navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
                 {
-                    transform.position = Vector3.Lerp(transform.position, 
-                        wayPointsList[currentWayPointIndex].position, Time.deltaTime * 2);
-                        
-                    yield return null;
+                    yield return new WaitForSeconds(humanMovementStimulus);
                 }
                 
                 currentWayPoint.InvokeAction(currentWayPoint.OnReachDestination);
+                
                 yield return new WaitForSeconds(currentWayPoint.waitTime);
+                
                 currentWayPoint.InvokeAction(currentWayPoint.OnLeaveDestination);
 
+                
                 currentWayPointIndex++;
             }
 
