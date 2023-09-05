@@ -207,13 +207,15 @@ namespace _Project.Scripts.Gameplay.NPC
         private IEnumerator IEnableEveryEnemyWaveObject()
         {
             enemyWaveList.Shuffle();
+
+            int waveObjectCount = GetCurrentEnemyWaveSize();
             
-            int i = 0;
+            int i = waveObjectCount - 1;
             
-            while (GetCurrentEnemyWaveSize() > 0)
+            while (i >= 0)
             {
-                enemyWaveList[Mathf.Clamp(i, 0, GetCurrentEnemyWaveSize() - 1)].SetActive(true);
-                i++;
+                enemyWaveList[i].SetActive(true);
+                i--;
                 
                 yield return new WaitForSeconds(timeBetweenEachSpawn.Randomize());
             }
