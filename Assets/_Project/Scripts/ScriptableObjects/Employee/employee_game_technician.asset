@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: employee_game_technician
   m_EditorClassIdentifier: 
   levelsList:
-  - purchaseAmount: 20
+  - purchaseAmount: 30
     upgradeAmount: 50
     makeRoomUsableTimeRange:
       min: 5
@@ -21,38 +21,30 @@ MonoBehaviour:
     availabilityRange:
       min: 1
       max: 2
-  - purchaseAmount: 40
+  - purchaseAmount: 50
     upgradeAmount: 75
     makeRoomUsableTimeRange:
-      min: 4
+      min: 3
       max: 5
     availabilityRange:
       min: 1
       max: 1.5
-  - purchaseAmount: 60
+  - purchaseAmount: 70
     upgradeAmount: 100
     makeRoomUsableTimeRange:
-      min: 3
-      max: 5
+      min: 2
+      max: 3
     availabilityRange:
       min: 0.8
       max: 1.2
-  - purchaseAmount: 80
-    upgradeAmount: 125
+  - purchaseAmount: 90
+    upgradeAmount: 0
     makeRoomUsableTimeRange:
-      min: 3
-      max: 4
+      min: 0.75
+      max: 2
     availabilityRange:
       min: 0.5
-      max: 1
-  - purchaseAmount: 100
-    upgradeAmount: 150
-    makeRoomUsableTimeRange:
-      min: 0.25
       max: 0.75
-    availabilityRange:
-      min: 0
-      max: 0
   currentLevelIndex: {fileID: 11400000, guid: 88e464a1eefdc7c4dbab3d53e9e3b46c, type: 2}
   timeRangeObjectSo: {fileID: 11400000, guid: 6f89eef4584ed8245ba0dc6c1a508034, type: 2}
   availabilityRangeObjectSo: {fileID: 11400000, guid: 509c5307c58868347a6b61490a21b234,

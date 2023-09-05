@@ -5646,7 +5646,6 @@ MonoBehaviour:
   boundingArea: {fileID: 1740082379}
   onInitializeNewRoomPlaceholder: {fileID: 11400000, guid: 3343f38c386c444469bfbf3b6919fc92,
     type: 2}
-  offsetZ: -2
 --- !u!1 &976911020
 GameObject:
   m_ObjectHideFlags: 0
@@ -6621,7 +6620,7 @@ PrefabInstance:
         type: 3}
       propertyPath: employeeObject
       value: 
-      objectReference: {fileID: 11400000, guid: 6172a59efb2ff39468a53641f7618d89,
+      objectReference: {fileID: 11400000, guid: 2c1c0b887de1f344a990c721dac88132,
         type: 2}
     - target: {fileID: 1795863755648651848, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}
