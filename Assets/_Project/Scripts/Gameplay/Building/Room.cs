@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Leguar.TotalJSON;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using static _Project.Scripts.Gameplay.Building.Room.RoomTypeEnum;
 using static _Project.Scripts.ScriptableObjects.EmployeeDict.EmployeeDictSo;
+using Image = UnityEngine.UI.Image;
 
 namespace _Project.Scripts.Gameplay.Building
 {
@@ -46,8 +48,8 @@ namespace _Project.Scripts.Gameplay.Building
             return roomType switch
             {
                 Bathroom => "Bathroom",
-                CustomerSingle => "Single Customer Room",
-                CustomerDouble => "Double Customer Room",
+                CustomerSingle => "Single Room",
+                CustomerDouble => "Double Room",
                 Dining => "Dining Room",
                 Arcade => "Arcade",
                 Gym => "Gym",
@@ -99,6 +101,16 @@ namespace _Project.Scripts.Gameplay.Building
         [Header("UI Slots")] 
         [SerializeField] private RoomButton removeRoomButton;
         [SerializeField] private RoomButton makeRoomUsableButton;
+
+        [Space] 
+        [Header("Unique Make Room Usable Icons")] 
+        [SerializeField] private Image imageIcon;
+        [Space]
+        
+        [SerializeField] private Sprite spriteClean;
+        [SerializeField] private Sprite spriteCook;
+        [SerializeField] private Sprite spriteArcade;
+        [SerializeField] private Sprite spriteGym;
         
 
         #region Button Methods
@@ -110,20 +122,38 @@ namespace _Project.Scripts.Gameplay.Building
         
         public void SetMakeUsableButton(bool activeState, int width = 1)
         {
+            SetMakeRoomUsableButtonImageByType();
+            
             SetButton(makeRoomUsableButton, activeState, width);
         }
-
+        
         private void SetButton(RoomButton roomButton, bool activeState, int width)
         {
             roomButton.roomButtonRectTransform.anchoredPosition = roomButton.roomButtonPositionsList[width - 1].anchoredPosition;
             roomButton.roomButton.SetActive(activeState);
         }
 
-        public bool GetMakeUsableButtonState()
+        private void SetMakeRoomUsableButtonImageByType()
         {
-            return makeRoomUsableButton.roomButton.activeInHierarchy;
+            switch (slot.roomType)
+            {
+                case CustomerSingle:
+                case CustomerDouble:
+                case Bathroom:
+                    imageIcon.sprite = spriteClean;
+                    break;
+                case Dining:
+                    imageIcon.sprite = spriteCook;
+                    break;
+                case Gym:
+                    imageIcon.sprite = spriteGym;
+                    break;
+                case Arcade:
+                    imageIcon.sprite = spriteArcade;
+                    break;
+            }
         }
-        
+
         #endregion
     }
 }

@@ -62,6 +62,11 @@ MonoBehaviour:
     roomButtonPositionsList:
     - {fileID: 6791993331225750511}
     - {fileID: 939043883259816587}
+  imageIcon: {fileID: 6532269750835926273}
+  spriteClean: {fileID: 21300000, guid: a28d777127ee8df4a93e7b9f5f6bdd44, type: 3}
+  spriteCook: {fileID: 21300000, guid: 5184ba37fddac4e418192c859bb124bc, type: 3}
+  spriteArcade: {fileID: 21300000, guid: 919839d3c4ab2774c9bbb413fb6bd9bf, type: 3}
+  spriteGym: {fileID: 21300000, guid: 65f9028d201a9114898fc459a4e497ca, type: 3}
 --- !u!1001 &3792165589491496043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,6 +84,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 5255450450470155585}
+    - target: {fileID: 2452199513593418873, guid: 3093f210ae6d1534c9914d479f6dce81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298004583682896509, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_Pivot.x
@@ -184,11 +194,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4582618517337812140, guid: 3093f210ae6d1534c9914d479f6dce81,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5542438871921776591, guid: 3093f210ae6d1534c9914d479f6dce81,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -237,6 +242,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3792165589491496043}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6532269750835926273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7928360891828101482, guid: 3093f210ae6d1534c9914d479f6dce81,
+    type: 3}
+  m_PrefabInstance: {fileID: 3792165589491496043}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6573278880940450016 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8041318781870527627, guid: 3093f210ae6d1534c9914d479f6dce81,
