@@ -13,30 +13,30 @@ MonoBehaviour:
   m_Name: employee_gym_coach
   m_EditorClassIdentifier: 
   levelsList:
-  - purchaseAmount: 40
-    upgradeAmount: 60
+  - purchaseAmount: 30
+    upgradeAmount: 75
     makeRoomUsableTimeRange:
-      min: 3
-      max: 5
+      min: 4
+      max: 12
     availabilityRange:
-      min: 1
-      max: 2
+      min: 3
+      max: 6
   - purchaseAmount: 60
-    upgradeAmount: 80
+    upgradeAmount: 125
+    makeRoomUsableTimeRange:
+      min: 4
+      max: 8
+    availabilityRange:
+      min: 2
+      max: 4
+  - purchaseAmount: 90
+    upgradeAmount: 0
     makeRoomUsableTimeRange:
       min: 2
       max: 4
     availabilityRange:
-      min: 1
-      max: 1.5
-  - purchaseAmount: 80
-    upgradeAmount: 120
-    makeRoomUsableTimeRange:
-      min: 0.75
+      min: 2
       max: 2
-    availabilityRange:
-      min: 0.5
-      max: 1
   currentLevelIndex: {fileID: 11400000, guid: ea0062c7a8043874899523a89ed457e4, type: 2}
   timeRangeObjectSo: {fileID: 11400000, guid: 0e70ab37ad51c2b4e865ae2bd91388a2, type: 2}
   availabilityRangeObjectSo: {fileID: 11400000, guid: df5c01d7aaf7be64189e12b9cbaff049,

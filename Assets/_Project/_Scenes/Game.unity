@@ -2079,7 +2079,7 @@ PrefabInstance:
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
-      value: 30
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -4153,6 +4153,11 @@ PrefabInstance:
       propertyPath: showBetweenLevels.min
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: m_text
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_Name
@@ -4960,10 +4965,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -11.079712
       objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
-      value: 5
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -5182,6 +5192,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9be286c3d4ef5c9489080144cac7bd30,
         type: 2}
+    - target: {fileID: 3613682950410664478, guid: 5460ac8de5a7ec74384d30a69ec05163,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3693529170482071896, guid: 5460ac8de5a7ec74384d30a69ec05163,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8639,10 +8654,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -11.079712
       objectReference: {fileID: 0}
+    - target: {fileID: 6946206706314555512, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: showBetweenLevels.min
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -9105,12 +9125,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerObjectsList:
   - prefab: {fileID: 1960413735}
-    firstLevel: 0
-    initialValue: 4
-    incrementAmount: 1
+    firstLevel: 1
+    initialValue: 2
+    incrementAmount: 2
     incrementEveryRoundOf: 1
   - prefab: {fileID: 2017161375}
-    firstLevel: 3
+    firstLevel: 4
     initialValue: 1
     incrementAmount: 2
     incrementEveryRoundOf: 2
@@ -9120,14 +9140,14 @@ MonoBehaviour:
     incrementAmount: 2
     incrementEveryRoundOf: 2
   - prefab: {fileID: 4170874208201927306}
-    firstLevel: 15
+    firstLevel: 16
     initialValue: 1
     incrementAmount: 1
     incrementEveryRoundOf: 3
   dayCountSo: {fileID: 11400000, guid: ef1364fcd6e83b4488df5d8424640eaa, type: 2}
   timeBetweenEachSpawn:
-    min: 1
-    max: 3
+    min: 2.5
+    max: 5
   cleanerPrefab: {fileID: 198046615}
   cookPrefab: {fileID: 355679140}
   gameTechnicianPrefab: {fileID: 6789912717264631411}
@@ -10880,7 +10900,7 @@ PrefabInstance:
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
-      value: 40
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -12848,7 +12868,7 @@ PrefabInstance:
     - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
       propertyPath: m_text
-      value: 30
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}
@@ -15223,6 +15243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -11.079712
+      objectReference: {fileID: 0}
+    - target: {fileID: 8058241731425606831, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
+        type: 3}
+      propertyPath: m_text
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8517801700781870654, guid: 22f7e8cd6aa127d40bcfaed976fb4b1a,
         type: 3}

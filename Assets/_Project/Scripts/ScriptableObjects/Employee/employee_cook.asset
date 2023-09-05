@@ -14,45 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsList:
   - purchaseAmount: 20
-    upgradeAmount: 50
+    upgradeAmount: 80
     makeRoomUsableTimeRange:
       min: 5
-      max: 6
+      max: 15
+    availabilityRange:
+      min: 2
+      max: 4
+  - purchaseAmount: 30
+    upgradeAmount: 140
+    makeRoomUsableTimeRange:
+      min: 5
+      max: 10
+    availabilityRange:
+      min: 2
+      max: 3
+  - purchaseAmount: 50
+    upgradeAmount: 200
+    makeRoomUsableTimeRange:
+      min: 4
+      max: 8
+    availabilityRange:
+      min: 1
+      max: 3
+  - purchaseAmount: 70
+    upgradeAmount: 0
+    makeRoomUsableTimeRange:
+      min: 2
+      max: 4
     availabilityRange:
       min: 1
       max: 2
-  - purchaseAmount: 40
-    upgradeAmount: 75
-    makeRoomUsableTimeRange:
-      min: 4
-      max: 5
-    availabilityRange:
-      min: 1
-      max: 1.5
-  - purchaseAmount: 60
-    upgradeAmount: 100
-    makeRoomUsableTimeRange:
-      min: 3
-      max: 5
-    availabilityRange:
-      min: 0.8
-      max: 1.2
-  - purchaseAmount: 80
-    upgradeAmount: 125
-    makeRoomUsableTimeRange:
-      min: 3
-      max: 4
-    availabilityRange:
-      min: 0.5
-      max: 1
-  - purchaseAmount: 100
-    upgradeAmount: 150
-    makeRoomUsableTimeRange:
-      min: 0.25
-      max: 0.75
-    availabilityRange:
-      min: 0.25
-      max: 0.75
   currentLevelIndex: {fileID: 11400000, guid: f5cb759120a135641983c69fcf422692, type: 2}
   timeRangeObjectSo: {fileID: 11400000, guid: 26cc6998d0494904b8bef236a5bc35fb, type: 2}
   availabilityRangeObjectSo: {fileID: 11400000, guid: 8e05c1e29c09ea44988abd2cf5c52792,

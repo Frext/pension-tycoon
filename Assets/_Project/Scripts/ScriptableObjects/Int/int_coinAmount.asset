@@ -16,4 +16,4 @@ MonoBehaviour:
   specialConditions: []
   min: 0
   max: 2147483647
-  initialValue: 100
+  initialValue: 80

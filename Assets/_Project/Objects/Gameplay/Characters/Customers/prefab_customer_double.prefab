@@ -161,9 +161,9 @@ MonoBehaviour:
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
   baseTargetRoomType: 2
   extraRoomTypes: 03000000
-  extraRoomChance: 0.3
-  makeExtraRoomNotUsableChance: 0.25
-  payAmount: 2
+  extraRoomChance: 0.4
+  makeExtraRoomNotUsableChance: 0.6
+  payAmount: 12
   onNotGetBaseRoom:
     m_PersistentCalls:
       m_Calls: []
