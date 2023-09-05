@@ -1,3 +1,4 @@
+using _Project.Scripts.ScriptableObjects.SoEventVector3;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay.Camera
@@ -8,14 +9,22 @@ namespace _Project.Scripts.Gameplay.Camera
 
         [SerializeField] private float speed;
 
-        [SerializeField] 
-        private Collider boundingArea;
+        [SerializeField] private Collider boundingArea;
+        [Space]
+        
+        [SerializeField] private SoEventVector3 onInitializeNewRoomPlaceholder;
+        
         
         private float minX, maxX, minY, maxY, minZ, maxZ;
         
         private Vector3 velocity = Vector3.zero;
         
-        
+
+        void Awake()
+        {
+            onInitializeNewRoomPlaceholder.RegisterToEvent(SetPosition);
+        }
+
         void Start()
         {
             GetCameraBoundaries();
@@ -58,6 +67,18 @@ namespace _Project.Scripts.Gameplay.Camera
 
             currentPos = Vector3.SmoothDamp(currentPos, targetPos, ref velocity, deltaTime);
             cameraObjectTransform.position = currentPos;
+        }
+
+        private void SetPosition(Vector3 newPos)
+        {
+            newPos.z = cameraObjectTransform.position.z;
+            
+            cameraObjectTransform.position = newPos;
+        }
+
+        void OnDestroy()
+        {
+            onInitializeNewRoomPlaceholder.DeregisterFromEvent(SetPosition);
         }
     }
 }

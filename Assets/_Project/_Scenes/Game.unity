@@ -523,6 +523,8 @@ MonoBehaviour:
   selectedRoomTypeSo: {fileID: 11400000, guid: bea36a9b60b99394e88ae3069ad6f899, type: 2}
   newRoomPlaceholderWidth1Prefab: {fileID: 1120955049}
   newRoomPlaceholderWidth2Prefab: {fileID: 1337392210}
+  onInitializeNewRoomPlaceholder: {fileID: 11400000, guid: 3343f38c386c444469bfbf3b6919fc92,
+    type: 2}
 --- !u!1 &104103987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,6 +5644,9 @@ MonoBehaviour:
   cameraObjectTransform: {fileID: 963194228}
   speed: 5
   boundingArea: {fileID: 1740082379}
+  onInitializeNewRoomPlaceholder: {fileID: 11400000, guid: 3343f38c386c444469bfbf3b6919fc92,
+    type: 2}
+  offsetZ: -2
 --- !u!1 &976911020
 GameObject:
   m_ObjectHideFlags: 0
