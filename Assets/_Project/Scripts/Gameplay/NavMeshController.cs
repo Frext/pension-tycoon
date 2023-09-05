@@ -1,28 +1,20 @@
-using System;
-using UnityEditor.AI;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 namespace _Project.Scripts.Gameplay
 {
     public class NavMeshController : MonoBehaviour
     {
-        public static NavMeshController Instance { get; private set; }
+        [SerializeField] private NavMeshSurface navMeshSurface;
         
-        void Awake()
+        void Start()
         {
-            if (Instance != null && Instance != this)
-            {
-                throw new Exception("More than 1 singleton found @" + gameObject.name);
-            }
-
-            Instance = this;
-            
             UpdateNavMesh();
         }
-        
+
         public void UpdateNavMesh()
         {
-            NavMeshBuilder.BuildNavMesh();
+            navMeshSurface.BuildNavMesh();
         }
     }
 }

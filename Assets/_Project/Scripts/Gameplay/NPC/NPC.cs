@@ -47,7 +47,7 @@ namespace _Project.Scripts.Gameplay.NPC
         protected Room selectedRoom;
         
         private readonly Vector3 characterOffset = new(0,-0.25f,0);
-        private readonly float humanMovementStimulus = 0.15f;
+        private readonly float humanMovementStimulus = 0.2f;
         
         protected enum RandomStartPointOverrideTypesEnum
         {
@@ -110,7 +110,6 @@ namespace _Project.Scripts.Gameplay.NPC
                 currentWayPoint.InvokeAction(currentWayPoint.OnStartMoving);
 
                 navMeshAgent.SetDestination(currentWayPoint.position);
-                Debug.DrawLine(transform.position, currentWayPoint.position, Color.green, 1f, false);
                 
                 // Wait while the agent gets to the destination.
                 while (navMeshAgent.pathPending || navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
