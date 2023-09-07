@@ -5,6 +5,7 @@ using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.FloatRange;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.NPC
@@ -35,6 +36,10 @@ namespace _Project.Scripts.Gameplay.NPC
         [Space]
         
         [SerializeField] protected FloatRangeSo timeRangeObjectSo;
+        
+        [Header("NavMesh Events")]
+        [SerializeField] protected int navMeshSelectedAreaId;
+        [SerializeField] protected UnityEvent onCrossSelectedOffMeshLink;
         [Space]
         
         [SerializeField] protected FloorManager floorManagerScript;
@@ -47,7 +52,7 @@ namespace _Project.Scripts.Gameplay.NPC
         protected Room selectedRoom;
         
         private readonly Vector3 characterOffset = new(0,-0.25f,0);
-        private readonly float humanMovementStimulus = 0.2f;
+        private readonly float humanMovementStimulus = 0.1f;
         
         protected enum RandomStartPointOverrideTypesEnum
         {
@@ -106,14 +111,26 @@ namespace _Project.Scripts.Gameplay.NPC
             while (currentWayPointIndex < wayPointsList.Count)
             {
                 WayPoint currentWayPoint = wayPointsList[currentWayPointIndex];
-                
                 currentWayPoint.InvokeAction(currentWayPoint.OnStartMoving);
-
+                
+                bool didUseOffMeshLink = false;
                 navMeshAgent.SetDestination(currentWayPoint.position);
                 
                 // Wait while the agent gets to the destination.
                 while (navMeshAgent.pathPending || navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
                 {
+                    if (!didUseOffMeshLink && navMeshAgent.isOnOffMeshLink)
+                    {
+                        OffMeshLinkData data = navMeshAgent.currentOffMeshLinkData;
+
+                        if (navMeshSelectedAreaId == data.offMeshLink.area)
+                        {
+                            onCrossSelectedOffMeshLink.Invoke();
+                            
+                            didUseOffMeshLink = true;
+                        }
+                    }
+                    
                     yield return new WaitForSeconds(humanMovementStimulus);
                 }
                 

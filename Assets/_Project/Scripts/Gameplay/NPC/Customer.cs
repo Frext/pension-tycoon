@@ -1,6 +1,6 @@
 using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.Int;
-using _Project.Scripts.ScriptableObjects.SoEventRoom;
+using _Project.Scripts.ScriptableObjects.SoEventGameObject;
 using _Project.Scripts.ScriptableObjects.SoEventRoomString;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,17 +29,22 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] private int payAmount;
 
         [Header("Events")] 
+        [SerializeField] private UnityEvent onGetBaseRoom;
         [SerializeField] private UnityEvent onNotGetBaseRoom;
         [SerializeField] private UnityEvent onNotGetExtraRoom;
         [SerializeField] private UnityEvent onCustomerLeave;
         [Space] 
         
-        [SerializeField] private SoEventString onNoAvailableRoom; 
-
+        [SerializeField] private SoEventString onNoAvailableRoom;
+        [SerializeField] private SoEventGameObject onOpenRoomDoor;
+        
             
         Room extraRoom;
         
         const int NoOfWayPointsIfSuccessful = 3;
+
+        private bool didLeaveRoom;
+        
         
         protected override void OnEnable()
         {
@@ -84,6 +89,8 @@ namespace _Project.Scripts.Gameplay.NPC
 
             if (selectedRoom != null)
             {
+                onGetBaseRoom.Invoke();
+                
                 EnterSelectedRoom();
             }
             else
@@ -154,6 +161,28 @@ namespace _Project.Scripts.Gameplay.NPC
             }
             
             coinCountSo.IncrementValue(payAmount);
+        }
+
+        public void OpenRoomDoor()
+        {
+            // We need to identify the room we'll open the door of.
+            // If the waypoints are less than or equal to the number, that means we didn't go to an extra room.
+
+            // We also open the door again when we are leaving the room.
+            if (!didLeaveRoom && wayPointsList.Count > NoOfWayPointsIfSuccessful)
+            {
+                onOpenRoomDoor.Invoke(selectedRoom.slot.roomObject);
+                
+                didLeaveRoom = true;
+            }
+            else if (wayPointsList.Count <= NoOfWayPointsIfSuccessful)
+            {
+                onOpenRoomDoor.Invoke(selectedRoom.slot.roomObject);
+            }
+            else
+            {
+                onOpenRoomDoor.Invoke(extraRoom.slot.roomObject);
+            }
         }
     }
 }
