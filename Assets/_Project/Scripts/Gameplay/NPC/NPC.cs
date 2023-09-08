@@ -30,7 +30,6 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
 
-        [SerializeField] protected NavMeshAgent navMeshAgent;
         
         [SerializeField] protected List<Vector3> startPositionsList;
         [Space]
@@ -38,8 +37,13 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected FloatRangeSo timeRangeObjectSo;
         
         [Header("NavMesh Events")]
+        [SerializeField] protected NavMeshAgent navMeshAgent;
         [SerializeField] protected int navMeshSelectedAreaId;
         [SerializeField] protected UnityEvent onCrossSelectedOffMeshLink;
+        
+        [Header("Unity Events")] 
+        [SerializeField] protected UnityEvent onReachSelectedRoom;
+        [SerializeField] protected UnityEvent onLeaveSelectedRoom;
         [Space]
         
         [SerializeField] protected FloorManager floorManagerScript;
@@ -161,14 +165,15 @@ namespace _Project.Scripts.Gameplay.NPC
 
         private WayPoint GetSelectedRoomWayPoint(Action OnLeaveDestination)
         {
-            return selectedRoom == null ? null : CreateWayPoint(selectedRoom.slot.roomObject.transform.position, OnLeaveDestination: OnLeaveDestination);
+            return selectedRoom == null ? null : CreateWayPoint(selectedRoom.slot.roomObject.transform.position, () => onReachSelectedRoom.Invoke(),OnLeaveDestination);
         }
 
-        protected WayPoint CreateWayPoint(Vector3 roomPosition, Action OnLeaveDestination = null)
+        protected WayPoint CreateWayPoint(Vector3 roomPosition, Action OnReachDestination = null, Action OnLeaveDestination = null)
         {
             return new WayPoint {
                 position = roomPosition + characterOffset,
                 waitTime = timeRangeObjectSo.Randomize(),
+                OnReachDestination = OnReachDestination,
                 OnLeaveDestination = OnLeaveDestination
             };
         }
@@ -176,6 +181,8 @@ namespace _Project.Scripts.Gameplay.NPC
         protected virtual void LeaveSelectedRoom()
         {
             floorManagerScript.LeaveRoom(selectedRoom);
+            
+            onLeaveSelectedRoom.Invoke();
         }
     }
 }

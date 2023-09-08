@@ -4,6 +4,7 @@ using _Project.Scripts.ScriptableObjects.SoEventGameObject;
 using _Project.Scripts.ScriptableObjects.SoEventRoomString;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.NPC
 {
@@ -28,15 +29,15 @@ namespace _Project.Scripts.Gameplay.NPC
         [Header("Money")] 
         [SerializeField] private int payAmount;
 
-        [Header("Events")] 
+        [Header("Events")]
+        [SerializeField] private SoEventString onNoAvailableRoom;
+        [SerializeField] private SoEventGameObject onOpenRoomDoor;
+        [Space]
+        
         [SerializeField] private UnityEvent onGetBaseRoom;
         [SerializeField] private UnityEvent onNotGetBaseRoom;
         [SerializeField] private UnityEvent onNotGetExtraRoom;
         [SerializeField] private UnityEvent onCustomerLeave;
-        [Space] 
-        
-        [SerializeField] private SoEventString onNoAvailableRoom;
-        [SerializeField] private SoEventGameObject onOpenRoomDoor;
         
             
         Room extraRoom;
@@ -136,7 +137,7 @@ namespace _Project.Scripts.Gameplay.NPC
                 floorManagerScript.EnterRoom(extraRoom);
                 
                 wayPointsList.Insert(currentWayPointIndex + 1, 
-                    CreateWayPoint(extraRoom.slot.roomObject.transform.position, LeaveExtraRoom));
+                    CreateWayPoint(extraRoom.slot.roomObject.transform.position, OnLeaveDestination: LeaveExtraRoom));
             }
             else
             {
