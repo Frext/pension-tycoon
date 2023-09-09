@@ -184,5 +184,10 @@ namespace _Project.Scripts.Gameplay.NPC
             
             onLeaveSelectedRoom.Invoke();
         }
+
+        public void ResetRotation()
+        {
+            transform.rotation = Quaternion.Euler(Vector3.zero);
+        }
     }
 }
