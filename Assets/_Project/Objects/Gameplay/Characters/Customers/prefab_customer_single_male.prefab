@@ -87,6 +87,16 @@ PrefabInstance:
       propertyPath: extraRoomTypes.Array.data[1]
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].roomType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[1].roomType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c32b166511967c4cb01c9e12db29cad, type: 3}
 --- !u!4 &2123274230166006831 stripped

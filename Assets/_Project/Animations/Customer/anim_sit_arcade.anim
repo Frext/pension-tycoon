@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: anim_sit_single_room
+  m_Name: anim_sit_arcade
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -311,7 +311,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.97545457
         inSlope: 0.0068771834
         outSlope: 0.0068771834
         tangentMode: 0
@@ -375,7 +375,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 4
+        value: 0.0053442577
         inSlope: -0.014159702
         outSlope: -0.014159702
         tangentMode: 0
@@ -401,7 +401,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.2
+        time: 0.20000002
         value: 0.0032403453
         inSlope: -0.005357422
         outSlope: -0.005357422
@@ -411,7 +411,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.23333335
-        value: 0
+        value: 0.00301216
         inSlope: -0.008102723
         outSlope: -0.008102723
         tangentMode: 0
@@ -32796,7 +32796,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.2333333
-        value: -0.24
+        value: -0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -32824,7 +32824,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.2333333
-        value: 2.5
+        value: -1.2
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -34093,7 +34093,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.97545457
         inSlope: 0.0068771834
         outSlope: 0.0068771834
         tangentMode: 0
@@ -34157,7 +34157,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 4
+        value: 0.0053442577
         inSlope: -0.014159702
         outSlope: -0.014159702
         tangentMode: 0
@@ -34183,7 +34183,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.2
+        time: 0.20000002
         value: 0.0032403453
         inSlope: -0.005357422
         outSlope: -0.005357422
@@ -34193,7 +34193,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.23333335
-        value: 0
+        value: 0.00301216
         inSlope: -0.008102723
         outSlope: -0.008102723
         tangentMode: 0
@@ -66578,7 +66578,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.2333333
-        value: -0.24
+        value: -0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -66606,7 +66606,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.2333333
-        value: 2.5
+        value: -1.2
         inSlope: 0
         outSlope: 0
         tangentMode: 136

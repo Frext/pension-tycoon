@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1139368053002957344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,9 +46,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 2
-  m_Acceleration: 8
+  m_Acceleration: 6
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 100
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 19740803216532977}
-  boolName: isSittingSingleRoom
+  boolName: isInSingleRoom
 --- !u!114 &3904113775449044506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPositionsList:
-  - {x: -3.5, y: 0.25, z: -1.75}
-  - {x: 3.5, y: 0.25, z: -1.75}
+  - {x: -3.5, y: 0.3, z: -1.75}
+  - {x: 3.5, y: 0.3, z: -1.75}
   timeRangeObjectSo: {fileID: 11400000, guid: 4f38c87578838e2409a1aca223556fc9, type: 2}
   navMeshAgent: {fileID: 4255554511944798571}
   navMeshSelectedAreaId: 3
@@ -169,9 +169,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   floorManagerScript: {fileID: 0}
-  receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
+  receptionPosition: {x: 0.25, y: 0.3, z: -0.5}
   baseTargetRoomType: 1
-  extraRoomTypes: 
+  extraRoomTypes: []
   extraRoomChance: 0.4
   makeExtraRoomNotUsableChance: 0.3
   payAmount: 5

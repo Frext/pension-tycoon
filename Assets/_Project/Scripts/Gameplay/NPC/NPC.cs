@@ -41,7 +41,7 @@ namespace _Project.Scripts.Gameplay.NPC
         [SerializeField] protected int navMeshSelectedAreaId;
         [SerializeField] protected UnityEvent onCrossSelectedOffMeshLink;
         
-        [Header("Unity Events")] 
+        [Header("Unity Events")]
         [SerializeField] protected UnityEvent onReachSelectedRoom;
         [SerializeField] protected UnityEvent onLeaveSelectedRoom;
         [Space]
@@ -188,6 +188,12 @@ namespace _Project.Scripts.Gameplay.NPC
         public void ResetRotation()
         {
             transform.rotation = Quaternion.Euler(Vector3.zero);
+        }
+
+        public void SetRotationY(float y)
+        {
+            var eulerAngles = transform.eulerAngles;
+            transform.rotation = Quaternion.Euler(eulerAngles.x, y, eulerAngles.z);
         }
     }
 }

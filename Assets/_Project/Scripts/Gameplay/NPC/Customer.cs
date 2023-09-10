@@ -1,3 +1,4 @@
+using System;
 using _Project.Scripts.Gameplay.Building;
 using _Project.Scripts.ScriptableObjects.Int;
 using _Project.Scripts.ScriptableObjects.SoEventGameObject;
@@ -10,17 +11,25 @@ namespace _Project.Scripts.Gameplay.NPC
 {
     public class Customer : Npc
     {
+        [Serializable]
+        public class ExtraTargetRoom
+        {
+            public Room.RoomTypeEnum roomType;
+            public UnityEvent onReachExtraRoom;
+            public UnityEvent onLeaveExtraRoom;
+        }
+        
         [Space]
         [Header(nameof(Customer) + " Properties")]
         [Space]
         [SerializeField] private Vector3 receptionPosition;
-        [Space] 
+        [Space]
         
         
         [Header("Rooms")]
         [SerializeField] private Room.RoomTypeEnum baseTargetRoomType;
         [Space]
-        [SerializeField] private Room.RoomTypeEnum[] extraRoomTypes;
+        [SerializeField] private ExtraTargetRoom[] extraRoomTypes;
         [Range(0, 1)] 
         [SerializeField] private float extraRoomChance;
         [Range(0, 1)] 
@@ -128,23 +137,29 @@ namespace _Project.Scripts.Gameplay.NPC
             }
         }
 
-        private void AddExtraSingleWayPoint(Room.RoomTypeEnum roomType)
+        private void AddExtraSingleWayPoint(ExtraTargetRoom extraTargetRoom)
         {
-            extraRoom = floorManagerScript.GetRoom(roomType);
+            extraRoom = floorManagerScript.GetRoom(extraTargetRoom.roomType);
 
             if (extraRoom != null)
             {
                 floorManagerScript.EnterRoom(extraRoom);
                 
                 wayPointsList.Insert(currentWayPointIndex + 1, 
-                    CreateWayPoint(extraRoom.slot.roomObject.transform.position, OnLeaveDestination: LeaveExtraRoom));
+                    CreateWayPoint(extraRoom.slot.roomObject.transform.position, 
+                        () => extraTargetRoom.onReachExtraRoom.Invoke(),
+                        () =>
+                        {
+                            extraTargetRoom.onLeaveExtraRoom.Invoke();
+                            LeaveExtraRoom();
+                        }
+                        ));
             }
             else
             {
-                FindNoRoom(roomType, onNotGetExtraRoom);
+                FindNoRoom(extraTargetRoom.roomType, onNotGetExtraRoom);
             }
         }
-        
 
         private void LeaveExtraRoom()
         {
