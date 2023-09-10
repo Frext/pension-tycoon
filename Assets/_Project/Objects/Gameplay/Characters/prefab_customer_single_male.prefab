@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4170874207938076807
 Transform:
   m_ObjectHideFlags: 0
@@ -45,7 +45,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4170874207938076804}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -69,7 +69,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6ff98783d10689e4199627949324d20f, type: 3}
   m_Controller: {fileID: 9100000, guid: e0598c20d4894d041b59e935c21570ca, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   floorManagerScript: {fileID: 0}
   receptionPosition: {x: 0.25, y: 0.25, z: -0.5}
   baseTargetRoomType: 1
-  extraRoomTypes: 0300000004000000
+  extraRoomTypes: 
   extraRoomChance: 0.4
   makeExtraRoomNotUsableChance: 0.3
   payAmount: 5
