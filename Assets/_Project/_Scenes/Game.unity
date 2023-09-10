@@ -10837,17 +10837,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 3801595101684810118, guid: 99877d716b6448a4f91654f0d35bd395,
     type: 3}
-  customerSingleRoomPrefab: {fileID: 4629076190231355559, guid: 4f4a0dd6c0a6c39449dcafd3d17cdd68,
+  customerSingleRoomPrefab: {fileID: 1564895300052427475, guid: 58e42320ee3545d4f83659abcede290f,
     type: 3}
   customerDoubleRoomPrefab: {fileID: 1344843120653683310, guid: 8cae92db969e5e84786d74912d10cfde,
     type: 3}
-  bathroomPrefab: {fileID: 4629076190231355559, guid: bd4b7e48f898d36439c5342f590d9d6c,
+  bathroomPrefab: {fileID: 2084985715436610788, guid: d945fb8269f16b34ab0aaf865efbdc55,
     type: 3}
-  diningRoomPrefab: {fileID: 4629076190231355559, guid: 5bf5759542b8a8a448bb2977443f2fac,
+  diningRoomPrefab: {fileID: 4727272089548468005, guid: f8b4f8b4a03fefc4bb8706add2a449e8,
     type: 3}
-  arcadePrefab: {fileID: 4629076190231355559, guid: 41d83ad550b34734e85334f8d5d0a67c,
+  arcadePrefab: {fileID: 2827484905639938068, guid: 570494903cc6d464b8401539c285e88d,
     type: 3}
-  gymPrefab: {fileID: 4629076190231355559, guid: d4d7d53fd8eb120498e450fb0a0db2e1,
+  gymPrefab: {fileID: 212919422616581237, guid: 55c57d470ab260d4a91d1f7c7e2356ff,
     type: 3}
   floorsParentTransform: {fileID: 1215698283}
   floorBasePosition: {x: 0, y: 0, z: 0}
@@ -14970,6 +14970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_customer_gamer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168491638077818761, guid: ef91b72a72473bd42a75bf7fdba9e4e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8168491638077818762, guid: ef91b72a72473bd42a75bf7fdba9e4e2,
         type: 3}
