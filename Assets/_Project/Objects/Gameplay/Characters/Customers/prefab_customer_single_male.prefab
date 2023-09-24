@@ -95,12 +95,12 @@ PrefabInstance:
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
       propertyPath: extraRoomTypes.Array.data[0].roomType
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
       propertyPath: extraRoomTypes.Array.data[1].roomType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
@@ -184,13 +184,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
-      propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
-      propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
@@ -219,6 +229,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -244,14 +279,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
-      propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5717689653065173335}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3740602164653823773}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2636445641684494358}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5717689653065173335}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 3740602164653823773}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2123274230954444951}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 5915336967725479067}
+      objectReference: {fileID: 3740602164653823773}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -261,12 +321,37 @@ PrefabInstance:
         type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 5717689653065173335}
+      objectReference: {fileID: 2123274230954444951}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 5915336967725479067}
+      objectReference: {fileID: 3740602164653823773}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -291,6 +376,31 @@ PrefabInstance:
         type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetBool
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetBool
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetRotationY
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetBool
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetBool
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
@@ -334,6 +444,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _Project.Scripts.Gameplay.Animation.AnimBoolChange, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: _Project.Scripts.Gameplay.Animation.AnimBoolChange, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _Project.Scripts.Gameplay.NPC.Npc, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: _Project.Scripts.Gameplay.Animation.AnimBoolChange, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: _Project.Scripts.Gameplay.Animation.AnimBoolChange, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: _Project.Scripts.Gameplay.Animation.AnimBoolChange, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -359,6 +494,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
@@ -369,8 +514,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
       propertyPath: extraRoomTypes.Array.data[1].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onLeaveExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
+        type: 3}
+      propertyPath: extraRoomTypes.Array.data[0].onReachExtraRoom.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3904113775449044506, guid: 2c32b166511967c4cb01c9e12db29cad,
         type: 3}
@@ -498,6 +673,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5da73550c90a266498e0fcd9c6437148, type: 3}
+--- !u!114 &3740602164653823773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8984709481772416760, guid: 5da73550c90a266498e0fcd9c6437148,
+    type: 3}
+  m_PrefabInstance: {fileID: 5717689652633102821}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0238ff44565231142a9a7728fca241b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5717689653065173335 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 738140338, guid: 5da73550c90a266498e0fcd9c6437148,
