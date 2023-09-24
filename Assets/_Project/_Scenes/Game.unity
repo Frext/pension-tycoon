@@ -13870,6 +13870,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_customer_single_male
       objectReference: {fileID: 0}
+    - target: {fileID: 2123274230166006828, guid: 6420f5b208913a3408e686ba8baa926f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2123274230166006831, guid: 6420f5b208913a3408e686ba8baa926f,
         type: 3}
       propertyPath: m_RootOrder
