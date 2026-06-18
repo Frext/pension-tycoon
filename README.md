@@ -25,7 +25,13 @@ Want to skip the code and just play?
 |       **Left Click**       | Interact with rooms and UI elements. |
 |       **Drag**             | Pan across the pension.              |
 |       **Mouse Wheel**      | Zoom in and out.                     |
-|       **Build Menu**       | Construct rooms, expand floors, and hire employees.   |
+|       **Build Menu**       | Construct rooms, floors, and hire employees.   |
+
+---
+
+## 🎬 Gameplay Preview
+
+https://github.com/user-attachments/assets/7827ad15-78a5-476e-b8bf-1f5141f13e76
 
 ---
 
