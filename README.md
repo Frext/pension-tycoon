@@ -36,13 +36,11 @@ https://github.com/user-attachments/assets/7827ad15-78a5-476e-b8bf-1f5141f13e76
 
 ## 🏗️ Gameplay Overview
 
-Manage a growing pension by:
+Step into the shoes of a manager and grow a small hostel into a thriving, multi-floor pension. 
 
-* Constructing new rooms and facilities.
-* Expanding vertically with additional floors.
-* Keeping rooms operational and usable.
-
-Customers arrive throughout the day and request accommodations. Additional facilities improve the attractiveness of the pension and provide extra activities for guests.
+* **Expand Vertically:** Build modular rooms and add entirely new floors.
+* **Keep Rooms Operational:** Deploy workers to clean and maintain facilities so they stay usable.
+* **Satisfy Customer Waves:** Host diverse customers throughout the day—building extra facilities like Arcades and Gyms increases your hostel rating and profits.
 
 ---
 
@@ -66,7 +64,7 @@ Customers arrive throughout the day and request accommodations. Additional facil
 
 * **Dynamic Building:** Construct new building levels and modular rooms dynamically.
 
-* **Diverse Rooms:** Includes distinct Single/Double Rooms, Bathrooms, Dining Rooms, Arcades, Gyms, and Receptions.
+* **Diverse Rooms:** Features distinct Single/Double Rooms, Bathrooms, Dining Rooms, Arcades, Gyms, and Receptions.
 
 * **Customer AI:** Automate wave spawning, room assignments, facility visits, and departure routines.
 
