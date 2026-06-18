@@ -35,6 +35,22 @@ https://github.com/user-attachments/assets/7827ad15-78a5-476e-b8bf-1f5141f13e76
 
 ---
 
+## 📸 Screenshots
+
+| Game Start | New Room Construction |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/ab435392-9407-4d89-8060-a24657fecc9a" width="500" alt="Game Start"/> | <img src="https://github.com/user-attachments/assets/a10a2ca2-8a88-4589-be97-88329a8760ed" width="500" alt="New Room Construction"/> |
+
+| Room Built | Room Needs Cleaning |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/8545deed-f065-4990-b5e9-c1bc81483b38" width="500" alt="Room Built"/> | <img src="https://github.com/user-attachments/assets/0976b5fd-3be6-45cc-a758-3278453c70fd" width="500" alt="Room Needs Cleaning" /> |
+
+| Construction Menu | Employee Menu |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/8b9f0897-d1e0-4962-b90a-587684112702" width="500" alt="Construction Menu"/> | <img src="https://github.com/user-attachments/assets/46b1bf02-27b7-4f01-919c-f905ce248687" width="500" alt="Employee Menu" /> |
+
+---
+
 ## 🏗️ Gameplay Overview
 
 Manage a growing pension by:
