@@ -66,72 +66,17 @@ Customers arrive throughout the day and request accommodations. Additional facil
 
 ## 🎯 Core Features
 
-### 🏢 Dynamic Floor Construction
+* **Dynamic Building:** Construct new building levels and modular room layouts dynamically.
 
-* Expand the building by adding new floors.
-* Maintain room slot data between sessions.
-* Automatic roof and floor positioning.
+* **Diverse Rooms:** Includes Single/Double Rooms, Bathrooms, Dining Rooms, Arcades, Gyms, and Receptions.
 
-### 🚪 Multiple Room Types
+* **Customer AI:** Automate wave spawning, room assignments, facility visits, and departure routines.
 
-Available room categories include:
+* **Staff Management:** Hire and deploy Cleaners, Cooks, Technicians, and Coaches to handle specific maintenance tasks.
 
-* Single Room
-* Double Room
-* Bathroom
-* Dining Room
-* Arcade
-* Gym
-* Reception
+* **Progression & Economy:** Track daily cycles, hostel ratings, growing customer waves, and financial earnings.
 
-Each room type serves a unique gameplay purpose.
-
-### 👥 Customer AI System
-
-* Customers arrive in waves.
-* Room assignment system.
-* Optional facility visits (Arcade, Gym, Dining Room).
-* Dynamic room availability checks.
-* Automatic departure and room release.
-
-### 👨‍🔧 Employee Management
-
-Hire and assign specialized staff:
-
-| Employee        | Responsibility       |
-| --------------- | -------------------- |
-| Cleaner         | Bedrooms & Bathrooms |
-| Cook            | Dining Rooms         |
-| Game Technician | Arcades              |
-| Gym Coach       | Gyms                 |
-
-Employees travel to assigned rooms, complete maintenance tasks, and become available again after a cooldown period.
-
-### 💾 Save & Load System
-
-Persistent data includes:
-
-* Constructed rooms
-* Floor layouts
-* Currency
-* Employee assignments
-* Progression data
-
-### 📈 Progression Systems
-
-* Day progression
-* Pension rating
-* Economic growth
-* Room expansion
-* Employee scaling
-* Customer wave scaling
-
-### 🎥 Camera System
-
-* Smooth movement
-* Zoom controls
-* Boundary restrictions
-* Automatic repositioning during building placement
+* **Save/Load:** Serialize game states for saving/loading.
 
 ---
 
