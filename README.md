@@ -34,6 +34,18 @@ https://github.com/user-attachments/assets/7827ad15-78a5-476e-b8bf-1f5141f13e76
 
 ---
 
+## 🏗️ Gameplay Overview
+
+Manage a growing pension by:
+
+* Constructing new rooms and facilities.
+* Expanding vertically with additional floors.
+* Keeping rooms operational and usable.
+
+Customers arrive throughout the day and request accommodations. Additional facilities improve the attractiveness of the pension and provide extra activities for guests.
+
+---
+
 ## 📸 Screenshots
 
 | Game Start | New Room Construction |
@@ -47,18 +59,6 @@ https://github.com/user-attachments/assets/7827ad15-78a5-476e-b8bf-1f5141f13e76
 | Construction Menu | Employee Menu |
 |:---:|:---:|
 | <img src="https://github.com/user-attachments/assets/8b9f0897-d1e0-4962-b90a-587684112702" width="500" alt="Construction Menu"/> | <img src="https://github.com/user-attachments/assets/46b1bf02-27b7-4f01-919c-f905ce248687" width="500" alt="Employee Menu" /> |
-
----
-
-## 🏗️ Gameplay Overview
-
-Manage a growing pension by:
-
-* Constructing new rooms and facilities.
-* Expanding vertically with additional floors.
-* Keeping rooms operational and usable.
-
-Customers arrive throughout the day and request accommodations. Additional facilities improve the attractiveness of the pension and provide extra activities for guests.
 
 ---
 
