@@ -25,7 +25,6 @@ Want to skip the code and just play?
 |       **Left Click**       | Interact with rooms and UI elements. |
 |       **Drag**             | Pan across the pension.              |
 |       **Mouse Wheel**      | Zoom in and out.                     |
-|       **Build Menu**       | Construct rooms, floors, and hire employees.   |
 
 ---
 
@@ -58,7 +57,6 @@ Manage a growing pension by:
 * Constructing new rooms and facilities.
 * Expanding vertically with additional floors.
 * Keeping rooms operational and usable.
-* Increasing pension value and customer satisfaction.
 
 Customers arrive throughout the day and request accommodations. Additional facilities improve the attractiveness of the pension and provide extra activities for guests.
 
@@ -66,9 +64,9 @@ Customers arrive throughout the day and request accommodations. Additional facil
 
 ## 🎯 Core Features
 
-* **Dynamic Building:** Construct new building levels and modular room layouts dynamically.
+* **Dynamic Building:** Construct new building levels and modular rooms dynamically.
 
-* **Diverse Rooms:** Includes Single/Double Rooms, Bathrooms, Dining Rooms, Arcades, Gyms, and Receptions.
+* **Diverse Rooms:** Includes distinct Single/Double Rooms, Bathrooms, Dining Rooms, Arcades, Gyms, and Receptions.
 
 * **Customer AI:** Automate wave spawning, room assignments, facility visits, and departure routines.
 
@@ -82,51 +80,11 @@ Customers arrive throughout the day and request accommodations. Additional facil
 
 ## 🧠 Technical Features
 
-### Scriptable Object Architecture
+* **ScriptableObject Architecture:** Uses a modular event system to pass data and messages between the UI, AI, and game managers without messy dependencies.
 
-The project heavily utilizes Scriptable Objects for:
+* **NavMesh NPC Framework:** Powers both customer routines and worker tasks using a shared AI framework built on Unity NavMesh navigation.
 
-* Global variables
-* Event communication
-* Employee data
-* Room types
-* Shop item information
-* Configuration ranges
-
-### Event-Driven Design
-
-Custom ScriptableObject event channels provide decoupled communication between systems including:
-
-* Room events
-* Employee assignment events
-* Customer events
-* UI updates
-* Building management events
-
-### NPC Framework
-
-Shared NPC base functionality supports:
-
-* Navigation
-* Waypoint movement
-* Task execution
-* Room interactions
-* AI state management
-
----
-
-## 📂 Main Systems
-
-| System           | Purpose                                |
-| ---------------- | -------------------------------------- |
-| FloorManager     | Building generation and room placement |
-| Room             | Room state and occupancy management    |
-| NPCManager       | Customer and employee spawning         |
-| Customer         | Guest AI behaviour                     |
-| Employee         | Maintenance worker AI                  |
-| CameraController | Camera movement and zoom               |
-| DataManager      | Save/load operations                   |
-| Shop System      | Building and upgrade purchases         |
+* **JSON Save System:** Handles complete data persistence by serializing floor layouts, player cash, and staff data into structured JSON files.
 
 ---
 
@@ -136,7 +94,7 @@ Shared NPC base functionality supports:
 * **Scripting Language:** C#
 * **Architecture:** Scriptable Object Event System
 * **AI Navigation:** Unity NavMesh
-* **Persistence:** JSON-based save data
+* **Data Persistence:** JSON-Based Save Data
 
 ---
 
