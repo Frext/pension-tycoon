@@ -8,7 +8,7 @@ namespace _Project.Scripts.UI.Hud
     {
         [SerializeField] private Image image;
 
-        [SerializeField] private NpcManager npcManagerScript;
+        [SerializeField] private NPCManager npcManagerScript;
 
         public void UpdateProgressBar()
         {

@@ -28,7 +28,7 @@ namespace _Project.Scripts.Gameplay.NPC
         }
     }
     
-    public class NpcManager : MonoBehaviour
+    public class NPCManager : MonoBehaviour
     {
         [Serializable]
         public class CustomerObject
