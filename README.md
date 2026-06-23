@@ -12,7 +12,7 @@ A hostel management simulation where players expand and operate a growing pensio
 
 Want to skip the code and just play?
 
-1. **[Download the Repository](https://github.com/Frext/PensionTycoon/archive/refs/heads/main.zip)**
+1. **[Download the Repository](https://github.com/Frext/pension-tycoon/archive/refs/heads/main.zip)**
 2. Extract the ZIP file.
 3. Open the **`BuildWindows`** folder and run the game executable named **`PensionTycoon.exe`**.
 
@@ -39,9 +39,7 @@ https://github.com/user-attachments/assets/7827ad15-78a5-476e-b8bf-1f5141f13e76
 Step into the shoes of a manager and grow a small hostel into a thriving, multi-floor pension. 
 
 * **Expand Vertically:** Build modular rooms and add entirely new floors.
-
 * **Keep Rooms Operational:** Deploy workers to clean and maintain facilities so they stay usable.
-
 * **Satisfy Customer Waves:** Host diverse customers throughout the day—building extra facilities like Arcades and Gyms increases your hostel rating and profits.
 
 ---
@@ -65,15 +63,10 @@ Step into the shoes of a manager and grow a small hostel into a thriving, multi-
 ## 🎯 Core Features
 
 * **Dynamic Building:** Construct new building levels and modular rooms dynamically.
-
 * **Diverse Rooms:** Features distinct Single/Double Rooms, Bathrooms, Dining Rooms, Arcades, Gyms, and Receptions.
-
 * **Customer AI:** Automate wave spawning, room assignments, facility visits, and departure routines.
-
 * **Staff Management:** Hire and deploy Cleaners, Cooks, Technicians, and Coaches to handle specific maintenance tasks.
-
 * **Progression & Economy:** Track daily cycles, hostel ratings, growing customer waves, and financial earnings.
-
 * **Save/Load:** Serialize game states for saving/loading.
 
 ---
@@ -81,9 +74,7 @@ Step into the shoes of a manager and grow a small hostel into a thriving, multi-
 ## 🧠 Technical Features
 
 * **ScriptableObject Architecture:** Uses a modular event system to pass data and messages between the UI, AI, and game managers without messy dependencies.
-
 * **NavMesh NPC Framework:** Powers both customer routines and worker tasks using a shared AI framework built on Unity NavMesh navigation.
-
 * **JSON Save System:** Handles complete data persistence by serializing floor layouts, player cash, and staff data into structured JSON files.
 
 ---
