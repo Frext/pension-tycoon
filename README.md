@@ -14,7 +14,7 @@ Want to skip the code and just play?
 
 1. **[Download the Repository](https://github.com/Frext/pension-tycoon/archive/refs/heads/main.zip)**
 2. Extract the ZIP file.
-3. Open the **`BuildWindows`** folder and run the game executable named **`PensionTycoon.exe`**.
+3. Open the **`BuildWindows`** folder and launch **`PensionTycoon.exe`**.
 
 ---
 
