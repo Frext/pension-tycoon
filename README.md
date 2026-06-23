@@ -2,7 +2,7 @@
 
 [![Unity Version](https://img.shields.io/badge/Unity-2021.3.18f1-blue.svg?style=flat&logo=unity)](https://unity.com/)
 [![Language](https://img.shields.io/badge/Language-C%23-green.svg?style=flat&logo=c-sharp)](https://learn.microsoft.com/en-us/dotnet/csharp/)
-[![Genre](https://img.shields.io/badge/Genre-Management%20Simulation-orange.svg?style=flat)]()
+[![Platform](https://img.shields.io/badge/Platform-Windows-orange?logo=windows)](https://www.microsoft.com/windows/)
 
 A hostel management simulation where players expand and operate a growing pension business by constructing rooms, hiring employees, serving customers, and improving overall facility performance.
 
